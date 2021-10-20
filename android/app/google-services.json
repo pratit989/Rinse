@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "993217774202",
+    "project_id": "rinse-8a4f5",
+    "storage_bucket": "rinse-8a4f5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993217774202:android:c546af6ded57078f32b1c3",
+        "android_client_info": {
+          "package_name": "com.rinse.rinse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993217774202-g31cv4h7od60rd0s3ja4kjg1lduk6v8r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rinse.rinse",
+            "certificate_hash": "fc66466a8dbeadb160b2252352cc6a3ba74fc444"
+          }
+        },
+        {
+          "client_id": "993217774202-li7sri0kb452u8bhe5rqfkk2t3dfb062.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmh4nSNu9tmtqcv9_q92oPZFAH45kBk8s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "993217774202-li7sri0kb452u8bhe5rqfkk2t3dfb062.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
