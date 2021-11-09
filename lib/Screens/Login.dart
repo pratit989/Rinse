@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rinse/Screens/VerifyMobileNumber.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -56,7 +57,8 @@ class _LoginState extends State<Login> {
               Padding(
                 padding: EdgeInsets.only(top: MediaQuery.of(context).size.shortestSide*0.1),
                 child: FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>VerifyMobileNumber()) );                  },
                   child: Icon(Icons.arrow_forward_ios, color: Colors.white,),
                   backgroundColor: Colors.pink,
                 ),
