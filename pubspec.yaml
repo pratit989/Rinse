@@ -35,6 +35,7 @@ dependencies:
   firebase_analytics: "^7.0.0"
   firebase_auth:
   cloud_firestore:
+  pinput:
 
 dev_dependencies:
   flutter_test:
