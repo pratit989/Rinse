@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 // Firebase
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
+import 'package:rinse/Screens/CleaningPricing.dart';
 import 'package:rinse/Screens/Login.dart';
+import 'package:rinse/Screens/Pricing.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -51,7 +53,7 @@ class _MyAppState extends State<MyApp> {
                 border: UnderlineInputBorder(borderSide: BorderSide(color: Color.fromRGBO(31, 68, 68, 1)))
               ),
             ),
-            home: Login(),
+            home: CleaningPricing(),
             routes: {},
           );
         }
