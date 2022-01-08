@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
@@ -19,7 +18,7 @@ class _OrdersState extends State<Orders> {
           child: Text("My Orders"),
         ),
         centerTitle: true,
-        titleTextStyle: TextStyle(fontWeight: FontWeight.w900, fontSize: 20, color: Colors.black),
+        titleTextStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: 25, color: Theme.of(context).colorScheme.primary),
         automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: Colors.transparent,

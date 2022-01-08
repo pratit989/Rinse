@@ -1,10 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 import 'package:rinse/Screens/CreateAccount.dart';
+import 'package:rinse/Screens/NavBarBody.dart';
 
 class VerifyMobileNumber extends StatefulWidget {
-  const VerifyMobileNumber({Key? key}) : super(key: key);
+  final String phoneNumber;
+
+  const VerifyMobileNumber({Key? key, required this.phoneNumber}) : super(key: key);
 
   @override
   _VerifyMobileNumberState createState() => _VerifyMobileNumberState();
@@ -14,15 +17,34 @@ class _VerifyMobileNumberState extends State<VerifyMobileNumber> {
   final TextEditingController _pinPutController = TextEditingController();
   final FocusNode _pinPutFocusNode = FocusNode();
   bool processing = false;
+  late String verificationCode;
 
   BoxDecoration get _pinPutDecoration {
     return BoxDecoration(
         border: Border.all(color: Colors.black12),
-        boxShadow: [
-          BoxShadow(
-              blurRadius: 5, color: Colors.grey[200]!, offset: Offset(0, 5))
-        ],
+        boxShadow: [BoxShadow(blurRadius: 5, color: Colors.grey[200]!, offset: Offset(0, 5))],
         color: Colors.grey[100]!);
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    FirebaseAuth.instance.verifyPhoneNumber(
+        timeout: Duration(seconds: 60),
+        phoneNumber: '+91' + widget.phoneNumber,
+        verificationCompleted: (PhoneAuthCredential credential) {
+          FirebaseAuth.instance.signInWithCredential(credential);
+        },
+        verificationFailed: (FirebaseAuthException e) {
+          print(e.code);
+        },
+        codeSent: (String verificationId, int? resendToken) {
+          setState(() {
+            verificationCode = verificationId;
+          });
+        },
+        codeAutoRetrievalTimeout: (String verificationId) => print("Please Enter Code Manually"));
+    super.initState();
   }
 
   @override
@@ -47,15 +69,13 @@ class _VerifyMobileNumberState extends State<VerifyMobileNumber> {
               Text(
                 'Verify Mobile Number',
                 style: TextStyle(
-                  fontSize: 30,
+                  fontSize: 25,
                   fontWeight: FontWeight.w800,
-                  color: Colors.black,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width * 0.2,
-                    vertical: 10),
+                padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.2, vertical: 10),
                 child: Text(
                   'Please enter the 4 digit SMS verification code we sent to your mobile number.',
                   style: TextStyle(color: Colors.grey),
@@ -65,45 +85,30 @@ class _VerifyMobileNumberState extends State<VerifyMobileNumber> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 40),
                 child: PinPut(
-                  fieldsCount: 4,
+                  autofocus: true,
+                  fieldsCount: 6,
                   onSubmit: (String pin) => _confirmCode(pin, context),
                   focusNode: _pinPutFocusNode,
                   controller: _pinPutController,
                   submittedFieldDecoration: _pinPutDecoration,
-                  selectedFieldDecoration: _pinPutDecoration.copyWith(
-                      color: Colors.white,
-                      border: Border.all(color: Colors.blue)),
+                  selectedFieldDecoration:
+                      _pinPutDecoration.copyWith(color: Colors.white, border: Border.all(color: Theme.of(context).colorScheme.primary)),
                   followingFieldDecoration: _pinPutDecoration,
                   fieldsAlignment: MainAxisAlignment.center,
                   eachFieldMargin: EdgeInsets.all(5),
-                  textStyle: TextStyle(
-                      fontSize: MediaQuery.of(context).size.width * 0.05,
-                      fontWeight: FontWeight.w400),
+                  textStyle: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.w400),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: FloatingActionButton.extended(
-                  onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => CreateAccount())),
-                  label: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: Text('Verify Account',
-                    style: TextStyle(
-                      color: Colors.white
-                    ),
-                    ),
-                  ),
-                  backgroundColor: Colors.redAccent,
-                ),
+              Text(
+                'Did not receive the code?',
+                style: TextStyle(color: Colors.grey),
               ),
-              Text('Did not receive the code?',
-              style: TextStyle(
-                color: Colors.grey
-              ),),
-              GestureDetector(onTap: () {} ,child:
-                Text('Resend SMS', style: TextStyle(
-                  color: Colors.redAccent
-                ),))
+              GestureDetector(
+                  onTap: () {},
+                  child: Text(
+                    'Resend SMS',
+                    style: TextStyle(color: Colors.redAccent),
+                  ))
             ],
           ),
         ));
@@ -122,5 +127,18 @@ class _VerifyMobileNumberState extends State<VerifyMobileNumber> {
     ScaffoldMessenger.of(context)
       ..hideCurrentSnackBar()
       ..showSnackBar(snackBar);
+    FirebaseAuth.instance
+        .signInWithCredential(PhoneAuthProvider.credential(verificationId: verificationCode, smsCode: pin))
+        .then((UserCredential userCredential) {
+          if (userCredential.user!.displayName != null) {
+            return Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => NavBarBody()), (Route<dynamic> route) => false);
+          } else {
+            return Navigator.push(context, MaterialPageRoute(builder: (context) => CreateAccount()));
+          }
+        })
+        .catchError((onError) {
+          print(onError);
+        })
+        .onError((error, stackTrace) => print(error));
   }
 }
