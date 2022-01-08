@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rinse/Screens/CleaningPricing.dart';
+import 'package:rinse/Screens/PressingPricing.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -8,15 +10,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late PageController _controller;
 
   @override
   void initState() {
     // TODO: implement initState
-    _controller = PageController(
-      initialPage: 1,
-      //viewportFraction: 0.4,
-    );
     super.initState();
   }
 
@@ -82,15 +79,23 @@ class _HomeState extends State<Home> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Container(
-                        height: MediaQuery.of(context).size.width * 0.5,
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        child: Image.asset('assets/images/CleaningPressing.png'),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Material(
+                          child: InkWell(
+                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => CleaningPricing())),
+                            child: Image.asset('assets/images/CleaningPressing.png', height: MediaQuery.of(context).size.height*0.22,),
+                          ),
+                        ),
                       ),
-                      Container(
-                        height: MediaQuery.of(context).size.width * 0.5,
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        child: Image.asset('assets/images/Pressing.png'),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Material(
+                          child: InkWell(
+                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PressingPricing())),
+                            child: Image.asset('assets/images/Pressing.png', height: MediaQuery.of(context).size.height*0.22),
+                          ),
+                        ),
                       ),
                     ],
                   ),

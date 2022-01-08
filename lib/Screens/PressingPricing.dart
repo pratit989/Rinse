@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'MyProfile.dart';
 
-class CleaningPricing extends StatelessWidget {
-  const CleaningPricing({Key? key}) : super(key: key);
+class PressingPricing extends StatelessWidget {
+  const PressingPricing({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class CleaningPricing extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Image.asset(
-                    'assets/images/CleaningPressingPricing.png',
+                    'assets/images/PressingPricing.png',
                     scale: 0.9,
                   ),
                   Divider(

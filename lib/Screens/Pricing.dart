@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import 'CleaningPricing.dart';
+import 'PressingPricing.dart';
 class Pricing extends StatelessWidget {
   const Pricing({Key? key}) : super(key: key);
 
@@ -7,15 +10,15 @@ class Pricing extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text('Pricing'),
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        titleTextStyle: TextStyle(
-          color: Theme.of(context).colorScheme.primary,
-          fontWeight: FontWeight.w600,
-          fontSize: 25,
+        title: Padding(
+          padding: const EdgeInsets.only(top:20.0),
+          child: Text("Pricing"),
         ),
         centerTitle: true,
+        titleTextStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: 25, color: Theme.of(context).colorScheme.primary),
+        automaticallyImplyLeading: false,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
       ),
       body: Center(
         child: Padding(
@@ -23,15 +26,23 @@ class Pricing extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                height: MediaQuery.of(context).size.height*0.25,
-                width: MediaQuery.of(context).size.width*0.5,
-                child: Image.asset('assets/images/CleaningPressing.png'),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Material(
+                  child: InkWell(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => CleaningPricing())),
+                    child: Image.asset('assets/images/CleaningPressing.png', height: MediaQuery.of(context).size.height*0.22,),
+                  ),
+                ),
               ),
-              Container(
-                height: MediaQuery.of(context).size.height*0.25,
-                width: MediaQuery.of(context).size.width*0.5,
-                child: Image.asset('assets/images/Pressing.png'),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Material(
+                  child: InkWell(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PressingPricing())),
+                    child: Image.asset('assets/images/Pressing.png', height: MediaQuery.of(context).size.height*0.22),
+                  ),
+                ),
               ),
             ],
           ),
