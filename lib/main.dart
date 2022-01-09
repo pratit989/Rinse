@@ -7,10 +7,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rinse/Screens/CreateAccount.dart';
-import 'package:rinse/Screens/Home.dart';
 import 'package:rinse/Screens/NavBarBody.dart';
+import 'package:rinse/Screens/Welcome.dart';
 
-import 'Screens/Login.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -79,7 +78,7 @@ class _MyAppState extends State<MyApp> {
                               return CreateAccount();
                             }
                           } else {
-                            return Login();
+                            return Welcome();
                           }
                         },
                       ),

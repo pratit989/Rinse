@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rinse/Screens/Login.dart';
+import 'package:rinse/Screens/Welcome.dart';
 
 
 class MyProfile extends StatefulWidget {
@@ -42,27 +44,32 @@ class _MyProfileState extends State<MyProfile> {
                 children: [
                   Consumer<User?>(
                     builder: (context, user, c) {
-                      return Padding(
-                        padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.1),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            RichText(text: TextSpan(children: [
-                              TextSpan(text: user!.displayName, style: TextStyle(
-                                  fontSize: 25,
-                                  color: Theme.of(context).colorScheme.secondary,
-                                  fontWeight: FontWeight.w600
-                              ),),
-                              WidgetSpan(child: GestureDetector(onTap: (){},child: Icon(Icons.edit)))
-                            ]),),
-                            Text('${user.email} | ${user.phoneNumber}',
-                              style: TextStyle(
-                                color: Colors.grey,
-                                fontWeight: FontWeight.w600,
-                              ),),
-                          ],
-                        ),
-                      );
+                      if (user == null) {
+                        Future.microtask(() => Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Welcome()), (route) => false));
+                        return Container();
+                      } else {
+                        return Padding(
+                          padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.1),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              RichText(text: TextSpan(children: [
+                                TextSpan(text: user.displayName, style: TextStyle(
+                                    fontSize: 25,
+                                    color: Theme.of(context).colorScheme.secondary,
+                                    fontWeight: FontWeight.w600
+                                ),),
+                                WidgetSpan(child: GestureDetector(onTap: (){},child: Icon(Icons.edit)))
+                              ]),),
+                              Text('${user.email} | ${user.phoneNumber}',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.w600,
+                                ),),
+                            ],
+                          ),
+                        );
+                      }
                     },
                   ),
                   Card(
@@ -90,6 +97,7 @@ class _MyProfileState extends State<MyProfile> {
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height*0.1),
                     child: FloatingActionButton.extended(
+                      heroTag: "LogoutFloatingActionButton",
                       onPressed: () => context.read<FirebaseAuth>().signOut(),
                       label: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 30),

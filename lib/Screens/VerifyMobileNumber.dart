@@ -17,7 +17,7 @@ class _VerifyMobileNumberState extends State<VerifyMobileNumber> {
   final TextEditingController _pinPutController = TextEditingController();
   final FocusNode _pinPutFocusNode = FocusNode();
   bool processing = false;
-  late String verificationCode;
+  String? verificationCode;
 
   BoxDecoration get _pinPutDecoration {
     return BoxDecoration(
@@ -30,7 +30,6 @@ class _VerifyMobileNumberState extends State<VerifyMobileNumber> {
   void initState() {
     // TODO: implement initState
     FirebaseAuth.instance.verifyPhoneNumber(
-        timeout: Duration(seconds: 60),
         phoneNumber: '+91' + widget.phoneNumber,
         verificationCompleted: (PhoneAuthCredential credential) {
           FirebaseAuth.instance.signInWithCredential(credential);
@@ -43,13 +42,15 @@ class _VerifyMobileNumberState extends State<VerifyMobileNumber> {
             verificationCode = verificationId;
           });
         },
-        codeAutoRetrievalTimeout: (String verificationId) => print("Please Enter Code Manually"));
+        codeAutoRetrievalTimeout: (String verificationId) => print("Please Enter Code Manually"),
+    );
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    if (verificationCode != null) {
+      return Scaffold(
         appBar: AppBar(
           leading: Padding(
             padding: const EdgeInsets.all(25.0),
@@ -112,23 +113,35 @@ class _VerifyMobileNumberState extends State<VerifyMobileNumber> {
             ],
           ),
         ));
+    } else {
+      return Center(child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20.0),
+            child: Text("Sending Verification Code", style: TextStyle(color: Colors.white, fontSize: 16, decoration: TextDecoration.none),),
+          ),
+          CircularProgressIndicator(),
+        ],
+      ));
+    }
   }
 
   void _confirmCode(String pin, BuildContext context) {
-    SnackBar snackBar = SnackBar(
-      duration: const Duration(seconds: 3),
-      content: Text(
-        'Pin Submitted. Value: $pin',
-        style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
-        textAlign: TextAlign.center,
-      ),
-      backgroundColor: Colors.black,
-    );
-    ScaffoldMessenger.of(context)
-      ..hideCurrentSnackBar()
-      ..showSnackBar(snackBar);
+    // SnackBar snackBar = SnackBar(
+    //   duration: const Duration(seconds: 3),
+    //   content: Text(
+    //     'Pin Submitted. Value: $pin',
+    //     style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+    //     textAlign: TextAlign.center,
+    //   ),
+    //   backgroundColor: Colors.black,
+    // );
+    // ScaffoldMessenger.of(context)
+    //   ..hideCurrentSnackBar()
+    //   ..showSnackBar(snackBar);
     FirebaseAuth.instance
-        .signInWithCredential(PhoneAuthProvider.credential(verificationId: verificationCode, smsCode: pin))
+        .signInWithCredential(PhoneAuthProvider.credential(verificationId: verificationCode!, smsCode: pin))
         .then((UserCredential userCredential) {
           if (userCredential.user!.displayName != null) {
             return Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => NavBarBody()), (Route<dynamic> route) => false);
