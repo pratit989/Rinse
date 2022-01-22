@@ -212,7 +212,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
             Align(
               alignment: AlignmentDirectional(-0.9, 0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 10),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
                 child: Text(
                   'Select Services',
                   style: FlutterFlowTheme.bodyText1.override(
