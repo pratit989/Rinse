@@ -18,7 +18,7 @@ class _ServiceSelectorWidgetState extends State<ServiceSelectorWidget> {
       width: MediaQuery.of(context).size.width * 0.7,
       height: MediaQuery.of(context).size.height * 0.12,
       decoration: BoxDecoration(
-        color: Color(0xFFEEEEEE),
+        color: Color(0xFFF5F5F5),
       ),
       child: GridView(
         padding: EdgeInsets.zero,
