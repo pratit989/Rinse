@@ -64,7 +64,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           children: [
                             Expanded(
                               child: Align(
-                                alignment: AlignmentDirectional(1, 0),
+                                alignment: AlignmentDirectional(1, 1.15),
                                 child: Container(
                                   width:
                                       MediaQuery.of(context).size.width * 0.6,
@@ -131,49 +131,52 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 ),
                               ),
                             ),
-                            Align(
-                              alignment: AlignmentDirectional(1, 0),
-                              child: FlutterFlowIconButton(
-                                borderColor: Colors.transparent,
-                                borderRadius: 30,
-                                borderWidth: 1,
-                                buttonSize: 50,
-                                fillColor: FlutterFlowTheme.secondaryColor,
-                                icon: Icon(
-                                  Icons.arrow_forward_ios_sharp,
-                                  color: Color(0xFFFBFBFB),
-                                  size: 25,
-                                ),
-                                onPressed: () async {
-                                  if (!formKey.currentState.validate()) {
-                                    return;
-                                  }
-                                  if (phoneNumberController.text.isEmpty ||
-                                      !phoneNumberController.text
-                                          .startsWith('+')) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                            'Phone Number is required and has to start with +.'),
-                                      ),
-                                    );
-                                    return;
-                                  }
-                                  await beginPhoneAuth(
-                                    context: context,
-                                    phoneNumber: phoneNumberController.text,
-                                    onCodeSent: () async {
-                                      await Navigator.pushAndRemoveUntil(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              VerifyMobileNumberWidget(),
+                            Expanded(
+                              child: Align(
+                                alignment: AlignmentDirectional(1, -0.8),
+                                child: FlutterFlowIconButton(
+                                  borderColor: Colors.transparent,
+                                  borderRadius: 30,
+                                  borderWidth: 1,
+                                  buttonSize: 50,
+                                  fillColor: FlutterFlowTheme.secondaryColor,
+                                  icon: Icon(
+                                    Icons.arrow_forward_ios_sharp,
+                                    color: Color(0xFFFBFBFB),
+                                    size: 25,
+                                  ),
+                                  onPressed: () async {
+                                    if (!formKey.currentState.validate()) {
+                                      return;
+                                    }
+                                    if (phoneNumberController.text.isEmpty ||
+                                        !phoneNumberController.text
+                                            .startsWith('+')) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                              'Phone Number is required and has to start with +.'),
                                         ),
-                                        (r) => false,
                                       );
-                                    },
-                                  );
-                                },
+                                      return;
+                                    }
+                                    await beginPhoneAuth(
+                                      context: context,
+                                      phoneNumber: phoneNumberController.text,
+                                      onCodeSent: () async {
+                                        await Navigator.pushAndRemoveUntil(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                VerifyMobileNumberWidget(),
+                                          ),
+                                          (r) => false,
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
                               ),
                             ),
                           ],
