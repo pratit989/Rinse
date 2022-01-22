@@ -60,7 +60,7 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
                     style: FlutterFlowTheme.bodyText1.override(
                       fontFamily: 'Lato',
                       color: Color(0xFF073131),
-                      fontSize: 16,
+                      fontSize: 14,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -73,7 +73,7 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
                       style: FlutterFlowTheme.bodyText1.override(
                         fontFamily: 'Lato',
                         color: Color(0xFF818181),
-                        fontSize: 16,
+                        fontSize: 15,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
