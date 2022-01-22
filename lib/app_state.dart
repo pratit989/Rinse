@@ -25,6 +25,8 @@ class FFAppState {
   int SelectedTimeCard = 0;
 
   String serviceSelected = '';
+
+  List<String> cartItems = [];
 }
 
 LatLng _latLngFromString(String val) {
