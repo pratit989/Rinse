@@ -125,27 +125,9 @@ class _CleaningPressingPricingWidgetState
                           itemBuilder: (context, clothNameIndex) {
                             final clothNameItem = clothName[clothNameIndex];
                             final clothPriceItem = clothPrice[clothNameIndex];
-                            return Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.tertiaryColor,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      blurRadius: 2,
-                                      color: Color(0x19000000),
-                                      offset: Offset(0, 2),
-                                      spreadRadius: 0,
-                                    )
-                                  ],
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: ClothesListTabWidget(
-                                  clothName: clothNameItem,
-                                  pricePerPiece: clothPriceItem,
-                                ),
-                              ),
+                            return ClothesListTabWidget(
+                              clothName: clothNameItem,
+                              pricePerPiece: clothPriceItem,
                             );
                           },
                         );

@@ -2,7 +2,6 @@ import '../flutter_flow/flutter_flow_count_controller.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ClothesListTabWidget extends StatefulWidget {
@@ -25,9 +24,19 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 353,
+      height: 77,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.tertiaryColor,
-        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 4,
+            color: Color(0x14000000),
+            offset: Offset(0, 2),
+            spreadRadius: 0,
+          )
+        ],
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
@@ -94,18 +103,18 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
               ),
               child: FlutterFlowCountController(
                 decrementIconBuilder: (enabled) => Icon(
-                  Icons.delete,
+                  Icons.indeterminate_check_box_rounded,
                   color: enabled
                       ? FlutterFlowTheme.secondaryColor
                       : Color(0xFFEEEEEE),
-                  size: 20,
+                  size: 25,
                 ),
-                incrementIconBuilder: (enabled) => FaIcon(
-                  FontAwesomeIcons.plus,
+                incrementIconBuilder: (enabled) => Icon(
+                  Icons.add_box_rounded,
                   color: enabled
                       ? FlutterFlowTheme.secondaryColor
                       : Color(0xFFEEEEEE),
-                  size: 20,
+                  size: 25,
                 ),
                 countBuilder: (count) => Text(
                   count.toString(),
