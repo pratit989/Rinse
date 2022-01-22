@@ -64,7 +64,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           children: [
                             Expanded(
                               child: Align(
-                                alignment: AlignmentDirectional(1, 1.15),
+                                alignment: AlignmentDirectional(1, 1.06),
                                 child: Container(
                                   width:
                                       MediaQuery.of(context).size.width * 0.6,
