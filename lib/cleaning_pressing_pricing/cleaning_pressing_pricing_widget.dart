@@ -133,12 +133,16 @@ class _CleaningPressingPricingWidgetState
                                 ],
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              child: ClothesListTabWidget(
-                                clothName: clothNameItem,
-                                pricePerPiece: listViewPricingRecord
-                                    .clothsPriceList
-                                    .toList()
-                                    .length,
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10, 10, 10, 10),
+                                child: ClothesListTabWidget(
+                                  clothName: clothNameItem,
+                                  pricePerPiece: listViewPricingRecord
+                                      .clothsPriceList
+                                      .toList()
+                                      .length,
+                                ),
                               ),
                             );
                           },

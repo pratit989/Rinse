@@ -148,7 +148,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             }
                             await beginPhoneAuth(
                               context: context,
-                              phoneNumber: '+91'+phoneNumberController.text,
+                              phoneNumber: phoneNumberController.text,
                               onCodeSent: () async {
                                 await Navigator.pushAndRemoveUntil(
                                   context,
