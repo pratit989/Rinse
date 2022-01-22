@@ -16,7 +16,6 @@ class _ServiceSelectorWidgetState extends State<ServiceSelectorWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width * 0.7,
-      height: MediaQuery.of(context).size.height * 0.12,
       decoration: BoxDecoration(
         color: Color(0xFFF5F5F5),
       ),
