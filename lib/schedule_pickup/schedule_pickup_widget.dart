@@ -26,6 +26,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
       body: SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 20),
@@ -180,7 +181,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.12,
               decoration: BoxDecoration(
-                color: Color(0xFFEEEEEE),
+                color: Color(0xFFF5F5F5),
               ),
               child: DateButtonWidget(),
             ),
@@ -202,7 +203,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
               width: MediaQuery.of(context).size.width,
               height: 100,
               decoration: BoxDecoration(
-                color: Color(0xFFEEEEEE),
+                color: Color(0xFFF5F5F5),
               ),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(15, 0, 15, 0),
@@ -231,7 +232,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+              padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 20),
               child: FFButtonWidget(
                 onPressed: () async {
                   await Navigator.push(
