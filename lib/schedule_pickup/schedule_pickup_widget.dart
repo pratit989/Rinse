@@ -201,7 +201,6 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
             ),
             Container(
               width: MediaQuery.of(context).size.width,
-              height: 100,
               decoration: BoxDecoration(
                 color: Color(0xFFF5F5F5),
               ),
