@@ -136,30 +136,34 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
                     minimum: 0,
                   ),
                 ),
-                FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
-                  },
-                  text: 'Add to cart',
-                  icon: Icon(
-                    Icons.shopping_cart_outlined,
-                    size: 10,
-                  ),
-                  options: FFButtonOptions(
-                    width: 110,
-                    height: 25,
-                    color: FlutterFlowTheme.secondaryColor,
-                    textStyle: FlutterFlowTheme.subtitle2.override(
-                      fontFamily: 'Lato',
-                      color: Colors.white,
-                      fontSize: 10,
-                      fontWeight: FontWeight.normal,
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      setState(
+                          () => FFAppState().cartItems.add(widget.clothName));
+                    },
+                    text: 'Add to cart',
+                    icon: Icon(
+                      Icons.shopping_cart_outlined,
+                      size: 10,
                     ),
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1,
+                    options: FFButtonOptions(
+                      width: 110,
+                      height: 25,
+                      color: FlutterFlowTheme.secondaryColor,
+                      textStyle: FlutterFlowTheme.subtitle2.override(
+                        fontFamily: 'Lato',
+                        color: Colors.white,
+                        fontSize: 10,
+                        fontWeight: FontWeight.normal,
+                      ),
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: 1,
+                      ),
+                      borderRadius: 12,
                     ),
-                    borderRadius: 12,
                   ),
                 ),
               ],
