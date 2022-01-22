@@ -120,22 +120,22 @@ class _CleaningPressingPricingWidgetState
                           itemCount: clothName.length,
                           itemBuilder: (context, clothNameIndex) {
                             final clothNameItem = clothName[clothNameIndex];
-                            return Container(
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.tertiaryColor,
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 2,
-                                    color: Color(0x19000000),
-                                    offset: Offset(0, 2),
-                                    spreadRadius: 0,
-                                  )
-                                ],
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10, 10, 10, 10),
+                            return Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.tertiaryColor,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 2,
+                                      color: Color(0x19000000),
+                                      offset: Offset(0, 2),
+                                      spreadRadius: 0,
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
                                 child: ClothesListTabWidget(
                                   clothName: clothNameItem,
                                   pricePerPiece: listViewPricingRecord
