@@ -149,21 +149,19 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     if (!formKey.currentState.validate()) {
                                       return;
                                     }
-                                    if (phoneNumberController.text.isEmpty ||
-                                        !phoneNumberController.text
-                                            .startsWith('+')) {
+                                    if (phoneNumberController.text.isEmpty) {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
                                           content: Text(
-                                              'Phone Number is required and has to start with +.'),
+                                              'Phone Number is required.'),
                                         ),
                                       );
                                       return;
                                     }
                                     await beginPhoneAuth(
                                       context: context,
-                                      phoneNumber: phoneNumberController.text,
+                                      phoneNumber: '+91'+phoneNumberController.text,
                                       onCodeSent: () async {
                                         await Navigator.pushAndRemoveUntil(
                                           context,
