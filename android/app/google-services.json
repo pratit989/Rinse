@@ -7,12 +7,64 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:993217774202:android:c0d33ebb5b06626732b1c3",
+        "android_client_info": {
+          "package_name": "com.pratit.rinse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993217774202-10ctjrl0igcnm43bjufc9bg9psprqtg0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pratit.rinse",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "993217774202-li7sri0kb452u8bhe5rqfkk2t3dfb062.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmh4nSNu9tmtqcv9_q92oPZFAH45kBk8s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "993217774202-li7sri0kb452u8bhe5rqfkk2t3dfb062.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "993217774202-ojdb0opvmkbikee14o6kek90iss5eshp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pratit.rinse"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:993217774202:android:c546af6ded57078f32b1c3",
         "android_client_info": {
           "package_name": "com.rinse.rinse"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "993217774202-femjs138cirjnu951nvuaipalrn1njc9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rinse.rinse",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
         {
           "client_id": "993217774202-g31cv4h7od60rd0s3ja4kjg1lduk6v8r.apps.googleusercontent.com",
           "client_type": 1,
@@ -37,6 +89,13 @@
             {
               "client_id": "993217774202-li7sri0kb452u8bhe5rqfkk2t3dfb062.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "993217774202-ojdb0opvmkbikee14o6kek90iss5eshp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pratit.rinse"
+              }
             }
           ]
         }
