@@ -15,5 +15,11 @@ service cloud.firestore {
     match /pricing/{id} {
       allow read, write: if true;
     }
+
+    // WARNING! ONLY FOR TEST MODE: Make sure you properly configure the
+    // security rules for this collection before publishing your app.
+    match /pressingPricing/{id} {
+      allow read, write: if true;
+    }
   }
 }
