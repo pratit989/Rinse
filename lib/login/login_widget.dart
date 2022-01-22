@@ -62,11 +62,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Align(
-                              alignment: AlignmentDirectional(1, 0),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0, 248, 0, 0),
+                            Expanded(
+                              child: Align(
+                                alignment: AlignmentDirectional(1, 0),
                                 child: Container(
                                   width:
                                       MediaQuery.of(context).size.width * 0.6,
