@@ -112,6 +112,11 @@ class _PressingPricingWidgetState extends State<PressingPricingWidget> {
                                 .toList()
                                 ?.toList() ??
                             [];
+                        final clothPrice = listViewPressingPricingRecord
+                            .clothsPriceList
+                            .toList()
+                            ?.toList() ??
+                            [];
                         return ListView.builder(
                           padding: EdgeInsets.zero,
                           shrinkWrap: true,
@@ -119,15 +124,13 @@ class _PressingPricingWidgetState extends State<PressingPricingWidget> {
                           itemCount: clothName.length,
                           itemBuilder: (context, clothNameIndex) {
                             final clothNameItem = clothName[clothNameIndex];
+                            final clothPriceItem = clothPrice[clothNameIndex];
                             return Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
                               child: ClothesListTabWidget(
                                 clothName: clothNameItem,
-                                pricePerPiece: listViewPressingPricingRecord
-                                    .clothsPriceList
-                                    .toList()
-                                    .length,
+                                pricePerPiece: clothPriceItem,
                               ),
                             );
                           },
