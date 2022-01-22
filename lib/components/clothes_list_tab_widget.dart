@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
 import '../flutter_flow/flutter_flow_count_controller.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ClothesListTabWidget extends StatefulWidget {
   const ClothesListTabWidget({
@@ -22,11 +21,9 @@ class ClothesListTabWidget extends StatefulWidget {
 
 class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
   int countControllerValue;
-  bool addToCartVisibility;
 
   @override
   Widget build(BuildContext context) {
-    FFAppState().cartItems.contains(widget.clothName) ? addToCartVisibility = false : addToCartVisibility = true;
     return Container(
       width: 353,
       height: 77,
@@ -111,12 +108,16 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
                   child: FlutterFlowCountController(
                     decrementIconBuilder: (enabled) => Icon(
                       Icons.indeterminate_check_box_rounded,
-                      color: enabled ? FlutterFlowTheme.secondaryColor : Color(0xFFEEEEEE),
+                      color: enabled
+                          ? FlutterFlowTheme.secondaryColor
+                          : Color(0xFFEEEEEE),
                       size: 25,
                     ),
                     incrementIconBuilder: (enabled) => Icon(
                       Icons.add_box_rounded,
-                      color: enabled ? FlutterFlowTheme.secondaryColor : Color(0xFFEEEEEE),
+                      color: enabled
+                          ? FlutterFlowTheme.secondaryColor
+                          : Color(0xFFEEEEEE),
                       size: 25,
                     ),
                     countBuilder: (count) => Text(
@@ -129,49 +130,39 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
                       ),
                     ),
                     count: countControllerValue ??= 0,
-                    updateCount: (count) {
-                      setState(() => countControllerValue = count);
-                      if (count == 0) {
-                        FFAppState().cartItems.remove(widget.clothName);
-                        addToCartVisibility = true;
-                      }
-                    },
+                    updateCount: (count) =>
+                        setState(() => countControllerValue = count),
                     stepSize: 1,
                     minimum: 0,
                   ),
                 ),
-                Visibility(
-                  visible: addToCartVisibility,
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
-                    child: FFButtonWidget(
-                      onPressed: () async {
-                        setState(() {
-                          FFAppState().cartItems.add(widget.clothName);
-                          countControllerValue += 1;
-                        });
-                      },
-                      text: 'Add to cart',
-                      icon: Icon(
-                        Icons.shopping_cart_outlined,
-                        size: 10,
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      setState(
+                          () => FFAppState().cartItems.add(widget.clothName));
+                    },
+                    text: 'Add to cart',
+                    icon: Icon(
+                      Icons.shopping_cart_outlined,
+                      size: 10,
+                    ),
+                    options: FFButtonOptions(
+                      width: 110,
+                      height: 25,
+                      color: FlutterFlowTheme.secondaryColor,
+                      textStyle: FlutterFlowTheme.subtitle2.override(
+                        fontFamily: 'Lato',
+                        color: Colors.white,
+                        fontSize: 10,
+                        fontWeight: FontWeight.normal,
                       ),
-                      options: FFButtonOptions(
-                        width: 110,
-                        height: 25,
-                        color: FlutterFlowTheme.secondaryColor,
-                        textStyle: FlutterFlowTheme.subtitle2.override(
-                          fontFamily: 'Lato',
-                          color: Colors.white,
-                          fontSize: 10,
-                          fontWeight: FontWeight.normal,
-                        ),
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                        borderRadius: 12,
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: 1,
                       ),
+                      borderRadius: 12,
                     ),
                   ),
                 ),
