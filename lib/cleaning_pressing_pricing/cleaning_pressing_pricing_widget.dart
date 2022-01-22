@@ -113,6 +113,10 @@ class _CleaningPressingPricingWidgetState
                                 .toList()
                                 ?.toList() ??
                             [];
+                        final clothPrice = listViewPricingRecord.clothsPriceList
+                        .toList()
+                        ?.toList() ??
+                        [];
                         return ListView.builder(
                           padding: EdgeInsets.zero,
                           shrinkWrap: true,
@@ -120,12 +124,10 @@ class _CleaningPressingPricingWidgetState
                           itemCount: clothName.length,
                           itemBuilder: (context, clothNameIndex) {
                             final clothNameItem = clothName[clothNameIndex];
+                            final clothPriceItem = clothPrice[clothNameIndex];
                             return ClothesListTabWidget(
                               clothName: clothNameItem,
-                              pricePerPiece: listViewPricingRecord
-                                  .clothsPriceList
-                                  .toList()
-                                  .length,
+                              pricePerPiece: clothPriceItem,
                             );
                           },
                         );
