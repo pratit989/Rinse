@@ -1,3 +1,4 @@
+import '../current_location/current_location_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -126,8 +127,14 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0, 20, 0, 20),
                                 child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
+                                  onPressed: () async {
+                                    await Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            CurrentLocationWidget(),
+                                      ),
+                                    );
                                   },
                                   text: 'Get Current Location',
                                   icon: Icon(
@@ -385,8 +392,14 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0, 20, 0, 20),
                                 child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
+                                  onPressed: () async {
+                                    await Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            CurrentLocationWidget(),
+                                      ),
+                                    );
                                   },
                                   text: 'Get Current Location',
                                   icon: Icon(
@@ -644,8 +657,14 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0, 20, 0, 20),
                                 child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
+                                  onPressed: () async {
+                                    await Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            CurrentLocationWidget(),
+                                      ),
+                                    );
                                   },
                                   text: 'Get Current Location',
                                   icon: Icon(
