@@ -1,7 +1,10 @@
 import '../current_location/current_location_widget.dart';
+import '../flutter_flow/flutter_flow_place_picker.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../flutter_flow/place.dart';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,6 +24,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
   TextEditingController textController2;
   TextEditingController textController3;
   TextEditingController textController4;
+  var placePickerValue = FFPlace();
   TextEditingController textController5;
   TextEditingController textController6;
   TextEditingController textController7;
@@ -126,22 +130,22 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0, 20, 0, 20),
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    await Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            CurrentLocationWidget(),
-                                      ),
-                                    );
-                                  },
-                                  text: 'Get Current Location',
+                                child: FlutterFlowPlacePicker(
+                                  iOSGoogleMapsApiKey:
+                                      'AIzaSyDkmnexuem7hVIpxwnDIzZghiLj6af4BKA',
+                                  androidGoogleMapsApiKey:
+                                      'AIzaSyBmh4nSNu9tmtqcv9_q92oPZFAH45kBk8s',
+                                  webGoogleMapsApiKey:
+                                      'AIzaSyAaMtY26zNd9nVW-Zv1Yzch9IQ5pn5RVO4',
+                                  onSelect: (place) =>
+                                      setState(() => placePickerValue = place),
+                                  defaultText: 'Get Current Location',
                                   icon: Icon(
                                     Icons.my_location,
-                                    size: 18,
+                                    color: Colors.white,
+                                    size: 16,
                                   ),
-                                  options: FFButtonOptions(
+                                  buttonOptions: FFButtonOptions(
                                     width: 347,
                                     height: 32,
                                     color: FlutterFlowTheme.primaryColor,
