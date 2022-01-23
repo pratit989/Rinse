@@ -1,6 +1,7 @@
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/lat_lng.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -36,12 +37,18 @@ class _ConfirmLoacationWidgetState extends State<ConfirmLoacationWidget> {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  widget.address,
-                  style: FlutterFlowTheme.bodyText1.override(
-                    fontFamily: 'Lato',
-                    color: Color(0xFF073131),
-                    fontWeight: FontWeight.w500,
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  height: 100,
+                  decoration: BoxDecoration(),
+                  child: AutoSizeText(
+                    widget.address,
+                    textAlign: TextAlign.start,
+                    style: FlutterFlowTheme.bodyText1.override(
+                      fontFamily: 'Lato',
+                      color: Color(0xFF073131),
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
                 Text(
