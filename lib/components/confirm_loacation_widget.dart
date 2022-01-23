@@ -22,6 +22,7 @@ class _ConfirmLoacationWidgetState extends State<ConfirmLoacationWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: MediaQuery.of(context).size.height * 0.2,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.tertiaryColor,
         borderRadius: BorderRadius.circular(12),
@@ -53,11 +54,16 @@ class _ConfirmLoacationWidgetState extends State<ConfirmLoacationWidget> {
                     ),
                   ),
                 ),
-                Text(
-                  'Confirm Location',
-                  style: FlutterFlowTheme.bodyText1.override(
-                    fontFamily: 'Lato',
-                    color: FlutterFlowTheme.secondaryColor,
+                InkWell(
+                  onTap: () async {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    'Confirm Location',
+                    style: FlutterFlowTheme.bodyText1.override(
+                      fontFamily: 'Lato',
+                      color: FlutterFlowTheme.secondaryColor,
+                    ),
                   ),
                 ),
               ],

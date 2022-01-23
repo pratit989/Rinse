@@ -4,6 +4,7 @@ import '../current_location/current_location_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,10 +19,7 @@ class AddAddressWidget extends StatefulWidget {
 class _AddAddressWidgetState extends State<AddAddressWidget> {
   LatLng currentUserLocationValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  TextEditingController textController10;
-  TextEditingController textController9;
-  TextEditingController textController11;
-  TextEditingController textController12;
+  String addressOfLocation;
   TextEditingController textController1;
   TextEditingController textController2;
   TextEditingController textController3;
@@ -30,6 +28,10 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
   TextEditingController textController6;
   TextEditingController textController7;
   TextEditingController textController8;
+  TextEditingController textController10;
+  TextEditingController textController9;
+  TextEditingController textController11;
+  TextEditingController textController12;
 
   @override
   void initState() {
@@ -170,15 +172,22 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                         );
                                         await buttonMapRecord.reference
                                             .update(mapUpdateData);
+                                        addressOfLocation =
+                                            await actions.getAddress(
+                                          currentUserLocationValue,
+                                        );
                                         await Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) =>
                                                 CurrentLocationWidget(
                                               location: buttonMapRecord,
+                                              addressOutput: addressOfLocation,
                                             ),
                                           ),
                                         );
+
+                                        setState(() {});
                                       },
                                       text: 'Get Current Location',
                                       icon: Icon(
