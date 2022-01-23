@@ -1,6 +1,7 @@
 import '../cleaning_pressing_pricing/cleaning_pressing_pricing_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../pressing_pricing/pressing_pricing_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -56,11 +57,21 @@ class _PricingWidgetState extends State<PricingWidget> {
                 fit: BoxFit.fitWidth,
               ),
             ),
-            Image.asset(
-              'assets/images/Pressing.png',
-              width: MediaQuery.of(context).size.width * 0.42,
-              height: MediaQuery.of(context).size.height * 0.25,
-              fit: BoxFit.fitWidth,
+            InkWell(
+              onTap: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PressingPricingWidget(),
+                  ),
+                );
+              },
+              child: Image.asset(
+                'assets/images/Pressing.png',
+                width: MediaQuery.of(context).size.width * 0.42,
+                height: MediaQuery.of(context).size.height * 0.25,
+                fit: BoxFit.fitWidth,
+              ),
             ),
           ],
         ),

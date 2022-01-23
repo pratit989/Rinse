@@ -142,7 +142,7 @@ class _VerifyMobileNumberWidgetState extends State<VerifyMobileNumberWidget> {
                   if (phoneVerifiedUser == null) {
                     return;
                   }
-                  if ((currentUserDisplayName) == '' || (currentUserDisplayName) == null) {
+                  if ((currentUserDisplayName) != '') {
                     await Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
@@ -151,7 +151,7 @@ class _VerifyMobileNumberWidgetState extends State<VerifyMobileNumberWidget> {
                       (r) => false,
                     );
                   }
-                  if ((currentUserDisplayName) != '') {
+                  if ((currentUserDisplayName) == '') {
                     await Navigator.push(
                       context,
                       MaterialPageRoute(

@@ -9,17 +9,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class EnterYourInfoWidget extends StatefulWidget {
-  const EnterYourInfoWidget({Key key}) : super(key: key);
+class EnterYourInfoLoginWidget extends StatefulWidget {
+  const EnterYourInfoLoginWidget({Key key}) : super(key: key);
 
   @override
-  _EnterYourInfoWidgetState createState() => _EnterYourInfoWidgetState();
+  _EnterYourInfoLoginWidgetState createState() =>
+      _EnterYourInfoLoginWidgetState();
 }
 
-class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
+class _EnterYourInfoLoginWidgetState extends State<EnterYourInfoLoginWidget> {
   TextEditingController emailInputController;
-  TextEditingController firstNameInputController;
-  TextEditingController lastNameInputController;
+  TextEditingController passwordInputController;
+  bool passwordInputVisibility;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -27,8 +28,8 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
   void initState() {
     super.initState();
     emailInputController = TextEditingController();
-    firstNameInputController = TextEditingController();
-    lastNameInputController = TextEditingController();
+    passwordInputController = TextEditingController();
+    passwordInputVisibility = false;
   }
 
   @override
@@ -69,7 +70,7 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 40, 10, 40),
                     child: Text(
-                      'Enter Your Information',
+                      'Enter Your Login Information',
                       style: FlutterFlowTheme.title3.override(
                         fontFamily: 'Lato',
                         fontWeight: FontWeight.bold,
@@ -101,11 +102,11 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                     child: Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
                       child: TextFormField(
-                        controller: firstNameInputController,
+                        controller: emailInputController,
                         obscureText: false,
                         decoration: InputDecoration(
                           isDense: true,
-                          hintText: 'First Name',
+                          hintText: 'Email Address',
                           hintStyle: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Lato',
                             color: Color(0xFFB1B1B1),
@@ -115,7 +116,7 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                           enabledBorder: InputBorder.none,
                           focusedBorder: InputBorder.none,
                           prefixIcon: Icon(
-                            Icons.person,
+                            Icons.mail,
                             color: Color(0xFFB1B1B1),
                             size: 18,
                           ),
@@ -161,11 +162,11 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                     child: Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
                       child: TextFormField(
-                        controller: lastNameInputController,
-                        obscureText: false,
+                        controller: passwordInputController,
+                        obscureText: !passwordInputVisibility,
                         decoration: InputDecoration(
                           isDense: true,
-                          hintText: 'Last Name',
+                          hintText: 'Set Password',
                           hintStyle: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Lato',
                             color: Color(0xFFB1B1B1),
@@ -175,9 +176,22 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                           enabledBorder: InputBorder.none,
                           focusedBorder: InputBorder.none,
                           prefixIcon: Icon(
-                            Icons.person,
+                            Icons.lock,
                             color: Color(0xFFB1B1B1),
                             size: 18,
+                          ),
+                          suffixIcon: InkWell(
+                            onTap: () => setState(
+                              () => passwordInputVisibility =
+                                  !passwordInputVisibility,
+                            ),
+                            child: Icon(
+                              passwordInputVisibility
+                                  ? Icons.visibility_outlined
+                                  : Icons.visibility_off_outlined,
+                              color: Color(0xFFB1B1B1),
+                              size: 22,
+                            ),
                           ),
                         ),
                         style: FlutterFlowTheme.bodyText1.override(
@@ -197,67 +211,6 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    height: MediaQuery.of(context).size.height * 0.05,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFAFAFA),
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 2,
-                          color: Color(0x12000000),
-                          offset: Offset(0, 2),
-                          spreadRadius: 0,
-                        )
-                      ],
-                      borderRadius: BorderRadius.circular(10),
-                      shape: BoxShape.rectangle,
-                      border: Border.all(
-                        color: Colors.transparent,
-                      ),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
-                      child: TextFormField(
-                        controller: emailInputController,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          isDense: true,
-                          hintText: 'Email Address',
-                          hintStyle: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Lato',
-                            color: Color(0xFFB1B1B1),
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                          ),
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          prefixIcon: Icon(
-                            Icons.email,
-                            color: Color(0xFFB1B1B1),
-                            size: 18,
-                          ),
-                        ),
-                        style: FlutterFlowTheme.bodyText1.override(
-                          fontFamily: 'Lato',
-                          color: Color(0xFFB1B1B1),
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                        ),
-                        keyboardType: TextInputType.emailAddress,
-                        validator: (val) {
-                          if (val.isEmpty) {
-                            return 'Please enter your email';
-                          }
-
-                          return null;
-                        },
-                      ),
-                    ),
-                  ),
-                ),
               ],
             ),
             Padding(
@@ -267,11 +220,18 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                   if (!formKey.currentState.validate()) {
                     return;
                   }
+                  final user = await signInWithEmail(
+                    context,
+                    emailInputController.text,
+                    passwordInputController.text,
+                  );
+                  if (user == null) {
+                    return;
+                  }
+
                   final usersUpdateData = createUsersRecordData(
                     email: emailInputController.text,
-                    displayName:
-                        '${firstNameInputController.text} ${lastNameInputController.text}',
-                    userType: 'Customer',
+                    userType: 'Worker',
                   );
                   await currentUserReference.update(usersUpdateData);
                   await Navigator.pushAndRemoveUntil(
