@@ -8,9 +8,11 @@ class ConfirmLoacationWidget extends StatefulWidget {
   const ConfirmLoacationWidget({
     Key key,
     this.locationSelected,
+    this.address,
   }) : super(key: key);
 
   final LatLng locationSelected;
+  final String address;
 
   @override
   _ConfirmLoacationWidgetState createState() => _ConfirmLoacationWidgetState();
@@ -35,7 +37,7 @@ class _ConfirmLoacationWidgetState extends State<ConfirmLoacationWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Satsang Tower Near XYZ\nRoad no. 12 Xyz .\nChembur - 400071',
+                  widget.address,
                   style: FlutterFlowTheme.bodyText1.override(
                     fontFamily: 'Lato',
                     color: Color(0xFF073131),

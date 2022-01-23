@@ -1,7 +1,9 @@
 import '../backend/backend.dart';
+import '../components/confirm_loacation_widget.dart';
 import '../flutter_flow/flutter_flow_google_map.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -22,6 +24,7 @@ class _CurrentLocationWidgetState extends State<CurrentLocationWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   LatLng googleMapsCenter;
   Completer<GoogleMapController> googleMapsController;
+  String adressOutput;
 
   @override
   void initState() {
@@ -58,10 +61,15 @@ class _CurrentLocationWidgetState extends State<CurrentLocationWidget> {
                 children: [
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 0, 50, 0),
-                    child: Icon(
-                      Icons.arrow_back_ios_sharp,
-                      color: Color(0xFF1F4444),
-                      size: 24,
+                    child: InkWell(
+                      onTap: () async {
+                        Navigator.pop(context);
+                      },
+                      child: Icon(
+                        Icons.arrow_back_ios_sharp,
+                        color: Color(0xFF1F4444),
+                        size: 24,
+                      ),
                     ),
                   ),
                   Align(
@@ -93,12 +101,38 @@ class _CurrentLocationWidgetState extends State<CurrentLocationWidget> {
                     FlutterFlowMarker(
                       widget.location.reference.path,
                       widget.location.latLng,
+                      () async {
+                        currentUserLocationValue = await getCurrentUserLocation(
+                            defaultLocation: LatLng(0.0, 0.0));
+                        adressOutput = await actions.getAddress(
+                          currentUserLocationValue,
+                        );
+                        await showModalBottomSheet(
+                          isScrollControlled: true,
+                          context: context,
+                          builder: (context) {
+                            return Padding(
+                              padding: MediaQuery.of(context).viewInsets,
+                              child: Container(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.4,
+                                child: ConfirmLoacationWidget(
+                                  locationSelected: currentUserLocationValue,
+                                  address: adressOutput,
+                                ),
+                              ),
+                            );
+                          },
+                        );
+
+                        setState(() {});
+                      },
                     ),
                 ],
-                markerColor: GoogleMarkerColor.violet,
+                markerColor: GoogleMarkerColor.red,
                 mapType: MapType.normal,
                 style: GoogleMapStyle.standard,
-                initialZoom: 14,
+                initialZoom: 15,
                 allowInteraction: true,
                 allowZoom: true,
                 showZoomControls: true,
