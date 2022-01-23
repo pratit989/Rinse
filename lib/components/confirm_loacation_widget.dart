@@ -36,12 +36,21 @@ class _ConfirmLoacationWidgetState extends State<ConfirmLoacationWidget> {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  widget.address,
-                  style: FlutterFlowTheme.bodyText1.override(
-                    fontFamily: 'Lato',
-                    color: Color(0xFF073131),
-                    fontWeight: FontWeight.w500,
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  height: 100,
+                  decoration: BoxDecoration(),
+                  child: Align(
+                    alignment: AlignmentDirectional(-1, 0),
+                    child: Text(
+                      widget.address,
+                      textAlign: TextAlign.start,
+                      style: FlutterFlowTheme.bodyText1.override(
+                        fontFamily: 'Lato',
+                        color: Color(0xFF073131),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ),
                 ),
                 Text(
