@@ -18,7 +18,10 @@ class AddAddressWidget extends StatefulWidget {
 class _AddAddressWidgetState extends State<AddAddressWidget> {
   LatLng currentUserLocationValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  MapRecord currentUserLocation;
+  TextEditingController textController10;
+  TextEditingController textController9;
+  TextEditingController textController11;
+  TextEditingController textController12;
   TextEditingController textController1;
   TextEditingController textController2;
   TextEditingController textController3;
@@ -27,10 +30,6 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
   TextEditingController textController6;
   TextEditingController textController7;
   TextEditingController textController8;
-  TextEditingController textController10;
-  TextEditingController textController9;
-  TextEditingController textController11;
-  TextEditingController textController12;
 
   @override
   void initState() {
@@ -131,53 +130,79 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0, 20, 0, 20),
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    currentUserLocationValue =
-                                        await getCurrentUserLocation(
-                                            defaultLocation: LatLng(0.0, 0.0));
-                                    final mapCreateData = createMapRecordData(
-                                      latLng: currentUserLocationValue,
-                                    );
-                                    final mapRecordReference =
-                                        MapRecord.collection.doc();
-                                    await mapRecordReference.set(mapCreateData);
-                                    currentUserLocation =
-                                        MapRecord.getDocumentFromData(
-                                            mapCreateData, mapRecordReference);
-                                    await Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            CurrentLocationWidget(
-                                          location: currentUserLocation,
+                                child: StreamBuilder<List<MapRecord>>(
+                                  stream: queryMapRecord(
+                                    singleRecord: true,
+                                  ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50,
+                                          height: 50,
+                                          child: CircularProgressIndicator(
+                                            color:
+                                                FlutterFlowTheme.primaryColor,
+                                          ),
                                         ),
+                                      );
+                                    }
+                                    List<MapRecord> buttonMapRecordList =
+                                        snapshot.data;
+                                    // Return an empty Container when the document does not exist.
+                                    if (snapshot.data.isEmpty) {
+                                      return Container();
+                                    }
+                                    final buttonMapRecord =
+                                        buttonMapRecordList.isNotEmpty
+                                            ? buttonMapRecordList.first
+                                            : null;
+                                    return FFButtonWidget(
+                                      onPressed: () async {
+                                        currentUserLocationValue =
+                                            await getCurrentUserLocation(
+                                                defaultLocation:
+                                                    LatLng(0.0, 0.0));
+                                        final mapUpdateData =
+                                            createMapRecordData(
+                                          latLng: currentUserLocationValue,
+                                        );
+                                        await buttonMapRecord.reference
+                                            .update(mapUpdateData);
+                                        await Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                CurrentLocationWidget(
+                                              location: buttonMapRecord,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                      text: 'Get Current Location',
+                                      icon: Icon(
+                                        Icons.my_location,
+                                        size: 18,
+                                      ),
+                                      options: FFButtonOptions(
+                                        width: 347,
+                                        height: 32,
+                                        color: FlutterFlowTheme.primaryColor,
+                                        textStyle:
+                                            FlutterFlowTheme.subtitle2.override(
+                                          fontFamily: 'Lato',
+                                          color: Colors.white,
+                                          fontSize: 14,
+                                        ),
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1,
+                                        ),
+                                        borderRadius: 12,
                                       ),
                                     );
-
-                                    setState(() {});
                                   },
-                                  text: 'Get Current Location',
-                                  icon: Icon(
-                                    Icons.my_location,
-                                    size: 18,
-                                  ),
-                                  options: FFButtonOptions(
-                                    width: 347,
-                                    height: 32,
-                                    color: FlutterFlowTheme.primaryColor,
-                                    textStyle:
-                                        FlutterFlowTheme.subtitle2.override(
-                                      fontFamily: 'Lato',
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                    ),
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1,
-                                    ),
-                                    borderRadius: 12,
-                                  ),
                                 ),
                               ),
                               Container(
