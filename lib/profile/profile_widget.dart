@@ -72,14 +72,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
-                      child: Icon(
-                        Icons.edit_sharp,
-                        color: Colors.black,
-                        size: 24,
-                      ),
-                    ),
                   ],
                 ),
                 AuthUserStreamWidget(

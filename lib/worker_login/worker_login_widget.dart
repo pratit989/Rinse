@@ -4,20 +4,19 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../main.dart';
+import '../worker_home/worker_home_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class EnterYourInfoLoginWidget extends StatefulWidget {
-  const EnterYourInfoLoginWidget({Key key}) : super(key: key);
+class WorkerLoginWidget extends StatefulWidget {
+  const WorkerLoginWidget({Key key}) : super(key: key);
 
   @override
-  _EnterYourInfoLoginWidgetState createState() =>
-      _EnterYourInfoLoginWidgetState();
+  _WorkerLoginWidgetState createState() => _WorkerLoginWidgetState();
 }
 
-class _EnterYourInfoLoginWidgetState extends State<EnterYourInfoLoginWidget> {
+class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
   TextEditingController emailInputController;
   TextEditingController passwordInputController;
   bool passwordInputVisibility;
@@ -237,7 +236,7 @@ class _EnterYourInfoLoginWidgetState extends State<EnterYourInfoLoginWidget> {
                   await Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => NavBarPage(initialPage: 'Home'),
+                      builder: (context) => WorkerHomeWidget(),
                     ),
                     (r) => false,
                   );

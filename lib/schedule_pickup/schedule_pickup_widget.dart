@@ -1,7 +1,7 @@
-import '../add_address/add_address_widget.dart';
 import '../components/date_button_widget.dart';
 import '../components/service_selector_widget.dart';
 import '../components/time_slot_buttons_widget.dart';
+import '../customer_order_details/customer_order_details_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -237,7 +237,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
                   await Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AddAddressWidget(),
+                      builder: (context) => CustomerOrderDetailsWidget(),
                     ),
                   );
                 },

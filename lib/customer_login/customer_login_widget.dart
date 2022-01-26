@@ -7,14 +7,14 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginWidget extends StatefulWidget {
-  const LoginWidget({Key key}) : super(key: key);
+class CustomerLoginWidget extends StatefulWidget {
+  const CustomerLoginWidget({Key key}) : super(key: key);
 
   @override
-  _LoginWidgetState createState() => _LoginWidgetState();
+  _CustomerLoginWidgetState createState() => _CustomerLoginWidgetState();
 }
 
-class _LoginWidgetState extends State<LoginWidget> {
+class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
   TextEditingController phoneNumberController;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
