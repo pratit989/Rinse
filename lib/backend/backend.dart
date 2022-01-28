@@ -8,6 +8,7 @@ import 'schema/users_record.dart';
 import 'schema/pricing_record.dart';
 import 'schema/pressing_pricing_record.dart';
 import 'schema/map_record.dart';
+import 'schema/orders_record.dart';
 import 'schema/serializers.dart';
 
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,6 +19,7 @@ export 'schema/users_record.dart';
 export 'schema/pricing_record.dart';
 export 'schema/pressing_pricing_record.dart';
 export 'schema/map_record.dart';
+export 'schema/orders_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Stream<List<UsersRecord>> queryUsersRecord(
@@ -79,6 +81,21 @@ Future<List<MapRecord>> queryMapRecordOnce(
         int limit = -1,
         bool singleRecord = false}) =>
     queryCollectionOnce(MapRecord.collection, MapRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+/// Functions to query OrdersRecords (as a Stream and as a Future).
+Stream<List<OrdersRecord>> queryOrdersRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(OrdersRecord.collection, OrdersRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Future<List<OrdersRecord>> queryOrdersRecordOnce(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollectionOnce(OrdersRecord.collection, OrdersRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
 Stream<List<T>> queryCollection<T>(

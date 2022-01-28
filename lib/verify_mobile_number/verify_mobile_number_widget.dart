@@ -1,10 +1,10 @@
 import '../auth/auth_util.dart';
+import '../customer_login/customer_login_widget.dart';
 import '../enter_your_info/enter_your_info_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../login/login_widget.dart';
 import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -56,7 +56,7 @@ class _VerifyMobileNumberWidgetState extends State<VerifyMobileNumberWidget> {
                     await Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => LoginWidget(),
+                        builder: (context) => CustomerLoginWidget(),
                       ),
                     );
                   },

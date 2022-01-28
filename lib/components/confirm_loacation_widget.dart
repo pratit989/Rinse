@@ -56,6 +56,7 @@ class _ConfirmLoacationWidgetState extends State<ConfirmLoacationWidget> {
                 ),
                 InkWell(
                   onTap: () async {
+                    setState(() => FFAppState().homeAddress = widget.address);
                     Navigator.pop(context);
                   },
                   child: Text(
