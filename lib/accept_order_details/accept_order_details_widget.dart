@@ -1,3 +1,5 @@
+import 'package:rinse/flutter_flow/flutter_flow_icon_button.dart';
+
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -32,16 +34,20 @@ class _AcceptOrderDetailsWidgetState extends State<AcceptOrderDetailsWidget> {
                 children: [
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 0, 50, 0),
-                    child: InkWell(
-                      onTap: () async {
-                        Navigator.pop(context);
-                      },
-                      child: Icon(
+                    child: FlutterFlowIconButton(
+                      borderColor: Colors.transparent,
+                      borderRadius: 30,
+                      borderWidth: 1,
+                      buttonSize: 60,
+                      icon: Icon(
                         Icons.arrow_back_ios_sharp,
                         color: Color(0xFF1F4444),
-                        size: 24,
+                        size: 30,
                       ),
-                    ),
+                      onPressed: () async {
+                        Navigator.pop(context);
+                      },
+                    )
                   ),
                   Align(
                     alignment: AlignmentDirectional(0, 0),

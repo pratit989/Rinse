@@ -1,4 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
+
 import 'flutter_flow/lat_lng.dart';
 
 class FFAppState {
@@ -23,14 +24,18 @@ class FFAppState {
 
   String pickupDateDayMonth = '';
 
-  int SelectedTimeCard = 0;
+  int selectedTimeCard = 0;
 
   String serviceSelected = '';
 
-  List<String> cartItems = [];
+  Map<int, List<dynamic>> cleaningPressingCartItems = {};
+
+  Map<int, List<dynamic>> pressingCartItems = {};
 
   String _homeAddress = '';
+
   String get homeAddress => _homeAddress;
+
   set homeAddress(String _value) {
     _homeAddress = _value;
     prefs.setString('ff_homeAddress', _value);

@@ -59,7 +59,7 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                         size: 30,
                       ),
                       onPressed: () {
-                        print('IconButton pressed ...');
+                        Navigator.pop(context);
                       },
                     ),
                   ),

@@ -1,17 +1,19 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'auth/firebase_user_provider.dart';
-import 'auth/auth_util.dart';
-
-import '../flutter_flow/flutter_flow_theme.dart';
-import 'package:rinse/welcome/welcome_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'flutter_flow/flutter_flow_theme.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'home/home_widget.dart';
+import 'package:rinse/admin_recieved_orders/admin_recieved_orders_widget.dart';
+import 'package:rinse/backend/backend.dart';
+import 'package:rinse/welcome/welcome_widget.dart';
+import 'package:rinse/worker_home/worker_home_widget.dart';
+
+import '../backend/backend.dart';
+import '../flutter_flow/flutter_flow_theme.dart';
+import 'auth/auth_util.dart';
+import 'auth/firebase_user_provider.dart';
 import 'customer_my_orders/customer_my_orders_widget.dart';
+import 'flutter_flow/flutter_flow_theme.dart';
+import 'home/home_widget.dart';
 import 'pricing/pricing_widget.dart';
 import 'profile/profile_widget.dart';
 
@@ -37,10 +39,8 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    userStream = rinseFirebaseUserStream()
-      ..listen((user) => initialUser ?? setState(() => initialUser = user));
-    Future.delayed(
-        Duration(seconds: 1), () => setState(() => displaySplashImage = false));
+    userStream = rinseFirebaseUserStream()..listen((user) => initialUser ?? setState(() => initialUser = user));
+    Future.delayed(Duration(seconds: 1), () => setState(() => displaySplashImage = false));
   }
 
   @override
@@ -72,23 +72,43 @@ class _MyAppState extends State<MyApp> {
               ),
             )
           : currentUser.loggedIn
-              ? NavBarPage()
+              ? StreamBuilder<UsersRecord>(
+                  stream: authenticatedUserStream,
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: CircularProgressIndicator(
+                            color: FlutterFlowTheme.primaryColor,
+                          ),
+                        ),
+                      );
+                    }
+                    UsersRecord currentUserRecord = snapshot.data;
+                    return currentUserRecord.userType == 'Customer'
+                        ? CustomerNavBarPage()
+                        : currentUserRecord.userType == 'Worker'
+                            ? WorkerHomeWidget()
+                            : AdminRecievedOrdersWidget();
+                  })
               : WelcomeWidget(),
     );
   }
 }
 
-class NavBarPage extends StatefulWidget {
-  NavBarPage({Key key, this.initialPage}) : super(key: key);
+class CustomerNavBarPage extends StatefulWidget {
+  CustomerNavBarPage({Key key, this.initialPage}) : super(key: key);
 
   final String initialPage;
 
   @override
-  _NavBarPageState createState() => _NavBarPageState();
+  _CustomerNavBarPageState createState() => _CustomerNavBarPageState();
 }
 
 /// This is the private State class that goes with NavBarPage.
-class _NavBarPageState extends State<NavBarPage> {
+class _CustomerNavBarPageState extends State<CustomerNavBarPage> {
   String _currentPage = 'Home';
 
   @override

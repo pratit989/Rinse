@@ -59,7 +59,7 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                         size: 30,
                       ),
                       onPressed: () {
-                        print('IconButton pressed ...');
+                        Navigator.pop(context);
                       },
                     ),
                   ),
@@ -277,7 +277,7 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                   await Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => NavBarPage(initialPage: 'Home'),
+                      builder: (context) => CustomerNavBarPage(initialPage: 'Home'),
                     ),
                     (r) => false,
                   );
