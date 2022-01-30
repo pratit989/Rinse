@@ -18,6 +18,13 @@ class _PressingPricingWidgetState extends State<PressingPricingWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
+  void initState() {
+    // TODO: implement initState
+    FFAppState().serviceSelected = 'Pressing';
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
@@ -123,7 +130,6 @@ class _PressingPricingWidgetState extends State<PressingPricingWidget> {
                                 onAddToCartPressed: () => setState(() {
                                   FFAppState().pressingCartItems[clothNameIndex] = [clothName[clothNameIndex], clothPrice[clothNameIndex], 1];
                                 }),
-                                serviceType: "Pressing",
                               ),
                             );
                           },

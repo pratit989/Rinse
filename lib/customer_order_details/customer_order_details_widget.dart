@@ -8,7 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomerOrderDetailsWidget extends StatefulWidget {
-  const CustomerOrderDetailsWidget({Key key}) : super(key: key);
+  const CustomerOrderDetailsWidget({Key key, this.serviceType}) : super(key: key);
+  final String serviceType;
 
   @override
   _CustomerOrderDetailsWidgetState createState() =>

@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart';
+
+import '../flutter_flow/custom_functions.dart' as functions;
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/custom_functions.dart' as functions;
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class TimeSlotButtonsWidget extends StatefulWidget {
   const TimeSlotButtonsWidget({Key key}) : super(key: key);
@@ -12,14 +12,13 @@ class TimeSlotButtonsWidget extends StatefulWidget {
 }
 
 class _TimeSlotButtonsWidgetState extends State<TimeSlotButtonsWidget> {
+  final DateTime today = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     return Builder(
       builder: (context) {
-        final timeCardNumber =
-            (functions.integerListGenerator(6)?.toList() ?? [])
-                .take(6)
-                .toList();
+        final timeCardNumber = (functions.integerListGenerator(6)?.toList() ?? []).take(6).toList();
         return GridView.builder(
           padding: EdgeInsets.zero,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -38,12 +37,14 @@ class _TimeSlotButtonsWidgetState extends State<TimeSlotButtonsWidget> {
               height: MediaQuery.of(context).size.height * 0.05,
               child: Stack(
                 children: [
-                  if ((functions.timeCardVisiblityCheck(timeCardNumberItem)) ==
-                      true)
+                  if ((functions.timeCardVisiblityCheck(timeCardNumberItem)) == true)
                     InkWell(
                       onTap: () async {
-                        setState(() =>
-                            FFAppState().selectedTimeCard = timeCardNumberItem);
+                        setState(() {
+                          FFAppState().selectedTimeCard =
+                              '${functions.timeGiver(timeCardNumberItem, 'Start')} - ${functions.timeGiver(timeCardNumberItem, 'End')}';
+                          print(FFAppState().selectedTimeCard);
+                        });
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.3,
@@ -89,8 +90,7 @@ class _TimeSlotButtonsWidgetState extends State<TimeSlotButtonsWidget> {
                         ),
                       ),
                     ),
-                  if ((functions.timeCardVisiblityCheck(timeCardNumberItem)) ==
-                      false)
+                  if ((functions.timeCardVisiblityCheck(timeCardNumberItem)) == false)
                     Container(
                       width: MediaQuery.of(context).size.width * 0.3,
                       height: MediaQuery.of(context).size.height * 0.05,
@@ -134,7 +134,9 @@ class _TimeSlotButtonsWidgetState extends State<TimeSlotButtonsWidget> {
                         ],
                       ),
                     ),
-                  if ((timeCardNumberItem) == (FFAppState().selectedTimeCard))
+                  if ((functions.timeCardVisiblityCheck(timeCardNumberItem)) == true &&
+                      ('${functions.timeGiver(timeCardNumberItem, 'Start')} - ${functions.timeGiver(timeCardNumberItem, 'End')}') ==
+                          (FFAppState().selectedTimeCard))
                     Container(
                       width: MediaQuery.of(context).size.width * 0.3,
                       height: MediaQuery.of(context).size.height * 0.05,

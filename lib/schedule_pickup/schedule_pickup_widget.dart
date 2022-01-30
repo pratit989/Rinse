@@ -19,6 +19,16 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
+  void initState() {
+    // TODO: implement initState
+    setState(() {
+      FFAppState().selectedTimeCard = '';
+      FFAppState().selectedDateDayMonth = 0;
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
@@ -124,7 +134,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(0, 7, 0, 0),
                             child: Text(
-                              'Satsang Tower Near XYZ\nRoad no. 12 Xyz .\nChembur - 400071',
+                              FFAppState().homeAddress ?? 'Satsang Tower Near XYZ\nRoad no. 12 Xyz .\nChembur - 400071',
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Lato',
                                 color: Color(0xE5494949),

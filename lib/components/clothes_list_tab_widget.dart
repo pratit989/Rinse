@@ -13,14 +13,12 @@ class ClothesListTabWidget extends StatefulWidget {
     this.pricePerPiece,
     this.onAddToCartPressed,
     this.index,
-    this.serviceType,
   }) : super(key: key);
 
   final String clothName;
   final int pricePerPiece;
   final VoidCallback onAddToCartPressed;
   final int index;
-  final String serviceType;
 
   @override
   _ClothesListTabWidgetState createState() => _ClothesListTabWidgetState();
@@ -36,7 +34,7 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
   void initState() {
     // TODO: implement initState
     index = widget.index;
-    _serviceType = widget.serviceType;
+    _serviceType = FFAppState().serviceSelected;
     super.initState();
   }
 
@@ -108,7 +106,7 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
               alignment: AlignmentDirectional(0, 0),
               children: [
                 Visibility(
-                  visible: _serviceType == 'Cleaning&Pressing'
+                  visible: _serviceType == 'Cleaning & Pressing'
                       ? FFAppState().cleaningPressingCartItems[index] != null
                           ? FFAppState().cleaningPressingCartItems[index][2] == 0
                               ? true
@@ -155,7 +153,7 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
                           fontSize: 16,
                         ),
                       ),
-                      count: _serviceType == 'Cleaning&Pressing'
+                      count: _serviceType == 'Cleaning & Pressing'
                           ? FFAppState().cleaningPressingCartItems[index] != null
                               ? FFAppState().cleaningPressingCartItems[index][2]
                               : 0
@@ -164,7 +162,7 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
                               : 0,
                       updateCount: (count) => setState(() {
                         count == 0 ? addToCartVisibility = true : addToCartVisibility = false;
-                        return _serviceType == 'Cleaning&Pressing'
+                        return _serviceType == 'Cleaning & Pressing'
                             ? FFAppState().cleaningPressingCartItems[index][2] = count
                             : FFAppState().pressingCartItems[index][2] = count;
                       }),

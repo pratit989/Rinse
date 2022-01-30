@@ -1,4 +1,6 @@
+import 'package:rinse/backend/backend.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../flutter_flow/custom_functions.dart' as functions;
 
 import 'flutter_flow/lat_lng.dart';
 
@@ -20,11 +22,25 @@ class FFAppState {
 
   SharedPreferences prefs;
 
+  Map<String, int> monthToIntMapper = {
+    'Jan' : 1,
+    'Feb' : 2,
+    'Mar' : 3,
+    'Apr' : 4,
+    'May' : 5,
+    'Jun' : 7,
+    'Jul' : 8,
+    'Sep' : 9,
+    'Oct' : 10,
+    'Nov' : 11,
+    'Dec' : 12
+  };
+
   int selectedDateDayMonth = 0;
 
-  String pickupDateDayMonth = '';
+  DateTime pickupDateDayMonth = DateTime.now();
 
-  int selectedTimeCard = 0;
+  String selectedTimeCard = '';
 
   String serviceSelected = '';
 
