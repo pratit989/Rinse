@@ -18,6 +18,8 @@ class FFAppState {
   Future initializePersistedState() async {
     prefs = await SharedPreferences.getInstance();
     _homeAddress = prefs.getString('ff_homeAddress') ?? _homeAddress;
+    _officeAddress = prefs.getString('ff_officeAddress') ?? _officeAddress;
+    _otherAddress = prefs.getString('ff_otherAddress') ?? _otherAddress;
   }
 
   SharedPreferences prefs;
@@ -48,13 +50,27 @@ class FFAppState {
 
   Map<int, List<dynamic>> pressingCartItems = {};
 
-  String _homeAddress = '';
+  String _homeAddress = ' |  |  | ';
+  String _officeAddress = ' |  |  | ';
+  String _otherAddress = ' |  |  | ';
 
   String get homeAddress => _homeAddress;
+  String get officeAddress => _officeAddress;
+  String get otherAddress => _otherAddress;
 
   set homeAddress(String _value) {
     _homeAddress = _value;
     prefs.setString('ff_homeAddress', _value);
+  }
+
+  set officeAddress(String _value) {
+    _officeAddress = _value;
+    prefs.setString('ff_officeAddress', _value);
+  }
+
+  set otherAddress(String _value) {
+    _otherAddress = _value;
+    prefs.setString('ff_otherAddress', _value);
   }
 }
 

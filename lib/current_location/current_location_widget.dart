@@ -5,16 +5,18 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class CurrentLocationWidget extends StatefulWidget {
   const CurrentLocationWidget({
     Key key,
     this.location,
-    this.addressOutput,
+    this.addressOutput, @required this.onConfirmPressed,
   }) : super(key: key);
 
   final MapRecord location;
   final String addressOutput;
+  final VoidCallback onConfirmPressed;
 
   @override
   _CurrentLocationWidgetState createState() => _CurrentLocationWidgetState();
@@ -126,7 +128,7 @@ class _CurrentLocationWidgetState extends State<CurrentLocationWidget> {
               ),
               Container(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.9,
+                height: MediaQuery.of(context).size.height * 0.88,
                 decoration: BoxDecoration(
                   color: Colors.transparent,
                 ),
@@ -136,7 +138,7 @@ class _CurrentLocationWidgetState extends State<CurrentLocationWidget> {
                   children: [
                     ConfirmLoacationWidget(
                       address: widget.addressOutput,
-                      locationSelected: currentUserLocationValue,
+                      locationSelected: currentUserLocationValue, onConfirmPressed: () => widget.onConfirmPressed,
                     ),
                   ],
                 ),
