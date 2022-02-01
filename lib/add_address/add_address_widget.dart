@@ -1,5 +1,3 @@
-import 'package:provider/provider.dart';
-
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../current_location/current_location_widget.dart';

@@ -46,6 +46,8 @@ class FFAppState {
 
   String serviceSelected = '';
 
+  String deliveryAddress = '';
+
   Map<int, List<dynamic>> cleaningPressingCartItems = {};
 
   Map<int, List<dynamic>> pressingCartItems = {};
