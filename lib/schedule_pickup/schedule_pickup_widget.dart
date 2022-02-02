@@ -19,6 +19,7 @@ class SchedulePickupWidget extends StatefulWidget {
 
 class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  IconData _iconData = Icons.home;
 
   @override
   void initState() {
@@ -29,6 +30,10 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
     });
     super.initState();
   }
+
+  refresh() => setState((){});
+
+  setIcon(IconData newIcon) => setState(() => _iconData = newIcon);
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +112,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
                             child: Icon(
-                              Icons.home_sharp,
+                              _iconData,
                               color: FlutterFlowTheme.primaryColor,
                               size: 24,
                             ),
@@ -152,7 +157,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
                       ),
                     ),
                     InkWell(
-                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AddressSelectionWidget())).then((value) => setState(() {})),
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AddressSelectionWidget())).then((value) => setIcon(value)),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(60, 0, 10, 0),
                         child: Column(
@@ -201,7 +206,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
               decoration: BoxDecoration(
                 color: Color(0xFFF5F5F5),
               ),
-              child: DateButtonWidget(),
+              child: DateButtonWidget(notifyParent: refresh,),
             ),
             Align(
               alignment: AlignmentDirectional(-0.85, 0),

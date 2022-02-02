@@ -149,7 +149,7 @@ class _AddressSelectionWidgetState extends State<AddressSelectionWidget> {
                       InkWell(
                         onTap: () {
                           FFAppState().deliveryAddress = FFAppState().homeAddress.replaceAll(' |', '');
-                          Navigator.pop(context);
+                          Navigator.pop(context, Icons.home_sharp);
                         },
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(60, 0, 10, 0),
@@ -263,7 +263,7 @@ class _AddressSelectionWidgetState extends State<AddressSelectionWidget> {
                       InkWell(
                         onTap: () {
                           FFAppState().deliveryAddress = FFAppState().officeAddress.replaceAll(' |', '');
-                          Navigator.pop(context);
+                          Navigator.pop(context, Icons.apartment_sharp);
                         },
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(60, 0, 10, 0),
@@ -377,7 +377,7 @@ class _AddressSelectionWidgetState extends State<AddressSelectionWidget> {
                       InkWell(
                         onTap: () {
                           FFAppState().deliveryAddress = FFAppState().otherAddress.replaceAll(' |', '');
-                          Navigator.pop(context);
+                          Navigator.pop(context, Icons.my_location);
                         },
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(60, 0, 10, 0),

@@ -5,7 +5,9 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 
 class DateButtonWidget extends StatefulWidget {
-  const DateButtonWidget({Key key}) : super(key: key);
+  const DateButtonWidget({Key key, @required this.notifyParent}) : super(key: key);
+
+  final Function() notifyParent;
 
   @override
   _DateButtonWidgetState createState() => _DateButtonWidgetState();
@@ -51,6 +53,7 @@ class _DateButtonWidgetState extends State<DateButtonWidget> {
                                 time.millisecond,
                                 time.microsecond);
                             print(FFAppState().pickupDateDayMonth);
+                            widget.notifyParent();
                           }),
                         child: Container(
                           decoration: BoxDecoration(
