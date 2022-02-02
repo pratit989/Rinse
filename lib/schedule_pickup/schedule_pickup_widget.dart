@@ -31,7 +31,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
     super.initState();
   }
 
-  refresh() => setState((){});
+  refresh() => setState(() => FFAppState().selectedTimeCard='');
 
   setIcon(IconData newIcon) => setState(() => _iconData = newIcon);
 
@@ -260,7 +260,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
                   await Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => CustomerOrderDetailsWidget(),
+                      builder: (context) => CustomerOrderDetailsWidget(iconData: _iconData,),
                     ),
                   );
                 },

@@ -1,5 +1,5 @@
 import 'package:rinse/flutter_flow/flutter_flow_icon_button.dart';
-
+import 'package:nanoid/nanoid.dart';
 import '../booking_successful/booking_successful_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -8,8 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomerOrderDetailsWidget extends StatefulWidget {
-  const CustomerOrderDetailsWidget({Key key, this.serviceType}) : super(key: key);
+  const CustomerOrderDetailsWidget({Key key, this.serviceType, this.iconData}) : super(key: key);
   final String serviceType;
+  final IconData iconData;
 
   @override
   _CustomerOrderDetailsWidgetState createState() =>
@@ -19,6 +20,16 @@ class CustomerOrderDetailsWidget extends StatefulWidget {
 class _CustomerOrderDetailsWidgetState
     extends State<CustomerOrderDetailsWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  int total = 0;
+  IconData _iconData;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    for(List<dynamic> entry in FFAppState().cleaningPressingCartItems.values) total+=(entry[1]*entry[2]);
+    _iconData = widget.iconData ?? Icons.home_sharp;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +42,7 @@ class _CustomerOrderDetailsWidgetState
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 20),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -72,7 +83,7 @@ class _CustomerOrderDetailsWidgetState
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
                 child: Text(
-                  'Order Id :     0000000',
+                  'Order Id :   ${customAlphabet('1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ',8)}',
                   style: FlutterFlowTheme.bodyText1.override(
                     fontFamily: 'Open Sans',
                     color: FlutterFlowTheme.secondaryColor,
@@ -112,7 +123,7 @@ class _CustomerOrderDetailsWidgetState
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(20, 5, 0, 0),
                           child: Text(
-                            'Cleaning  & Pressing',
+                            FFAppState().serviceSelected,
                             style: FlutterFlowTheme.title3.override(
                               fontFamily: 'Lato',
                               color: FlutterFlowTheme.primaryColor,
@@ -139,7 +150,7 @@ class _CustomerOrderDetailsWidgetState
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 10),
                         child: Text(
-                          '02-01-2022   |   11am - 1pm',
+                          '${DateFormat('dd-MM-yyyy').format(FFAppState().pickupDateDayMonth)}   |   ${FFAppState().selectedTimeCard}',
                           style: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Lato',
                             color: FlutterFlowTheme.secondaryColor,
@@ -160,7 +171,7 @@ class _CustomerOrderDetailsWidgetState
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(20, 5, 0, 0),
                         child: Text(
-                          '₹ 150',
+                          '₹ $total',
                           style: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Lato',
                             color: FlutterFlowTheme.secondaryColor,
@@ -174,7 +185,6 @@ class _CustomerOrderDetailsWidgetState
               ),
               Container(
                 width: MediaQuery.of(context).size.width * 0.9,
-                height: MediaQuery.of(context).size.height * 0.28,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.tertiaryColor,
                   borderRadius: BorderRadius.circular(12),
@@ -227,9 +237,12 @@ class _CustomerOrderDetailsWidgetState
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Column(
                             mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
@@ -243,33 +256,11 @@ class _CustomerOrderDetailsWidgetState
                                   ),
                                 ),
                               ),
-                              Padding(
+                              for(List<dynamic> entry in FFAppState().cleaningPressingCartItems.values) Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(20, 0, 0, 10),
+                                    EdgeInsetsDirectional.fromSTEB(20, 2, 0, 10),
                                 child: Text(
-                                  'Coat',
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lato',
-                                    color: Color(0xFF818181),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(20, 0, 0, 10),
-                                child: Text(
-                                  'Skirt',
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lato',
-                                    color: Color(0xFF818181),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(20, 0, 10, 10),
-                                child: Text(
-                                  'Dressing  Gown',
+                                  entry[0],
                                   style: FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Lato',
                                     color: Color(0xFF818181),
@@ -292,35 +283,11 @@ class _CustomerOrderDetailsWidgetState
                                   ),
                                 ),
                               ),
-                              Padding(
+                              for(List<dynamic> entry in FFAppState().cleaningPressingCartItems.values) Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 15, 10),
                                 child: Text(
-                                  '₹ 180',
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lato',
-                                    color: FlutterFlowTheme.secondaryColor,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 15, 10),
-                                child: Text(
-                                  '₹ 100',
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lato',
-                                    color: FlutterFlowTheme.secondaryColor,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 15, 0),
-                                child: Text(
-                                  '₹ 120',
+                                  '₹ ${entry[1]}',
                                   style: FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Lato',
                                     color: FlutterFlowTheme.secondaryColor,
@@ -335,7 +302,7 @@ class _CustomerOrderDetailsWidgetState
                             children: [
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(10, 0, 25, 10),
+                                    EdgeInsetsDirectional.fromSTEB(10, 0, 30, 10),
                                 child: Text(
                                   'Quantity',
                                   style: FlutterFlowTheme.bodyText1.override(
@@ -344,37 +311,15 @@ class _CustomerOrderDetailsWidgetState
                                   ),
                                 ),
                               ),
-                              Padding(
+                              for(List<dynamic> entry in FFAppState().cleaningPressingCartItems.values) Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 15, 10),
+                                    EdgeInsetsDirectional.fromSTEB(0, 2, 15, 10),
                                 child: Text(
-                                  '1',
+                                  '${entry[2]}',
                                   style: FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Lato',
                                     color: FlutterFlowTheme.secondaryColor,
                                     fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 15, 10),
-                                child: Text(
-                                  '1',
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lato',
-                                    color: FlutterFlowTheme.secondaryColor,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 15, 10),
-                                child: Text(
-                                  '1',
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lato',
-                                    color: FlutterFlowTheme.secondaryColor,
                                   ),
                                 ),
                               ),
@@ -394,35 +339,11 @@ class _CustomerOrderDetailsWidgetState
                                   ),
                                 ),
                               ),
-                              Padding(
+                              for(List<dynamic> entry in FFAppState().cleaningPressingCartItems.values) Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 25, 10),
                                 child: Text(
-                                  '₹180',
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lato',
-                                    color: FlutterFlowTheme.secondaryColor,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 25, 10),
-                                child: Text(
-                                  '₹ 100',
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lato',
-                                    color: FlutterFlowTheme.secondaryColor,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 25, 10),
-                                child: Text(
-                                  '₹ 120',
+                                  '₹ ${entry[1] * entry[2]}',
                                   style: FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Lato',
                                     color: FlutterFlowTheme.secondaryColor,
@@ -443,11 +364,12 @@ class _CustomerOrderDetailsWidgetState
                       width: MediaQuery.of(context).size.width * 0.9,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.tertiaryColor,
+                        borderRadius: BorderRadius.circular(12)
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(0, 0, 30, 0),
@@ -460,9 +382,9 @@ class _CustomerOrderDetailsWidgetState
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 25, 0),
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 25, 15),
                             child: Text(
-                              '₹ 400',
+                              '₹ $total',
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Lato',
                                 color: FlutterFlowTheme.secondaryColor,
@@ -507,7 +429,7 @@ class _CustomerOrderDetailsWidgetState
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(20, 2, 0, 0),
                               child: Icon(
-                                Icons.home_sharp,
+                                _iconData,
                                 color: FlutterFlowTheme.primaryColor,
                                 size: 24,
                               ),
@@ -535,11 +457,14 @@ class _CustomerOrderDetailsWidgetState
                             ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(0, 7, 0, 0),
-                              child: Text(
-                                'Satsang Tower Near XYZ\nRoad no. 12 Xyz .\nChembur - 400071',
-                                style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Lato',
-                                  color: Color(0xFF494949),
+                              child: Container(
+                                width: MediaQuery.of(context).size.width*0.5,
+                                child: Text(
+                                  FFAppState().deliveryAddress ?? 'Satsang Tower Near XYZ\nRoad no. 12 Xyz .\nChembur - 400071',
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Lato',
+                                    color: Color(0xFF494949),
+                                  ),
                                 ),
                               ),
                             ),
