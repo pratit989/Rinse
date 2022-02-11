@@ -77,7 +77,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                 ),
                 AuthUserStreamWidget(
                   child: Text(
-                    '$currentUserEmail | $currentPhoneNumber',
+                    '$currentUserEmail | ${currentPhoneNumber.isEmpty ? currentUserDocument.userType : currentPhoneNumber}',
                     style: FlutterFlowTheme.bodyText1.override(
                       fontFamily: 'Lato',
                       color: Color(0xFF818181),
