@@ -185,7 +185,7 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
                         size: 10,
                       ),
                       options: FFButtonOptions(
-                        width: 110,
+                        width: MediaQuery.of(context).size.width*0.3,
                         height: 25,
                         color: FlutterFlowTheme.secondaryColor,
                         textStyle: FlutterFlowTheme.subtitle2.override(
