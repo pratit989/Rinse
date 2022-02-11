@@ -1,11 +1,12 @@
+import 'package:rinse/auth/auth_util.dart';
 import 'package:rinse/backend/backend.dart';
 import 'package:rinse/flutter_flow/flutter_flow_icon_button.dart';
 import 'package:collection/collection.dart';
+import 'package:rinse/ongoing_delivered_to_laundry/ongoing_delivered_to_laundry_widget.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../ongoing_delivered_to_laundry/ongoing_delivered_to_laundry_widget.dart';
 import 'package:flutter/material.dart';
 
 class AcceptOrderDetailsWidget extends StatefulWidget {
@@ -478,12 +479,25 @@ class _AcceptOrderDetailsWidgetState extends State<AcceptOrderDetailsWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () async {
-                          await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => OngoingDeliveredToLaundryWidget(),
-                            ),
-                          );
+                          FirebaseFirestore.instance.runTransaction((transaction) async{
+                            // Order Reads
+                            DocumentReference orderRef = widget.documentReference;
+                            DocumentSnapshot orderSnapshot = await transaction.get(orderRef);
+                            Map<String, dynamic> orderData = orderSnapshot.data();
+                            String status = orderData.containsKey('customer_order_status') ? orderData['customer_order_status'] : null;
+                            // User Reads
+                            DocumentReference userRef = UsersRecord.collection.doc(currentUserUid);
+                            DocumentSnapshot userSnapshot = await transaction.get(userRef);
+                            Map<String, dynamic> userData = userSnapshot.data();
+                            String acceptedOrder = userData.containsKey('accepted_order') ? userData['accepted_order'] : null;
+                            // Remember to do all the writes at the End
+                            transaction.update(orderRef,{
+                              'customer_order_status' : status == 'Booked' ? 'Ongoing' : status
+                            });
+                            transaction.update(userRef, {
+                              'accepted_order' : (acceptedOrder == '' || acceptedOrder == null) && status == 'Booked'? orderRef.id : acceptedOrder
+                            });
+                          }).whenComplete(() => Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => OngoingDeliveredToLaundryWidget(documentReference: snapshot.data.reference,)), (route) => route.isFirst));
                         },
                         text: 'Accept',
                         options: FFButtonOptions(

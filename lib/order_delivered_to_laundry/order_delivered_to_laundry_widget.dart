@@ -1,11 +1,17 @@
+import 'package:rinse/backend/backend.dart';
+
+import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+import '../ongoing_delivered_to_laundry/ongoing_delivered_to_laundry_widget.dart';
+import '../worker_home/worker_home_widget.dart';
 
 class OrderDeliveredToLaundryWidget extends StatefulWidget {
-  const OrderDeliveredToLaundryWidget({Key key}) : super(key: key);
+  const OrderDeliveredToLaundryWidget({Key key, @required this.documentReference}) : super(key: key);
+  final DocumentReference documentReference;
 
   @override
   _OrderDeliveredToLaundryWidgetState createState() =>
@@ -52,104 +58,114 @@ class _OrderDeliveredToLaundryWidgetState
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      height: MediaQuery.of(context).size.height * 0.05,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                        child: Row(
+                child: FutureBuilder<OrdersRecord>(
+                  future: OrdersRecord.getDocumentOnce(widget.documentReference),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: CircularProgressIndicator(
+                            color: FlutterFlowTheme.primaryColor,
+                          ),
+                        ),
+                      );
+                    }
+
+                    return Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          height: MediaQuery.of(context).size.height * 0.05,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding:
+                                      EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                                  child: Text(
+                                    'Order Id :    ${snapshot.data.reference.id}',
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Open Sans',
+                                      color: FlutterFlowTheme.primaryColor,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
+                                  child: Text(
+                                    '₹${snapshot.data.totalCost}',
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Lato',
+                                      color: Color(0xFF818181),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Divider(
+                          thickness: 0.5,
+                          color: Color(0xFF818181),
+                        ),
+                        Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                              padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                               child: Text(
-                                'Order Id :    0000000',
+                                '${DateFormat('dd-MM-yyyy').format(snapshot.data.dateTime)}   |  ${snapshot.data.timeSlot}',
                                 style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Open Sans',
-                                  color: FlutterFlowTheme.primaryColor,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'Lato',
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
+                              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
                               child: Text(
-                                '₹127.00',
+                                'Awaiting Pickup',
                                 style: FlutterFlowTheme.bodyText1.override(
                                   fontFamily: 'Lato',
-                                  color: Color(0xFF818181),
-                                  fontWeight: FontWeight.w500,
+                                  color: FlutterFlowTheme.primaryColor,
+                                  fontSize: 12,
                                 ),
                               ),
                             ),
                           ],
                         ),
-                      ),
-                    ),
-                    Divider(
-                      thickness: 0.5,
-                      color: Color(0xFF818181),
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-                          child: Text(
-                            '02-02-2022   |  11am - 1pm',
-                            style: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Lato',
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
-                          child: Text(
-                            'Awaiting Pickup',
-                            style: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Lato',
-                              color: FlutterFlowTheme.primaryColor,
-                              fontSize: 12,
-                            ),
-                          ),
-                        ),
                       ],
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
-                      child: Text(
-                        'View Order Details',
-                        style: FlutterFlowTheme.bodyText1.override(
-                          fontFamily: 'Lato',
-                          color: FlutterFlowTheme.secondaryColor,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ],
+                    );
+                  }
                 ),
               ),
             ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
               child: FFButtonWidget(
-                onPressed: () {
-                  print('Button pressed ...');
+                onPressed: () async {
+                  await Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => currentUserDocument.acceptedOrder == '' || currentUserDocument.acceptedOrder == null ? WorkerNavBarPage(pageType: "pickupFromCustomer", initialPage: 'NewOrders',) : OngoingDeliveredToLaundryWidget(documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder),),
+                    ),
+                  );
                 },
                 text: 'See New Orders',
                 options: FFButtonOptions(
