@@ -361,7 +361,7 @@ class _AddressSelectionWidgetState extends State<AddressSelectionWidget> {
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(0, 7, 0, 0),
                                 child: Text(
-                                  FFAppState().homeAddress.replaceAll(' |', '') ?? '',
+                                  FFAppState().otherAddress.replaceAll(' |', '') ?? '',
                                   style: FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Lato',
                                     color: Color(0xE5494949),

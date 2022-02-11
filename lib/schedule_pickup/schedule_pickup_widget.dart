@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:rinse/address_selection/address_selection.dart';
 
 import '../components/date_button_widget.dart';
@@ -7,8 +8,6 @@ import '../customer_order_details/customer_order_details_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SchedulePickupWidget extends StatefulWidget {
   const SchedulePickupWidget({Key key}) : super(key: key);
@@ -25,13 +24,14 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
   void initState() {
     // TODO: implement initState
     setState(() {
+      FFAppState().pickupDateDayMonth = DateTime.now();
       FFAppState().selectedTimeCard = '';
       FFAppState().selectedDateDayMonth = 0;
     });
     super.initState();
   }
 
-  refresh() => setState(() => FFAppState().selectedTimeCard='');
+  refresh() => setState(() => FFAppState().selectedTimeCard = '');
 
   setIcon(IconData newIcon) => setState(() => _iconData = newIcon);
 
@@ -139,11 +139,13 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
                             ),
                           ),
                           Container(
-                            width: MediaQuery.of(context).size.width*0.4,
+                            width: MediaQuery.of(context).size.width * 0.4,
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(0, 7, 0, 0),
                               child: Text(
-                                FFAppState().deliveryAddress != '' ? FFAppState().deliveryAddress : FFAppState().homeAddress.replaceAll(' |', '') ?? 'Satsang Tower Near XYZ\nRoad no. 12 Xyz .\nChembur - 400071',
+                                FFAppState().deliveryAddress.replaceAll(' | ', '').trim() != ''
+                                    ? FFAppState().deliveryAddress
+                                    : FFAppState().homeAddress.replaceAll(' | ', '').trim() ?? 'Satsang Tower Near XYZ\nRoad no. 12 Xyz .\nChembur - 400071',
                                 style: FlutterFlowTheme.bodyText1.override(
                                   fontFamily: 'Lato',
                                   color: Color(0xE5494949),
@@ -157,7 +159,8 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
                       ),
                     ),
                     InkWell(
-                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AddressSelectionWidget())).then((value) => setIcon(value)),
+                      onTap: () =>
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => AddressSelectionWidget())).then((value) => setIcon(value ?? Icons.home)),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(60, 0, 10, 0),
                         child: Column(
@@ -206,7 +209,9 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
               decoration: BoxDecoration(
                 color: Color(0xFFF5F5F5),
               ),
-              child: DateButtonWidget(notifyParent: refresh,),
+              child: DateButtonWidget(
+                notifyParent: refresh,
+              ),
             ),
             Align(
               alignment: AlignmentDirectional(-0.85, 0),
@@ -260,7 +265,9 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
                   await Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => CustomerOrderDetailsWidget(iconData: _iconData,),
+                      builder: (context) => CustomerOrderDetailsWidget(
+                        iconData: _iconData,
+                      ),
                     ),
                   );
                 },

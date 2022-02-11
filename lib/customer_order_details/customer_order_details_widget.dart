@@ -27,7 +27,7 @@ class _CustomerOrderDetailsWidgetState
   void initState() {
     // TODO: implement initState
     super.initState();
-    for(List<dynamic> entry in FFAppState().cleaningPressingCartItems.values) total+=(entry[1]*entry[2]);
+    for(List<dynamic> entry in FFAppState().serviceSelected == 'Pressing' ? FFAppState().pressingCartItems.values : FFAppState().cleaningPressingCartItems.values) total+=(entry[1]*entry[2]);
     _iconData = widget.iconData ?? Icons.home_sharp;
   }
 
@@ -256,7 +256,7 @@ class _CustomerOrderDetailsWidgetState
                                   ),
                                 ),
                               ),
-                              for(List<dynamic> entry in FFAppState().cleaningPressingCartItems.values) Padding(
+                              for(List<dynamic> entry in FFAppState().serviceSelected == 'Pressing' ? FFAppState().pressingCartItems.values : FFAppState().cleaningPressingCartItems.values) Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(20, 2, 0, 10),
                                 child: Text(
@@ -283,7 +283,7 @@ class _CustomerOrderDetailsWidgetState
                                   ),
                                 ),
                               ),
-                              for(List<dynamic> entry in FFAppState().cleaningPressingCartItems.values) Padding(
+                              for(List<dynamic> entry in FFAppState().serviceSelected == 'Pressing' ? FFAppState().pressingCartItems.values : FFAppState().cleaningPressingCartItems.values) Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 15, 10),
                                 child: Text(
@@ -311,7 +311,7 @@ class _CustomerOrderDetailsWidgetState
                                   ),
                                 ),
                               ),
-                              for(List<dynamic> entry in FFAppState().cleaningPressingCartItems.values) Padding(
+                              for(List<dynamic> entry in FFAppState().serviceSelected == 'Pressing' ? FFAppState().pressingCartItems.values : FFAppState().cleaningPressingCartItems.values) Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 2, 15, 10),
                                 child: Text(
@@ -339,7 +339,7 @@ class _CustomerOrderDetailsWidgetState
                                   ),
                                 ),
                               ),
-                              for(List<dynamic> entry in FFAppState().cleaningPressingCartItems.values) Padding(
+                              for(List<dynamic> entry in FFAppState().serviceSelected == 'Pressing' ? FFAppState().pressingCartItems.values : FFAppState().cleaningPressingCartItems.values) Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 25, 10),
                                 child: Text(
