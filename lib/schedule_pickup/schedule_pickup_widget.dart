@@ -1,3 +1,5 @@
+import 'package:rinse/address_selection/address_selection.dart';
+
 import '../components/date_button_widget.dart';
 import '../components/service_selector_widget.dart';
 import '../components/time_slot_buttons_widget.dart';
@@ -17,6 +19,21 @@ class SchedulePickupWidget extends StatefulWidget {
 
 class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  IconData _iconData = Icons.home;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    setState(() {
+      FFAppState().selectedTimeCard = '';
+      FFAppState().selectedDateDayMonth = 0;
+    });
+    super.initState();
+  }
+
+  refresh() => setState(() => FFAppState().selectedTimeCard='');
+
+  setIcon(IconData newIcon) => setState(() => _iconData = newIcon);
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +112,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
                             child: Icon(
-                              Icons.home_sharp,
+                              _iconData,
                               color: FlutterFlowTheme.primaryColor,
                               size: 24,
                             ),
@@ -121,41 +138,47 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 7, 0, 0),
-                            child: Text(
-                              'Satsang Tower Near XYZ\nRoad no. 12 Xyz .\nChembur - 400071',
-                              style: FlutterFlowTheme.bodyText1.override(
-                                fontFamily: 'Lato',
-                                color: Color(0xE5494949),
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
+                          Container(
+                            width: MediaQuery.of(context).size.width*0.4,
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(0, 7, 0, 0),
+                              child: Text(
+                                FFAppState().deliveryAddress != '' ? FFAppState().deliveryAddress : FFAppState().homeAddress.replaceAll(' |', '') ?? 'Satsang Tower Near XYZ\nRoad no. 12 Xyz .\nChembur - 400071',
+                                style: FlutterFlowTheme.bodyText1.override(
+                                  fontFamily: 'Lato',
+                                  color: Color(0xE5494949),
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
                           ),
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(70, 0, 0, 0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(2, 0, 0, 0),
-                            child: Text(
-                              'Change',
-                              style: FlutterFlowTheme.bodyText1.override(
-                                fontFamily: 'Lato',
-                                color: FlutterFlowTheme.secondaryColor,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
+                    InkWell(
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AddressSelectionWidget())).then((value) => setIcon(value)),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(60, 0, 10, 0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(2, 0, 0, 0),
+                              child: Text(
+                                'Change',
+                                style: FlutterFlowTheme.bodyText1.override(
+                                  fontFamily: 'Lato',
+                                  color: FlutterFlowTheme.secondaryColor,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ],
@@ -183,7 +206,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
               decoration: BoxDecoration(
                 color: Color(0xFFF5F5F5),
               ),
-              child: DateButtonWidget(),
+              child: DateButtonWidget(notifyParent: refresh,),
             ),
             Align(
               alignment: AlignmentDirectional(-0.85, 0),
@@ -237,7 +260,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
                   await Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => CustomerOrderDetailsWidget(),
+                      builder: (context) => CustomerOrderDetailsWidget(iconData: _iconData,),
                     ),
                   );
                 },
