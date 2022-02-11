@@ -1,3 +1,5 @@
+import 'package:rinse/auth/firebase_user_provider.dart';
+
 import '../add_address/add_address_widget.dart';
 import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -9,7 +11,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ProfileWidget extends StatefulWidget {
   const ProfileWidget({Key key}) : super(key: key);
-
   @override
   _ProfileWidgetState createState() => _ProfileWidgetState();
 }
@@ -76,7 +77,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                 ),
                 AuthUserStreamWidget(
                   child: Text(
-                    '$currentUserEmail | $currentPhoneNumber',
+                    '$currentUserEmail | ${currentPhoneNumber.isEmpty ? currentUserDocument.userType : currentPhoneNumber}',
                     style: FlutterFlowTheme.bodyText1.override(
                       fontFamily: 'Lato',
                       color: Color(0xFF818181),
@@ -86,53 +87,56 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(50, 50, 50, 50),
-                  child: InkWell(
-                    onTap: () async {
-                      await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => AddAddressWidget(),
+                  child: Visibility(
+                    visible: currentUserDocument.userType == "Customer",
+                    child: InkWell(
+                      onTap: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AddAddressWidget(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        height: MediaQuery.of(context).size.height * 0.05,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 2,
+                              color: Color(0x12000000),
+                              offset: Offset(0, 2),
+                              spreadRadius: 0,
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(12),
                         ),
-                      );
-                    },
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      height: MediaQuery.of(context).size.height * 0.05,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 2,
-                            color: Color(0x12000000),
-                            offset: Offset(0, 2),
-                            spreadRadius: 0,
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(0, 0),
-                              child: Text(
-                                'Manage Addresses',
-                                style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Lato',
-                                  color: Color(0xFF1F4444),
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w600,
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Text(
+                                  'Manage Addresses',
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Lato',
+                                    color: Color(0xFF1F4444),
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Icon(
-                              Icons.arrow_forward_ios_sharp,
-                              color: FlutterFlowTheme.secondaryColor,
-                            ),
-                          ],
+                              Icon(
+                                Icons.arrow_forward_ios_sharp,
+                                color: FlutterFlowTheme.secondaryColor,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),

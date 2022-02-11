@@ -49,3 +49,6 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 *.g.dart
+ios/Runner/GeneratedPluginRegistrant.h
+android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
+ios/Runner/GeneratedPluginRegistrant.m

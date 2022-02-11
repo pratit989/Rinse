@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'index.dart';
 import 'serializers.dart';
 import 'package:built_value/built_value.dart';
 
@@ -36,6 +35,10 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   String get userType;
 
   @nullable
+  @BuiltValueField(wireName: 'accepted_order')
+  String get acceptedOrder;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -45,7 +48,8 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
     ..uid = ''
     ..phoneNumber = ''
     ..photoUrl = ''
-    ..userType = '';
+    ..userType = ''
+    ..acceptedOrder = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
@@ -76,6 +80,7 @@ Map<String, dynamic> createUsersRecordData({
   String photoUrl,
   DateTime createdTime,
   String userType,
+  String acceptedOrder,
 }) =>
     serializers.toFirestore(
         UsersRecord.serializer,
@@ -86,4 +91,5 @@ Map<String, dynamic> createUsersRecordData({
           ..phoneNumber = phoneNumber
           ..photoUrl = photoUrl
           ..createdTime = createdTime
-          ..userType = userType));
+          ..userType = userType
+          ..acceptedOrder = acceptedOrder));
