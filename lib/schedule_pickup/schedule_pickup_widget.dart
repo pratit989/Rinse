@@ -24,6 +24,9 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
   void initState() {
     // TODO: implement initState
     setState(() {
+      FFAppState().deliveryAddress = FFAppState().deliveryAddress.replaceAll(' | ', '').trim() != ''
+          ? FFAppState().deliveryAddress
+          : FFAppState().homeAddress.replaceAll(' | ', '').trim();
       FFAppState().pickupDateDayMonth = DateTime.now();
       FFAppState().selectedTimeCard = '';
       FFAppState().selectedDateDayMonth = 0;
@@ -262,6 +265,14 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 20),
               child: FFButtonWidget(
                 onPressed: () async {
+                  if (FFAppState().selectedTimeCard == '') {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Please Select Time Slot')));
+                  }
+                  if (FFAppState().deliveryAddress.replaceAll(' | ', '') == '') {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Please Select Address')));
+                  }
+                  assert(FFAppState().selectedTimeCard != '');
+                  assert(FFAppState().deliveryAddress.replaceAll(' | ', '') != '');
                   await Navigator.push(
                     context,
                     MaterialPageRoute(

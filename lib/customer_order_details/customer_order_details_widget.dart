@@ -1,11 +1,13 @@
-import 'package:rinse/flutter_flow/flutter_flow_icon_button.dart';
+import 'package:flutter/material.dart';
 import 'package:nanoid/nanoid.dart';
+import 'package:rinse/auth/auth_util.dart';
+import 'package:rinse/backend/backend.dart';
+import 'package:rinse/flutter_flow/flutter_flow_icon_button.dart';
+
 import '../booking_successful/booking_successful_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CustomerOrderDetailsWidget extends StatefulWidget {
   const CustomerOrderDetailsWidget({Key key, this.serviceType, this.iconData}) : super(key: key);
@@ -13,21 +15,31 @@ class CustomerOrderDetailsWidget extends StatefulWidget {
   final IconData iconData;
 
   @override
-  _CustomerOrderDetailsWidgetState createState() =>
-      _CustomerOrderDetailsWidgetState();
+  _CustomerOrderDetailsWidgetState createState() => _CustomerOrderDetailsWidgetState();
 }
 
-class _CustomerOrderDetailsWidgetState
-    extends State<CustomerOrderDetailsWidget> {
+class _CustomerOrderDetailsWidgetState extends State<CustomerOrderDetailsWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  int total = 0;
+  int _total = 0;
   IconData _iconData;
+  ListBuilder<String> _items = ListBuilder([]);
+  ListBuilder<int> _rates = ListBuilder([]);
+  ListBuilder<int> _count = ListBuilder([]);
+  ListBuilder<int> _itemTotals = ListBuilder([]);
+  String _orderId = customAlphabet('1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ', 8);
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    for(List<dynamic> entry in FFAppState().serviceSelected == 'Pressing' ? FFAppState().pressingCartItems.values : FFAppState().cleaningPressingCartItems.values) total+=(entry[1]*entry[2]);
+    for (List<dynamic> cart
+        in FFAppState().serviceSelected == 'Pressing' ? FFAppState().pressingCartItems.values : FFAppState().cleaningPressingCartItems.values) {
+      _items.add(cart[0]);
+      _rates.add(cart[1]);
+      _count.add(cart[2]);
+      _itemTotals.add(cart[1] * cart[2]);
+      _total += cart[1] * cart[2];
+    }
     _iconData = widget.iconData ?? Icons.home_sharp;
   }
 
@@ -47,22 +59,21 @@ class _CustomerOrderDetailsWidgetState
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 40, 0),
-                      child: FlutterFlowIconButton(
-                        borderColor: Colors.transparent,
-                        borderRadius: 30,
-                        borderWidth: 1,
-                        buttonSize: 60,
-                        icon: Icon(
-                          Icons.arrow_back_ios_sharp,
-                          color: Color(0xFF1F4444),
-                          size: 30,
-                        ),
-                        onPressed: () async {
-                          Navigator.pop(context);
-                        },
-                      )
-                    ),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 40, 0),
+                        child: FlutterFlowIconButton(
+                          borderColor: Colors.transparent,
+                          borderRadius: 30,
+                          borderWidth: 1,
+                          buttonSize: 60,
+                          icon: Icon(
+                            Icons.arrow_back_ios_sharp,
+                            color: Color(0xFF1F4444),
+                            size: 30,
+                          ),
+                          onPressed: () async {
+                            Navigator.pop(context);
+                          },
+                        )),
                     Align(
                       alignment: AlignmentDirectional(0, 0),
                       child: Padding(
@@ -83,7 +94,7 @@ class _CustomerOrderDetailsWidgetState
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
                 child: Text(
-                  'Order Id :   ${customAlphabet('1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ',8)}',
+                  'Order Id :   $_orderId',
                   style: FlutterFlowTheme.bodyText1.override(
                     fontFamily: 'Open Sans',
                     color: FlutterFlowTheme.secondaryColor,
@@ -171,7 +182,7 @@ class _CustomerOrderDetailsWidgetState
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(20, 5, 0, 0),
                         child: Text(
-                          '₹ $total',
+                          '₹ $_total',
                           style: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Lato',
                             color: FlutterFlowTheme.secondaryColor,
@@ -246,8 +257,7 @@ class _CustomerOrderDetailsWidgetState
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(20, 0, 0, 10),
+                                padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 10),
                                 child: Text(
                                   'Items',
                                   style: FlutterFlowTheme.bodyText1.override(
@@ -256,25 +266,24 @@ class _CustomerOrderDetailsWidgetState
                                   ),
                                 ),
                               ),
-                              for(List<dynamic> entry in FFAppState().serviceSelected == 'Pressing' ? FFAppState().pressingCartItems.values : FFAppState().cleaningPressingCartItems.values) Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(20, 2, 0, 10),
-                                child: Text(
-                                  entry[0],
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lato',
-                                    color: Color(0xFF818181),
+                              for (String entry in _items.build())
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(20, 2, 0, 10),
+                                  child: Text(
+                                    entry,
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Lato',
+                                      color: Color(0xFF818181),
+                                    ),
                                   ),
                                 ),
-                              ),
                             ],
                           ),
                           Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 30, 10),
+                                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 30, 10),
                                 child: Text(
                                   'Rate',
                                   style: FlutterFlowTheme.bodyText1.override(
@@ -283,26 +292,25 @@ class _CustomerOrderDetailsWidgetState
                                   ),
                                 ),
                               ),
-                              for(List<dynamic> entry in FFAppState().serviceSelected == 'Pressing' ? FFAppState().pressingCartItems.values : FFAppState().cleaningPressingCartItems.values) Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 15, 10),
-                                child: Text(
-                                  '₹ ${entry[1]}',
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lato',
-                                    color: FlutterFlowTheme.secondaryColor,
-                                    fontWeight: FontWeight.w500,
+                              for (int entry in _rates.build())
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 15, 10),
+                                  child: Text(
+                                    '₹ $entry',
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Lato',
+                                      color: FlutterFlowTheme.secondaryColor,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ),
-                              ),
                             ],
                           ),
                           Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(10, 0, 30, 10),
+                                padding: EdgeInsetsDirectional.fromSTEB(10, 0, 30, 10),
                                 child: Text(
                                   'Quantity',
                                   style: FlutterFlowTheme.bodyText1.override(
@@ -311,26 +319,25 @@ class _CustomerOrderDetailsWidgetState
                                   ),
                                 ),
                               ),
-                              for(List<dynamic> entry in FFAppState().serviceSelected == 'Pressing' ? FFAppState().pressingCartItems.values : FFAppState().cleaningPressingCartItems.values) Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 2, 15, 10),
-                                child: Text(
-                                  '${entry[2]}',
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lato',
-                                    color: FlutterFlowTheme.secondaryColor,
-                                    fontWeight: FontWeight.w500,
+                              for (int entry in _count.build())
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(0, 2, 15, 10),
+                                  child: Text(
+                                    '$entry',
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Lato',
+                                      color: FlutterFlowTheme.secondaryColor,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ),
-                              ),
                             ],
                           ),
                           Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 30, 10),
+                                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 30, 10),
                                 child: Text(
                                   'Cost',
                                   style: FlutterFlowTheme.bodyText1.override(
@@ -339,18 +346,18 @@ class _CustomerOrderDetailsWidgetState
                                   ),
                                 ),
                               ),
-                              for(List<dynamic> entry in FFAppState().serviceSelected == 'Pressing' ? FFAppState().pressingCartItems.values : FFAppState().cleaningPressingCartItems.values) Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 25, 10),
-                                child: Text(
-                                  '₹ ${entry[1] * entry[2]}',
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Lato',
-                                    color: FlutterFlowTheme.secondaryColor,
-                                    fontWeight: FontWeight.w500,
+                              for (int entry in _itemTotals.build())
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 25, 10),
+                                  child: Text(
+                                    '₹ $entry',
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Lato',
+                                      color: FlutterFlowTheme.secondaryColor,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ),
-                              ),
                             ],
                           ),
                         ],
@@ -362,10 +369,7 @@ class _CustomerOrderDetailsWidgetState
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width * 0.9,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.tertiaryColor,
-                        borderRadius: BorderRadius.circular(12)
-                      ),
+                      decoration: BoxDecoration(color: FlutterFlowTheme.tertiaryColor, borderRadius: BorderRadius.circular(12)),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -384,7 +388,7 @@ class _CustomerOrderDetailsWidgetState
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(0, 0, 25, 15),
                             child: Text(
-                              '₹ $total',
+                              '₹ $_total',
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Lato',
                                 color: FlutterFlowTheme.secondaryColor,
@@ -426,8 +430,7 @@ class _CustomerOrderDetailsWidgetState
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(20, 2, 0, 0),
+                              padding: EdgeInsetsDirectional.fromSTEB(20, 2, 0, 0),
                               child: Icon(
                                 _iconData,
                                 color: FlutterFlowTheme.primaryColor,
@@ -458,9 +461,9 @@ class _CustomerOrderDetailsWidgetState
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(0, 7, 0, 0),
                               child: Container(
-                                width: MediaQuery.of(context).size.width*0.5,
+                                width: MediaQuery.of(context).size.width * 0.5,
                                 child: Text(
-                                  FFAppState().deliveryAddress ?? 'Satsang Tower Near XYZ\nRoad no. 12 Xyz .\nChembur - 400071',
+                                  FFAppState().deliveryAddress,
                                   style: FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Lato',
                                     color: Color(0xFF494949),
@@ -479,6 +482,19 @@ class _CustomerOrderDetailsWidgetState
                 padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
                 child: FFButtonWidget(
                   onPressed: () async {
+                    final orderCreateData = createOrdersRecordData(
+                        adminOrderStatus: null,
+                        customerOrderStatus: 'Booked',
+                        customerAddress: FFAppState().deliveryAddress,
+                        dateTime: FFAppState().pickupDateDayMonth,
+                        timeSlot: FFAppState().selectedTimeCard,
+                        serviceType: FFAppState().serviceSelected,
+                        totalCost: _total,
+                        customerUid: currentUserUid,
+                        items: _items,
+                        itemRates: _rates,
+                        perItemCount: _count);
+                    OrdersRecord.collection.doc(_orderId).set(orderCreateData);
                     await Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
