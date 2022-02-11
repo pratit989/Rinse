@@ -106,12 +106,6 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                         decoration: InputDecoration(
                           isDense: true,
                           hintText: 'First Name',
-                          hintStyle: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Lato',
-                            color: Color(0xFFB1B1B1),
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                          ),
                           enabledBorder: InputBorder.none,
                           focusedBorder: InputBorder.none,
                           prefixIcon: Icon(
@@ -166,12 +160,6 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                         decoration: InputDecoration(
                           isDense: true,
                           hintText: 'Last Name',
-                          hintStyle: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Lato',
-                            color: Color(0xFFB1B1B1),
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                          ),
                           enabledBorder: InputBorder.none,
                           focusedBorder: InputBorder.none,
                           prefixIcon: Icon(
@@ -226,12 +214,6 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                         decoration: InputDecoration(
                           isDense: true,
                           hintText: 'Email Address',
-                          hintStyle: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Lato',
-                            color: Color(0xFFB1B1B1),
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                          ),
                           enabledBorder: InputBorder.none,
                           focusedBorder: InputBorder.none,
                           prefixIcon: Icon(

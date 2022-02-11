@@ -45,48 +45,98 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
-                      child: FFButtonWidget(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
+                        child: FFButtonWidget(
+                          onPressed: () {
+                            print('Button pressed ...');
+                          },
+                          text: 'Received',
+                          options: FFButtonOptions(
+                            width: 110,
+                            height: 35,
+                            color: FlutterFlowTheme.secondaryColor,
+                            textStyle: FlutterFlowTheme.subtitle2.override(
+                              fontFamily: 'Open Sans',
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                            ),
+                            borderRadius: 12,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
+                        child: FFButtonWidget(
+                          onPressed: () {
+                            print('Button pressed ...');
+                          },
+                          text: 'Out for delivery',
+                          options: FFButtonOptions(
+                            width: 120,
+                            height: 35,
+                            color: FlutterFlowTheme.tertiaryColor,
+                            textStyle: FlutterFlowTheme.subtitle2.override(
+                              fontFamily: 'Open Sans',
+                              color: Color(0xFF9C9C9C),
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
+                            borderSide: BorderSide(
+                              color: Color(0xFF949496),
+                            ),
+                            borderRadius: 12,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
+                        child: FFButtonWidget(
+                          onPressed: () {
+                            print('Button pressed ...');
+                          },
+                          text: 'Packed',
+                          options: FFButtonOptions(
+                            width: 110,
+                            height: 35,
+                            color: FlutterFlowTheme.tertiaryColor,
+                            textStyle: FlutterFlowTheme.subtitle2.override(
+                              fontFamily: 'Open Sans',
+                              color: Color(0xFF9C9C9C),
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
+                            borderSide: BorderSide(
+                              color: Color(0xFF949496),
+                            ),
+                            borderRadius: 12,
+                          ),
+                        ),
+                      ),
+                      FFButtonWidget(
                         onPressed: () {
                           print('Button pressed ...');
                         },
-                        text: 'Received',
+                        text: 'Delivered',
                         options: FFButtonOptions(
                           width: 110,
                           height: 35,
-                          color: FlutterFlowTheme.secondaryColor,
-                          textStyle: FlutterFlowTheme.subtitle2.override(
-                            fontFamily: 'Open Sans',
-                            color: Colors.white,
-                            fontSize: 14,
-                          ),
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                          ),
-                          borderRadius: 12,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
-                      child: FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
-                        },
-                        text: 'Packed',
-                        options: FFButtonOptions(
-                          width: 110,
-                          height: 30,
                           color: FlutterFlowTheme.tertiaryColor,
                           textStyle: FlutterFlowTheme.subtitle2.override(
                             fontFamily: 'Open Sans',
                             color: Color(0xFF9C9C9C),
                             fontSize: 14,
+                            fontWeight: FontWeight.w500,
                           ),
                           borderSide: BorderSide(
                             color: Color(0xFF949496),
@@ -94,28 +144,8 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                           borderRadius: 12,
                         ),
                       ),
-                    ),
-                    FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
-                      },
-                      text: 'Delivered',
-                      options: FFButtonOptions(
-                        width: 110,
-                        height: 35,
-                        color: FlutterFlowTheme.tertiaryColor,
-                        textStyle: FlutterFlowTheme.subtitle2.override(
-                          fontFamily: 'Open Sans',
-                          color: Color(0xFF9C9C9C),
-                          fontSize: 14,
-                        ),
-                        borderSide: BorderSide(
-                          color: Color(0xFF949496),
-                        ),
-                        borderRadius: 12,
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               Expanded(
