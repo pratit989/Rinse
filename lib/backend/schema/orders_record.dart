@@ -24,7 +24,7 @@ abstract class OrdersRecord
 
   @nullable
   @BuiltValueField(wireName: 'time_slot')
-  int get timeSlot;
+  String get timeSlot;
 
   @nullable
   @BuiltValueField(wireName: 'service_type')
@@ -60,7 +60,7 @@ abstract class OrdersRecord
   static void _initializeBuilder(OrdersRecordBuilder builder) => builder
     ..adminOrderStatus = ''
     ..customerOrderStatus = ''
-    ..timeSlot = 0
+    ..timeSlot = ''
     ..serviceType = ''
     ..items = ListBuilder()
     ..itemRates = ListBuilder()
@@ -94,11 +94,14 @@ Map<String, dynamic> createOrdersRecordData({
   String adminOrderStatus,
   String customerOrderStatus,
   DateTime dateTime,
-  int timeSlot,
+  String timeSlot,
   String serviceType,
   int totalCost,
   String customerAddress,
   String customerUid,
+  ListBuilder<String> items,
+  ListBuilder<int> itemRates,
+  ListBuilder<int> perItemCount,
 }) =>
     serializers.toFirestore(
         OrdersRecord.serializer,
@@ -108,9 +111,9 @@ Map<String, dynamic> createOrdersRecordData({
           ..dateTime = dateTime
           ..timeSlot = timeSlot
           ..serviceType = serviceType
-          ..items = null
-          ..itemRates = null
-          ..perItemCount = null
+          ..items = items
+          ..itemRates = itemRates
+          ..perItemCount = perItemCount
           ..totalCost = totalCost
           ..customerAddress = customerAddress
           ..customerUid = customerUid));

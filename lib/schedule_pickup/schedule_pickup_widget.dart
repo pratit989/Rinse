@@ -24,6 +24,9 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
   void initState() {
     // TODO: implement initState
     setState(() {
+      FFAppState().deliveryAddress = FFAppState().deliveryAddress.replaceAll(' | ', '').trim() != ''
+          ? FFAppState().deliveryAddress
+          : FFAppState().homeAddress.replaceAll(' | ', '').trim();
       FFAppState().pickupDateDayMonth = DateTime.now();
       FFAppState().selectedTimeCard = '';
       FFAppState().selectedDateDayMonth = 0;
