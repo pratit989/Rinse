@@ -233,12 +233,6 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                           isDense: true,
                                           hintText:
                                               'Flat / House No. / Society',
-                                          hintStyle: FlutterFlowTheme.bodyText1
-                                              .override(
-                                            fontFamily: 'Lato',
-                                            color: Color(0xFF818181),
-                                            fontSize: 13,
-                                          ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color: Color(0xFFC0C0C0),
@@ -274,12 +268,6 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                         decoration: InputDecoration(
                                           isDense: true,
                                           hintText: 'Street / Area',
-                                          hintStyle: FlutterFlowTheme.bodyText1
-                                              .override(
-                                            fontFamily: 'Lato',
-                                            color: Color(0xFF818181),
-                                            fontSize: 13,
-                                          ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color: Color(0xFFC0C0C0),
@@ -314,12 +302,6 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                         decoration: InputDecoration(
                                           isDense: true,
                                           hintText: 'District / City / State',
-                                          hintStyle: FlutterFlowTheme.bodyText1
-                                              .override(
-                                            fontFamily: 'Lato',
-                                            color: Color(0xFF818181),
-                                            fontSize: 13,
-                                          ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color: Color(0xFFC0C0C0),
@@ -360,12 +342,6 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                         decoration: InputDecoration(
                                           isDense: true,
                                           hintText: 'Pin Code',
-                                          hintStyle: FlutterFlowTheme.bodyText1
-                                              .override(
-                                            fontFamily: 'Lato',
-                                            color: Color(0xFF818181),
-                                            fontSize: 13,
-                                          ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color: Color(0xFFC0C0C0),
@@ -498,12 +474,6 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                           isDense: true,
                                           hintText:
                                               'Flat / House No. / Society',
-                                          hintStyle: FlutterFlowTheme.bodyText1
-                                              .override(
-                                            fontFamily: 'Lato',
-                                            color: Color(0xFF818181),
-                                            fontSize: 13,
-                                          ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color: Color(0xFFC0C0C0),
@@ -539,12 +509,6 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                         decoration: InputDecoration(
                                           isDense: true,
                                           hintText: 'Street / Area',
-                                          hintStyle: FlutterFlowTheme.bodyText1
-                                              .override(
-                                            fontFamily: 'Lato',
-                                            color: Color(0xFF818181),
-                                            fontSize: 13,
-                                          ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color: Color(0xFFC0C0C0),
@@ -579,12 +543,6 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                         decoration: InputDecoration(
                                           isDense: true,
                                           hintText: 'District / City / State',
-                                          hintStyle: FlutterFlowTheme.bodyText1
-                                              .override(
-                                            fontFamily: 'Lato',
-                                            color: Color(0xFF818181),
-                                            fontSize: 13,
-                                          ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color: Color(0xFFC0C0C0),
@@ -625,12 +583,6 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                         decoration: InputDecoration(
                                           isDense: true,
                                           hintText: 'Pin Code',
-                                          hintStyle: FlutterFlowTheme.bodyText1
-                                              .override(
-                                            fontFamily: 'Lato',
-                                            color: Color(0xFF818181),
-                                            fontSize: 13,
-                                          ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color: Color(0xFFC0C0C0),
@@ -763,12 +715,6 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                           isDense: true,
                                           hintText:
                                               'Flat / House No. / Society',
-                                          hintStyle: FlutterFlowTheme.bodyText1
-                                              .override(
-                                            fontFamily: 'Lato',
-                                            color: Color(0xFF818181),
-                                            fontSize: 13,
-                                          ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color: Color(0xFFC0C0C0),
@@ -804,12 +750,6 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                         decoration: InputDecoration(
                                           isDense: true,
                                           hintText: 'Street / Area',
-                                          hintStyle: FlutterFlowTheme.bodyText1
-                                              .override(
-                                            fontFamily: 'Lato',
-                                            color: Color(0xFF818181),
-                                            fontSize: 13,
-                                          ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color: Color(0xFFC0C0C0),
@@ -844,12 +784,6 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                         decoration: InputDecoration(
                                           isDense: true,
                                           hintText: 'District / City / State',
-                                          hintStyle: FlutterFlowTheme.bodyText1
-                                              .override(
-                                            fontFamily: 'Lato',
-                                            color: Color(0xFF818181),
-                                            fontSize: 13,
-                                          ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color: Color(0xFFC0C0C0),
@@ -890,12 +824,6 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                         decoration: InputDecoration(
                                           isDense: true,
                                           hintText: 'Pin Code',
-                                          hintStyle: FlutterFlowTheme.bodyText1
-                                              .override(
-                                            fontFamily: 'Lato',
-                                            color: Color(0xFF818181),
-                                            fontSize: 13,
-                                          ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color: Color(0xFFC0C0C0),

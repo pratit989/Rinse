@@ -5,7 +5,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'auth/firebase_user_provider.dart';
 import 'auth/auth_util.dart';
 
-import '../flutter_flow/flutter_flow_theme.dart';
+import 'flutter_flow/flutter_flow_theme.dart';
+import 'flutter_flow/internationalization.dart';
 import 'package:rinse/welcome/welcome_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
@@ -26,13 +27,19 @@ class MyApp extends StatefulWidget {
   // This widget is the root of your application.
   @override
   _MyAppState createState() => _MyAppState();
+
+  static _MyAppState of(BuildContext context) =>
+      context.findAncestorStateOfType<_MyAppState>();
 }
 
 class _MyAppState extends State<MyApp> {
+  Locale _locale;
   Stream<RinseFirebaseUser> userStream;
   RinseFirebaseUser initialUser;
   bool displaySplashImage = true;
   final authUserSub = authenticatedUserStream.listen((_) {});
+
+  void setLocale(Locale value) => setState(() => _locale = value);
 
   @override
   void initState() {
@@ -55,10 +62,12 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Rinse',
       localizationsDelegates: [
+        FFLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
+      locale: _locale,
       supportedLocales: const [Locale('en', '')],
       theme: ThemeData(primarySwatch: Colors.blue),
       home: initialUser == null || displaySplashImage
