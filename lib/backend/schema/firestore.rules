@@ -1,39 +1,37 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /users/{document} {
-      allow create: if true;
-      allow read: if true;
-      allow write: if true;
-      allow delete: if true;
+    function userDoc() {
+      return /databases/$(database)/documents/users/$(request.auth.uid);
     }
 
-    match /pricing/{document} {
-      allow create: if true;
+    match /users/{userId} {
       allow read: if true;
-      allow write: if true;
-      allow delete: if true;
+      allow create, update: if request.auth.uid == userId;
     }
 
-    match /pressingPricing/{document} {
-      allow create: if true;
-      allow read: if true;
-      allow write: if true;
-      allow delete: if true;
+    // WARNING! ONLY FOR TEST MODE: Make sure you properly configure the
+    // security rules for this collection before publishing your app.
+    match /pricing/{id} {
+      allow read, write: if true;
     }
 
-    match /map/{document} {
-      allow create: if true;
-      allow read: if true;
-      allow write: if true;
-      allow delete: if true;
+    // WARNING! ONLY FOR TEST MODE: Make sure you properly configure the
+    // security rules for this collection before publishing your app.
+    match /pressingPricing/{id} {
+      allow read, write: if true;
     }
 
-    match /orders/{document} {
-      allow create: if true;
-      allow read: if true;
-      allow write: if true;
-      allow delete: if true;
+    // WARNING! ONLY FOR TEST MODE: Make sure you properly configure the
+    // security rules for this collection before publishing your app.
+    match /map/{id} {
+      allow read, write: if true;
+    }
+
+    // WARNING! ONLY FOR TEST MODE: Make sure you properly configure the
+    // security rules for this collection before publishing your app.
+    match /orders/{id} {
+      allow read, write: if true;
     }
   }
 }
