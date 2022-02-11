@@ -463,7 +463,7 @@ class _CustomerOrderDetailsWidgetState extends State<CustomerOrderDetailsWidget>
                               child: Container(
                                 width: MediaQuery.of(context).size.width * 0.5,
                                 child: Text(
-                                  FFAppState().deliveryAddress ?? 'Satsang Tower Near XYZ\nRoad no. 12 Xyz .\nChembur - 400071',
+                                  FFAppState().deliveryAddress,
                                   style: FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Lato',
                                     color: Color(0xFF494949),
@@ -482,7 +482,6 @@ class _CustomerOrderDetailsWidgetState extends State<CustomerOrderDetailsWidget>
                 padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    assert(FFAppState().deliveryAddress.replaceAll(' | ', '') != '');
                     final orderCreateData = createOrdersRecordData(
                         adminOrderStatus: null,
                         customerOrderStatus: 'Booked',
