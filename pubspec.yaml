@@ -53,7 +53,6 @@ dependencies:
       path: packages/sign_in_with_apple/sign_in_with_apple/
   timeago: 3.1.0
   url_launcher: 6.0.15
-  nanoid: ^1.0.0
 
 
   # The following adds the Cupertino Icons font to your application.

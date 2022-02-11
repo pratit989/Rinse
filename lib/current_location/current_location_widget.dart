@@ -10,12 +10,11 @@ class CurrentLocationWidget extends StatefulWidget {
   const CurrentLocationWidget({
     Key key,
     this.location,
-    this.addressOutput, @required this.onConfirmPressed,
+    this.addressOutput,
   }) : super(key: key);
 
   final MapRecord location;
   final String addressOutput;
-  final VoidCallback onConfirmPressed;
 
   @override
   _CurrentLocationWidgetState createState() => _CurrentLocationWidgetState();
@@ -127,7 +126,7 @@ class _CurrentLocationWidgetState extends State<CurrentLocationWidget> {
               ),
               Container(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.88,
+                height: MediaQuery.of(context).size.height * 0.9,
                 decoration: BoxDecoration(
                   color: Colors.transparent,
                 ),
@@ -137,7 +136,7 @@ class _CurrentLocationWidgetState extends State<CurrentLocationWidget> {
                   children: [
                     ConfirmLoacationWidget(
                       address: widget.addressOutput,
-                      locationSelected: currentUserLocationValue, onConfirmPressed: () => widget.onConfirmPressed,
+                      locationSelected: currentUserLocationValue,
                     ),
                   ],
                 ),

@@ -55,7 +55,7 @@ class _BookingSuccessfulWidgetState extends State<BookingSuccessfulWidget> {
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          CustomerNavBarPage(initialPage: 'CustomerMyOrders'),
+                          NavBarPage(initialPage: 'CustomerMyOrders'),
                     ),
                     (r) => false,
                   );
@@ -91,7 +91,7 @@ class _BookingSuccessfulWidgetState extends State<BookingSuccessfulWidget> {
                 await Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => CustomerNavBarPage(initialPage: 'Home'),
+                    builder: (context) => NavBarPage(initialPage: 'Home'),
                   ),
                   (r) => false,
                 );

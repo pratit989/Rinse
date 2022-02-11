@@ -8,12 +8,11 @@ class ConfirmLoacationWidget extends StatefulWidget {
   const ConfirmLoacationWidget({
     Key key,
     this.locationSelected,
-    this.address, @required this.onConfirmPressed,
+    this.address,
   }) : super(key: key);
 
   final LatLng locationSelected;
   final String address;
-  final VoidCallback onConfirmPressed;
 
   @override
   _ConfirmLoacationWidgetState createState() => _ConfirmLoacationWidgetState();
@@ -56,9 +55,9 @@ class _ConfirmLoacationWidgetState extends State<ConfirmLoacationWidget> {
                   ),
                 ),
                 InkWell(
-                  onTap: () {
+                  onTap: () async {
                     setState(() => FFAppState().homeAddress = widget.address);
-                    Navigator.pop(context, widget.address);
+                    Navigator.pop(context);
                   },
                   child: Text(
                     'Confirm Location',

@@ -1,8 +1,8 @@
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
-
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ServiceSelectorWidget extends StatefulWidget {
   const ServiceSelectorWidget({Key key}) : super(key: key);
@@ -42,10 +42,8 @@ class _ServiceSelectorWidgetState extends State<ServiceSelectorWidget> {
                       padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
                       child: InkWell(
                         onTap: () async {
-                          setState(() {
-                            FFAppState().serviceSelected = 'Cleaning & Pressing';
-                            print(FFAppState().serviceSelected);
-                          });
+                          setState(() => FFAppState().serviceSelected =
+                              'Cleaning & Pressing');
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width,
@@ -118,10 +116,8 @@ class _ServiceSelectorWidgetState extends State<ServiceSelectorWidget> {
                       padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
                       child: InkWell(
                         onTap: () async {
-                          setState(() {
-                            FFAppState().serviceSelected = 'Pressing';
-                            print(FFAppState().serviceSelected);
-                          });
+                          setState(
+                              () => FFAppState().serviceSelected = 'Pressing');
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width,

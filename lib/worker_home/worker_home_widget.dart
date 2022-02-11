@@ -1,7 +1,3 @@
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:rinse/pricing/pricing_widget.dart';
-import 'package:rinse/profile/profile_widget.dart';
-
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../new_orders/new_orders_widget.dart';
@@ -56,7 +52,7 @@ class _WorkerHomeWidgetState extends State<WorkerHomeWidget> {
                     await Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => WorkerNavBarPage(pageType: "pickupFromCustomer", initialPage: 'NewOrders',),
+                        builder: (context) => NewOrdersWidget(),
                       ),
                     );
                   },
@@ -74,7 +70,7 @@ class _WorkerHomeWidgetState extends State<WorkerHomeWidget> {
                     await Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => WorkerNavBarPage(pageType: "pickupFromLaundry", initialPage: 'PackedOrders',),
+                        builder: (context) => PackedOrdersWidget(),
                       ),
                     );
                   },
@@ -92,88 +88,3 @@ class _WorkerHomeWidgetState extends State<WorkerHomeWidget> {
     );
   }
 }
-
-class WorkerNavBarPage extends StatefulWidget {
-  WorkerNavBarPage({Key key, this.initialPage, this.pageType}) : super(key: key);
-
-  final String initialPage;
-  final String pageType;
-
-  @override
-  _WorkerNavBarPageState createState() => _WorkerNavBarPageState();
-}
-
-/// This is the private State class that goes with NavBarPage.
-class _WorkerNavBarPageState extends State<WorkerNavBarPage> {
-  String _currentPage = '';
-  String _pageType;
-
-  @override
-  void initState() {
-    super.initState();
-    _currentPage = widget.initialPage ?? _currentPage;
-    _pageType = widget.pageType;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final tabs = _pageType == "pickupFromCustomer" ? {
-      'NewOrders': NewOrdersWidget(),
-      'Pricing': PricingWidget(),
-      'Profile': ProfileWidget(),
-    } : {
-      'PackedOrders': PackedOrdersWidget(),
-      'Pricing': PricingWidget(),
-      'Profile': ProfileWidget(),
-    };
-    final currentIndex = tabs.keys.toList().indexOf(_currentPage);
-    return Scaffold(
-      body: tabs[_currentPage],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (i) => setState(() => _currentPage = tabs.keys.toList()[i]),
-        backgroundColor: Colors.white,
-        selectedItemColor: FlutterFlowTheme.primaryColor,
-        unselectedItemColor: Color(0x8A000000),
-        showSelectedLabels: true,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              FontAwesomeIcons.clipboard,
-              size: 23,
-            ),
-            activeIcon: FaIcon(
-              FontAwesomeIcons.clipboardList,
-              size: 23,
-            ),
-            label: '•',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.loyalty_outlined,
-              size: 25,
-            ),
-            activeIcon: Icon(
-              Icons.loyalty_rounded,
-              size: 25,
-            ),
-            label: '•',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-              size: 30,
-            ),
-            label: '•',
-            tooltip: '',
-          )
-        ],
-      ),
-    );
-  }
-}
-

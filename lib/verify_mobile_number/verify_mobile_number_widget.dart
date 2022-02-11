@@ -142,20 +142,20 @@ class _VerifyMobileNumberWidgetState extends State<VerifyMobileNumberWidget> {
                   if (phoneVerifiedUser == null) {
                     return;
                   }
-                  if ((currentUserDisplayName) != '' && (currentUserDisplayName) != null) {
+                  if ((currentUserDisplayName) != '') {
                     await Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => CustomerNavBarPage(initialPage: 'Home'),
+                        builder: (context) => EnterYourInfoWidget(),
                       ),
                       (r) => false,
                     );
                   }
-                  if ((currentUserDisplayName) == '' || (currentUserDisplayName) == null) {
+                  if ((currentUserDisplayName) == '') {
                     await Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => EnterYourInfoWidget(),
+                        builder: (context) => NavBarPage(initialPage: 'Home'),
                       ),
                     );
                   }

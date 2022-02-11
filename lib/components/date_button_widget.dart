@@ -1,13 +1,11 @@
-import 'package:flutter/material.dart';
-
-import '../flutter_flow/custom_functions.dart' as functions;
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/custom_functions.dart' as functions;
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class DateButtonWidget extends StatefulWidget {
-  const DateButtonWidget({Key key, @required this.notifyParent}) : super(key: key);
-
-  final Function() notifyParent;
+  const DateButtonWidget({Key key}) : super(key: key);
 
   @override
   _DateButtonWidgetState createState() => _DateButtonWidgetState();
@@ -18,7 +16,10 @@ class _DateButtonWidgetState extends State<DateButtonWidget> {
   Widget build(BuildContext context) {
     return Builder(
       builder: (context) {
-        final dateMonthDay = (functions.integerListGenerator(12)?.toList() ?? []).take(12).toList();
+        final dateMonthDay =
+            (functions.integerListGenerator(12)?.toList() ?? [])
+                .take(12)
+                .toList();
         return ListView.builder(
           padding: EdgeInsets.zero,
           scrollDirection: Axis.horizontal,
@@ -40,21 +41,12 @@ class _DateButtonWidgetState extends State<DateButtonWidget> {
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                       child: InkWell(
-                        onTap: () => setState(() {
-                            FFAppState().selectedDateDayMonth = dateMonthDayItem;
-                            DateTime time = DateTime.now();
-                            FFAppState().pickupDateDayMonth = DateTime(
-                                time.year,
-                                FFAppState().monthToIntMapper[functions.listDateMonthDay('Month', dateMonthDayItem)],
-                                int.parse(functions.listDateMonthDay('Date', dateMonthDayItem)),
-                                time.hour,
-                                time.minute,
-                                time.second,
-                                time.millisecond,
-                                time.microsecond);
-                            print(FFAppState().pickupDateDayMonth);
-                            widget.notifyParent();
-                          }),
+                        onTap: () async {
+                          setState(() => FFAppState().selectedDateDayMonth =
+                              dateMonthDayItem);
+                          setState(() => FFAppState().pickupDateDayMonth =
+                              '${functions.listDateMonthDay('Day', dateMonthDayItem)} ${functions.listDateMonthDay('Month', dateMonthDayItem)} ${functions.listDateMonthDay('Day', dateMonthDayItem)}');
+                        },
                         child: Container(
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -65,13 +57,15 @@ class _DateButtonWidgetState extends State<DateButtonWidget> {
                             ),
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(30, 5, 30, 5),
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(30, 5, 30, 5),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  functions.listDateMonthDay('Date', dateMonthDayItem),
+                                  functions.listDateMonthDay(
+                                      'Date', dateMonthDayItem),
                                   style: FlutterFlowTheme.title1.override(
                                     fontFamily: 'Lato',
                                     color: FlutterFlowTheme.secondaryColor,
@@ -80,7 +74,8 @@ class _DateButtonWidgetState extends State<DateButtonWidget> {
                                   ),
                                 ),
                                 Text(
-                                  functions.listDateMonthDay('Month', dateMonthDayItem),
+                                  functions.listDateMonthDay(
+                                      'Month', dateMonthDayItem),
                                   style: FlutterFlowTheme.title3.override(
                                     fontFamily: 'Lato',
                                     color: FlutterFlowTheme.secondaryColor,
@@ -88,7 +83,8 @@ class _DateButtonWidgetState extends State<DateButtonWidget> {
                                   ),
                                 ),
                                 Text(
-                                  functions.listDateMonthDay('Day', dateMonthDayItem),
+                                  functions.listDateMonthDay(
+                                      'Day', dateMonthDayItem),
                                   style: FlutterFlowTheme.title3.override(
                                     fontFamily: 'Lato',
                                     color: FlutterFlowTheme.secondaryColor,
@@ -120,7 +116,8 @@ class _DateButtonWidgetState extends State<DateButtonWidget> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                functions.listDateMonthDay('Date', dateMonthDayItem),
+                                functions.listDateMonthDay(
+                                    'Date', dateMonthDayItem),
                                 style: FlutterFlowTheme.title1.override(
                                   fontFamily: 'Lato',
                                   color: Colors.white,
@@ -129,7 +126,8 @@ class _DateButtonWidgetState extends State<DateButtonWidget> {
                                 ),
                               ),
                               Text(
-                                functions.listDateMonthDay('Month', dateMonthDayItem),
+                                functions.listDateMonthDay(
+                                    'Month', dateMonthDayItem),
                                 style: FlutterFlowTheme.title3.override(
                                   fontFamily: 'Lato',
                                   color: Colors.white,
@@ -137,7 +135,8 @@ class _DateButtonWidgetState extends State<DateButtonWidget> {
                                 ),
                               ),
                               Text(
-                                functions.listDateMonthDay('Day', dateMonthDayItem),
+                                functions.listDateMonthDay(
+                                    'Day', dateMonthDayItem),
                                 style: FlutterFlowTheme.title3.override(
                                   fontFamily: 'Lato',
                                   color: Colors.white,

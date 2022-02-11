@@ -1,5 +1,3 @@
-import 'package:rinse/worker_login/worker_login_widget.dart';
-
 import '../customer_login/customer_login_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -73,13 +71,8 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
                     child: FFButtonWidget(
-                      onPressed: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => WorkerLoginWidget(),
-                          ),
-                        );
+                      onPressed: () {
+                        print('Button pressed ...');
                       },
                       text: 'Worker',
                       options: FFButtonOptions(
@@ -101,13 +94,8 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
                     child: FFButtonWidget(
-                      onPressed: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => WorkerLoginWidget(),
-                          ),
-                        );
+                      onPressed: () {
+                        print('Button pressed ...');
                       },
                       text: 'Admin',
                       options: FFButtonOptions(

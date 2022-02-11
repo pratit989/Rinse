@@ -1,28 +1,23 @@
-import 'package:flutter/material.dart';
-
 import '../backend/backend.dart';
 import '../components/clothes_list_tab_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../schedule_pickup/schedule_pickup_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CleaningPressingPricingWidget extends StatefulWidget {
   const CleaningPressingPricingWidget({Key key}) : super(key: key);
 
   @override
-  _CleaningPressingPricingWidgetState createState() => _CleaningPressingPricingWidgetState();
+  _CleaningPressingPricingWidgetState createState() =>
+      _CleaningPressingPricingWidgetState();
 }
 
-class _CleaningPressingPricingWidgetState extends State<CleaningPressingPricingWidget> {
+class _CleaningPressingPricingWidgetState
+    extends State<CleaningPressingPricingWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    FFAppState().serviceSelected = 'Cleaning & Pressing';
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,16 +97,22 @@ class _CleaningPressingPricingWidgetState extends State<CleaningPressingPricingW
                         ),
                       );
                     }
-                    List<PricingRecord> listViewPricingRecordList = snapshot.data;
+                    List<PricingRecord> listViewPricingRecordList =
+                        snapshot.data;
                     // Return an empty Container when the document does not exist.
                     if (snapshot.data.isEmpty) {
                       return Container();
                     }
-                    final listViewPricingRecord = listViewPricingRecordList.isNotEmpty ? listViewPricingRecordList.first : null;
+                    final listViewPricingRecord =
+                        listViewPricingRecordList.isNotEmpty
+                            ? listViewPricingRecordList.first
+                            : null;
                     return Builder(
                       builder: (context) {
-                        final clothName = listViewPricingRecord.clothsList.toList()?.toList() ?? [];
-                        final clothPrice = listViewPricingRecord.clothsPriceList.toList()?.toList() ?? [];
+                        final clothName = listViewPricingRecord.clothsList
+                                .toList()
+                                ?.toList() ??
+                            [];
                         return ListView.builder(
                           padding: EdgeInsets.zero,
                           shrinkWrap: true,
@@ -119,16 +120,15 @@ class _CleaningPressingPricingWidgetState extends State<CleaningPressingPricingW
                           itemCount: clothName.length,
                           itemBuilder: (context, clothNameIndex) {
                             final clothNameItem = clothName[clothNameIndex];
-                            final clothPriceItem = clothPrice[clothNameIndex];
                             return Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
                               child: ClothesListTabWidget(
                                 clothName: clothNameItem,
-                                pricePerPiece: clothPriceItem,
-                                index: clothNameIndex,
-                                onAddToCartPressed: () => setState(() {
-                                  FFAppState().cleaningPressingCartItems[clothNameIndex] = [clothName[clothNameIndex], clothPrice[clothNameIndex], 1];
-                                }),
+                                pricePerPiece: listViewPricingRecord
+                                    .clothsPriceList
+                                    .toList()
+                                    .length,
                               ),
                             );
                           },

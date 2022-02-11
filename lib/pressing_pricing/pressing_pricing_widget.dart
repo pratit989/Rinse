@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
-
 import '../backend/backend.dart';
 import '../components/clothes_list_tab_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../schedule_pickup/schedule_pickup_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class PressingPricingWidget extends StatefulWidget {
   const PressingPricingWidget({Key key}) : super(key: key);
@@ -16,13 +16,6 @@ class PressingPricingWidget extends StatefulWidget {
 
 class _PressingPricingWidgetState extends State<PressingPricingWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    FFAppState().serviceSelected = 'Pressing';
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,17 +95,23 @@ class _PressingPricingWidgetState extends State<PressingPricingWidget> {
                         ),
                       );
                     }
-                    List<PressingPricingRecord> listViewPressingPricingRecordList = snapshot.data;
+                    List<PressingPricingRecord>
+                        listViewPressingPricingRecordList = snapshot.data;
                     // Return an empty Container when the document does not exist.
                     if (snapshot.data.isEmpty) {
                       return Container();
                     }
                     final listViewPressingPricingRecord =
-                        listViewPressingPricingRecordList.isNotEmpty ? listViewPressingPricingRecordList.first : null;
+                        listViewPressingPricingRecordList.isNotEmpty
+                            ? listViewPressingPricingRecordList.first
+                            : null;
                     return Builder(
                       builder: (context) {
-                        final clothName = listViewPressingPricingRecord.clothsList.toList()?.toList() ?? [];
-                        final clothPrice = listViewPressingPricingRecord.clothsPriceList.toList()?.toList() ?? [];
+                        final clothName = listViewPressingPricingRecord
+                                .clothsList
+                                .toList()
+                                ?.toList() ??
+                            [];
                         return ListView.builder(
                           padding: EdgeInsets.zero,
                           shrinkWrap: true,
@@ -120,16 +119,15 @@ class _PressingPricingWidgetState extends State<PressingPricingWidget> {
                           itemCount: clothName.length,
                           itemBuilder: (context, clothNameIndex) {
                             final clothNameItem = clothName[clothNameIndex];
-                            final clothPriceItem = clothPrice[clothNameIndex];
                             return Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
                               child: ClothesListTabWidget(
                                 clothName: clothNameItem,
-                                pricePerPiece: clothPriceItem,
-                                index: clothNameIndex,
-                                onAddToCartPressed: () => setState(() {
-                                  FFAppState().pressingCartItems[clothNameIndex] = [clothName[clothNameIndex], clothPrice[clothNameIndex], 1];
-                                }),
+                                pricePerPiece: listViewPressingPricingRecord
+                                    .clothsPriceList
+                                    .toList()
+                                    .length,
                               ),
                             );
                           },

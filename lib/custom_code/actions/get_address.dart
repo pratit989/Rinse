@@ -19,7 +19,7 @@ Future getAddress(LatLng location) async {
   String postalCode = placeMark.postalCode;
   String country = placeMark.country;
   String address =
-      "$name, | $locality, | $administrativeArea | $postalCode";
+      "${name}, ${subLocality}, ${locality}, ${administrativeArea} ${postalCode}, ${country}";
 
   return address;
 }

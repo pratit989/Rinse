@@ -3,7 +3,6 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:timeago/timeago.dart' as timeago;
-import '../app_state.dart';
 import 'lat_lng.dart';
 import 'place.dart';
 import '../backend/backend.dart';
@@ -74,7 +73,7 @@ bool timeCardVisiblityCheck(int cardNumber) {
       time.second,
       time.millisecond,
       time.microsecond);
-  return time.hour < selectedTime.hour ? true : FFAppState().pickupDateDayMonth.day != time.day ? true : false;
+  return time.hour < selectedTime.hour ? true : false;
 }
 
 bool selectedTimeCard(
