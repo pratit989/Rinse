@@ -17,6 +17,7 @@ class CustomerMyOrdersWidget extends StatefulWidget {
 
 class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  String orderViewStatus = 'Booked';
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +86,9 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                         padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
                         child: FFButtonWidget(
                           onPressed: () {
-                            print('Button pressed ...');
+                            setState(() {
+                              orderViewStatus = 'Booked';
+                            });
                           },
                           text: 'Booked',
                           options: FFButtonOptions(
@@ -108,7 +111,9 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                         padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
                         child: FFButtonWidget(
                           onPressed: () {
-                            print('Button pressed ...');
+                            setState(() {
+                              orderViewStatus = 'Ongoing';
+                            });
                           },
                           text: 'Ongoing',
                           options: FFButtonOptions(
@@ -129,7 +134,9 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () {
-                          print('Button pressed ...');
+                          setState(() {
+                            orderViewStatus = 'Completed';
+                          });
                         },
                         text: 'Completed',
                         options: FFButtonOptions(
@@ -155,7 +162,7 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                   child: Container(
                     height: MediaQuery.of(context).size.height*0.73,
                     child: StreamBuilder<List<OrdersRecord>>(
-                        stream: queryOrdersRecord(),
+                        stream: queryOrdersRecord(queryBuilder: (obj) => obj.where('customer_order_status', isEqualTo: orderViewStatus)),
                         builder: (context, snapshot) {
                           if (!snapshot.hasData) {
                             return Center(
