@@ -34,7 +34,7 @@ class _VerifyMobileNumberWidgetState extends State<VerifyMobileNumberWidget> {
       key: formKey,
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF5F5F5),
+        backgroundColor: Colors.white,
         body: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -53,7 +53,7 @@ class _VerifyMobileNumberWidgetState extends State<VerifyMobileNumberWidget> {
                     size: 30,
                   ),
                   onPressed: () async {
-                    await Navigator.push(
+                    await Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                         builder: (context) => CustomerLoginWidget(),

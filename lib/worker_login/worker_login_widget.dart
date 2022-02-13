@@ -19,6 +19,8 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
   bool passwordInputVisibility;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  bool _emailEditing;
+  bool _passwordEditing;
 
   @override
   void initState() {
@@ -26,6 +28,8 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
     emailInputController = TextEditingController();
     passwordInputController = TextEditingController();
     passwordInputVisibility = false;
+    _passwordEditing = false;
+    _emailEditing = false;
   }
 
   @override
@@ -34,7 +38,7 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
       key: formKey,
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF5F5F5),
+        backgroundColor: Colors.white,
         body: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -78,11 +82,10 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.8,
-                    height: MediaQuery.of(context).size.height * 0.05,
                     decoration: BoxDecoration(
-                      color: Color(0xFFFAFAFA),
+                      color: _emailEditing ? Colors.transparent : Colors.white,
                       boxShadow: [
-                        BoxShadow(
+                        _emailEditing ? BoxShadow(color: Color.fromARGB(0, 0, 0, 0), offset: Offset(0, 0), blurRadius: 0) : BoxShadow(
                           blurRadius: 2,
                           color: Color(0x12000000),
                           offset: Offset(0, 2),
@@ -91,18 +94,26 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                       ],
                       borderRadius: BorderRadius.circular(10),
                       shape: BoxShape.rectangle,
-                      border: Border.all(
-                        color: Colors.transparent,
-                      ),
+                      border: _emailEditing ? Border.all(
+                          color: Color(0x1F4444A3),
+                          width: 0.5
+                      ) : Border.all(width: 0, color: Colors.transparent, style: BorderStyle.none),
                     ),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
+                      padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
                       child: TextFormField(
+                        onTap: () {
+                          _emailEditing = true;
+                          _passwordEditing = false;
+                        },
                         controller: emailInputController,
                         obscureText: false,
                         decoration: InputDecoration(
+                          errorBorder: InputBorder.none,
+                          focusedErrorBorder: InputBorder.none,
                           isDense: true,
                           hintText: 'Email Address',
+                          contentPadding: EdgeInsets.symmetric(vertical: 15),
                           hintStyle: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Lato',
                             color: Color(0xFFB1B1B1),
@@ -125,9 +136,10 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                         ),
                         validator: (val) {
                           if (val.isEmpty) {
-                            return 'Please enter your first name';
+                            return 'Please enter your email';
+                          } else if (!val.contains('@')) {
+                            return 'Please enter a valid email';
                           }
-
                           return null;
                         },
                       ),
@@ -138,11 +150,10 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.8,
-                    height: MediaQuery.of(context).size.height * 0.05,
                     decoration: BoxDecoration(
-                      color: Color(0xFFFAFAFA),
+                      color: _passwordEditing ? Colors.transparent : Colors.white,
                       boxShadow: [
-                        BoxShadow(
+                        _passwordEditing ? BoxShadow(color: Color.fromARGB(0, 0, 0, 0), offset: Offset(0, 0), blurRadius: 0) : BoxShadow(
                           blurRadius: 2,
                           color: Color(0x12000000),
                           offset: Offset(0, 2),
@@ -151,18 +162,26 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                       ],
                       borderRadius: BorderRadius.circular(10),
                       shape: BoxShape.rectangle,
-                      border: Border.all(
-                        color: Colors.transparent,
-                      ),
+                      border: _passwordEditing ? Border.all(
+                          color: Color(0x1F4444A3),
+                          width: 0.5
+                      ) : Border.all(width: 0, color: Colors.transparent, style: BorderStyle.none),
                     ),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
+                      padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
                       child: TextFormField(
+                        onTap: () {
+                          _emailEditing = false;
+                          _passwordEditing = true;
+                        },
                         controller: passwordInputController,
                         obscureText: !passwordInputVisibility,
                         decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(vertical: 15),
                           isDense: true,
-                          hintText: 'Set Password',
+                          hintText: 'Enter Password',
+                          errorBorder: InputBorder.none,
+                          focusedErrorBorder: InputBorder.none,
                           hintStyle: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Lato',
                             color: Color(0xFFB1B1B1),
@@ -178,8 +197,8 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                           ),
                           suffixIcon: InkWell(
                             onTap: () => setState(
-                              () => passwordInputVisibility =
-                                  !passwordInputVisibility,
+                                  () => passwordInputVisibility =
+                              !passwordInputVisibility,
                             ),
                             child: Icon(
                               passwordInputVisibility
@@ -198,9 +217,10 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                         ),
                         validator: (val) {
                           if (val.isEmpty) {
-                            return 'Please enter your last name';
+                            return 'Please enter your password';
+                          } else if (val.length < 6) {
+                            return 'Password should be at least 6 digits long';
                           }
-
                           return null;
                         },
                       ),
@@ -213,7 +233,10 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(50, 50, 50, 50),
               child: FFButtonWidget(
                 onPressed: () async {
-                  UsersRecord.collection.doc('admins').get().then((value) async {
+                  if (!formKey.currentState.validate()) {
+                    return;
+                  }
+                  final value = await UsersRecord.collection.doc('admins').get();
                     Map<String, dynamic> usersRecord = value.data();
                     if (!usersRecord['emails'].contains(emailInputController.text)) {
                       final user = await signInWithEmail(
@@ -240,7 +263,6 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Invalid Worker Credentials')));
                     }
-                  });
                 },
                 text: 'Proceed',
                 options: FFButtonOptions(

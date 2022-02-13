@@ -25,7 +25,7 @@ class _ReceivedOrderDetailsWidgetState extends State<ReceivedOrderDetailsWidget>
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(

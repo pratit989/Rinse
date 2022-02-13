@@ -50,8 +50,8 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
         }
        return Scaffold(
           key: scaffoldKey,
-          backgroundColor: Color(0xFFF5F5F5),
-          body: SafeArea(
+         backgroundColor: Colors.white,
+           body: SafeArea(
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,

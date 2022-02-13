@@ -294,6 +294,7 @@ class _AdminReceivedOrdersWidgetState extends State<AdminReceivedOrdersWidget> {
                           },
                           text: 'Received',
                           options: FFButtonOptions(
+                            elevation: 0,
                             width: 110,
                             height: 35,
                             color: adminOrderStatus == 'Received' ? FlutterFlowTheme.secondaryColor : FlutterFlowTheme.tertiaryColor,
@@ -319,6 +320,7 @@ class _AdminReceivedOrdersWidgetState extends State<AdminReceivedOrdersWidget> {
                           },
                           text: 'Packed',
                           options: FFButtonOptions(
+                            elevation: 0,
                             width: 110,
                             height: 35,
                             color: adminOrderStatus == 'Packed' ? FlutterFlowTheme.secondaryColor : FlutterFlowTheme.tertiaryColor,
@@ -342,6 +344,7 @@ class _AdminReceivedOrdersWidgetState extends State<AdminReceivedOrdersWidget> {
                         },
                         text: 'Delivered',
                         options: FFButtonOptions(
+                          elevation: 0,
                           width: 110,
                           height: 35,
                           color: adminOrderStatus == 'Delivered' ? FlutterFlowTheme.secondaryColor : FlutterFlowTheme.tertiaryColor,

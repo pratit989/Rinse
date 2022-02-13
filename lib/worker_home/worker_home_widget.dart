@@ -26,7 +26,7 @@ class _WorkerHomeWidgetState extends State<WorkerHomeWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
@@ -175,49 +175,45 @@ class _WorkerNavBarPageState extends State<WorkerNavBarPage> {
     final currentIndex = tabs.keys.toList().indexOf(_currentPage);
     return Scaffold(
       body: tabs[_currentPage],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (i) => setState(() => _currentPage = tabs.keys.toList()[i]),
-        backgroundColor: Colors.white,
-        selectedItemColor: FlutterFlowTheme.primaryColor,
-        unselectedItemColor: Color(0x8A000000),
-        showSelectedLabels: true,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              FontAwesomeIcons.clipboard,
-              size: 23,
+      bottomNavigationBar: SizedBox(
+        height: MediaQuery.of(context).size.height*0.1,
+        child: BottomNavigationBar(
+          elevation: 0,
+          currentIndex: currentIndex,
+          onTap: (i) => setState(() => _currentPage = tabs.keys.toList()[i]),
+          backgroundColor: Color(0xFFF0F0F0),
+          selectedItemColor: FlutterFlowTheme.primaryColor,
+          unselectedItemColor: Color(0x8A000000),
+          showSelectedLabels: true,
+          showUnselectedLabels: false,
+          type: BottomNavigationBarType.fixed,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage('assets/images/BatteryIcon-min.png'),
+                size: 28,
+              ),
+              label: '•',
+              tooltip: '',
             ),
-            activeIcon: FaIcon(
-              FontAwesomeIcons.clipboardList,
-              size: 23,
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage('assets/images/PricingIcon-min.png'),
+                size: 28,
+              ),
+              label: '•',
+              tooltip: '',
             ),
-            label: '•',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.loyalty_outlined,
-              size: 25,
-            ),
-            activeIcon: Icon(
-              Icons.loyalty_rounded,
-              size: 25,
-            ),
-            label: '•',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-              size: 30,
-            ),
-            label: '•',
-            tooltip: '',
-          )
-        ],
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage('assets/images/ProfileIcon-min.png'),
+                size: 28,
+              ),
+              label: '•',
+              tooltip: '',
+            )
+          ],
+        ),
       ),
     );
   }
