@@ -1,3 +1,4 @@
+import 'package:rinse/admin_login_widget/admin_login_widget.dart';
 import 'package:rinse/worker_login/worker_login_widget.dart';
 
 import '../customer_login/customer_login_widget.dart';
@@ -105,7 +106,7 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                         await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => WorkerLoginWidget(),
+                            builder: (context) => AdminLoginWidget(),
                           ),
                         );
                       },

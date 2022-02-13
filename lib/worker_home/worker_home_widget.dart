@@ -1,14 +1,16 @@
+import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rinse/auth/auth_util.dart';
 import 'package:rinse/backend/backend.dart';
+import 'package:rinse/ongoing_delivered_to_customer/ongoing_delivered_to_customer_widget.dart';
 import 'package:rinse/ongoing_delivered_to_laundry/ongoing_delivered_to_laundry_widget.dart';
+import 'package:rinse/pickup_order_details/pickup_order_details_widget.dart';
 import 'package:rinse/pricing/pricing_widget.dart';
 import 'package:rinse/profile/profile_widget.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../new_orders/new_orders_widget.dart';
 import '../packed_orders/packed_orders_widget.dart';
-import 'package:flutter/material.dart';
 
 class WorkerHomeWidget extends StatefulWidget {
   const WorkerHomeWidget({Key key}) : super(key: key);
@@ -54,11 +56,31 @@ class _WorkerHomeWidgetState extends State<WorkerHomeWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
                 child: InkWell(
                   onTap: () async {
+                    if (currentUserDocument.acceptedOrder == '' || currentUserDocument.acceptedOrder == null) {
+                      await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => WorkerNavBarPage(
+                                  pageType: "pickupFromCustomer",
+                                  initialPage: 'NewOrders',
+                                )),
+                      );
+                    }
+                    final OrdersRecord ordersRecord =
+                        await OrdersRecord.getDocumentOnce(OrdersRecord.collection.doc(currentUserDocument.acceptedOrder));
                     await Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => currentUserDocument.acceptedOrder == '' || currentUserDocument.acceptedOrder == null ? WorkerNavBarPage(pageType: "pickupFromCustomer", initialPage: 'NewOrders',) : OngoingDeliveredToLaundryWidget(documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder),),
-                      ),
+                          builder: (context) => (ordersRecord.adminOrderStatus == '' || ordersRecord.adminOrderStatus == null)
+                              ? OngoingDeliveredToLaundryWidget(
+                                  documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder),
+                                )
+                              : (ordersRecord.adminOrderStatus == 'Packed')
+                                  ? PickupOrderDetailsWidget(documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder))
+                                  : (ordersRecord.adminOrderStatus == 'OutForDelivery')
+                                      ? OngoingDeliveredToCustomerWidget(
+                                          documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder))
+                                      : Container()),
                     );
                   },
                   child: Image.asset(
@@ -72,11 +94,32 @@ class _WorkerHomeWidgetState extends State<WorkerHomeWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 60, 0, 0),
                 child: InkWell(
                   onTap: () async {
+                    if (currentUserDocument.acceptedOrder == '' || currentUserDocument.acceptedOrder == null) {
+                      await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => WorkerNavBarPage(
+                            pageType: "pickupFromLaundry",
+                            initialPage: 'PackedOrders',
+                          ),
+                        ),
+                      );
+                    }
+                    final OrdersRecord ordersRecord =
+                    await OrdersRecord.getDocumentOnce(OrdersRecord.collection.doc(currentUserDocument.acceptedOrder));
                     await Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => WorkerNavBarPage(pageType: "pickupFromLaundry", initialPage: 'PackedOrders',),
-                      ),
+                          builder: (context) => (ordersRecord.adminOrderStatus == '' || ordersRecord.adminOrderStatus == null)
+                              ? OngoingDeliveredToLaundryWidget(
+                            documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder),
+                          )
+                              : (ordersRecord.adminOrderStatus == 'Packed')
+                              ? PickupOrderDetailsWidget(documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder))
+                              : (ordersRecord.adminOrderStatus == 'OutForDelivery')
+                              ? OngoingDeliveredToCustomerWidget(
+                              documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder))
+                              : Container()),
                     );
                   },
                   child: Image.asset(
@@ -118,15 +161,17 @@ class _WorkerNavBarPageState extends State<WorkerNavBarPage> {
 
   @override
   Widget build(BuildContext context) {
-    final tabs = _pageType == "pickupFromCustomer" ? {
-      'NewOrders': NewOrdersWidget(),
-      'Pricing': PricingWidget(),
-      'Profile': ProfileWidget(),
-    } : {
-      'PackedOrders': PackedOrdersWidget(),
-      'Pricing': PricingWidget(),
-      'Profile': ProfileWidget(),
-    };
+    final tabs = _pageType == "pickupFromCustomer"
+        ? {
+            'NewOrders': NewOrdersWidget(),
+            'Pricing': PricingWidget(),
+            'Profile': ProfileWidget(),
+          }
+        : {
+            'PackedOrders': PackedOrdersWidget(),
+            'Pricing': PricingWidget(),
+            'Profile': ProfileWidget(),
+          };
     final currentIndex = tabs.keys.toList().indexOf(_currentPage);
     return Scaffold(
       body: tabs[_currentPage],
@@ -177,4 +222,3 @@ class _WorkerNavBarPageState extends State<WorkerNavBarPage> {
     );
   }
 }
-

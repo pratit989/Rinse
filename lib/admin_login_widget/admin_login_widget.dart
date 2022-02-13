@@ -1,19 +1,20 @@
+
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../worker_home/worker_home_widget.dart';
+import '../main.dart';
 import 'package:flutter/material.dart';
 
-class WorkerLoginWidget extends StatefulWidget {
-  const WorkerLoginWidget({Key key}) : super(key: key);
+class AdminLoginWidget extends StatefulWidget {
+  const AdminLoginWidget({Key key}) : super(key: key);
 
   @override
-  _WorkerLoginWidgetState createState() => _WorkerLoginWidgetState();
+  _AdminLoginWidgetState createState() => _AdminLoginWidgetState();
 }
 
-class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
+class _AdminLoginWidgetState extends State<AdminLoginWidget> {
   TextEditingController emailInputController;
   TextEditingController passwordInputController;
   bool passwordInputVisibility;
@@ -178,8 +179,8 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                           ),
                           suffixIcon: InkWell(
                             onTap: () => setState(
-                              () => passwordInputVisibility =
-                                  !passwordInputVisibility,
+                                  () => passwordInputVisibility =
+                              !passwordInputVisibility,
                             ),
                             child: Icon(
                               passwordInputVisibility
@@ -213,9 +214,12 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(50, 50, 50, 50),
               child: FFButtonWidget(
                 onPressed: () async {
+                  if (!formKey.currentState.validate()) {
+                    return;
+                  }
                   UsersRecord.collection.doc('admins').get().then((value) async {
                     Map<String, dynamic> usersRecord = value.data();
-                    if (!usersRecord['emails'].contains(emailInputController.text)) {
+                    if (usersRecord['emails'].contains(emailInputController.text)) {
                       final user = await signInWithEmail(
                         context,
                         emailInputController.text,
@@ -225,20 +229,22 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                         return;
                       }
 
-                      final usersUpdateData = createUsersRecordData(
-                        email: emailInputController.text,
-                        userType: 'Worker',
-                      );
-                      await currentUserReference.update(usersUpdateData);
+                      if (currentUserDocument == null || currentUserDocument.userType != 'Admin') {
+                        final usersUpdateData = createUsersRecordData(
+                          email: emailInputController.text,
+                          userType: 'Admin',
+                        );
+                        await currentUserReference.update(usersUpdateData);
+                      }
                       await Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => WorkerHomeWidget(),
+                          builder: (context) => AdminNavBarPage(),
                         ),
                             (r) => false,
                       );
                     } else {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Invalid Worker Credentials')));
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Invalid Admin Credentials')));
                     }
                   });
                 },

@@ -1,3 +1,5 @@
+import 'package:rinse/auth/auth_util.dart';
+
 import '../accept_order_details/accept_order_details_widget.dart';
 import '../backend/backend.dart';
 import '../backend/schema/orders_record.dart';
@@ -81,7 +83,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                         );
                       }
 
-                      if (snapshot.data.isEmpty) {
+                      if (snapshot.data.isEmpty || currentUserDocument.acceptedOrder != null) {
                         return Container();
                       }
 

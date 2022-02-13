@@ -17,7 +17,7 @@ class CustomerMyOrdersWidget extends StatefulWidget {
 
 class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  String orderViewStatus = 'Booked';
+  String customerOrderStatus = 'Booked';
 
   @override
   Widget build(BuildContext context) {
@@ -87,21 +87,21 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                         child: FFButtonWidget(
                           onPressed: () {
                             setState(() {
-                              orderViewStatus = 'Booked';
+                              customerOrderStatus = 'Booked';
                             });
                           },
                           text: 'Booked',
                           options: FFButtonOptions(
                             width: 110,
                             height: 35,
-                            color: FlutterFlowTheme.secondaryColor,
+                            color: customerOrderStatus == 'Booked' ? FlutterFlowTheme.secondaryColor : FlutterFlowTheme.tertiaryColor,
                             textStyle: FlutterFlowTheme.subtitle2.override(
                               fontFamily: 'Open Sans',
-                              color: Colors.white,
+                              color: customerOrderStatus == 'Booked' ? Colors.white : Color(0xFF9C9C9C),
                               fontSize: 14,
                             ),
                             borderSide: BorderSide(
-                              color: Colors.transparent,
+                              color: customerOrderStatus == 'Booked' ? Colors.transparent : Color(0xFF949496),
                             ),
                             borderRadius: 12,
                           ),
@@ -112,21 +112,21 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                         child: FFButtonWidget(
                           onPressed: () {
                             setState(() {
-                              orderViewStatus = 'Ongoing';
+                              customerOrderStatus = 'Ongoing';
                             });
                           },
                           text: 'Ongoing',
                           options: FFButtonOptions(
                             width: 110,
                             height: 35,
-                            color: FlutterFlowTheme.tertiaryColor,
+                            color: customerOrderStatus == 'Ongoing' ? FlutterFlowTheme.secondaryColor : FlutterFlowTheme.tertiaryColor,
                             textStyle: FlutterFlowTheme.subtitle2.override(
                               fontFamily: 'Open Sans',
-                              color: Color(0xFF9C9C9C),
+                              color: customerOrderStatus == 'Ongoing' ? Colors.white : Color(0xFF9C9C9C),
                               fontSize: 14,
                             ),
                             borderSide: BorderSide(
-                              color: Color(0xFF949496),
+                              color: customerOrderStatus == 'Ongoing' ? Colors.transparent : Color(0xFF949496),
                             ),
                             borderRadius: 12,
                           ),
@@ -135,21 +135,21 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                       FFButtonWidget(
                         onPressed: () {
                           setState(() {
-                            orderViewStatus = 'Completed';
+                            customerOrderStatus = 'Completed';
                           });
                         },
                         text: 'Completed',
                         options: FFButtonOptions(
                           width: 110,
                           height: 35,
-                          color: FlutterFlowTheme.tertiaryColor,
+                          color: customerOrderStatus == 'Completed' ? FlutterFlowTheme.secondaryColor : FlutterFlowTheme.tertiaryColor,
                           textStyle: FlutterFlowTheme.subtitle2.override(
                             fontFamily: 'Open Sans',
-                            color: Color(0xFF9C9C9C),
+                            color: customerOrderStatus == 'Completed' ? Colors.white : Color(0xFF9C9C9C),
                             fontSize: 14,
                           ),
                           borderSide: BorderSide(
-                            color: Color(0xFF949496),
+                            color: customerOrderStatus == 'Completed' ? Colors.transparent : Color(0xFF949496),
                           ),
                           borderRadius: 12,
                         ),
@@ -162,7 +162,7 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                   child: Container(
                     height: MediaQuery.of(context).size.height*0.73,
                     child: StreamBuilder<List<OrdersRecord>>(
-                        stream: queryOrdersRecord(queryBuilder: (obj) => obj.where('customer_order_status', isEqualTo: orderViewStatus)),
+                        stream: queryOrdersRecord(queryBuilder: (obj) => obj.where('customer_order_status', isEqualTo: customerOrderStatus)),
                         builder: (context, snapshot) {
                           if (!snapshot.hasData) {
                             return Center(

@@ -37,7 +37,7 @@ class _AcceptOrderDetailsWidgetState extends State<AcceptOrderDetailsWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(10, 0, 50, 0),
+                      padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                       child: FlutterFlowIconButton(
                         borderColor: Colors.transparent,
                         borderRadius: 30,
@@ -53,10 +53,9 @@ class _AcceptOrderDetailsWidgetState extends State<AcceptOrderDetailsWidget> {
                         },
                       )
                     ),
-                    Align(
-                      alignment: AlignmentDirectional(0, 0),
+                    Expanded(
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(40, 0, 0, 0),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 70, 0),
                         child: Text(
                           'Order Details',
                           textAlign: TextAlign.center,
@@ -479,7 +478,7 @@ class _AcceptOrderDetailsWidgetState extends State<AcceptOrderDetailsWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () async {
-                          FirebaseFirestore.instance.runTransaction((transaction) async{
+                          await FirebaseFirestore.instance.runTransaction((transaction) async{
                             // Order Reads
                             DocumentReference orderRef = widget.documentReference;
                             DocumentSnapshot orderSnapshot = await transaction.get(orderRef);
@@ -492,12 +491,16 @@ class _AcceptOrderDetailsWidgetState extends State<AcceptOrderDetailsWidget> {
                             String acceptedOrder = userData.containsKey('accepted_order') ? userData['accepted_order'] : null;
                             // Remember to do all the writes at the End
                             transaction.update(orderRef,{
-                              'customer_order_status' : status == 'Booked' ? 'Ongoing' : status
+                              'customer_order_status' : status != 'Ongoing' ? 'Ongoing' : status,
+                              'assigned_worker' : currentUserUid
                             });
                             transaction.update(userRef, {
                               'accepted_order' : (acceptedOrder == '' || acceptedOrder == null) && status == 'Booked'? orderRef.id : acceptedOrder
                             });
-                          }).whenComplete(() => Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => OngoingDeliveredToLaundryWidget(documentReference: snapshot.data.reference,)), (route) => route.isFirst));
+                          });
+                          if (currentUserDocument.acceptedOrder == widget.documentReference.id) {
+                            Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => OngoingDeliveredToLaundryWidget(documentReference: snapshot.data.reference,)), (route) => route.isFirst);
+                          }
                         },
                         text: 'Accept',
                         options: FFButtonOptions(

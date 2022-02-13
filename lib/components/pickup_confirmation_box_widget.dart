@@ -1,17 +1,19 @@
+import 'package:rinse/backend/backend.dart';
+
+import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-class ConfirmationBoxWidget extends StatefulWidget {
-  const ConfirmationBoxWidget({Key key}) : super(key: key);
+class PickupConfirmationBoxWidget extends StatefulWidget {
+  const PickupConfirmationBoxWidget({Key key, @required this.documentReference}) : super(key: key);
+  final DocumentReference documentReference;
 
   @override
-  _ConfirmationBoxWidgetState createState() => _ConfirmationBoxWidgetState();
+  _PickupConfirmationBoxWidgetState createState() => _PickupConfirmationBoxWidgetState();
 }
 
-class _ConfirmationBoxWidgetState extends State<ConfirmationBoxWidget> {
+class _PickupConfirmationBoxWidgetState extends State<PickupConfirmationBoxWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,21 +36,9 @@ class _ConfirmationBoxWidgetState extends State<ConfirmationBoxWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
-                child: Text(
-                  'Order Received from worker',
-                  style: FlutterFlowTheme.bodyText1.override(
-                    fontFamily: 'Lato',
-                    color: Color(0xFF818181),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-              Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                 child: Text(
-                  'Confirmation?',
+                  'Confirm Pickup?',
                   style: FlutterFlowTheme.bodyText1.override(
                     fontFamily: 'Lato',
                     fontSize: 16,
@@ -63,8 +53,21 @@ class _ConfirmationBoxWidgetState extends State<ConfirmationBoxWidget> {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
                     child: FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
+                      onPressed: () async {
+                        await FirebaseFirestore.instance.runTransaction((transaction) async{
+                          // Order Reads
+                          DocumentReference orderRef = widget.documentReference;
+                          DocumentSnapshot orderSnapshot = await transaction.get(orderRef);
+                          Map<String, dynamic> orderData = orderSnapshot.data();
+                          transaction.update(orderRef, {
+                            'admin_order_status' : orderData['admin_order_status'] != 'OutForDelivery' ? 'OutForDelivery' : orderData['admin_order_status']
+                          });
+                        });
+
+                        final doc = await OrdersRecord.getDocumentOnce(widget.documentReference);
+                        if (doc.adminOrderStatus == 'OutForDelivery') {
+                          return Navigator.pop(context);
+                        }
                       },
                       text: 'YES',
                       options: FFButtonOptions(
@@ -86,8 +89,26 @@ class _ConfirmationBoxWidgetState extends State<ConfirmationBoxWidget> {
                     ),
                   ),
                   FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
+                    onPressed: () async {
+                      await FirebaseFirestore.instance.runTransaction((transaction) async{
+                        // Order Reads
+                        DocumentReference orderRef = widget.documentReference;
+                        DocumentSnapshot orderSnapshot = await transaction.get(orderRef);
+                        Map<String, dynamic> orderData = orderSnapshot.data();
+                        // User Reads
+                        DocumentReference userRef = currentUserReference;
+                        // Remember to do all the writes at the End
+                        transaction.update(userRef, {
+                          'accepted_order' : null
+                        });
+                        transaction.update(orderRef, {
+                          'assigned_worker' : null
+                        });
+                      });
+                      final doc = await OrdersRecord.getDocumentOnce(widget.documentReference);
+                      if (doc.assignedWorker == null) {
+                        return Navigator.pop(context);
+                      }
                     },
                     text: 'NO',
                     options: FFButtonOptions(

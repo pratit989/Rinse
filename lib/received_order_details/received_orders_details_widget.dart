@@ -1,26 +1,24 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:rinse/new_orders/new_orders_widget.dart';
+import 'package:rinse/auth/auth_util.dart';
+import 'package:rinse/backend/backend.dart';
+import 'package:rinse/flutter_flow/flutter_flow_icon_button.dart';
+import 'package:collection/collection.dart';
+import 'package:rinse/ongoing_delivered_to_laundry/ongoing_delivered_to_laundry_widget.dart';
 
-import '../auth/auth_util.dart';
-import '../backend/schema/orders_record.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../order_delivered_to_laundry/order_delivered_to_laundry_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:collection/collection.dart';
 
-class OngoingDeliveredToLaundryWidget extends StatefulWidget {
-  const OngoingDeliveredToLaundryWidget({Key key, @required this.documentReference}) : super(key: key);
+class ReceivedOrderDetailsWidget extends StatefulWidget {
+  const ReceivedOrderDetailsWidget({Key key, @required this.documentReference}) : super(key: key);
   final DocumentReference documentReference;
 
   @override
-  _OngoingDeliveredToLaundryWidgetState createState() =>
-      _OngoingDeliveredToLaundryWidgetState();
+  _ReceivedOrderDetailsWidgetState createState() =>
+      _ReceivedOrderDetailsWidgetState();
 }
 
-class _OngoingDeliveredToLaundryWidgetState
-    extends State<OngoingDeliveredToLaundryWidget> {
+class _ReceivedOrderDetailsWidgetState extends State<ReceivedOrderDetailsWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -33,29 +31,47 @@ class _OngoingDeliveredToLaundryWidgetState
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Align(
-                alignment: AlignmentDirectional(0, 0),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 20),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                          child: Text(
-                            'Ongoing',
-                            textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.title3.override(
-                              fontFamily: 'Lato',
-                              color: Color(0xFF073131),
-                              fontWeight: FontWeight.bold,
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                          child: FlutterFlowIconButton(
+                            borderColor: Colors.transparent,
+                            borderRadius: 30,
+                            borderWidth: 1,
+                            buttonSize: 60,
+                            icon: Icon(
+                              Icons.arrow_back_ios_sharp,
+                              color: Color(0xFF1F4444),
+                              size: 30,
                             ),
+                            onPressed: () async {
+                              Navigator.pop(context);
+                            },
+                          )
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 70, 0),
+                        child: Text(
+                          'Order Details',
+                          textAlign: TextAlign.center,
+                          style: FlutterFlowTheme.title3.override(
+                            fontFamily: 'Lato',
+                            color: Color(0xFF073131),
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               StreamBuilder<OrdersRecord>(
@@ -72,24 +88,6 @@ class _OngoingDeliveredToLaundryWidgetState
                         ),
                       );
                     }
-
-                    if (snapshot.data.customerOrderStatus != "Ongoing" || snapshot.data.adminOrderStatus != null || (currentUserDocument.acceptedOrder != "" || currentUserDocument.acceptedOrder != null)) {
-                      Future.delayed(Duration.zero, () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NewOrdersWidget())));
-                      return Container();
-                    }
-
-                    if (snapshot.data.adminOrderStatus == 'Received' && (currentUserDocument.acceptedOrder == "" || currentUserDocument.acceptedOrder == null)) {
-                      Future.delayed(Duration.zero,() => Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              OrderDeliveredToLaundryWidget(
-                                documentReference: widget.documentReference,
-                              ),
-                        ),
-                      ));
-                    }
-
 
                     return Column(
                       children: [
@@ -153,7 +151,7 @@ class _OngoingDeliveredToLaundryWidgetState
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 5),
                                   child: Text(
-                                    'To be picked up',
+                                    'To be picked',
                                     style: FlutterFlowTheme.bodyText1.override(
                                       fontFamily: 'Lato',
                                       color: Color(0xFF818181),
@@ -478,46 +476,38 @@ class _OngoingDeliveredToLaundryWidgetState
                             ),
                           ),
                         ),
-                        FFButtonWidget(
-                          onPressed: () async {
-                            await FirebaseFirestore.instance.runTransaction((transaction) async{
-                              // Order Reads
-                              DocumentReference orderRef = widget.documentReference;
-                              DocumentSnapshot orderSnapshot = await transaction.get(orderRef);
-                              Map<String, dynamic> orderData = orderSnapshot.data();
-                              String status = orderData.containsKey('admin_order_status') ? orderData['admin_order_status'] : null;
-                              // Remember to do all the writes at the End
-                              transaction.update(orderRef,{
-                                'admin_order_status' : status ?? 'Received'
-                              });
-                            });
-                            if (snapshot.data.adminOrderStatus == 'Received' && (currentUserDocument.acceptedOrder == "" || currentUserDocument.acceptedOrder == null)) {
-                              return Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      OrderDeliveredToLaundryWidget(
-                                        documentReference: widget.documentReference,
-                                      ),
-                                ),
-                              );
-                            }
-                          },
-                          text: 'Delivered to Laundry',
-                          options: FFButtonOptions(
-                            width: 200,
-                            height: 40,
-                            color: FlutterFlowTheme.secondaryColor,
-                            textStyle: FlutterFlowTheme.subtitle2.override(
-                              fontFamily: 'Lato',
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
+                        Visibility(
+                          visible: snapshot.data.adminOrderStatus == "Received",
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              await FirebaseFirestore.instance.runTransaction((transaction) async{
+                                // Order Reads
+                                DocumentReference orderRef = widget.documentReference;
+                                DocumentSnapshot orderSnapshot = await transaction.get(orderRef);
+                                Map<String, dynamic> orderData = orderSnapshot.data();
+                                String status = orderData.containsKey('admin_order_status') ? orderData['admin_order_status'] : null;
+                                // Remember to do all the writes at the End
+                                transaction.update(orderRef,{
+                                  'admin_order_status' : status != 'Packed' ? 'Packed' : status,
+                                });
+                              }).whenComplete(() => Navigator.pop(context));
+                            },
+                            text: 'Confirm Packing',
+                            options: FFButtonOptions(
+                              width: 200,
+                              height: 40,
+                              color: FlutterFlowTheme.secondaryColor,
+                              textStyle: FlutterFlowTheme.subtitle2.override(
+                                fontFamily: 'Lato',
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                              ),
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1,
+                              ),
+                              borderRadius: 12,
                             ),
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1,
-                            ),
-                            borderRadius: 12,
                           ),
                         ),
                       ],
