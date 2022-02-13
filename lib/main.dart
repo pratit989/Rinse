@@ -1,8 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:rinse/admin_recieved_orders/admin_received_orders_widget.dart';
+import 'package:rinse/admin_received_orders/admin_received_orders_widget.dart';
 import 'package:rinse/backend/backend.dart';
 import 'package:rinse/enter_your_info/enter_your_info_widget.dart';
 import 'package:rinse/welcome/welcome_widget.dart';
