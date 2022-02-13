@@ -1,8 +1,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:rinse/backend/backend.dart';
+import 'package:rinse/components/completed_confirmation_box.dart';
 import 'package:rinse/existing_order_details_widget/existing_order_details_widget.dart';
 
+import '../components/received_confirmation_box_widget.dart';
 import '../customer_order_details/customer_order_details_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -160,7 +162,7 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
                   child: Container(
-                    height: MediaQuery.of(context).size.height*0.73,
+                    height: MediaQuery.of(context).size.height*0.7,
                     child: StreamBuilder<List<OrdersRecord>>(
                         stream: queryOrdersRecord(queryBuilder: (obj) => obj.where('customer_order_status', isEqualTo: customerOrderStatus)),
                         builder: (context, snapshot) {
@@ -195,7 +197,6 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                                     ),
                                     child: Container(
                                         width: MediaQuery.of(context).size.width * 0.9,
-                                        height: MediaQuery.of(context).size.height * 0.16,
                                         decoration: BoxDecoration(
                                           color: Colors.white,
                                           borderRadius: BorderRadius.circular(12),
@@ -275,29 +276,59 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                                                 ),
                                               ],
                                             ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
-                                              child: InkWell(
-                                                onTap: () async {
-                                                  await Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (context) => ExistingOrderDetailsWidget(
-                                                        docRef: _ordersRecords[index].reference,
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
+                                                  child: InkWell(
+                                                    onTap: () async {
+                                                      await Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (context) => ExistingOrderDetailsWidget(
+                                                            docRef: _ordersRecords[index].reference,
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                    child: Text(
+                                                      'View Order Details',
+                                                      style: FlutterFlowTheme.bodyText1.override(
+                                                        fontFamily: 'Lato',
+                                                        color: FlutterFlowTheme.secondaryColor,
+                                                        fontSize: 12,
+                                                        fontWeight: FontWeight.w500,
                                                       ),
                                                     ),
-                                                  );
-                                                },
-                                                child: Text(
-                                                  'View Order Details',
-                                                  style: FlutterFlowTheme.bodyText1.override(
-                                                    fontFamily: 'Lato',
-                                                    color: FlutterFlowTheme.secondaryColor,
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.w500,
                                                   ),
                                                 ),
-                                              ),
+                                                Visibility(
+                                                  visible: _ordersRecords[index].adminOrderStatus == "OutForDelivery" && customerOrderStatus == "Completed",
+                                                  child: Padding(
+                                                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
+                                                    child: InkWell(
+                                                      onTap: () async {
+                                                        await showModalBottomSheet(
+                                                          isScrollControlled: true,
+                                                          backgroundColor: Colors.transparent,
+                                                          barrierColor: Colors.transparent,
+                                                          context: context,
+                                                          builder: (context) {
+                                                            return Padding(
+                                                              padding: MediaQuery.of(context).viewInsets,
+                                                              child: CompletedConfirmationBoxWidget(
+                                                                documentReference: _ordersRecords[index].reference,
+                                                              ),
+                                                            );
+                                                          },
+                                                        );
+                                                      },
+                                                      child: Text(' | Confirm Order Received'),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ],
                                         ))),

@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../auth/auth_util.dart';
 import '../backend/schema/orders_record.dart';
 import '../confirm_delivery/confirm_delivery_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -64,7 +67,12 @@ class _OngoingDeliveredToCustomerWidgetState
                     );
                   }
 
-                  if (snapshot.data.customerOrderStatus != "Ongoing") {
+                  if (snapshot.data.customerOrderStatus != "Ongoing" && snapshot.data.customerOrderStatus != "Completed") {
+                    return Container();
+                  }
+
+                  if (snapshot.data.customerOrderStatus == "Completed" && snapshot.data.adminOrderStatus == "Delivered" && (snapshot.data.assignedWorker == null || snapshot.data.assignedWorker == "")) {
+                    Future.delayed(Duration.zero, () => Navigator.pop(context));
                     return Container();
                   }
 
@@ -456,12 +464,16 @@ class _OngoingDeliveredToCustomerWidgetState
                       ),
                       FFButtonWidget(
                         onPressed: () async {
-                          await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ConfirmDeliveryWidget(),
-                            ),
-                          );
+                          await FirebaseFirestore.instance.runTransaction((transaction) async{
+                            // Order Reads
+                            DocumentReference orderRef = widget.documentReference;
+                            DocumentSnapshot orderSnapshot = await transaction.get(orderRef);
+                            Map<String, dynamic> orderData = orderSnapshot.data();
+
+                            transaction.update(orderRef, {
+                              'customer_order_status': orderData['customer_order_status'] != 'Completed' ? 'Completed' : orderData['customer_order_status']
+                            });
+                          });
                         },
                         text: 'Delivered to Customer',
                         options: FFButtonOptions(

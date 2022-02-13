@@ -1,3 +1,4 @@
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -85,122 +86,127 @@ class _PackedOrdersWidgetState extends State<PackedOrdersWidget> {
 
                         List<OrdersRecord> _ordersRecords = snapshot.data;
 
-                        return ListView.builder(
-                          itemCount: _ordersRecords.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                              child: Material(
-                                color: Colors.transparent,
-                                elevation: 2,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Container(
-                                  width: MediaQuery.of(context).size.width * 0.9,
-                                  height: MediaQuery.of(context).size.height * 0.16,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
+                        if (currentUserDocument.acceptedOrder == null || currentUserDocument.acceptedOrder == "") {
+                          return ListView.builder(
+                            itemCount: _ordersRecords.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                                child: Material(
+                                  color: Colors.transparent,
+                                  elevation: 2,
+                                  shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Container(
-                                        width: MediaQuery.of(context).size.width * 0.9,
-                                        height: MediaQuery.of(context).size.height * 0.05,
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(12),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                          EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional.fromSTEB(
-                                                    20, 0, 0, 0),
-                                                child: Text(
-                                                  'Order Id :    ${_ordersRecords[index].reference.id}',
-                                                  style: FlutterFlowTheme.bodyText1.override(
-                                                    fontFamily: 'Open Sans',
-                                                    color: FlutterFlowTheme.primaryColor,
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w600,
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.width * 0.9,
+                                    height: MediaQuery.of(context).size.height * 0.16,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Container(
+                                          width: MediaQuery.of(context).size.width * 0.9,
+                                          height: MediaQuery.of(context).size.height * 0.05,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.circular(12),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                            EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                                      20, 0, 0, 0),
+                                                  child: Text(
+                                                    'Order Id :    ${_ordersRecords[index].reference.id}',
+                                                    style: FlutterFlowTheme.bodyText1.override(
+                                                      fontFamily: 'Open Sans',
+                                                      color: FlutterFlowTheme.primaryColor,
+                                                      fontSize: 16,
+                                                      fontWeight: FontWeight.w600,
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional.fromSTEB(
-                                                    0, 0, 20, 0),
-                                                child: Text(
-                                                  '₹${_ordersRecords[index].totalCost}',
-                                                  style: FlutterFlowTheme.bodyText1.override(
-                                                    fontFamily: 'Lato',
-                                                    color: Color(0xFF818181),
-                                                    fontWeight: FontWeight.w500,
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                                      0, 0, 20, 0),
+                                                  child: Text(
+                                                    '₹${_ordersRecords[index].totalCost}',
+                                                    style: FlutterFlowTheme.bodyText1.override(
+                                                      fontFamily: 'Lato',
+                                                      color: Color(0xFF818181),
+                                                      fontWeight: FontWeight.w500,
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Divider(
-                                        thickness: 0.5,
-                                        color: Color(0xFF818181),
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                            EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                                        Divider(
+                                          thickness: 0.5,
+                                          color: Color(0xFF818181),
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                              EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                                              child: Text(
+                                                '${DateFormat('dd-MM-yyyy').format(_ordersRecords[index].dateTime)}   |  ${_ordersRecords[index].timeSlot}',
+                                                style: FlutterFlowTheme.bodyText1.override(
+                                                  fontFamily: 'Lato',
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+                                          child: InkWell(
+                                            onTap: () async {
+                                              await Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      PickupOrderDetailsWidget(documentReference: _ordersRecords[index].reference,),
+                                                ),
+                                              );
+                                            },
                                             child: Text(
-                                              '${DateFormat('dd-MM-yyyy').format(_ordersRecords[index].dateTime)}   |  ${_ordersRecords[index].timeSlot}',
+                                              'View Order Details',
                                               style: FlutterFlowTheme.bodyText1.override(
                                                 fontFamily: 'Lato',
+                                                color: FlutterFlowTheme.secondaryColor,
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                             ),
                                           ),
-                                        ],
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
-                                        child: InkWell(
-                                          onTap: () async {
-                                            await Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    PickupOrderDetailsWidget(documentReference: _ordersRecords[index].reference,),
-                                              ),
-                                            );
-                                          },
-                                          child: Text(
-                                            'View Order Details',
-                                            style: FlutterFlowTheme.bodyText1.override(
-                                              fontFamily: 'Lato',
-                                              color: FlutterFlowTheme.secondaryColor,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            );},
-                        );
+                              );},
+                          );
+                        }
+
+                        Future.delayed(Duration.zero, () => Navigator.pop(context));
+                        return Container();
                       }
                   ),
                 ),

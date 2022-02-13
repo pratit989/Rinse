@@ -48,8 +48,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                   )),
                   (route) => route.isFirst));
         }
-
-        return Scaffold(
+       return Scaffold(
           key: scaffoldKey,
           backgroundColor: Color(0xFFF5F5F5),
           body: SafeArea(
@@ -505,9 +504,9 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => OngoingDeliveredToCustomerWidget(
-                                      documentReference: snapshot.data.reference,
-                                    )),
-                            (route) => route.isFirst);
+                                  documentReference: snapshot.data.reference,
+                                )),
+                                (route) => route.isFirst);
                       }
                     },
                     text: 'Pickup',
@@ -532,6 +531,9 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
             ),
           ),
         );
+
+        Future.delayed(Duration.zero, () => Navigator.pop(context));
+        return Container();
       },
     );
   }

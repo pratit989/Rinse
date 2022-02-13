@@ -83,7 +83,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                         );
                       }
 
-                      if (snapshot.data.isEmpty || currentUserDocument.acceptedOrder != null) {
+                      if (snapshot.data.isEmpty || (currentUserDocument.acceptedOrder != null && currentUserDocument.acceptedOrder != "")) {
                         return Container();
                       }
 
