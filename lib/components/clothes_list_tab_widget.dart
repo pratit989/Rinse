@@ -43,7 +43,6 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: 353,
-      height: 77,
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [

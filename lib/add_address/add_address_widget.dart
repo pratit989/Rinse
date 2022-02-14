@@ -1,13 +1,9 @@
-import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../current_location/current_location_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../custom_code/actions/index.dart' as actions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AddAddressWidget extends StatefulWidget {
   const AddAddressWidget({Key key}) : super(key: key);
@@ -21,18 +17,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   String addressOfLocation;
   List<String> addressParts = [];
-  TextEditingController textController1;
-  TextEditingController textController2;
-  TextEditingController textController3;
-  TextEditingController textController4;
-  TextEditingController textController5;
-  TextEditingController textController6;
-  TextEditingController textController7;
-  TextEditingController textController8;
-  TextEditingController textController10;
-  TextEditingController textController9;
-  TextEditingController textController11;
-  TextEditingController textController12;
+  List<TextEditingController> _controller = List.generate(12, (i) => TextEditingController(), growable: false);
 
   @override
   void initState() {
@@ -40,30 +25,11 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
     addressParts = FFAppState().homeAddress?.split(' | ') ?? [];
     addressParts.addAll(FFAppState().officeAddress?.split(' | ') ?? []);
     addressParts.addAll(FFAppState().otherAddress?.split(' | ') ?? []);
-    textController1 = TextEditingController();
-    textController1.text = addressParts[0] ?? '';
-    textController2 = TextEditingController();
-    textController2.text = addressParts[1] ?? '';
-    textController3 = TextEditingController();
-    textController3.text = addressParts[2] ?? '';
-    textController4 = TextEditingController();
-    textController4.text = addressParts[3] ?? '';
-    textController5 = TextEditingController();
-    textController5.text = addressParts[4] ?? '';
-    textController6 = TextEditingController();
-    textController6.text = addressParts[5] ?? '';
-    textController7 = TextEditingController();
-    textController7.text = addressParts[6] ?? '';
-    textController8 = TextEditingController();
-    textController8.text = addressParts[7] ?? '';
-    textController9 = TextEditingController();
-    textController9.text = addressParts[8] ?? '';
-    textController10 = TextEditingController();
-    textController10.text = addressParts[9] ?? '';
-    textController11 = TextEditingController();
-    textController11.text = addressParts[10] ?? '';
-    textController12 = TextEditingController();
-    textController12.text = addressParts[11] ?? '';
+    int count = 0;
+    for (TextEditingController _editor in _controller) {
+      _editor.text = addressParts[count] ?? '';
+      count += 1;
+    }
   }
 
   @override
@@ -194,10 +160,10 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                         );
                                         setState(() {
                                           addressParts = addressOfLocation.split(' | ') ?? [];
-                                          textController1.text = addressParts[0] ?? '';
-                                          textController2.text = addressParts[1] ?? '';
-                                          textController3.text = addressParts[2] ?? '';
-                                          textController4.text = addressParts[3] ?? '';
+                                          _controller[0].text = addressParts[0] ?? '';
+                                          _controller[1].text = addressParts[1] ?? '';
+                                          _controller[2].text = addressParts[2] ?? '';
+                                          _controller[3].text = addressParts[3] ?? '';
                                         });
                                         // await Navigator.push(
                                         //   context,
@@ -253,7 +219,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             10, 10, 10, 10),
                                         child: TextFormField(
-                                          controller: textController1,
+                                          controller: _controller[0],
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             isDense: true,
@@ -295,7 +261,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             10, 10, 10, 10),
                                         child: TextFormField(
-                                          controller: textController2,
+                                          controller: _controller[1],
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             isDense: true,
@@ -335,7 +301,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             10, 10, 10, 10),
                                         child: TextFormField(
-                                          controller: textController3,
+                                          controller: _controller[2],
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             isDense: true,
@@ -381,7 +347,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             10, 10, 10, 20),
                                         child: TextFormField(
-                                          controller: textController4,
+                                          controller: _controller[3],
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             isDense: true,
@@ -432,13 +398,18 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                       EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                                   child: FFButtonWidget(
                                     onPressed: () {
-                                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Address Saved Successfully")));
+                                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Address Changed Successfully")));
                                       setState(() {
-                                        FFAppState().homeAddress = '${textController1.text} | ${textController2.text} | ${textController3.text} | ${textController4.text}';
-                                        Navigator.pop(context);
+                                        FFAppState().homeAddress = '${_controller[0].text} | ${_controller[1].text} | ${_controller[2].text} | ${_controller[3].text}';
+                                        if (FFAppState().homeAddress.replaceAll(' | ', '').isEmpty) {
+                                          Navigator.pop(context);
+                                        } else {
+                                          FFAppState().deliveryAddress =  FFAppState().homeAddress.replaceAll(' | ', '');
+                                          Navigator.pop(context, Icons.home_sharp);
+                                        }
                                       });
                                     },
-                                    text: 'Save Address',
+                                    text: 'Change Address',
                                     options: FFButtonOptions(
                                       width: 200,
                                       height: 40,
@@ -521,10 +492,10 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                           );
                                           setState(() {
                                             addressParts = addressOfLocation.split(' | ') ?? [];
-                                            textController5.text = addressParts[0] ?? '';
-                                            textController6.text = addressParts[1] ?? '';
-                                            textController7.text = addressParts[2] ?? '';
-                                            textController8.text = addressParts[3] ?? '';
+                                            _controller[4].text = addressParts[0] ?? '';
+                                            _controller[5].text = addressParts[1] ?? '';
+                                            _controller[6].text = addressParts[2] ?? '';
+                                            _controller[7].text = addressParts[3] ?? '';
                                           });
                                           // await Navigator.push(
                                           //   context,
@@ -580,7 +551,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             10, 10, 10, 10),
                                         child: TextFormField(
-                                          controller: textController5,
+                                          controller: _controller[4],
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             isDense: true,
@@ -622,7 +593,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             10, 10, 10, 10),
                                         child: TextFormField(
-                                          controller: textController6,
+                                          controller: _controller[5],
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             isDense: true,
@@ -662,7 +633,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             10, 10, 10, 10),
                                         child: TextFormField(
-                                          controller: textController7,
+                                          controller: _controller[6],
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             isDense: true,
@@ -708,7 +679,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             10, 10, 10, 20),
                                         child: TextFormField(
-                                          controller: textController8,
+                                          controller: _controller[7],
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             isDense: true,
@@ -759,13 +730,19 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                       EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                                   child: FFButtonWidget(
                                     onPressed: () {
-                                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Address Saved Successfully")));
+                                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Address Changed Successfully")));
                                       setState(() {
-                                        FFAppState().officeAddress = '${textController5.text} | ${textController6.text} | ${textController7.text} | ${textController8.text}';
-                                        Navigator.pop(context);
+                                        FFAppState().officeAddress = '${_controller[4].text} | ${_controller[5].text} | ${_controller[6].text} | ${_controller[7].text}';
+                                        FFAppState().deliveryAddress = FFAppState().officeAddress.replaceAll(' | ', '');
+                                        if (FFAppState().officeAddress.replaceAll(' | ', '').isEmpty) {
+                                          Navigator.pop(context);
+                                        } else {
+                                          FFAppState().deliveryAddress =  FFAppState().officeAddress.replaceAll(' | ', '');
+                                          Navigator.pop(context, Icons.apartment_sharp);
+                                        }
                                       });
                                     },
-                                    text: 'Save Address',
+                                    text: 'Change Address',
                                     options: FFButtonOptions(
                                       width: 200,
                                       height: 40,
@@ -848,10 +825,10 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                           );
                                           setState(() {
                                             addressParts = addressOfLocation.split(' | ') ?? [];
-                                            textController9.text = addressParts[0] ?? '';
-                                            textController10.text = addressParts[1] ?? '';
-                                            textController11.text = addressParts[2] ?? '';
-                                            textController12.text = addressParts[3] ?? '';
+                                            _controller[8].text = addressParts[0] ?? '';
+                                            _controller[9].text = addressParts[1] ?? '';
+                                            _controller[10].text = addressParts[2] ?? '';
+                                            _controller[11].text = addressParts[3] ?? '';
                                           });
                                           // await Navigator.push(
                                           //   context,
@@ -907,7 +884,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             10, 10, 10, 10),
                                         child: TextFormField(
-                                          controller: textController9,
+                                          controller: _controller[8],
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             isDense: true,
@@ -949,7 +926,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             10, 10, 10, 10),
                                         child: TextFormField(
-                                          controller: textController10,
+                                          controller: _controller[9],
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             isDense: true,
@@ -989,7 +966,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             10, 10, 10, 10),
                                         child: TextFormField(
-                                          controller: textController11,
+                                          controller: _controller[10],
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             isDense: true,
@@ -1035,7 +1012,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             10, 10, 10, 20),
                                         child: TextFormField(
-                                          controller: textController12,
+                                          controller: _controller[11],
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             isDense: true,
@@ -1086,13 +1063,19 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                       EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Address Saved Successfully")));
+                                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Address Changed Successfully")));
                                       setState(() {
-                                        FFAppState().otherAddress = '${textController9.text} | ${textController10.text} | ${textController11.text} | ${textController12.text}';
-                                        Navigator.pop(context);
+                                        FFAppState().otherAddress = '${_controller[8].text} | ${_controller[9].text} | ${_controller[10].text} | ${_controller[11].text}';
+                                        FFAppState().deliveryAddress = FFAppState().otherAddress.replaceAll(' | ', '');
+                                        if (FFAppState().otherAddress.replaceAll(' | ', '').isEmpty) {
+                                          Navigator.pop(context);
+                                        } else {
+                                          FFAppState().deliveryAddress =  FFAppState().otherAddress.replaceAll(' | ', '');
+                                          Navigator.pop(context, Icons.location_on_sharp);
+                                        }
                                       });
                                     },
-                                    text: 'Save Address',
+                                    text: 'Change Address',
                                     options: FFButtonOptions(
                                       width: 200,
                                       height: 40,
@@ -1118,6 +1101,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                     child: Image.asset(
                                       'assets/images/Mask_Group_1.png',
                                       fit: BoxFit.cover,
+                                      width: MediaQuery.of(context).size.width,
                                     ),
                                   ),
                                 ),
