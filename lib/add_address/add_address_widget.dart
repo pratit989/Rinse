@@ -432,6 +432,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                       EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                                   child: FFButtonWidget(
                                     onPressed: () {
+                                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Address Saved Successfully")));
                                       setState(() {
                                         FFAppState().homeAddress = '${textController1.text} | ${textController2.text} | ${textController3.text} | ${textController4.text}';
                                         Navigator.pop(context);
@@ -456,17 +457,16 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                     ),
                                   ),
                                 ),
-                                Padding(
+                              Expanded(
+                                child: Padding(
                                   padding:
-                                      EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                                  EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                                   child: Image.asset(
                                     'assets/images/Mask_Group_1.png',
-                                    width: MediaQuery.of(context).size.width,
-                                    height: MediaQuery.of(context).size.height *
-                                        0.3,
                                     fit: BoxFit.cover,
                                   ),
                                 ),
+                              ),
                               ],
                             ),
                             Column(
@@ -759,6 +759,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                       EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                                   child: FFButtonWidget(
                                     onPressed: () {
+                                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Address Saved Successfully")));
                                       setState(() {
                                         FFAppState().officeAddress = '${textController5.text} | ${textController6.text} | ${textController7.text} | ${textController8.text}';
                                         Navigator.pop(context);
@@ -783,15 +784,14 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                     ),
                                   ),
                                 ),
-                                Padding(
-                                  padding:
-                                      EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                                  child: Image.asset(
-                                    'assets/images/Mask_Group_1.png',
-                                    width: MediaQuery.of(context).size.width,
-                                    height: MediaQuery.of(context).size.height *
-                                        0.3,
-                                    fit: BoxFit.cover,
+                                Expanded(
+                                  child: Padding(
+                                    padding:
+                                        EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                                    child: Image.asset(
+                                      'assets/images/Mask_Group_1.png',
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -1085,7 +1085,8 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                   padding:
                                       EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                                   child: FFButtonWidget(
-                                    onPressed: () {
+                                    onPressed: () async {
+                                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Address Saved Successfully")));
                                       setState(() {
                                         FFAppState().otherAddress = '${textController9.text} | ${textController10.text} | ${textController11.text} | ${textController12.text}';
                                         Navigator.pop(context);
@@ -1110,15 +1111,14 @@ class _AddAddressWidgetState extends State<AddAddressWidget> {
                                     ),
                                   ),
                                 ),
-                                Padding(
-                                  padding:
-                                      EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                                  child: Image.asset(
-                                    'assets/images/Mask_Group_1.png',
-                                    width: MediaQuery.of(context).size.width,
-                                    height: MediaQuery.of(context).size.height *
-                                        0.3,
-                                    fit: BoxFit.cover,
+                                Expanded(
+                                  child: Padding(
+                                    padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                                    child: Image.asset(
+                                      'assets/images/Mask_Group_1.png',
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                               ],

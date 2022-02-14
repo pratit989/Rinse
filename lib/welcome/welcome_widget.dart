@@ -1,3 +1,4 @@
+import 'package:rinse/admin_login_widget/admin_login_widget.dart';
 import 'package:rinse/worker_login/worker_login_widget.dart';
 
 import '../customer_login/customer_login_widget.dart';
@@ -21,7 +22,7 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           Image.asset(
@@ -105,7 +106,7 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                         await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => WorkerLoginWidget(),
+                            builder: (context) => AdminLoginWidget(),
                           ),
                         );
                       },

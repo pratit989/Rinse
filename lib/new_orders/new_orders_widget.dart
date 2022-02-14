@@ -1,3 +1,5 @@
+import 'package:rinse/auth/auth_util.dart';
+
 import '../accept_order_details/accept_order_details_widget.dart';
 import '../backend/backend.dart';
 import '../backend/schema/orders_record.dart';
@@ -20,7 +22,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: Color(0xFFFAFAFA),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -81,7 +83,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                         );
                       }
 
-                      if (snapshot.data.isEmpty) {
+                      if (snapshot.data.isEmpty || (currentUserDocument.acceptedOrder != null && currentUserDocument.acceptedOrder != "")) {
                         return Container();
                       }
 

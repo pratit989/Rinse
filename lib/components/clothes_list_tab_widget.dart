@@ -45,7 +45,7 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
       width: 353,
       height: 77,
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.tertiaryColor,
+        color: Colors.white,
         boxShadow: [
           BoxShadow(
             blurRadius: 4,

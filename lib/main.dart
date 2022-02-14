@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:rinse/admin_recieved_orders/admin_recieved_orders_widget.dart';
+import 'package:rinse/admin_received_orders/admin_received_orders_widget.dart';
 import 'package:rinse/backend/backend.dart';
+import 'package:rinse/enter_your_info/enter_your_info_widget.dart';
 import 'package:rinse/welcome/welcome_widget.dart';
 import 'package:rinse/worker_home/worker_home_widget.dart';
 
@@ -91,10 +91,88 @@ class _MyAppState extends State<MyApp> {
                         ? CustomerNavBarPage()
                         : currentUserRecord.userType == 'Worker'
                             ? WorkerHomeWidget()
-                            : AdminRecievedOrdersWidget();
+                            : currentUserRecord.userType == 'Admin' ? AdminNavBarPage() : EnterYourInfoWidget();
                   })
               : WelcomeWidget(),
     );
+  }
+}
+
+class AdminNavBarPage extends StatefulWidget {
+  AdminNavBarPage({Key key, this.initialPage}) : super(key: key);
+
+  final String initialPage;
+
+  @override
+  _AdminNavBarPageState createState() => _AdminNavBarPageState();
+}
+
+/// This is the private State class that goes with NavBarPage.
+class _AdminNavBarPageState extends State<AdminNavBarPage> {
+  String _currentPage = 'ReceivedOrders';
+
+  @override
+  void initState() {
+    super.initState();
+    _currentPage = widget.initialPage ?? _currentPage;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final tabs = {
+      'ReceivedOrders': AdminReceivedOrdersWidget(),
+      'Pricing': PricingWidget(),
+      'SignOut': signOut,
+    };
+    final currentIndex = tabs.keys.toList().indexOf(_currentPage);
+    if (currentIndex == 2) {
+      signOut();
+      return WelcomeWidget();
+    } else {
+      return Scaffold(
+        backgroundColor: Colors.white,
+      body: tabs[_currentPage],
+      bottomNavigationBar: SizedBox(
+        height: MediaQuery.of(context).size.height*0.1,
+        child: BottomNavigationBar(
+          currentIndex: currentIndex,
+          onTap: (i) => setState(() => _currentPage = tabs.keys.toList()[i]),
+          backgroundColor: Color(0xFFF0F0F0),
+          selectedItemColor: FlutterFlowTheme.primaryColor,
+          unselectedItemColor: Color(0x8A000000),
+          showSelectedLabels: true,
+          showUnselectedLabels: false,
+          type: BottomNavigationBarType.fixed,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage('assets/images/BatteryIcon-min.png'),
+                size: 28,
+              ),
+              label: '•',
+              tooltip: '',
+            ),
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage('assets/images/PricingIcon-min.png'),
+                size: 28,
+              ),
+              label: '•',
+              tooltip: '',
+            ),
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage('assets/images/logout.png'),
+                size: 30,
+              ),
+              label: '•',
+              tooltip: '',
+            )
+          ],
+        ),
+      ),
+    );
+    }
   }
 }
 
@@ -127,62 +205,55 @@ class _CustomerNavBarPageState extends State<CustomerNavBarPage> {
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPage);
     return Scaffold(
+      backgroundColor: Colors.white,
       body: tabs[_currentPage],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (i) => setState(() => _currentPage = tabs.keys.toList()[i]),
-        backgroundColor: Colors.white,
-        selectedItemColor: FlutterFlowTheme.primaryColor,
-        unselectedItemColor: Color(0x8A000000),
-        showSelectedLabels: true,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home_outlined,
-              size: 28,
+      bottomNavigationBar: SizedBox(
+        height: MediaQuery.of(context).size.height*0.1,
+        child: BottomNavigationBar(
+          elevation: 0,
+          currentIndex: currentIndex,
+          onTap: (i) => setState(() => _currentPage = tabs.keys.toList()[i]),
+          backgroundColor: Color(0xFFF0F0F0),
+          selectedItemColor: FlutterFlowTheme.primaryColor,
+          unselectedItemColor: Color(0x8A000000),
+          showSelectedLabels: true,
+          showUnselectedLabels: false,
+          type: BottomNavigationBarType.fixed,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                  AssetImage('assets/images/HomeIcon-min.png'),
+                size: 28,
+              ),
+              label: '•',
+              tooltip: '',
             ),
-            activeIcon: Icon(
-              Icons.home_rounded,
-              size: 28,
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage('assets/images/BatteryIcon-min.png'),
+                size: 28,
+              ),
+              label: '•',
+              tooltip: '',
             ),
-            label: '•',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: FaIcon(
-              FontAwesomeIcons.clipboard,
-              size: 23,
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage('assets/images/PricingIcon-min.png'),
+                size: 28,
+              ),
+              label: '•',
+              tooltip: '',
             ),
-            activeIcon: FaIcon(
-              FontAwesomeIcons.clipboardList,
-              size: 23,
-            ),
-            label: '•',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.loyalty_outlined,
-              size: 25,
-            ),
-            activeIcon: Icon(
-              Icons.loyalty_rounded,
-              size: 25,
-            ),
-            label: '•',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-              size: 30,
-            ),
-            label: '•',
-            tooltip: '',
-          )
-        ],
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage('assets/images/ProfileIcon-min.png'),
+                size: 28,
+              ),
+              label: '•',
+              tooltip: '',
+            )
+          ],
+        ),
       ),
     );
   }

@@ -1,33 +1,31 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
+import 'package:flutter/material.dart';
+import 'package:rinse/new_orders/new_orders_widget.dart';
 
 import '../auth/auth_util.dart';
 import '../backend/schema/orders_record.dart';
-import '../backend/schema/users_record.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../order_delivered_to_laundry/order_delivered_to_laundry_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:collection/collection.dart';
 
 class OngoingDeliveredToLaundryWidget extends StatefulWidget {
   const OngoingDeliveredToLaundryWidget({Key key, @required this.documentReference}) : super(key: key);
   final DocumentReference documentReference;
 
   @override
-  _OngoingDeliveredToLaundryWidgetState createState() =>
-      _OngoingDeliveredToLaundryWidgetState();
+  _OngoingDeliveredToLaundryWidgetState createState() => _OngoingDeliveredToLaundryWidgetState();
 }
 
-class _OngoingDeliveredToLaundryWidgetState
-    extends State<OngoingDeliveredToLaundryWidget> {
+class _OngoingDeliveredToLaundryWidgetState extends State<OngoingDeliveredToLaundryWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -36,14 +34,13 @@ class _OngoingDeliveredToLaundryWidgetState
               Align(
                 alignment: AlignmentDirectional(0, 0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(100, 20, 0, 20),
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 20),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Align(
-                        alignment: AlignmentDirectional(0, 0),
+                      Expanded(
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(40, 0, 0, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                           child: Text(
                             'Ongoing',
                             textAlign: TextAlign.center,
@@ -74,8 +71,26 @@ class _OngoingDeliveredToLaundryWidgetState
                       );
                     }
 
-                    if (snapshot.data.customerOrderStatus == "Booked") {
+                    if ((snapshot.data.customerOrderStatus != "Ongoing" ||
+                        (snapshot.data.adminOrderStatus != null && snapshot.data.adminOrderStatus != "")) &&
+                        (currentUserDocument.acceptedOrder == "" || currentUserDocument.acceptedOrder == null)) {
+                      Future.delayed(
+                          Duration.zero, () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NewOrdersWidget())));
                       return Container();
+                    }
+
+                    if (snapshot.data.adminOrderStatus == 'Received' &&
+                        (currentUserDocument.acceptedOrder == "" || currentUserDocument.acceptedOrder == null)) {
+                      Future.delayed(
+                          Duration.zero,
+                          () => Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => OrderDeliveredToLaundryWidget(
+                                    documentReference: widget.documentReference,
+                                  ),
+                                ),
+                              ));
                     }
 
                     return Column(
@@ -339,7 +354,7 @@ class _OngoingDeliveredToLaundryWidgetState
                                           Padding(
                                             padding: EdgeInsetsDirectional.fromSTEB(0, 0, 25, 10),
                                             child: Text(
-                                              '₹ ${entry[0]*entry[1]}',
+                                              '₹ ${entry[0] * entry[1]}',
                                               style: FlutterFlowTheme.bodyText1.override(
                                                 fontFamily: 'Lato',
                                                 color: FlutterFlowTheme.secondaryColor,
@@ -419,8 +434,7 @@ class _OngoingDeliveredToLaundryWidgetState
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Padding(
-                                        padding:
-                                        EdgeInsetsDirectional.fromSTEB(20, 2, 0, 0),
+                                        padding: EdgeInsetsDirectional.fromSTEB(20, 2, 0, 0),
                                         child: Icon(
                                           Icons.home_sharp,
                                           color: FlutterFlowTheme.primaryColor,
@@ -467,30 +481,26 @@ class _OngoingDeliveredToLaundryWidgetState
                         ),
                         FFButtonWidget(
                           onPressed: () async {
-                            FirebaseFirestore.instance.runTransaction((transaction) async{
+                            await FirebaseFirestore.instance.runTransaction((transaction) async {
                               // Order Reads
                               DocumentReference orderRef = widget.documentReference;
                               DocumentSnapshot orderSnapshot = await transaction.get(orderRef);
                               Map<String, dynamic> orderData = orderSnapshot.data();
                               String status = orderData.containsKey('admin_order_status') ? orderData['admin_order_status'] : null;
-                              // User Reads
-                              DocumentReference userRef = UsersRecord.collection.doc(currentUserUid);
-                              DocumentSnapshot userSnapshot = await transaction.get(userRef);
-                              Map<String, dynamic> userData = userSnapshot.data();
-                              String acceptedOrder = userData.containsKey('accepted_order') ? userData['accepted_order'] : null;
                               // Remember to do all the writes at the End
-                              transaction.update(orderRef,{
-                                'admin_order_status' : status ?? 'Received'
-                              });
-                              transaction.update(userRef, {
-                                'accepted_order' : null
-                              });
-                            }).whenComplete(() => Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => OrderDeliveredToLaundryWidget(documentReference: widget.documentReference,),
-                              ),
-                            ));
+                              transaction.update(orderRef, {'admin_order_status': status ?? 'Received'});
+                            });
+                            if (snapshot.data.adminOrderStatus == 'Received' &&
+                                (currentUserDocument.acceptedOrder == "" || currentUserDocument.acceptedOrder == null)) {
+                              return Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => OrderDeliveredToLaundryWidget(
+                                    documentReference: widget.documentReference,
+                                  ),
+                                ),
+                              );
+                            }
                           },
                           text: 'Delivered to Laundry',
                           options: FFButtonOptions(
@@ -511,8 +521,7 @@ class _OngoingDeliveredToLaundryWidgetState
                         ),
                       ],
                     );
-                  }
-              ),
+                  }),
             ],
           ),
         ),

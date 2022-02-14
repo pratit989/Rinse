@@ -22,7 +22,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: Color(0xFFFAFAFA),
       body: SafeArea(
         child: Align(
           alignment: AlignmentDirectional(0, 0),
@@ -37,11 +37,19 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   children: [
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-                      child: Icon(
-                        Icons.account_circle,
-                        color: FlutterFlowTheme.primaryColor,
-                        size: 24,
-                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all()
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ImageIcon(
+                            AssetImage('assets/images/Person.png'),
+                            size: 16,
+                          ),
+                        ),
+                      )
                     ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 0, 150, 0),

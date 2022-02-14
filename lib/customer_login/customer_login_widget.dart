@@ -1,11 +1,10 @@
+
 import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
 import '../verify_mobile_number/verify_mobile_number_widget.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CustomerLoginWidget extends StatefulWidget {
   const CustomerLoginWidget({Key key}) : super(key: key);
@@ -18,10 +17,12 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
   TextEditingController phoneNumberController;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  bool pressed = false;
 
   @override
   void initState() {
     super.initState();
+    pressed = false;
     phoneNumberController = TextEditingController();
   }
 
@@ -41,7 +42,7 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
                   Align(
                     alignment: AlignmentDirectional(0, 0),
                     child: Image.asset(
-                      'assets/images/Group_962.png',
+                      'assets/images/CustomerLogin.png',
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height * 1,
                       fit: BoxFit.cover,
@@ -56,7 +57,7 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
                     child: Align(
                       alignment: AlignmentDirectional(0, 0),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(30, 30, 30, 30),
+                        padding: EdgeInsetsDirectional.fromSTEB(30, 55, 40, 30),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -64,10 +65,10 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
                           children: [
                             Expanded(
                               child: Align(
-                                alignment: AlignmentDirectional(1, 1.06),
+                                alignment: AlignmentDirectional(0, 1.06),
                                 child: Container(
                                   width:
-                                      MediaQuery.of(context).size.width * 0.6,
+                                      MediaQuery.of(context).size.width * 0.7,
                                   height:
                                       MediaQuery.of(context).size.height * 0.1,
                                   decoration: BoxDecoration(
@@ -77,54 +78,103 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      TextFormField(
-                                        onChanged: (_) => EasyDebounce.debounce(
-                                          'phoneNumberController',
-                                          Duration(milliseconds: 2000),
-                                          () => setState(() {}),
-                                        ),
-                                        controller: phoneNumberController,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          enabledBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.primaryColor,
-                                              width: 0.7,
-                                            ),
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                              topLeft: Radius.circular(4.0),
-                                              topRight: Radius.circular(4.0),
+                                      Row(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsetsDirectional.fromSTEB(0,0,10,0),
+                                            child: Container(
+                                              width: MediaQuery.of(context).size.width*0.12,
+                                              child: TextFormField(
+                                                initialValue: "+91",
+                                                enabled: false,
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  disabledBorder: UnderlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                      FlutterFlowTheme.primaryColor,
+                                                      width: 0.7,
+                                                    ),
+                                                    borderRadius:
+                                                    const BorderRadius.only(
+                                                      topLeft: Radius.circular(4.0),
+                                                      topRight: Radius.circular(4.0),
+                                                    ),
+                                                  ),
+                                                  focusedBorder: UnderlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                      FlutterFlowTheme.primaryColor,
+                                                      width: 0.7,
+                                                    ),
+                                                    borderRadius:
+                                                    const BorderRadius.only(
+                                                      topLeft: Radius.circular(4.0),
+                                                      topRight: Radius.circular(4.0),
+                                                    ),
+                                                  ),
+                                                ),
+                                                style: FlutterFlowTheme.title3.override(
+                                                  fontFamily: 'Lato',
+                                                  color: FlutterFlowTheme.primaryColor,
+                                                ),
+                                                keyboardType: TextInputType.phone,
+                                              ),
                                             ),
                                           ),
-                                          focusedBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.primaryColor,
-                                              width: 0.7,
-                                            ),
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                              topLeft: Radius.circular(4.0),
-                                              topRight: Radius.circular(4.0),
+                                          Container(
+                                            width: MediaQuery.of(context).size.width*0.5,
+                                            child: TextFormField(
+                                              onChanged: (_) => EasyDebounce.debounce(
+                                                'phoneNumberController',
+                                                Duration(milliseconds: 2000),
+                                                () => setState(() {}),
+                                              ),
+                                              controller: phoneNumberController,
+                                              obscureText: false,
+                                              decoration: InputDecoration(
+                                                enabledBorder: UnderlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color:
+                                                        FlutterFlowTheme.primaryColor,
+                                                    width: 0.7,
+                                                  ),
+                                                  borderRadius:
+                                                      const BorderRadius.only(
+                                                    topLeft: Radius.circular(4.0),
+                                                    topRight: Radius.circular(4.0),
+                                                  ),
+                                                ),
+                                                focusedBorder: UnderlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color:
+                                                        FlutterFlowTheme.primaryColor,
+                                                    width: 0.7,
+                                                  ),
+                                                  borderRadius:
+                                                      const BorderRadius.only(
+                                                    topLeft: Radius.circular(4.0),
+                                                    topRight: Radius.circular(4.0),
+                                                  ),
+                                                ),
+                                              ),
+                                              style: FlutterFlowTheme.title3.override(
+                                                fontFamily: 'Lato',
+                                                color: FlutterFlowTheme.primaryColor,
+                                              ),
+                                              keyboardType: TextInputType.phone,
+                                              validator: (val) {
+                                                if (val.isEmpty) {
+                                                  return 'Enter your phone number to Login or Signup';
+                                                }
+                                                if (val.length < 10) {
+                                                  return 'Please enter a valid phone number';
+                                                }
+                                                return null;
+                                              },
                                             ),
                                           ),
-                                        ),
-                                        style: FlutterFlowTheme.title3.override(
-                                          fontFamily: 'Lato',
-                                          color: FlutterFlowTheme.primaryColor,
-                                        ),
-                                        keyboardType: TextInputType.phone,
-                                        validator: (val) {
-                                          if (val.isEmpty) {
-                                            return 'Enter your phone number to Login or Signup';
-                                          }
-                                          if (val.length < 10) {
-                                            return 'Please enter a valid phone number';
-                                          }
-                                          return null;
-                                        },
+                                        ],
                                       ),
                                     ],
                                   ),
@@ -134,7 +184,18 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
                             Expanded(
                               child: Align(
                                 alignment: AlignmentDirectional(1, -0.8),
-                                child: FlutterFlowIconButton(
+                                child: pressed ? Container(
+                                  height: 50,
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: FlutterFlowTheme.secondaryColor
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(15.0),
+                                    child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2,),
+                                  ),
+                                ) : FlutterFlowIconButton(
                                   borderColor: Colors.transparent,
                                   borderRadius: 30,
                                   borderWidth: 1,
@@ -146,10 +207,11 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
                                     size: 25,
                                   ),
                                   onPressed: () async {
-                                    if (!formKey.currentState.validate()) {
-                                      return;
-                                    }
+                                    setState(() {
+                                      pressed = true;
+                                    });
                                     if (phoneNumberController.text.isEmpty) {
+                                      setState(() => pressed = false);
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
@@ -159,10 +221,26 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
                                       );
                                       return;
                                     }
+                                    if (phoneNumberController.text.trim().length != 10) {
+                                      setState(() => pressed = false);
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                              'Please enter a valid 10 digit Phone Number.'),
+                                        ),
+                                      );
+                                      return;
+                                    }
+                                    if (!formKey.currentState.validate()) {
+                                      setState(() => pressed = false);
+                                      return;
+                                    }
                                     await beginPhoneAuth(
                                       context: context,
                                       phoneNumber: '+91${phoneNumberController.text}',
                                       onCodeSent: () async {
+                                        setState(() => pressed = false);
                                         await Navigator.pushAndRemoveUntil(
                                           context,
                                           MaterialPageRoute(
@@ -170,7 +248,7 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
                                                 VerifyMobileNumberWidget(),
                                           ),
                                           (r) => false,
-                                        );
+                                        ).onError((error, stackTrace) => print(error));
                                       },
                                     );
                                   },

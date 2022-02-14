@@ -1,14 +1,15 @@
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter/material.dart';
 import 'package:rinse/auth/auth_util.dart';
 import 'package:rinse/backend/backend.dart';
+import 'package:rinse/ongoing_delivered_to_customer/ongoing_delivered_to_customer_widget.dart';
 import 'package:rinse/ongoing_delivered_to_laundry/ongoing_delivered_to_laundry_widget.dart';
+import 'package:rinse/pickup_order_details/pickup_order_details_widget.dart';
 import 'package:rinse/pricing/pricing_widget.dart';
 import 'package:rinse/profile/profile_widget.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../new_orders/new_orders_widget.dart';
 import '../packed_orders/packed_orders_widget.dart';
-import 'package:flutter/material.dart';
 
 class WorkerHomeWidget extends StatefulWidget {
   const WorkerHomeWidget({Key key}) : super(key: key);
@@ -24,7 +25,7 @@ class _WorkerHomeWidgetState extends State<WorkerHomeWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
@@ -54,11 +55,35 @@ class _WorkerHomeWidgetState extends State<WorkerHomeWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
                 child: InkWell(
                   onTap: () async {
+                    if (currentUserDocument.acceptedOrder == '' || currentUserDocument.acceptedOrder == null) {
+                      await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => WorkerNavBarPage(
+                                  pageType: "pickupFromCustomer",
+                                  initialPage: 'NewOrders',
+                                )),
+                      );
+                    }
+                    final OrdersRecord ordersRecord =
+                        await OrdersRecord.getDocumentOnce(OrdersRecord.collection.doc(currentUserDocument.acceptedOrder));
                     await Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => currentUserDocument.acceptedOrder == '' || currentUserDocument.acceptedOrder == null ? WorkerNavBarPage(pageType: "pickupFromCustomer", initialPage: 'NewOrders',) : OngoingDeliveredToLaundryWidget(documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder),),
-                      ),
+                          builder: (context) => (ordersRecord.adminOrderStatus == '' || ordersRecord.adminOrderStatus == null)
+                              ? OngoingDeliveredToLaundryWidget(
+                                  documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder),
+                                )
+                              : (ordersRecord.adminOrderStatus == 'Packed')
+                                  ? PickupOrderDetailsWidget(documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder))
+                                  : (ordersRecord.adminOrderStatus == 'OutForDelivery')
+                                      ? OngoingDeliveredToCustomerWidget(
+                                          documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder))
+                                      : ordersRecord.adminOrderStatus == 'Received' && ordersRecord.assignedWorker == currentUserUid
+                                          ? OngoingDeliveredToLaundryWidget(documentReference: ordersRecord.reference)
+                                          : Container(
+                                              child: Text('Something Went Wrong'),
+                                            )),
                     );
                   },
                   child: Image.asset(
@@ -72,11 +97,36 @@ class _WorkerHomeWidgetState extends State<WorkerHomeWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 60, 0, 0),
                 child: InkWell(
                   onTap: () async {
+                    if (currentUserDocument.acceptedOrder == '' || currentUserDocument.acceptedOrder == null) {
+                      await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => WorkerNavBarPage(
+                            pageType: "pickupFromLaundry",
+                            initialPage: 'PackedOrders',
+                          ),
+                        ),
+                      );
+                    }
+                    final OrdersRecord ordersRecord =
+                        await OrdersRecord.getDocumentOnce(OrdersRecord.collection.doc(currentUserDocument.acceptedOrder));
                     await Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => WorkerNavBarPage(pageType: "pickupFromLaundry", initialPage: 'PackedOrders',),
-                      ),
+                          builder: (context) => (ordersRecord.adminOrderStatus == '' || ordersRecord.adminOrderStatus == null)
+                              ? OngoingDeliveredToLaundryWidget(
+                                  documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder),
+                                )
+                              : (ordersRecord.adminOrderStatus == 'Packed')
+                                  ? PickupOrderDetailsWidget(documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder))
+                                  : (ordersRecord.adminOrderStatus == 'OutForDelivery')
+                                      ? OngoingDeliveredToCustomerWidget(
+                                          documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder))
+                                      : ordersRecord.adminOrderStatus == 'Received' && ordersRecord.assignedWorker == currentUserUid
+                                          ? OngoingDeliveredToLaundryWidget(documentReference: ordersRecord.reference)
+                                          : Container(
+                                              child: Text('Something Went Wrong'),
+                                            )),
                     );
                   },
                   child: Image.asset(
@@ -118,63 +168,60 @@ class _WorkerNavBarPageState extends State<WorkerNavBarPage> {
 
   @override
   Widget build(BuildContext context) {
-    final tabs = _pageType == "pickupFromCustomer" ? {
-      'NewOrders': NewOrdersWidget(),
-      'Pricing': PricingWidget(),
-      'Profile': ProfileWidget(),
-    } : {
-      'PackedOrders': PackedOrdersWidget(),
-      'Pricing': PricingWidget(),
-      'Profile': ProfileWidget(),
-    };
+    final tabs = _pageType == "pickupFromCustomer"
+        ? {
+            'NewOrders': NewOrdersWidget(),
+            'Pricing': PricingWidget(),
+            'Profile': ProfileWidget(),
+          }
+        : {
+            'PackedOrders': PackedOrdersWidget(),
+            'Pricing': PricingWidget(),
+            'Profile': ProfileWidget(),
+          };
     final currentIndex = tabs.keys.toList().indexOf(_currentPage);
     return Scaffold(
       body: tabs[_currentPage],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (i) => setState(() => _currentPage = tabs.keys.toList()[i]),
-        backgroundColor: Colors.white,
-        selectedItemColor: FlutterFlowTheme.primaryColor,
-        unselectedItemColor: Color(0x8A000000),
-        showSelectedLabels: true,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              FontAwesomeIcons.clipboard,
-              size: 23,
+      bottomNavigationBar: SizedBox(
+        height: MediaQuery.of(context).size.height * 0.1,
+        child: BottomNavigationBar(
+          elevation: 0,
+          currentIndex: currentIndex,
+          onTap: (i) => setState(() => _currentPage = tabs.keys.toList()[i]),
+          backgroundColor: Color(0xFFF0F0F0),
+          selectedItemColor: FlutterFlowTheme.primaryColor,
+          unselectedItemColor: Color(0x8A000000),
+          showSelectedLabels: true,
+          showUnselectedLabels: false,
+          type: BottomNavigationBarType.fixed,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage('assets/images/BatteryIcon-min.png'),
+                size: 28,
+              ),
+              label: '•',
+              tooltip: '',
             ),
-            activeIcon: FaIcon(
-              FontAwesomeIcons.clipboardList,
-              size: 23,
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage('assets/images/PricingIcon-min.png'),
+                size: 28,
+              ),
+              label: '•',
+              tooltip: '',
             ),
-            label: '•',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.loyalty_outlined,
-              size: 25,
-            ),
-            activeIcon: Icon(
-              Icons.loyalty_rounded,
-              size: 25,
-            ),
-            label: '•',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-              size: 30,
-            ),
-            label: '•',
-            tooltip: '',
-          )
-        ],
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage('assets/images/ProfileIcon-min.png'),
+                size: 28,
+              ),
+              label: '•',
+              tooltip: '',
+            )
+          ],
+        ),
       ),
     );
   }
 }
-

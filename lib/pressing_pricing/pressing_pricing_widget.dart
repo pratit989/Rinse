@@ -28,7 +28,7 @@ class _PressingPricingWidgetState extends State<PressingPricingWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: Color(0xFFFAFAFA),
       body: SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.max,

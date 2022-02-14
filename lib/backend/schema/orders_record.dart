@@ -54,6 +54,10 @@ abstract class OrdersRecord
   String get customerUid;
 
   @nullable
+  @BuiltValueField(wireName: 'assigned_worker')
+  String get assignedWorker;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -67,7 +71,8 @@ abstract class OrdersRecord
     ..perItemCount = ListBuilder()
     ..totalCost = 0
     ..customerAddress = ''
-    ..customerUid = '';
+    ..customerUid = ''
+    ..assignedWorker;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('orders');
@@ -102,6 +107,7 @@ Map<String, dynamic> createOrdersRecordData({
   ListBuilder<String> items,
   ListBuilder<int> itemRates,
   ListBuilder<int> perItemCount,
+  String assignedWorker,
 }) =>
     serializers.toFirestore(
         OrdersRecord.serializer,
@@ -116,4 +122,5 @@ Map<String, dynamic> createOrdersRecordData({
           ..perItemCount = perItemCount
           ..totalCost = totalCost
           ..customerAddress = customerAddress
-          ..customerUid = customerUid));
+          ..customerUid = customerUid
+          ..assignedWorker = assignedWorker));

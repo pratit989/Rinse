@@ -31,7 +31,7 @@ class _DateButtonWidgetState extends State<DateButtonWidget> {
                 maxWidth: MediaQuery.of(context).size.width * 0.3,
               ),
               decoration: BoxDecoration(
-                color: Color(0xFFF5F5F5),
+                color: Colors.transparent,
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.max,

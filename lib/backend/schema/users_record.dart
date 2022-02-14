@@ -39,6 +39,10 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   String get acceptedOrder;
 
   @nullable
+  @BuiltValueField(wireName: 'emails')
+  BuiltList<String> get emails;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -49,7 +53,8 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
     ..phoneNumber = ''
     ..photoUrl = ''
     ..userType = ''
-    ..acceptedOrder = '';
+    ..acceptedOrder = ''
+    ..emails = ListBuilder();
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
