@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rinse/address_selection/address_selection.dart';
+import 'package:rinse/add_address/add_address_widget.dart';
 
 import '../components/date_button_widget.dart';
 import '../components/service_selector_widget.dart';
@@ -148,7 +148,8 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
                               child: Text(
                                 FFAppState().deliveryAddress.replaceAll(' | ', '').trim() != ''
                                     ? FFAppState().deliveryAddress
-                                    : FFAppState().homeAddress.replaceAll(' | ', '').trim() ?? 'Satsang Tower Near XYZ\nRoad no. 12 Xyz .\nChembur - 400071',
+                                    : FFAppState().homeAddress.replaceAll(' | ', '').trim() ??
+                                        '',
                                 style: FlutterFlowTheme.bodyText1.override(
                                   fontFamily: 'Lato',
                                   color: Color(0xE5494949),
@@ -162,8 +163,11 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
                       ),
                     ),
                     InkWell(
-                      onTap: () =>
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => AddressSelectionWidget())).then((value) => setIcon(value ?? Icons.home)),
+                      onTap: () async => await Navigator.push(context, MaterialPageRoute(builder: (context) => AddAddressWidget()))
+                          .then((value) {
+                            setIcon(value ?? Icons.home);
+                            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                      }),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(60, 0, 10, 0),
                         child: Column(

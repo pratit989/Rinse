@@ -110,9 +110,11 @@ class _CleaningPressingPricingWidgetState extends State<CleaningPressingPricingW
                     final listViewPricingRecord = listViewPricingRecordList.isNotEmpty ? listViewPricingRecordList.first : null;
                     return Builder(
                       builder: (context) {
-                        final clothName = listViewPricingRecord.clothsList.toList()?.toList() ?? [];
-                        final clothPrice = listViewPricingRecord.clothsPriceList.toList()?.toList() ?? [];
+                        final clothName = listViewPricingRecord.clothsList.toList() ?? [];
+                        final clothPrice = listViewPricingRecord.clothsPriceList.toList() ?? [];
                         return ListView.builder(
+                          clipBehavior: Clip.antiAlias,
+                          itemExtent: 80,
                           padding: EdgeInsets.zero,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,

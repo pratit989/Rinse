@@ -114,6 +114,7 @@ class _PressingPricingWidgetState extends State<PressingPricingWidget> {
                         final clothName = listViewPressingPricingRecord.clothsList.toList()?.toList() ?? [];
                         final clothPrice = listViewPressingPricingRecord.clothsPriceList.toList()?.toList() ?? [];
                         return ListView.builder(
+                          itemExtent: 80,
                           padding: EdgeInsets.zero,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
