@@ -95,7 +95,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
                 ],
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(
-                  color: Color(0xFF707070),
+                  color: Colors.white,
                   width: 0.2,
                 ),
               ),
@@ -210,7 +210,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.12,
               decoration: BoxDecoration(
-                color: Color(0xFFF5F5F5),
+                color: Colors.transparent,
               ),
               child: DateButtonWidget(
                 notifyParent: refresh,
@@ -233,7 +233,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
             Container(
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                color: Color(0xFFF5F5F5),
+                color: Colors.transparent,
               ),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(15, 0, 15, 0),

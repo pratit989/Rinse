@@ -193,7 +193,7 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(15.0),
-                                    child: CircularProgressIndicator(color: Colors.white,),
+                                    child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2,),
                                   ),
                                 ) : FlutterFlowIconButton(
                                   borderColor: Colors.transparent,
@@ -220,7 +220,8 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
                                         ),
                                       );
                                       return;
-                                    } else if (phoneNumberController.text.length != 10) {
+                                    }
+                                    if (phoneNumberController.text.trim().length != 10) {
                                       setState(() => pressed = false);
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
@@ -239,6 +240,7 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
                                       context: context,
                                       phoneNumber: '+91${phoneNumberController.text}',
                                       onCodeSent: () async {
+                                        setState(() => pressed = false);
                                         await Navigator.pushAndRemoveUntil(
                                           context,
                                           MaterialPageRoute(
@@ -246,9 +248,9 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
                                                 VerifyMobileNumberWidget(),
                                           ),
                                           (r) => false,
-                                        );
+                                        ).onError((error, stackTrace) => print(error));
                                       },
-                                    ).then((value) => setState(() => pressed = false)).onError((error, stackTrace) => setState(() => pressed = false));
+                                    );
                                   },
                                 ),
                               ),

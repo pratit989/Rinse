@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rinse/auth/auth_util.dart';
 import 'package:rinse/backend/backend.dart';
 import 'package:rinse/ongoing_delivered_to_customer/ongoing_delivered_to_customer_widget.dart';
@@ -80,7 +79,11 @@ class _WorkerHomeWidgetState extends State<WorkerHomeWidget> {
                                   : (ordersRecord.adminOrderStatus == 'OutForDelivery')
                                       ? OngoingDeliveredToCustomerWidget(
                                           documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder))
-                                      : Container()),
+                                      : ordersRecord.adminOrderStatus == 'Received' && ordersRecord.assignedWorker == currentUserUid
+                                          ? OngoingDeliveredToLaundryWidget(documentReference: ordersRecord.reference)
+                                          : Container(
+                                              child: Text('Something Went Wrong'),
+                                            )),
                     );
                   },
                   child: Image.asset(
@@ -106,20 +109,24 @@ class _WorkerHomeWidgetState extends State<WorkerHomeWidget> {
                       );
                     }
                     final OrdersRecord ordersRecord =
-                    await OrdersRecord.getDocumentOnce(OrdersRecord.collection.doc(currentUserDocument.acceptedOrder));
+                        await OrdersRecord.getDocumentOnce(OrdersRecord.collection.doc(currentUserDocument.acceptedOrder));
                     await Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => (ordersRecord.adminOrderStatus == '' || ordersRecord.adminOrderStatus == null)
                               ? OngoingDeliveredToLaundryWidget(
-                            documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder),
-                          )
+                                  documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder),
+                                )
                               : (ordersRecord.adminOrderStatus == 'Packed')
-                              ? PickupOrderDetailsWidget(documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder))
-                              : (ordersRecord.adminOrderStatus == 'OutForDelivery')
-                              ? OngoingDeliveredToCustomerWidget(
-                              documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder))
-                              : Container()),
+                                  ? PickupOrderDetailsWidget(documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder))
+                                  : (ordersRecord.adminOrderStatus == 'OutForDelivery')
+                                      ? OngoingDeliveredToCustomerWidget(
+                                          documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder))
+                                      : ordersRecord.adminOrderStatus == 'Received' && ordersRecord.assignedWorker == currentUserUid
+                                          ? OngoingDeliveredToLaundryWidget(documentReference: ordersRecord.reference)
+                                          : Container(
+                                              child: Text('Something Went Wrong'),
+                                            )),
                     );
                   },
                   child: Image.asset(
@@ -176,7 +183,7 @@ class _WorkerNavBarPageState extends State<WorkerNavBarPage> {
     return Scaffold(
       body: tabs[_currentPage],
       bottomNavigationBar: SizedBox(
-        height: MediaQuery.of(context).size.height*0.1,
+        height: MediaQuery.of(context).size.height * 0.1,
         child: BottomNavigationBar(
           elevation: 0,
           currentIndex: currentIndex,

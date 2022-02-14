@@ -496,7 +496,7 @@ class _AdminReceivedOrdersWidgetState extends State<AdminReceivedOrdersWidget> {
                                         ),
                                       ),
                                       Visibility(
-                                        visible: _ordersRecords[index].assignedWorker != null,
+                                        visible: _ordersRecords[index].assignedWorker != null && _ordersRecords[index].adminOrderStatus == 'Received',
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment: MainAxisAlignment.center,

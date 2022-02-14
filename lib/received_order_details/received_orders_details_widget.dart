@@ -477,7 +477,7 @@ class _ReceivedOrderDetailsWidgetState extends State<ReceivedOrderDetailsWidget>
                           ),
                         ),
                         Visibility(
-                          visible: snapshot.data.adminOrderStatus == "Received",
+                          visible: snapshot.data.adminOrderStatus == "Received" && (snapshot.data.assignedWorker == null || snapshot.data.assignedWorker == ""),
                           child: FFButtonWidget(
                             onPressed: () async {
                               await FirebaseFirestore.instance.runTransaction((transaction) async{

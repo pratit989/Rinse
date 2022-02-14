@@ -19,7 +19,7 @@ class _BookingSuccessfulWidgetState extends State<BookingSuccessfulWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -27,7 +27,7 @@ class _BookingSuccessfulWidgetState extends State<BookingSuccessfulWidget> {
             Align(
               alignment: AlignmentDirectional(0, 0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 50),
+                padding: EdgeInsetsDirectional.fromSTEB(0, MediaQuery.of(context).size.height*0.2, 0, 50),
                 child: Text(
                   'Booking Successful !',
                   style: FlutterFlowTheme.bodyText1.override(

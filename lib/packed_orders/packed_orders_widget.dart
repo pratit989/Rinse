@@ -1,9 +1,12 @@
+import 'package:flutter/material.dart';
+
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../ongoing_delivered_to_customer/ongoing_delivered_to_customer_widget.dart';
+import '../ongoing_delivered_to_laundry/ongoing_delivered_to_laundry_widget.dart';
 import '../pickup_order_details/pickup_order_details_widget.dart';
-import 'package:flutter/material.dart';
 
 class PackedOrdersWidget extends StatefulWidget {
   const PackedOrdersWidget({Key key}) : super(key: key);
@@ -64,9 +67,10 @@ class _PackedOrdersWidgetState extends State<PackedOrdersWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
                 child: Container(
-                  height: MediaQuery.of(context).size.height*0.8,
+                  height: MediaQuery.of(context).size.height * 0.8,
                   child: StreamBuilder<List<OrdersRecord>>(
-                      stream: queryOrdersRecord(queryBuilder: (obj) => obj.where('admin_order_status', isEqualTo: "Packed").where('assigned_worker', isNull: true)),
+                      stream: queryOrdersRecord(
+                          queryBuilder: (obj) => obj.where('admin_order_status', isEqualTo: "Packed").where('assigned_worker', isNull: true)),
                       builder: (context, snapshot) {
                         if (!snapshot.hasData) {
                           return Center(
@@ -81,6 +85,32 @@ class _PackedOrdersWidgetState extends State<PackedOrdersWidget> {
                         }
 
                         if (snapshot.data.isEmpty) {
+                          return Container();
+                        }
+
+                        if (currentUserDocument.acceptedOrder != null && currentUserDocument.acceptedOrder != "") {
+                          OrdersRecord.getDocumentOnce(OrdersRecord.collection.doc(currentUserDocument.acceptedOrder))
+                              .then((ordersRecord) => Future.delayed(
+                                  Duration.zero,
+                                  () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => (ordersRecord.adminOrderStatus == '' || ordersRecord.adminOrderStatus == null)
+                                                ? OngoingDeliveredToLaundryWidget(
+                                                    documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder),
+                                                  )
+                                                : (ordersRecord.adminOrderStatus == 'Packed')
+                                                    ? PickupOrderDetailsWidget(
+                                                        documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder))
+                                                    : (ordersRecord.adminOrderStatus == 'OutForDelivery')
+                                                        ? OngoingDeliveredToCustomerWidget(
+                                                            documentReference: OrdersRecord.collection.doc(currentUserDocument.acceptedOrder))
+                                                        : ordersRecord.adminOrderStatus == 'Received' && ordersRecord.assignedWorker == currentUserUid
+                                                            ? OngoingDeliveredToLaundryWidget(documentReference: ordersRecord.reference)
+                                                            : Container(
+                                                                child: Text('Something Went Wrong'),
+                                                              )),
+                                      )));
                           return Container();
                         }
 
@@ -116,15 +146,13 @@ class _PackedOrdersWidgetState extends State<PackedOrdersWidget> {
                                             borderRadius: BorderRadius.circular(12),
                                           ),
                                           child: Padding(
-                                            padding:
-                                            EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                                            padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                                      20, 0, 0, 0),
+                                                  padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                                                   child: Text(
                                                     'Order Id :    ${_ordersRecords[index].reference.id}',
                                                     style: FlutterFlowTheme.bodyText1.override(
@@ -136,8 +164,7 @@ class _PackedOrdersWidgetState extends State<PackedOrdersWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                                      0, 0, 20, 0),
+                                                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
                                                   child: Text(
                                                     '₹${_ordersRecords[index].totalCost}',
                                                     style: FlutterFlowTheme.bodyText1.override(
@@ -161,8 +188,7 @@ class _PackedOrdersWidgetState extends State<PackedOrdersWidget> {
                                           crossAxisAlignment: CrossAxisAlignment.center,
                                           children: [
                                             Padding(
-                                              padding:
-                                              EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                                              padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                                               child: Text(
                                                 '${DateFormat('dd-MM-yyyy').format(_ordersRecords[index].dateTime)}   |  ${_ordersRecords[index].timeSlot}',
                                                 style: FlutterFlowTheme.bodyText1.override(
@@ -181,8 +207,9 @@ class _PackedOrdersWidgetState extends State<PackedOrdersWidget> {
                                               await Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      PickupOrderDetailsWidget(documentReference: _ordersRecords[index].reference,),
+                                                  builder: (context) => PickupOrderDetailsWidget(
+                                                    documentReference: _ordersRecords[index].reference,
+                                                  ),
                                                 ),
                                               );
                                             },
@@ -201,14 +228,14 @@ class _PackedOrdersWidgetState extends State<PackedOrdersWidget> {
                                     ),
                                   ),
                                 ),
-                              );},
+                              );
+                            },
                           );
                         }
 
                         Future.delayed(Duration.zero, () => Navigator.pop(context));
                         return Container();
-                      }
-                  ),
+                      }),
                 ),
               ),
             ],

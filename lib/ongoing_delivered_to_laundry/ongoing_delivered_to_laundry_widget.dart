@@ -25,7 +25,7 @@ class _OngoingDeliveredToLaundryWidgetState extends State<OngoingDeliveredToLaun
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -71,8 +71,8 @@ class _OngoingDeliveredToLaundryWidgetState extends State<OngoingDeliveredToLaun
                       );
                     }
 
-                    if (snapshot.data.customerOrderStatus != "Ongoing" ||
-                        (snapshot.data.adminOrderStatus != null && snapshot.data.adminOrderStatus != "") ||
+                    if ((snapshot.data.customerOrderStatus != "Ongoing" ||
+                        (snapshot.data.adminOrderStatus != null && snapshot.data.adminOrderStatus != "")) &&
                         (currentUserDocument.acceptedOrder == "" || currentUserDocument.acceptedOrder == null)) {
                       Future.delayed(
                           Duration.zero, () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NewOrdersWidget())));
