@@ -202,9 +202,11 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                             onTap: () async {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      AcceptOrderDetailsWidget(),
+                                PageTransition(
+                                  type: PageTransitionType.fade,
+                                  duration: Duration(milliseconds: 0),
+                                  reverseDuration: Duration(milliseconds: 0),
+                                  child: AcceptOrderDetailsWidget(),
                                 ),
                               );
                             },

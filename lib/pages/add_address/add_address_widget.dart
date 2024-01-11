@@ -210,8 +210,11 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                               );
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (context) => CurrentLocationWidget(
+                                PageTransition(
+                                  type: PageTransitionType.fade,
+                                  duration: Duration(milliseconds: 0),
+                                  reverseDuration: Duration(milliseconds: 0),
+                                  child: CurrentLocationWidget(
                                     location: buttonMapRecord,
                                   ),
                                 ),
@@ -536,8 +539,11 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                         onPressed: () async {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => CurrentLocationWidget(),
+                            PageTransition(
+                              type: PageTransitionType.fade,
+                              duration: Duration(milliseconds: 0),
+                              reverseDuration: Duration(milliseconds: 0),
+                              child: CurrentLocationWidget(),
                             ),
                           );
                         },
@@ -857,8 +863,11 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                         onPressed: () async {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => CurrentLocationWidget(),
+                            PageTransition(
+                              type: PageTransitionType.fade,
+                              duration: Duration(milliseconds: 0),
+                              reverseDuration: Duration(milliseconds: 0),
+                              child: CurrentLocationWidget(),
                             ),
                           );
                         },

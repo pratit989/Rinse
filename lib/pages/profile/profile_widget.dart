@@ -131,8 +131,11 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     onTap: () async {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => AddAddressWidget(),
+                        PageTransition(
+                          type: PageTransitionType.fade,
+                          duration: Duration(milliseconds: 0),
+                          reverseDuration: Duration(milliseconds: 0),
+                          child: AddAddressWidget(),
                         ),
                       );
                     },
@@ -186,8 +189,11 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     await authManager.signOut();
                     Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => WelcomeWidget(),
+                      PageTransition(
+                        type: PageTransitionType.fade,
+                        duration: Duration(milliseconds: 0),
+                        reverseDuration: Duration(milliseconds: 0),
+                        child: WelcomeWidget(),
                       ),
                       (r) => false,
                     );

@@ -647,8 +647,11 @@ class _AcceptOrderDetailsWidgetState extends State<AcceptOrderDetailsWidget> {
               onPressed: () async {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => OngoingDeliveredToLaundryWidget(),
+                  PageTransition(
+                    type: PageTransitionType.fade,
+                    duration: Duration(milliseconds: 0),
+                    reverseDuration: Duration(milliseconds: 0),
+                    child: OngoingDeliveredToLaundryWidget(),
                   ),
                 );
               },

@@ -196,8 +196,11 @@ class _OrderDeliveredToCustomerWidgetState
                 onPressed: () async {
                   Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => PackedOrdersWidget(),
+                    PageTransition(
+                      type: PageTransitionType.fade,
+                      duration: Duration(milliseconds: 0),
+                      reverseDuration: Duration(milliseconds: 0),
+                      child: PackedOrdersWidget(),
                     ),
                     (r) => false,
                   );

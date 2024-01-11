@@ -69,8 +69,11 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                   onPressed: () async {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => CustomerLoginWidget(),
+                      PageTransition(
+                        type: PageTransitionType.fade,
+                        duration: Duration(milliseconds: 0),
+                        reverseDuration: Duration(milliseconds: 0),
+                        child: CustomerLoginWidget(),
                       ),
                     );
                   },

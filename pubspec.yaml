@@ -38,8 +38,14 @@ dependencies:
   firebase_core: 2.24.2
   firebase_core_platform_interface: 5.0.0
   firebase_core_web: 2.10.0
+  firebase_crashlytics: 3.4.8
+  firebase_crashlytics_platform_interface: 3.6.16
+  firebase_performance: 0.9.3+8
+  firebase_performance_platform_interface: 0.1.4+16
+  firebase_performance_web: 0.1.4+16
   flutter_animate: 4.1.1+1
   flutter_cache_manager: 3.3.1
+  flutter_native_splash: 2.3.1
   flutter_plugin_android_lifecycle: 2.0.17
   font_awesome_flutter: 10.6.0
   from_css_color: 2.0.0
@@ -83,10 +89,12 @@ dependencies:
   sqflite: 2.2.6
   stream_transform: 2.1.0
   timeago: 3.2.2
+  universal_io: 2.2.2
   url_launcher: 6.1.10
   url_launcher_android: 6.0.27
   url_launcher_ios: 6.1.4
   url_launcher_platform_interface: 2.1.2
+  xml: 6.3.0
 
 
   # The following adds the Cupertino Icons font to your application.

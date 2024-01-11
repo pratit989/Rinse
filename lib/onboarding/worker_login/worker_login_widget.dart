@@ -314,8 +314,11 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                   ));
                   Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => WorkerHomeWidget(),
+                    PageTransition(
+                      type: PageTransitionType.fade,
+                      duration: Duration(milliseconds: 0),
+                      reverseDuration: Duration(milliseconds: 0),
+                      child: WorkerHomeWidget(),
                     ),
                     (r) => false,
                   );

@@ -211,9 +211,12 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
                                     onCodeSent: (context) async {
                                       Navigator.pushAndRemoveUntil(
                                         context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              VerifyMobileNumberWidget(),
+                                        PageTransition(
+                                          type: PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 0),
+                                          reverseDuration:
+                                              Duration(milliseconds: 0),
+                                          child: VerifyMobileNumberWidget(),
                                         ),
                                         (r) => false,
                                       );

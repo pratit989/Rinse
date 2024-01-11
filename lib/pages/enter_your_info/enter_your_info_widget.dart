@@ -279,8 +279,11 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                   ));
                   Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => NavBarPage(initialPage: 'Home'),
+                    PageTransition(
+                      type: PageTransitionType.fade,
+                      duration: Duration(milliseconds: 0),
+                      reverseDuration: Duration(milliseconds: 0),
+                      child: NavBarPage(initialPage: 'Home'),
                     ),
                     (r) => false,
                   );

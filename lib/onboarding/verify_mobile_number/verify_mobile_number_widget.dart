@@ -72,8 +72,11 @@ class _VerifyMobileNumberWidgetState extends State<VerifyMobileNumberWidget> {
           onPressed: () async {
             Navigator.push(
               context,
-              MaterialPageRoute(
-                builder: (context) => CustomerLoginWidget(),
+              PageTransition(
+                type: PageTransitionType.fade,
+                duration: Duration(milliseconds: 0),
+                reverseDuration: Duration(milliseconds: 0),
+                child: CustomerLoginWidget(),
               ),
             );
           },
@@ -178,15 +181,21 @@ class _VerifyMobileNumberWidgetState extends State<VerifyMobileNumberWidget> {
                       currentUserDisplayName != '') {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => NavBarPage(initialPage: 'Home'),
+                      PageTransition(
+                        type: PageTransitionType.fade,
+                        duration: Duration(milliseconds: 0),
+                        reverseDuration: Duration(milliseconds: 0),
+                        child: NavBarPage(initialPage: 'Home'),
                       ),
                     );
                   } else {
                     Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => EnterYourInfoWidget(),
+                      PageTransition(
+                        type: PageTransitionType.fade,
+                        duration: Duration(milliseconds: 0),
+                        reverseDuration: Duration(milliseconds: 0),
+                        child: EnterYourInfoWidget(),
                       ),
                       (r) => false,
                     );

@@ -641,8 +641,11 @@ class _CustomerOrderDetailsWidgetState
               onPressed: () async {
                 Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => BookingSuccessfulWidget(),
+                  PageTransition(
+                    type: PageTransitionType.fade,
+                    duration: Duration(milliseconds: 0),
+                    reverseDuration: Duration(milliseconds: 0),
+                    child: BookingSuccessfulWidget(),
                   ),
                   (r) => false,
                 );

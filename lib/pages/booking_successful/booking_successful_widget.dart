@@ -89,9 +89,11 @@ class _BookingSuccessfulWidgetState extends State<BookingSuccessfulWidget> {
                 onTap: () async {
                   Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          NavBarPage(initialPage: 'CustomerMyOrders'),
+                    PageTransition(
+                      type: PageTransitionType.fade,
+                      duration: Duration(milliseconds: 0),
+                      reverseDuration: Duration(milliseconds: 0),
+                      child: NavBarPage(initialPage: 'CustomerMyOrders'),
                     ),
                     (r) => false,
                   );
@@ -131,8 +133,11 @@ class _BookingSuccessfulWidgetState extends State<BookingSuccessfulWidget> {
               onTap: () async {
                 Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => NavBarPage(initialPage: 'Home'),
+                  PageTransition(
+                    type: PageTransitionType.fade,
+                    duration: Duration(milliseconds: 0),
+                    reverseDuration: Duration(milliseconds: 0),
+                    child: NavBarPage(initialPage: 'Home'),
                   ),
                   (r) => false,
                 );

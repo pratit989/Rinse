@@ -202,9 +202,11 @@ class _PackedOrdersWidgetState extends State<PackedOrdersWidget> {
                             onTap: () async {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      PickupOrderDetailsWidget(),
+                                PageTransition(
+                                  type: PageTransitionType.fade,
+                                  duration: Duration(milliseconds: 0),
+                                  reverseDuration: Duration(milliseconds: 0),
+                                  child: PickupOrderDetailsWidget(),
                                 ),
                               );
                             },

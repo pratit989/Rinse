@@ -692,9 +692,11 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                   onPressed: () async {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            OngoingDeliveredToCustomerWidget(),
+                      PageTransition(
+                        type: PageTransitionType.fade,
+                        duration: Duration(milliseconds: 0),
+                        reverseDuration: Duration(milliseconds: 0),
+                        child: OngoingDeliveredToCustomerWidget(),
                       ),
                     );
                   },

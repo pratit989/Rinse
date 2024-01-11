@@ -87,8 +87,11 @@ class _WorkerHomeWidgetState extends State<WorkerHomeWidget> {
                   onTap: () async {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => NewOrdersWidget(),
+                      PageTransition(
+                        type: PageTransitionType.fade,
+                        duration: Duration(milliseconds: 0),
+                        reverseDuration: Duration(milliseconds: 0),
+                        child: NewOrdersWidget(),
                       ),
                     );
                   },
@@ -109,8 +112,11 @@ class _WorkerHomeWidgetState extends State<WorkerHomeWidget> {
                   onTap: () async {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => PackedOrdersWidget(),
+                      PageTransition(
+                        type: PageTransitionType.fade,
+                        duration: Duration(milliseconds: 0),
+                        reverseDuration: Duration(milliseconds: 0),
+                        child: PackedOrdersWidget(),
                       ),
                     );
                   },
