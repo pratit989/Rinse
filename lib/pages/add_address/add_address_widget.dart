@@ -262,6 +262,9 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                             child: TextFormField(
                               controller: _model.textController1,
                               focusNode: _model.textFieldFocusNode1,
+                              autofillHints: const [AutofillHints.streetAddressLine1],
+                              textCapitalization: TextCapitalization.words,
+                              textInputAction: TextInputAction.next,
                               obscureText: false,
                               decoration: InputDecoration(
                                 isDense: true,
@@ -303,6 +306,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     fontSize: 13.0,
                                   ),
                               textAlign: TextAlign.start,
+                              keyboardType: TextInputType.streetAddress,
                               validator: _model.textController1Validator
                                   .asValidator(context),
                             ),
@@ -312,6 +316,9 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                             child: TextFormField(
                               controller: _model.textController2,
                               focusNode: _model.textFieldFocusNode2,
+                              autofillHints: const [AutofillHints.streetAddressLine2],
+                              textCapitalization: TextCapitalization.words,
+                              textInputAction: TextInputAction.next,
                               obscureText: false,
                               decoration: InputDecoration(
                                 isDense: true,
@@ -352,6 +359,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: const Color(0xFF818181),
                                     fontSize: 13.0,
                                   ),
+                              keyboardType: TextInputType.streetAddress,
                               validator: _model.textController2Validator
                                   .asValidator(context),
                             ),
@@ -361,6 +369,9 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                             child: TextFormField(
                               controller: _model.textController3,
                               focusNode: _model.textFieldFocusNode3,
+                              autofillHints: const [AutofillHints.addressCity],
+                              textCapitalization: TextCapitalization.words,
+                              textInputAction: TextInputAction.next,
                               obscureText: false,
                               decoration: const InputDecoration(
                                 isDense: true,
@@ -413,6 +424,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: const Color(0xFF818181),
                                     fontSize: 13.0,
                                   ),
+                              keyboardType: TextInputType.streetAddress,
                               validator: _model.textController3Validator
                                   .asValidator(context),
                             ),
@@ -423,6 +435,8 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                             child: TextFormField(
                               controller: _model.textController4,
                               focusNode: _model.textFieldFocusNode4,
+                              autofillHints: const [AutofillHints.postalCode],
+                              textInputAction: TextInputAction.done,
                               obscureText: false,
                               decoration: const InputDecoration(
                                 isDense: true,
@@ -475,9 +489,21 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: const Color(0xFF818181),
                                     fontSize: 13.0,
                                   ),
+                              maxLength: 6,
+                              maxLengthEnforcement:
+                                  MaxLengthEnforcement.enforced,
+                              buildCounter: (context,
+                                      {required currentLength,
+                                      required isFocused,
+                                      maxLength}) =>
+                                  null,
                               keyboardType: TextInputType.number,
                               validator: _model.textController4Validator
                                   .asValidator(context),
+                              inputFormatters: [
+                                FilteringTextInputFormatter.allow(
+                                    RegExp('[0-9]'))
+                              ],
                             ),
                           ),
                         ],
@@ -586,6 +612,9 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                             child: TextFormField(
                               controller: _model.textController5,
                               focusNode: _model.textFieldFocusNode5,
+                              autofillHints: const [AutofillHints.streetAddressLine1],
+                              textCapitalization: TextCapitalization.words,
+                              textInputAction: TextInputAction.next,
                               obscureText: false,
                               decoration: InputDecoration(
                                 isDense: true,
@@ -627,6 +656,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     fontSize: 13.0,
                                   ),
                               textAlign: TextAlign.start,
+                              keyboardType: TextInputType.streetAddress,
                               validator: _model.textController5Validator
                                   .asValidator(context),
                             ),
@@ -636,6 +666,9 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                             child: TextFormField(
                               controller: _model.textController6,
                               focusNode: _model.textFieldFocusNode6,
+                              autofillHints: const [AutofillHints.streetAddressLine2],
+                              textCapitalization: TextCapitalization.words,
+                              textInputAction: TextInputAction.next,
                               obscureText: false,
                               decoration: InputDecoration(
                                 isDense: true,
@@ -676,6 +709,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: const Color(0xFF818181),
                                     fontSize: 13.0,
                                   ),
+                              keyboardType: TextInputType.streetAddress,
                               validator: _model.textController6Validator
                                   .asValidator(context),
                             ),
@@ -685,6 +719,9 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                             child: TextFormField(
                               controller: _model.textController7,
                               focusNode: _model.textFieldFocusNode7,
+                              autofillHints: const [AutofillHints.addressCity],
+                              textCapitalization: TextCapitalization.words,
+                              textInputAction: TextInputAction.next,
                               obscureText: false,
                               decoration: const InputDecoration(
                                 isDense: true,
@@ -737,6 +774,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: const Color(0xFF818181),
                                     fontSize: 13.0,
                                   ),
+                              keyboardType: TextInputType.streetAddress,
                               validator: _model.textController7Validator
                                   .asValidator(context),
                             ),
@@ -747,6 +785,8 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                             child: TextFormField(
                               controller: _model.textController8,
                               focusNode: _model.textFieldFocusNode8,
+                              autofillHints: const [AutofillHints.postalCode],
+                              textInputAction: TextInputAction.done,
                               obscureText: false,
                               decoration: const InputDecoration(
                                 isDense: true,
@@ -799,9 +839,21 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: const Color(0xFF818181),
                                     fontSize: 13.0,
                                   ),
+                              maxLength: 6,
+                              maxLengthEnforcement:
+                                  MaxLengthEnforcement.enforced,
+                              buildCounter: (context,
+                                      {required currentLength,
+                                      required isFocused,
+                                      maxLength}) =>
+                                  null,
                               keyboardType: TextInputType.number,
                               validator: _model.textController8Validator
                                   .asValidator(context),
+                              inputFormatters: [
+                                FilteringTextInputFormatter.allow(
+                                    RegExp('[0-9]'))
+                              ],
                             ),
                           ),
                         ],
@@ -910,6 +962,9 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                             child: TextFormField(
                               controller: _model.textController9,
                               focusNode: _model.textFieldFocusNode9,
+                              autofillHints: const [AutofillHints.streetAddressLine1],
+                              textCapitalization: TextCapitalization.words,
+                              textInputAction: TextInputAction.next,
                               obscureText: false,
                               decoration: InputDecoration(
                                 isDense: true,
@@ -951,6 +1006,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     fontSize: 13.0,
                                   ),
                               textAlign: TextAlign.start,
+                              keyboardType: TextInputType.streetAddress,
                               validator: _model.textController9Validator
                                   .asValidator(context),
                             ),
@@ -960,6 +1016,9 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                             child: TextFormField(
                               controller: _model.textController10,
                               focusNode: _model.textFieldFocusNode10,
+                              autofillHints: const [AutofillHints.streetAddressLine2],
+                              textCapitalization: TextCapitalization.words,
+                              textInputAction: TextInputAction.next,
                               obscureText: false,
                               decoration: InputDecoration(
                                 isDense: true,
@@ -1000,6 +1059,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: const Color(0xFF818181),
                                     fontSize: 13.0,
                                   ),
+                              keyboardType: TextInputType.streetAddress,
                               validator: _model.textController10Validator
                                   .asValidator(context),
                             ),
@@ -1009,6 +1069,9 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                             child: TextFormField(
                               controller: _model.textController11,
                               focusNode: _model.textFieldFocusNode11,
+                              autofillHints: const [AutofillHints.addressCity],
+                              textCapitalization: TextCapitalization.words,
+                              textInputAction: TextInputAction.next,
                               obscureText: false,
                               decoration: const InputDecoration(
                                 isDense: true,
@@ -1061,6 +1124,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: const Color(0xFF818181),
                                     fontSize: 13.0,
                                   ),
+                              keyboardType: TextInputType.streetAddress,
                               validator: _model.textController11Validator
                                   .asValidator(context),
                             ),
@@ -1071,6 +1135,9 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                             child: TextFormField(
                               controller: _model.textController12,
                               focusNode: _model.textFieldFocusNode12,
+                              autofillHints: const [AutofillHints.postalCode],
+                              textCapitalization: TextCapitalization.words,
+                              textInputAction: TextInputAction.done,
                               obscureText: false,
                               decoration: const InputDecoration(
                                 isDense: true,
@@ -1123,9 +1190,21 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: const Color(0xFF818181),
                                     fontSize: 13.0,
                                   ),
+                              maxLength: 6,
+                              maxLengthEnforcement:
+                                  MaxLengthEnforcement.enforced,
+                              buildCounter: (context,
+                                      {required currentLength,
+                                      required isFocused,
+                                      maxLength}) =>
+                                  null,
                               keyboardType: TextInputType.number,
                               validator: _model.textController12Validator
                                   .asValidator(context),
+                              inputFormatters: [
+                                FilteringTextInputFormatter.allow(
+                                    RegExp('[0-9]'))
+                              ],
                             ),
                           ),
                         ],

@@ -6,6 +6,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 class CustomerLoginModel extends FlutterFlowModel<CustomerLoginWidget> {
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   // State field(s) for PhoneNumber widget.
   FocusNode? phoneNumberFocusNode;
@@ -33,6 +34,7 @@ class CustomerLoginModel extends FlutterFlowModel<CustomerLoginWidget> {
 
   @override
   void dispose() {
+    unfocusNode.dispose();
     phoneNumberFocusNode?.dispose();
     phoneNumberController?.dispose();
   }

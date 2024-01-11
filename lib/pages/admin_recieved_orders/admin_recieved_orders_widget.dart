@@ -51,6 +51,22 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: const Color(0xFFF5F5F5),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFFF5F5F5),
+        automaticallyImplyLeading: false,
+        title: Text(
+          'Orders',
+          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                fontFamily: 'Lato',
+                color: const Color(0xFF073131),
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+              ),
+        ),
+        actions: const [],
+        centerTitle: true,
+        elevation: 0.0,
+      ),
       body: SafeArea(
         top: true,
         child: Padding(
@@ -58,21 +74,6 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
-                  child: Text(
-                    'Orders',
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Lato',
-                          color: const Color(0xFF073131),
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                  ),
-                ),
-              ),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
                 child: SingleChildScrollView(
@@ -83,7 +84,7 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                     children: [
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 10.0, 4.0),
                         child: FFButtonWidget(
                           onPressed: () {
                             print('Button pressed ...');
@@ -517,7 +518,7 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                   ),
                 ),
               ),
-            ],
+            ].addToStart(const SizedBox(height: 10.0)),
           ),
         ),
       ),

@@ -5,7 +5,7 @@ export '/onboarding/customer_login/customer_login_widget.dart'
 export '/onboarding/verify_mobile_number/verify_mobile_number_widget.dart'
     show VerifyMobileNumberWidget;
 export '/pages/home/home_widget.dart' show HomeWidget;
-export '/pages/enter_your_info/enter_your_info_widget.dart'
+export '/onboarding/enter_your_info/enter_your_info_widget.dart'
     show EnterYourInfoWidget;
 export '/pages/customer_my_orders/customer_my_orders_widget.dart'
     show CustomerMyOrdersWidget;

@@ -49,6 +49,18 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: const Color(0xFFF5F5F5),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFFF5F5F5),
+        automaticallyImplyLeading: false,
+        title: Text(
+          'My Orders',
+          textAlign: TextAlign.center,
+          style: FlutterFlowTheme.of(context).headlineSmall,
+        ),
+        actions: const [],
+        centerTitle: true,
+        elevation: 0.0,
+      ),
       body: SafeArea(
         top: true,
         child: Stack(
@@ -92,18 +104,6 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
             Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
-                  child: Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 30.0),
-                    child: Text(
-                      'My Orders',
-                      textAlign: TextAlign.center,
-                      style: FlutterFlowTheme.of(context).headlineSmall,
-                    ),
-                  ),
-                ),
                 Padding(
                   padding:
                       const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 30.0),
@@ -342,7 +342,7 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                     ),
                   ),
                 ),
-              ],
+              ].addToStart(const SizedBox(height: 10.0)),
             ),
           ],
         ),

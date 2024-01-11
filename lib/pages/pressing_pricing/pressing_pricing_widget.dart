@@ -51,55 +51,42 @@ class _PressingPricingWidgetState extends State<PressingPricingWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: const Color(0xFFF5F5F5),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFFF5F5F5),
+        automaticallyImplyLeading: false,
+        leading: InkWell(
+          splashColor: Colors.transparent,
+          focusColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          onTap: () async {
+            Navigator.pop(context);
+          },
+          child: const Icon(
+            Icons.arrow_back_ios_sharp,
+            color: Color(0xFF1F4444),
+            size: 24.0,
+          ),
+        ),
+        title: Text(
+          'Pricing',
+          textAlign: TextAlign.center,
+          style: FlutterFlowTheme.of(context).headlineSmall.override(
+                fontFamily: 'Lato',
+                color: const Color(0xFF062222),
+                fontSize: 22.0,
+                fontWeight: FontWeight.bold,
+              ),
+        ),
+        actions: const [],
+        centerTitle: true,
+        elevation: 0.0,
+      ),
       body: SafeArea(
         top: true,
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 50.0, 0.0),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        Navigator.pop(context);
-                      },
-                      child: const Icon(
-                        Icons.arrow_back_ios_sharp,
-                        color: Color(0xFF1F4444),
-                        size: 24.0,
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
-                    child: Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(70.0, 0.0, 0.0, 0.0),
-                      child: Text(
-                        'Pricing',
-                        textAlign: TextAlign.center,
-                        style:
-                            FlutterFlowTheme.of(context).headlineSmall.override(
-                                  fontFamily: 'Lato',
-                                  color: const Color(0xFF062222),
-                                  fontSize: 22.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
             Image.asset(
               'assets/images/PressingPricing.png',
               height: MediaQuery.sizeOf(context).height * 0.08,
@@ -213,7 +200,7 @@ class _PressingPricingWidgetState extends State<PressingPricingWidget> {
                 ),
               ),
             ),
-          ],
+          ].addToStart(const SizedBox(height: 20.0)),
         ),
       ),
     );

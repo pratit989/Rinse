@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class EnterYourInfoModel extends FlutterFlowModel<EnterYourInfoWidget> {
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   // State field(s) for FirstNameInput widget.
   FocusNode? firstNameInputFocusNode;
@@ -40,6 +41,9 @@ class EnterYourInfoModel extends FlutterFlowModel<EnterYourInfoWidget> {
       return 'Please enter your email';
     }
 
+    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
+      return 'Has to be a valid email address.';
+    }
     return null;
   }
 
@@ -54,6 +58,7 @@ class EnterYourInfoModel extends FlutterFlowModel<EnterYourInfoWidget> {
 
   @override
   void dispose() {
+    unfocusNode.dispose();
     firstNameInputFocusNode?.dispose();
     firstNameInputController?.dispose();
 

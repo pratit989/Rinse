@@ -51,177 +51,160 @@ class _ProfileWidgetState extends State<ProfileWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: const Color(0xFFF5F5F5),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFFF5F5F5),
+        automaticallyImplyLeading: false,
+        leading: Icon(
+          Icons.account_circle,
+          color: FlutterFlowTheme.of(context).primary,
+          size: 24.0,
+        ),
+        title: Text(
+          'My Profile',
+          style: FlutterFlowTheme.of(context).headlineSmall.override(
+                fontFamily: 'Lato',
+                color: FlutterFlowTheme.of(context).primary,
+                fontWeight: FontWeight.bold,
+              ),
+        ),
+        actions: const [],
+        centerTitle: true,
+        elevation: 0.0,
+      ),
       body: SafeArea(
         top: true,
-        child: Align(
-          alignment: const AlignmentDirectional(0.0, 0.0),
-          child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
-            child: Column(
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Row(
               mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
-                      child: Icon(
-                        Icons.account_circle,
-                        color: FlutterFlowTheme.of(context).primary,
-                        size: 24.0,
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 150.0, 0.0),
-                      child: Text(
-                        'My Profile',
-                        style:
-                            FlutterFlowTheme.of(context).headlineSmall.override(
-                                  fontFamily: 'Lato',
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-                      child: AuthUserStreamWidget(
-                        builder: (context) => Text(
-                          currentUserDisplayName,
-                          style: FlutterFlowTheme.of(context)
-                              .headlineSmall
-                              .override(
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                  child: AuthUserStreamWidget(
+                    builder: (context) => Text(
+                      currentUserDisplayName,
+                      style:
+                          FlutterFlowTheme.of(context).headlineSmall.override(
                                 fontFamily: 'Lato',
                                 color: FlutterFlowTheme.of(context).secondary,
                                 fontWeight: FontWeight.bold,
                               ),
-                        ),
-                      ),
                     ),
-                  ],
-                ),
-                AuthUserStreamWidget(
-                  builder: (context) => Text(
-                    '$currentUserEmail | $currentPhoneNumber',
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Lato',
-                          color: const Color(0xFF818181),
-                          fontWeight: FontWeight.w500,
-                        ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(50.0),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      Navigator.push(
-                        context,
-                        PageTransition(
-                          type: PageTransitionType.fade,
-                          duration: const Duration(milliseconds: 0),
-                          reverseDuration: const Duration(milliseconds: 0),
-                          child: const AddAddressWidget(),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      width: MediaQuery.sizeOf(context).width * 0.8,
-                      height: MediaQuery.sizeOf(context).height * 0.05,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: const [
-                          BoxShadow(
-                            blurRadius: 2.0,
-                            color: Color(0x12000000),
-                            offset: Offset(0.0, 2.0),
-                            spreadRadius: 0.0,
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
-                              child: Text(
-                                'Manage Addresses',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Lato',
-                                      color: const Color(0xFF1F4444),
-                                      fontSize: 15.0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                              ),
-                            ),
-                            Icon(
-                              Icons.arrow_forward_ios_sharp,
-                              color: FlutterFlowTheme.of(context).secondary,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                FFButtonWidget(
-                  onPressed: () async {
-                    await authManager.signOut();
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      PageTransition(
-                        type: PageTransitionType.fade,
-                        duration: const Duration(milliseconds: 0),
-                        reverseDuration: const Duration(milliseconds: 0),
-                        child: const WelcomeWidget(),
-                      ),
-                      (r) => false,
-                    );
-                  },
-                  text: 'Logout',
-                  options: FFButtonOptions(
-                    width: 175.0,
-                    height: 39.0,
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).primary,
-                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Lato',
-                          color: Colors.white,
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                    elevation: 2.0,
-                    borderSide: const BorderSide(
-                      color: Colors.transparent,
-                      width: 1.0,
-                    ),
-                    borderRadius: BorderRadius.circular(10.0),
                   ),
                 ),
               ],
             ),
-          ),
+            AuthUserStreamWidget(
+              builder: (context) => Text(
+                '$currentUserEmail | $currentPhoneNumber',
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Lato',
+                      color: const Color(0xFF818181),
+                      fontWeight: FontWeight.w500,
+                    ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(50.0),
+              child: InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  Navigator.push(
+                    context,
+                    PageTransition(
+                      type: PageTransitionType.fade,
+                      duration: const Duration(milliseconds: 0),
+                      reverseDuration: const Duration(milliseconds: 0),
+                      child: const AddAddressWidget(),
+                    ),
+                  );
+                },
+                child: Container(
+                  width: MediaQuery.sizeOf(context).width * 0.8,
+                  height: MediaQuery.sizeOf(context).height * 0.05,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(
+                        blurRadius: 2.0,
+                        color: Color(0x12000000),
+                        offset: Offset(0.0, 2.0),
+                        spreadRadius: 0.0,
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Align(
+                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          child: Text(
+                            'Manage Addresses',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Lato',
+                                  color: const Color(0xFF1F4444),
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios_sharp,
+                          color: FlutterFlowTheme.of(context).secondary,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            FFButtonWidget(
+              onPressed: () async {
+                await authManager.signOut();
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  PageTransition(
+                    type: PageTransitionType.fade,
+                    duration: const Duration(milliseconds: 0),
+                    reverseDuration: const Duration(milliseconds: 0),
+                    child: const WelcomeWidget(),
+                  ),
+                  (r) => false,
+                );
+              },
+              text: 'Logout',
+              options: FFButtonOptions(
+                width: 175.0,
+                height: 39.0,
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                color: FlutterFlowTheme.of(context).primary,
+                textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                      fontFamily: 'Lato',
+                      color: Colors.white,
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                elevation: 2.0,
+                borderSide: const BorderSide(
+                  color: Colors.transparent,
+                  width: 1.0,
+                ),
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+            ),
+          ],
         ),
       ),
     );

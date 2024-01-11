@@ -6,6 +6,7 @@ class VerifyMobileNumberModel
     extends FlutterFlowModel<VerifyMobileNumberWidget> {
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   // State field(s) for PinCode widget.
   TextEditingController? pinCodeController;
@@ -20,6 +21,7 @@ class VerifyMobileNumberModel
 
   @override
   void dispose() {
+    unfocusNode.dispose();
     pinCodeController?.dispose();
   }
 

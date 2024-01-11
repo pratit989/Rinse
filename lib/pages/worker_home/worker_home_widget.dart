@@ -46,13 +46,15 @@ class _WorkerHomeWidgetState extends State<WorkerHomeWidget> {
 
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: const Color(0xFFF5F5F5),
-      body: SafeArea(
-        top: true,
-        child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+    return GestureDetector(
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: const Color(0xFFF5F5F5),
+        body: SafeArea(
+          top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -125,7 +127,7 @@ class _WorkerHomeWidgetState extends State<WorkerHomeWidget> {
                   ),
                 ),
               ),
-            ],
+            ].addToStart(const SizedBox(height: 40.0)),
           ),
         ),
       ),

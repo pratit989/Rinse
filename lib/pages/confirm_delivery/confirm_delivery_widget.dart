@@ -51,6 +51,27 @@ class _ConfirmDeliveryWidgetState extends State<ConfirmDeliveryWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: const Color(0xFFF5F5F5),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFFF5F5F5),
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30.0,
+          borderWidth: 1.0,
+          buttonSize: 60.0,
+          icon: const Icon(
+            Icons.arrow_back_ios_sharp,
+            color: Color(0xFF1F4444),
+            size: 25.0,
+          ),
+          onPressed: () async {
+            Navigator.pop(context);
+          },
+        ),
+        actions: const [],
+        centerTitle: true,
+        elevation: 0.0,
+      ),
       body: SafeArea(
         top: true,
         child: Form(
@@ -59,26 +80,6 @@ class _ConfirmDeliveryWidgetState extends State<ConfirmDeliveryWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Align(
-                alignment: const AlignmentDirectional(-1.0, 0.0),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 40.0),
-                  child: FlutterFlowIconButton(
-                    borderColor: Colors.transparent,
-                    borderRadius: 30.0,
-                    borderWidth: 1.0,
-                    buttonSize: 60.0,
-                    icon: const Icon(
-                      Icons.arrow_back_ios_sharp,
-                      color: Color(0xFF1F4444),
-                      size: 25.0,
-                    ),
-                    onPressed: () async {
-                      Navigator.pop(context);
-                    },
-                  ),
-                ),
-              ),
               Align(
                 alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Padding(

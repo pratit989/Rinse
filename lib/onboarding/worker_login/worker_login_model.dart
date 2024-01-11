@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class WorkerLoginModel extends FlutterFlowModel<WorkerLoginWidget> {
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   // State field(s) for EmailInput widget.
   FocusNode? emailInputFocusNode;
@@ -42,6 +43,7 @@ class WorkerLoginModel extends FlutterFlowModel<WorkerLoginWidget> {
 
   @override
   void dispose() {
+    unfocusNode.dispose();
     emailInputFocusNode?.dispose();
     emailInputController?.dispose();
 
