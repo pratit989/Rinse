@@ -1,53 +1,65 @@
-import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'auth/firebase_user_provider.dart';
-import 'auth/auth_util.dart';
 
+import 'package:flutter_localizations/flutter_localizations.dart';
+
+import 'package:firebase_core/firebase_core.dart';
+import 'auth/firebase_auth/firebase_user_provider.dart';
+import 'auth/firebase_auth/auth_util.dart';
+
+import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
+import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
-import 'package:rinse/welcome/welcome_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'flutter_flow/flutter_flow_theme.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'home/home_widget.dart';
-import 'customer_my_orders/customer_my_orders_widget.dart';
-import 'pricing/pricing_widget.dart';
-import 'profile/profile_widget.dart';
+import 'index.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
 
-  runApp(MyApp());
+  await initFirebase();
+
+  final appState = FFAppState(); // Initialize FFAppState
+  await appState.initializePersistedState();
+
+  runApp(ChangeNotifierProvider(
+    create: (context) => appState,
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
   // This widget is the root of your application.
   @override
-  _MyAppState createState() => _MyAppState();
+  State<MyApp> createState() => _MyAppState();
 
   static _MyAppState of(BuildContext context) =>
-      context.findAncestorStateOfType<_MyAppState>();
+      context.findAncestorStateOfType<_MyAppState>()!;
 }
 
 class _MyAppState extends State<MyApp> {
-  Locale _locale;
-  Stream<RinseFirebaseUser> userStream;
-  RinseFirebaseUser initialUser;
-  bool displaySplashImage = true;
-  final authUserSub = authenticatedUserStream.listen((_) {});
+  Locale? _locale;
+  ThemeMode _themeMode = ThemeMode.system;
 
-  void setLocale(Locale value) => setState(() => _locale = value);
+  late Stream<BaseAuthUser> userStream;
+  BaseAuthUser? initialUser;
+  bool displaySplashImage = true;
+
+  final authUserSub = authenticatedUserStream.listen((_) {});
 
   @override
   void initState() {
     super.initState();
+
     userStream = rinseFirebaseUserStream()
       ..listen((user) => initialUser ?? setState(() => initialUser = user));
+    jwtTokenStream.listen((_) {});
     Future.delayed(
-        Duration(seconds: 1), () => setState(() => displaySplashImage = false));
+      Duration(milliseconds: 1000),
+      () => setState(() => displaySplashImage = false),
+    );
   }
 
   @override
@@ -56,6 +68,14 @@ class _MyAppState extends State<MyApp> {
 
     super.dispose();
   }
+
+  void setLocale(String language) {
+    setState(() => _locale = createLocale(language));
+  }
+
+  void setThemeMode(ThemeMode mode) => setState(() {
+        _themeMode = mode;
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -68,19 +88,29 @@ class _MyAppState extends State<MyApp> {
         GlobalCupertinoLocalizations.delegate,
       ],
       locale: _locale,
-      supportedLocales: const [Locale('en', '')],
-      theme: ThemeData(primarySwatch: Colors.blue),
+      supportedLocales: const [
+        Locale('en'),
+      ],
+      theme: ThemeData(
+        brightness: Brightness.light,
+        scrollbarTheme: ScrollbarThemeData(),
+      ),
+      themeMode: _themeMode,
       home: initialUser == null || displaySplashImage
-          ? Container(
-              color: Colors.transparent,
-              child: Builder(
-                builder: (context) => Image.asset(
-                  'assets/images/launch_img.png',
-                  fit: BoxFit.cover,
+          ? Builder(
+              builder: (context) => Container(
+                color: Colors.white,
+                child: Center(
+                  child: Image.asset(
+                    'assets/images/splash_logo.png',
+                    width: MediaQuery.sizeOf(context).width * 0.3,
+                    height: MediaQuery.sizeOf(context).height * 0.3,
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
             )
-          : currentUser.loggedIn
+          : currentUser!.loggedIn
               ? NavBarPage()
               : WelcomeWidget(),
     );
@@ -88,9 +118,10 @@ class _MyAppState extends State<MyApp> {
 }
 
 class NavBarPage extends StatefulWidget {
-  NavBarPage({Key key, this.initialPage}) : super(key: key);
+  NavBarPage({Key? key, this.initialPage, this.page}) : super(key: key);
 
-  final String initialPage;
+  final String? initialPage;
+  final Widget? page;
 
   @override
   _NavBarPageState createState() => _NavBarPageState();
@@ -98,12 +129,14 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPage = 'Home';
+  String _currentPageName = 'Home';
+  late Widget? _currentPage;
 
   @override
   void initState() {
     super.initState();
-    _currentPage = widget.initialPage ?? _currentPage;
+    _currentPageName = widget.initialPage ?? _currentPageName;
+    _currentPage = widget.page;
   }
 
   @override
@@ -114,27 +147,31 @@ class _NavBarPageState extends State<NavBarPage> {
       'Pricing': PricingWidget(),
       'Profile': ProfileWidget(),
     };
-    final currentIndex = tabs.keys.toList().indexOf(_currentPage);
+    final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
+
     return Scaffold(
-      body: tabs[_currentPage],
+      body: _currentPage ?? tabs[_currentPageName],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
-        onTap: (i) => setState(() => _currentPage = tabs.keys.toList()[i]),
+        onTap: (i) => setState(() {
+          _currentPage = null;
+          _currentPageName = tabs.keys.toList()[i];
+        }),
         backgroundColor: Colors.white,
-        selectedItemColor: FlutterFlowTheme.primaryColor,
+        selectedItemColor: FlutterFlowTheme.of(context).primary,
         unselectedItemColor: Color(0x8A000000),
         showSelectedLabels: true,
         showUnselectedLabels: false,
         type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home_outlined,
-              size: 28,
+              size: 28.0,
             ),
             activeIcon: Icon(
               Icons.home_rounded,
-              size: 28,
+              size: 28.0,
             ),
             label: '•',
             tooltip: '',
@@ -142,11 +179,11 @@ class _NavBarPageState extends State<NavBarPage> {
           BottomNavigationBarItem(
             icon: FaIcon(
               FontAwesomeIcons.clipboard,
-              size: 23,
+              size: 23.0,
             ),
             activeIcon: FaIcon(
               FontAwesomeIcons.clipboardList,
-              size: 23,
+              size: 23.0,
             ),
             label: '•',
             tooltip: '',
@@ -154,11 +191,11 @@ class _NavBarPageState extends State<NavBarPage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.loyalty_outlined,
-              size: 25,
+              size: 25.0,
             ),
             activeIcon: Icon(
               Icons.loyalty_rounded,
-              size: 25,
+              size: 25.0,
             ),
             label: '•',
             tooltip: '',
@@ -166,7 +203,7 @@ class _NavBarPageState extends State<NavBarPage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
-              size: 30,
+              size: 30.0,
             ),
             label: '•',
             tooltip: '',

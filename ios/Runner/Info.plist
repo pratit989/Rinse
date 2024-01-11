@@ -32,7 +32,9 @@
                 
             </array>
         </dict>
+
     </array>
+
 
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
@@ -40,7 +42,8 @@
 	<true/>
 
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>In order to search nearby, this app requires access to your current location.</string>
+    <string>In order to search nearby, this app requires access to your current location.</string>
+
 
 
 	<key>UILaunchStoryboardName</key>

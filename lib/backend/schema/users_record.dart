@@ -1,89 +1,148 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
+
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'users_record.g.dart';
+class UsersRecord extends FirestoreRecord {
+  UsersRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
-  static Serializer<UsersRecord> get serializer => _$usersRecordSerializer;
+  // "email" field.
+  String? _email;
+  String get email => _email ?? '';
+  bool hasEmail() => _email != null;
 
-  @nullable
-  String get email;
+  // "display_name" field.
+  String? _displayName;
+  String get displayName => _displayName ?? '';
+  bool hasDisplayName() => _displayName != null;
 
-  @nullable
-  @BuiltValueField(wireName: 'display_name')
-  String get displayName;
+  // "uid" field.
+  String? _uid;
+  String get uid => _uid ?? '';
+  bool hasUid() => _uid != null;
 
-  @nullable
-  String get uid;
+  // "phone_number" field.
+  String? _phoneNumber;
+  String get phoneNumber => _phoneNumber ?? '';
+  bool hasPhoneNumber() => _phoneNumber != null;
 
-  @nullable
-  @BuiltValueField(wireName: 'phone_number')
-  String get phoneNumber;
+  // "photo_url" field.
+  String? _photoUrl;
+  String get photoUrl => _photoUrl ?? '';
+  bool hasPhotoUrl() => _photoUrl != null;
 
-  @nullable
-  @BuiltValueField(wireName: 'photo_url')
-  String get photoUrl;
+  // "created_time" field.
+  DateTime? _createdTime;
+  DateTime? get createdTime => _createdTime;
+  bool hasCreatedTime() => _createdTime != null;
 
-  @nullable
-  @BuiltValueField(wireName: 'created_time')
-  DateTime get createdTime;
+  // "user_type" field.
+  String? _userType;
+  String get userType => _userType ?? '';
+  bool hasUserType() => _userType != null;
 
-  @nullable
-  @BuiltValueField(wireName: 'user_type')
-  String get userType;
-
-  @nullable
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference get reference;
-
-  static void _initializeBuilder(UsersRecordBuilder builder) => builder
-    ..email = ''
-    ..displayName = ''
-    ..uid = ''
-    ..phoneNumber = ''
-    ..photoUrl = ''
-    ..userType = '';
+  void _initializeFields() {
+    _email = snapshotData['email'] as String?;
+    _displayName = snapshotData['display_name'] as String?;
+    _uid = snapshotData['uid'] as String?;
+    _phoneNumber = snapshotData['phone_number'] as String?;
+    _photoUrl = snapshotData['photo_url'] as String?;
+    _createdTime = snapshotData['created_time'] as DateTime?;
+    _userType = snapshotData['user_type'] as String?;
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
 
-  static Stream<UsersRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
+  static Stream<UsersRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => UsersRecord.fromSnapshot(s));
 
-  static Future<UsersRecord> getDocumentOnce(DocumentReference ref) => ref
-      .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s)));
+  static Future<UsersRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => UsersRecord.fromSnapshot(s));
 
-  UsersRecord._();
-  factory UsersRecord([void Function(UsersRecordBuilder) updates]) =
-      _$UsersRecord;
+  static UsersRecord fromSnapshot(DocumentSnapshot snapshot) => UsersRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static UsersRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference});
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      UsersRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'UsersRecord(reference: ${reference.path}, data: $snapshotData)';
+
+  @override
+  int get hashCode => reference.path.hashCode;
+
+  @override
+  bool operator ==(other) =>
+      other is UsersRecord &&
+      reference.path.hashCode == other.reference.path.hashCode;
 }
 
 Map<String, dynamic> createUsersRecordData({
-  String email,
-  String displayName,
-  String uid,
-  String phoneNumber,
-  String photoUrl,
-  DateTime createdTime,
-  String userType,
-}) =>
-    serializers.toFirestore(
-        UsersRecord.serializer,
-        UsersRecord((u) => u
-          ..email = email
-          ..displayName = displayName
-          ..uid = uid
-          ..phoneNumber = phoneNumber
-          ..photoUrl = photoUrl
-          ..createdTime = createdTime
-          ..userType = userType));
+  String? email,
+  String? displayName,
+  String? uid,
+  String? phoneNumber,
+  String? photoUrl,
+  DateTime? createdTime,
+  String? userType,
+}) {
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'email': email,
+      'display_name': displayName,
+      'uid': uid,
+      'phone_number': phoneNumber,
+      'photo_url': photoUrl,
+      'created_time': createdTime,
+      'user_type': userType,
+    }.withoutNulls,
+  );
+
+  return firestoreData;
+}
+
+class UsersRecordDocumentEquality implements Equality<UsersRecord> {
+  const UsersRecordDocumentEquality();
+
+  @override
+  bool equals(UsersRecord? e1, UsersRecord? e2) {
+    return e1?.email == e2?.email &&
+        e1?.displayName == e2?.displayName &&
+        e1?.uid == e2?.uid &&
+        e1?.phoneNumber == e2?.phoneNumber &&
+        e1?.photoUrl == e2?.photoUrl &&
+        e1?.createdTime == e2?.createdTime &&
+        e1?.userType == e2?.userType;
+  }
+
+  @override
+  int hash(UsersRecord? e) => const ListEquality().hash([
+        e?.email,
+        e?.displayName,
+        e?.uid,
+        e?.phoneNumber,
+        e?.photoUrl,
+        e?.createdTime,
+        e?.userType
+      ]);
+
+  @override
+  bool isValidKey(Object? o) => o is UsersRecord;
+}

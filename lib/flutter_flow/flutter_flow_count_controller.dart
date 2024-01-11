@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class FlutterFlowCountController extends StatefulWidget {
   const FlutterFlowCountController({
-    Key key,
-    @required this.decrementIconBuilder,
-    @required this.incrementIconBuilder,
-    @required this.countBuilder,
-    @required this.count,
-    @required this.updateCount,
+    Key? key,
+    required this.decrementIconBuilder,
+    required this.incrementIconBuilder,
+    required this.countBuilder,
+    required this.count,
+    required this.updateCount,
     this.stepSize = 1,
     this.minimum,
     this.maximum,
@@ -20,8 +20,8 @@ class FlutterFlowCountController extends StatefulWidget {
   final int count;
   final Function(int) updateCount;
   final int stepSize;
-  final int minimum;
-  final int maximum;
+  final int? minimum;
+  final int? maximum;
   final EdgeInsetsGeometry contentPadding;
 
   @override
@@ -32,12 +32,12 @@ class FlutterFlowCountController extends StatefulWidget {
 class _FlutterFlowCountControllerState
     extends State<FlutterFlowCountController> {
   int get count => widget.count;
-  int get minimum => widget.minimum;
-  int get maximum => widget.maximum;
+  int? get minimum => widget.minimum;
+  int? get maximum => widget.maximum;
   int get stepSize => widget.stepSize;
 
-  bool get canDecrement => minimum == null || count - stepSize >= minimum;
-  bool get canIncrement => maximum == null || count + stepSize <= maximum;
+  bool get canDecrement => minimum == null || count - stepSize >= minimum!;
+  bool get canIncrement => maximum == null || count + stepSize <= maximum!;
 
   void _decrementCounter() {
     if (canDecrement) {

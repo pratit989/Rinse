@@ -1,116 +1,183 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
+
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'orders_record.g.dart';
+class OrdersRecord extends FirestoreRecord {
+  OrdersRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class OrdersRecord
-    implements Built<OrdersRecord, OrdersRecordBuilder> {
-  static Serializer<OrdersRecord> get serializer => _$ordersRecordSerializer;
+  // "admin_order_status" field.
+  String? _adminOrderStatus;
+  String get adminOrderStatus => _adminOrderStatus ?? '';
+  bool hasAdminOrderStatus() => _adminOrderStatus != null;
 
-  @nullable
-  @BuiltValueField(wireName: 'admin_order_status')
-  String get adminOrderStatus;
+  // "customer_order_status" field.
+  String? _customerOrderStatus;
+  String get customerOrderStatus => _customerOrderStatus ?? '';
+  bool hasCustomerOrderStatus() => _customerOrderStatus != null;
 
-  @nullable
-  @BuiltValueField(wireName: 'customer_order_status')
-  String get customerOrderStatus;
+  // "date_time" field.
+  DateTime? _dateTime;
+  DateTime? get dateTime => _dateTime;
+  bool hasDateTime() => _dateTime != null;
 
-  @nullable
-  @BuiltValueField(wireName: 'date_time')
-  DateTime get dateTime;
+  // "time_slot" field.
+  int? _timeSlot;
+  int get timeSlot => _timeSlot ?? 0;
+  bool hasTimeSlot() => _timeSlot != null;
 
-  @nullable
-  @BuiltValueField(wireName: 'time_slot')
-  int get timeSlot;
+  // "service_type" field.
+  String? _serviceType;
+  String get serviceType => _serviceType ?? '';
+  bool hasServiceType() => _serviceType != null;
 
-  @nullable
-  @BuiltValueField(wireName: 'service_type')
-  String get serviceType;
+  // "items" field.
+  List<String>? _items;
+  List<String> get items => _items ?? const [];
+  bool hasItems() => _items != null;
 
-  @nullable
-  BuiltList<String> get items;
+  // "item_rates" field.
+  List<int>? _itemRates;
+  List<int> get itemRates => _itemRates ?? const [];
+  bool hasItemRates() => _itemRates != null;
 
-  @nullable
-  @BuiltValueField(wireName: 'item_rates')
-  BuiltList<int> get itemRates;
+  // "per_item_count" field.
+  List<int>? _perItemCount;
+  List<int> get perItemCount => _perItemCount ?? const [];
+  bool hasPerItemCount() => _perItemCount != null;
 
-  @nullable
-  @BuiltValueField(wireName: 'per_item_count')
-  BuiltList<int> get perItemCount;
+  // "total_cost" field.
+  int? _totalCost;
+  int get totalCost => _totalCost ?? 0;
+  bool hasTotalCost() => _totalCost != null;
 
-  @nullable
-  @BuiltValueField(wireName: 'total_cost')
-  int get totalCost;
+  // "customer_address" field.
+  String? _customerAddress;
+  String get customerAddress => _customerAddress ?? '';
+  bool hasCustomerAddress() => _customerAddress != null;
 
-  @nullable
-  @BuiltValueField(wireName: 'customer_address')
-  String get customerAddress;
+  // "customer_uid" field.
+  String? _customerUid;
+  String get customerUid => _customerUid ?? '';
+  bool hasCustomerUid() => _customerUid != null;
 
-  @nullable
-  @BuiltValueField(wireName: 'customer_uid')
-  String get customerUid;
-
-  @nullable
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference get reference;
-
-  static void _initializeBuilder(OrdersRecordBuilder builder) => builder
-    ..adminOrderStatus = ''
-    ..customerOrderStatus = ''
-    ..timeSlot = 0
-    ..serviceType = ''
-    ..items = ListBuilder()
-    ..itemRates = ListBuilder()
-    ..perItemCount = ListBuilder()
-    ..totalCost = 0
-    ..customerAddress = ''
-    ..customerUid = '';
+  void _initializeFields() {
+    _adminOrderStatus = snapshotData['admin_order_status'] as String?;
+    _customerOrderStatus = snapshotData['customer_order_status'] as String?;
+    _dateTime = snapshotData['date_time'] as DateTime?;
+    _timeSlot = castToType<int>(snapshotData['time_slot']);
+    _serviceType = snapshotData['service_type'] as String?;
+    _items = getDataList(snapshotData['items']);
+    _itemRates = getDataList(snapshotData['item_rates']);
+    _perItemCount = getDataList(snapshotData['per_item_count']);
+    _totalCost = castToType<int>(snapshotData['total_cost']);
+    _customerAddress = snapshotData['customer_address'] as String?;
+    _customerUid = snapshotData['customer_uid'] as String?;
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('orders');
 
-  static Stream<OrdersRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
+  static Stream<OrdersRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => OrdersRecord.fromSnapshot(s));
 
-  static Future<OrdersRecord> getDocumentOnce(DocumentReference ref) => ref
-      .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s)));
+  static Future<OrdersRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => OrdersRecord.fromSnapshot(s));
 
-  OrdersRecord._();
-  factory OrdersRecord([void Function(OrdersRecordBuilder) updates]) =
-      _$OrdersRecord;
+  static OrdersRecord fromSnapshot(DocumentSnapshot snapshot) => OrdersRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static OrdersRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference});
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      OrdersRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'OrdersRecord(reference: ${reference.path}, data: $snapshotData)';
+
+  @override
+  int get hashCode => reference.path.hashCode;
+
+  @override
+  bool operator ==(other) =>
+      other is OrdersRecord &&
+      reference.path.hashCode == other.reference.path.hashCode;
 }
 
 Map<String, dynamic> createOrdersRecordData({
-  String adminOrderStatus,
-  String customerOrderStatus,
-  DateTime dateTime,
-  int timeSlot,
-  String serviceType,
-  int totalCost,
-  String customerAddress,
-  String customerUid,
-}) =>
-    serializers.toFirestore(
-        OrdersRecord.serializer,
-        OrdersRecord((o) => o
-          ..adminOrderStatus = adminOrderStatus
-          ..customerOrderStatus = customerOrderStatus
-          ..dateTime = dateTime
-          ..timeSlot = timeSlot
-          ..serviceType = serviceType
-          ..items = null
-          ..itemRates = null
-          ..perItemCount = null
-          ..totalCost = totalCost
-          ..customerAddress = customerAddress
-          ..customerUid = customerUid));
+  String? adminOrderStatus,
+  String? customerOrderStatus,
+  DateTime? dateTime,
+  int? timeSlot,
+  String? serviceType,
+  int? totalCost,
+  String? customerAddress,
+  String? customerUid,
+}) {
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'admin_order_status': adminOrderStatus,
+      'customer_order_status': customerOrderStatus,
+      'date_time': dateTime,
+      'time_slot': timeSlot,
+      'service_type': serviceType,
+      'total_cost': totalCost,
+      'customer_address': customerAddress,
+      'customer_uid': customerUid,
+    }.withoutNulls,
+  );
+
+  return firestoreData;
+}
+
+class OrdersRecordDocumentEquality implements Equality<OrdersRecord> {
+  const OrdersRecordDocumentEquality();
+
+  @override
+  bool equals(OrdersRecord? e1, OrdersRecord? e2) {
+    const listEquality = ListEquality();
+    return e1?.adminOrderStatus == e2?.adminOrderStatus &&
+        e1?.customerOrderStatus == e2?.customerOrderStatus &&
+        e1?.dateTime == e2?.dateTime &&
+        e1?.timeSlot == e2?.timeSlot &&
+        e1?.serviceType == e2?.serviceType &&
+        listEquality.equals(e1?.items, e2?.items) &&
+        listEquality.equals(e1?.itemRates, e2?.itemRates) &&
+        listEquality.equals(e1?.perItemCount, e2?.perItemCount) &&
+        e1?.totalCost == e2?.totalCost &&
+        e1?.customerAddress == e2?.customerAddress &&
+        e1?.customerUid == e2?.customerUid;
+  }
+
+  @override
+  int hash(OrdersRecord? e) => const ListEquality().hash([
+        e?.adminOrderStatus,
+        e?.customerOrderStatus,
+        e?.dateTime,
+        e?.timeSlot,
+        e?.serviceType,
+        e?.items,
+        e?.itemRates,
+        e?.perItemCount,
+        e?.totalCost,
+        e?.customerAddress,
+        e?.customerUid
+      ]);
+
+  @override
+  bool isValidKey(Object? o) => o is OrdersRecord;
+}

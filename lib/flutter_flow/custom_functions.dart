@@ -1,15 +1,18 @@
+import 'dart:convert';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'lat_lng.dart';
 import 'place.dart';
-import '../backend/backend.dart';
+import 'uploaded_file.dart';
+import '/backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../../auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 
-String listDateMonthDay(
+String? listDateMonthDay(
   String type,
   int listIndex,
 ) {
@@ -76,9 +79,9 @@ bool timeCardVisiblityCheck(int cardNumber) {
   return time.hour < selectedTime.hour ? true : false;
 }
 
-bool selectedTimeCard(
-  int timeCardNumber,
-  int selectedTimeCardNumber,
+bool? selectedTimeCard(
+  int? timeCardNumber,
+  int? selectedTimeCardNumber,
 ) {
   // Add your function code here!
   return timeCardNumber == selectedTimeCardNumber ? true : false;

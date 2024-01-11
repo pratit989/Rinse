@@ -34,12 +34,12 @@ class FlutterFlowMarker {
   const FlutterFlowMarker(this.markerId, this.location, [this.onTap]);
   final String markerId;
   final latlng.LatLng location;
-  final Future Function() onTap;
+  final Future Function()? onTap;
 }
 
 class FlutterFlowGoogleMap extends StatefulWidget {
   const FlutterFlowGoogleMap({
-    this.controller,
+    required this.controller,
     this.onCameraIdle,
     this.initialLocation,
     this.markers = const [],
@@ -55,12 +55,12 @@ class FlutterFlowGoogleMap extends StatefulWidget {
     this.showMapToolbar = false,
     this.showTraffic = false,
     this.centerMapOnMarkerTap = false,
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   final Completer<GoogleMapController> controller;
-  final Function(latlng.LatLng) onCameraIdle;
-  final latlng.LatLng initialLocation;
+  final Function(latlng.LatLng)? onCameraIdle;
+  final latlng.LatLng? initialLocation;
   final Iterable<FlutterFlowMarker> markers;
   final GoogleMarkerColor markerColor;
   final MapType mapType;
@@ -84,8 +84,8 @@ class _FlutterFlowGoogleMapState extends State<FlutterFlowGoogleMap> {
   LatLng get initialPosition =>
       widget.initialLocation?.toGoogleMaps() ?? const LatLng(0.0, 0.0);
 
-  Completer<GoogleMapController> _controller;
-  LatLng currentMapCenter;
+  late Completer<GoogleMapController> _controller;
+  late LatLng currentMapCenter;
 
   void onCameraIdle() => widget.onCameraIdle?.call(currentMapCenter.toLatLng());
 
@@ -93,7 +93,7 @@ class _FlutterFlowGoogleMapState extends State<FlutterFlowGoogleMap> {
   void initState() {
     super.initState();
     currentMapCenter = initialPosition;
-    _controller = widget.controller ?? Completer<GoogleMapController>();
+    _controller = widget.controller;
   }
 
   @override
@@ -123,7 +123,7 @@ class _FlutterFlowGoogleMapState extends State<FlutterFlowGoogleMap> {
                   markerId: MarkerId(m.markerId),
                   position: m.location.toGoogleMaps(),
                   icon: BitmapDescriptor.defaultMarkerWithHue(
-                      googleMarkerColorMap[widget.markerColor]),
+                      googleMarkerColorMap[widget.markerColor]!),
                   onTap: () async {
                     await m.onTap?.call();
                     if (widget.centerMapOnMarkerTap) {
