@@ -5,16 +5,14 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/worker_home/worker_home_widget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'worker_login_model.dart';
 export 'worker_login_model.dart';
 
 class WorkerLoginWidget extends StatefulWidget {
-  const WorkerLoginWidget({Key? key}) : super(key: key);
+  const WorkerLoginWidget({super.key});
 
   @override
   _WorkerLoginWidgetState createState() => _WorkerLoginWidgetState();
@@ -59,7 +57,7 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: const Color(0xFFF5F5F5),
       body: Form(
         key: _model.formKey,
         autovalidateMode: AutovalidateMode.disabled,
@@ -70,10 +68,10 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Align(
-                  alignment: AlignmentDirectional(-1.0, 0.0),
+                  alignment: const AlignmentDirectional(-1.0, 0.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                     child: FlutterFlowIconButton(
                       borderColor: Colors.transparent,
                       borderRadius: 30.0,
@@ -91,10 +89,10 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(10.0, 40.0, 10.0, 40.0),
+                        const EdgeInsetsDirectional.fromSTEB(10.0, 40.0, 10.0, 40.0),
                     child: Text(
                       'Enter Your Login Information',
                       style:
@@ -106,12 +104,12 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 0.8,
                     decoration: BoxDecoration(
-                      color: Color(0xFFFAFAFA),
-                      boxShadow: [
+                      color: const Color(0xFFFAFAFA),
+                      boxShadow: const [
                         BoxShadow(
                           blurRadius: 2.0,
                           color: Color(0x12000000),
@@ -128,10 +126,10 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                     child: TextFormField(
                       controller: _model.emailInputController,
                       focusNode: _model.emailInputFocusNode,
-                      autofillHints: [AutofillHints.email],
+                      autofillHints: const [AutofillHints.email],
                       textInputAction: TextInputAction.next,
                       obscureText: false,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         isDense: true,
                         hintText: 'Email Address',
                         enabledBorder: OutlineInputBorder(
@@ -139,7 +137,7 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),
@@ -149,7 +147,7 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),
@@ -159,7 +157,7 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),
@@ -169,7 +167,7 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),
@@ -182,7 +180,7 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Lato',
-                            color: Color(0xFFB1B1B1),
+                            color: const Color(0xFFB1B1B1),
                             fontSize: 12.0,
                             fontWeight: FontWeight.w500,
                           ),
@@ -193,13 +191,13 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 0.8,
                     height: MediaQuery.sizeOf(context).height * 0.05,
                     decoration: BoxDecoration(
-                      color: Color(0xFFFAFAFA),
-                      boxShadow: [
+                      color: const Color(0xFFFAFAFA),
+                      boxShadow: const [
                         BoxShadow(
                           blurRadius: 2.0,
                           color: Color(0x12000000),
@@ -216,53 +214,53 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                     child: TextFormField(
                       controller: _model.passwordInputController,
                       focusNode: _model.passwordInputFocusNode,
-                      autofillHints: [AutofillHints.password],
+                      autofillHints: const [AutofillHints.password],
                       textInputAction: TextInputAction.done,
                       obscureText: !_model.passwordInputVisibility,
                       decoration: InputDecoration(
                         isDense: true,
                         hintText: 'Set Password',
-                        enabledBorder: OutlineInputBorder(
+                        enabledBorder: const OutlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),
                         ),
-                        focusedBorder: OutlineInputBorder(
+                        focusedBorder: const OutlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),
                         ),
-                        errorBorder: OutlineInputBorder(
+                        errorBorder: const OutlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),
                         ),
-                        focusedErrorBorder: OutlineInputBorder(
+                        focusedErrorBorder: const OutlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(4.0),
                             topRight: Radius.circular(4.0),
                           ),
                         ),
-                        prefixIcon: Icon(
+                        prefixIcon: const Icon(
                           Icons.lock,
                           color: Color(0xFFB1B1B1),
                           size: 18.0,
@@ -277,14 +275,14 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                             _model.passwordInputVisibility
                                 ? Icons.visibility_outlined
                                 : Icons.visibility_off_outlined,
-                            color: Color(0xFFB1B1B1),
+                            color: const Color(0xFFB1B1B1),
                             size: 22.0,
                           ),
                         ),
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Lato',
-                            color: Color(0xFFB1B1B1),
+                            color: const Color(0xFFB1B1B1),
                             fontSize: 12.0,
                             fontWeight: FontWeight.w500,
                           ),
@@ -296,7 +294,7 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
               ],
             ),
             Padding(
-              padding: EdgeInsets.all(50.0),
+              padding: const EdgeInsets.all(50.0),
               child: FFButtonWidget(
                 onPressed: () async {
                   final user = await authManager.signInWithEmail(
@@ -316,9 +314,9 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                     context,
                     PageTransition(
                       type: PageTransitionType.fade,
-                      duration: Duration(milliseconds: 0),
-                      reverseDuration: Duration(milliseconds: 0),
-                      child: WorkerHomeWidget(),
+                      duration: const Duration(milliseconds: 0),
+                      reverseDuration: const Duration(milliseconds: 0),
+                      child: const WorkerHomeWidget(),
                     ),
                     (r) => false,
                   );
@@ -327,9 +325,9 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                 options: FFButtonOptions(
                   width: 203.0,
                   height: 35.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).secondary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Lato',
@@ -337,7 +335,7 @@ class _WorkerLoginWidgetState extends State<WorkerLoginWidget> {
                         fontWeight: FontWeight.w500,
                       ),
                   elevation: 2.0,
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Colors.transparent,
                     width: 1.0,
                   ),

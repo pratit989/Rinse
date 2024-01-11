@@ -1,16 +1,14 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/accept_order_details/accept_order_details_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'new_orders_model.dart';
 export 'new_orders_model.dart';
 
 class NewOrdersWidget extends StatefulWidget {
-  const NewOrdersWidget({Key? key}) : super(key: key);
+  const NewOrdersWidget({super.key});
 
   @override
   _NewOrdersWidgetState createState() => _NewOrdersWidgetState();
@@ -49,7 +47,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: const Color(0xFFF5F5F5),
       body: SafeArea(
         top: true,
         child: SingleChildScrollView(
@@ -57,13 +55,13 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 30.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 30.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 50.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 50.0, 0.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -72,7 +70,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                         onTap: () async {
                           Navigator.pop(context);
                         },
-                        child: Icon(
+                        child: const Icon(
                           Icons.arrow_back_ios_sharp,
                           color: Color(0xFF1F4444),
                           size: 24.0,
@@ -80,10 +78,10 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
                         child: Text(
                           'New Orders',
                           textAlign: TextAlign.center,
@@ -91,7 +89,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                               .headlineSmall
                               .override(
                                 fontFamily: 'Lato',
-                                color: Color(0xFF073131),
+                                color: const Color(0xFF073131),
                                 fontWeight: FontWeight.bold,
                               ),
                         ),
@@ -101,7 +99,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                 child: Material(
                   color: Colors.transparent,
                   elevation: 2.0,
@@ -126,14 +124,14 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     'Order Id :    0000000',
@@ -149,7 +147,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 20.0, 0.0),
                                   child: Text(
                                     '₹127.00',
@@ -157,7 +155,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Lato',
-                                          color: Color(0xFF818181),
+                                          color: const Color(0xFF818181),
                                           fontWeight: FontWeight.w500,
                                         ),
                                   ),
@@ -166,7 +164,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                             ),
                           ),
                         ),
-                        Divider(
+                        const Divider(
                           thickness: 0.5,
                           color: Color(0xFF818181),
                         ),
@@ -176,7 +174,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 '02-01-2022   |  11am - 1pm',
@@ -192,7 +190,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                           ],
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 30.0, 0.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -204,9 +202,9 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                                 context,
                                 PageTransition(
                                   type: PageTransitionType.fade,
-                                  duration: Duration(milliseconds: 0),
-                                  reverseDuration: Duration(milliseconds: 0),
-                                  child: AcceptOrderDetailsWidget(),
+                                  duration: const Duration(milliseconds: 0),
+                                  reverseDuration: const Duration(milliseconds: 0),
+                                  child: const AcceptOrderDetailsWidget(),
                                 ),
                               );
                             },
@@ -230,7 +228,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                 child: Material(
                   color: Colors.transparent,
                   elevation: 2.0,
@@ -255,14 +253,14 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     'Order Id :    0000000',
@@ -278,7 +276,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 20.0, 0.0),
                                   child: Text(
                                     '₹127.00',
@@ -286,7 +284,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Lato',
-                                          color: Color(0xFF818181),
+                                          color: const Color(0xFF818181),
                                           fontWeight: FontWeight.w500,
                                         ),
                                   ),
@@ -295,7 +293,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                             ),
                           ),
                         ),
-                        Divider(
+                        const Divider(
                           thickness: 0.5,
                           color: Color(0xFF818181),
                         ),
@@ -304,7 +302,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 '02-01-2022   |  11am - 1pm',
@@ -320,7 +318,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                           ],
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 30.0, 0.0, 0.0),
                           child: Text(
                             'View Order Details',
@@ -340,7 +338,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                 child: Material(
                   color: Colors.transparent,
                   elevation: 2.0,
@@ -365,14 +363,14 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     'Order Id :    0000000',
@@ -388,7 +386,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 20.0, 0.0),
                                   child: Text(
                                     '₹127.00',
@@ -396,7 +394,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Lato',
-                                          color: Color(0xFF818181),
+                                          color: const Color(0xFF818181),
                                           fontWeight: FontWeight.w500,
                                         ),
                                   ),
@@ -405,7 +403,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                             ),
                           ),
                         ),
-                        Divider(
+                        const Divider(
                           thickness: 0.5,
                           color: Color(0xFF818181),
                         ),
@@ -414,7 +412,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 '02-01-2022   |  11am - 1pm',
@@ -430,7 +428,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                           ],
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 30.0, 0.0, 0.0),
                           child: Text(
                             'View Order Details',
@@ -450,7 +448,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                 child: Material(
                   color: Colors.transparent,
                   elevation: 2.0,
@@ -475,14 +473,14 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     'Order Id :    0000000',
@@ -498,7 +496,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 20.0, 0.0),
                                   child: Text(
                                     '₹127.00',
@@ -506,7 +504,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Lato',
-                                          color: Color(0xFF818181),
+                                          color: const Color(0xFF818181),
                                           fontWeight: FontWeight.w500,
                                         ),
                                   ),
@@ -515,7 +513,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                             ),
                           ),
                         ),
-                        Divider(
+                        const Divider(
                           thickness: 0.5,
                           color: Color(0xFF818181),
                         ),
@@ -524,7 +522,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 '02-01-2022   |  11am - 1pm',
@@ -540,7 +538,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                           ],
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 30.0, 0.0, 0.0),
                           child: Text(
                             'View Order Details',
@@ -560,7 +558,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                 child: Material(
                   color: Colors.transparent,
                   elevation: 2.0,
@@ -585,14 +583,14 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     'Order Id :    0000000',
@@ -608,7 +606,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 20.0, 0.0),
                                   child: Text(
                                     '₹127.00',
@@ -616,7 +614,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Lato',
-                                          color: Color(0xFF818181),
+                                          color: const Color(0xFF818181),
                                           fontWeight: FontWeight.w500,
                                         ),
                                   ),
@@ -625,7 +623,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                             ),
                           ),
                         ),
-                        Divider(
+                        const Divider(
                           thickness: 0.5,
                           color: Color(0xFF818181),
                         ),
@@ -634,7 +632,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 '02-01-2022   |  11am - 1pm',
@@ -650,7 +648,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                           ],
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 30.0, 0.0, 0.0),
                           child: Text(
                             'View Order Details',
@@ -670,7 +668,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                 child: Material(
                   color: Colors.transparent,
                   elevation: 2.0,
@@ -695,14 +693,14 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     'Order Id :    0000000',
@@ -718,7 +716,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 20.0, 0.0),
                                   child: Text(
                                     '₹127.00',
@@ -726,7 +724,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Lato',
-                                          color: Color(0xFF818181),
+                                          color: const Color(0xFF818181),
                                           fontWeight: FontWeight.w500,
                                         ),
                                   ),
@@ -735,7 +733,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                             ),
                           ),
                         ),
-                        Divider(
+                        const Divider(
                           thickness: 0.5,
                           color: Color(0xFF818181),
                         ),
@@ -744,7 +742,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 '02-01-2022   |  11am - 1pm',
@@ -760,7 +758,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                           ],
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 30.0, 0.0, 0.0),
                           child: Text(
                             'View Order Details',
@@ -780,7 +778,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                 child: Material(
                   color: Colors.transparent,
                   elevation: 2.0,
@@ -805,14 +803,14 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     'Order Id :    0000000',
@@ -828,7 +826,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 20.0, 0.0),
                                   child: Text(
                                     '₹127.00',
@@ -836,7 +834,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Lato',
-                                          color: Color(0xFF818181),
+                                          color: const Color(0xFF818181),
                                           fontWeight: FontWeight.w500,
                                         ),
                                   ),
@@ -845,7 +843,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                             ),
                           ),
                         ),
-                        Divider(
+                        const Divider(
                           thickness: 0.5,
                           color: Color(0xFF818181),
                         ),
@@ -854,7 +852,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 '02-01-2022   |  11am - 1pm',
@@ -870,7 +868,7 @@ class _NewOrdersWidgetState extends State<NewOrdersWidget> {
                           ],
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 30.0, 0.0, 0.0),
                           child: Text(
                             'View Order Details',

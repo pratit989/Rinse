@@ -176,7 +176,7 @@ class ThemeTypography extends Typography {
   String get displaySmallFamily => 'Lato';
   TextStyle get displaySmall => GoogleFonts.getFont(
         'Lato',
-        color: Color(0xFF303030),
+        color: const Color(0xFF303030),
         fontWeight: FontWeight.w600,
         fontSize: 24.0,
       );
@@ -190,14 +190,14 @@ class ThemeTypography extends Typography {
   String get headlineMediumFamily => 'Lato';
   TextStyle get headlineMedium => GoogleFonts.getFont(
         'Lato',
-        color: Color(0xFF303030),
+        color: const Color(0xFF303030),
         fontWeight: FontWeight.w500,
         fontSize: 22.0,
       );
   String get headlineSmallFamily => 'Lato';
   TextStyle get headlineSmall => GoogleFonts.getFont(
         'Lato',
-        color: Color(0xFF303030),
+        color: const Color(0xFF303030),
         fontWeight: FontWeight.w500,
         fontSize: 20.0,
       );
@@ -211,14 +211,14 @@ class ThemeTypography extends Typography {
   String get titleMediumFamily => 'Lato';
   TextStyle get titleMedium => GoogleFonts.getFont(
         'Lato',
-        color: Color(0xFF757575),
+        color: const Color(0xFF757575),
         fontWeight: FontWeight.w500,
         fontSize: 18.0,
       );
   String get titleSmallFamily => 'Lato';
   TextStyle get titleSmall => GoogleFonts.getFont(
         'Lato',
-        color: Color(0xFF616161),
+        color: const Color(0xFF616161),
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
@@ -253,14 +253,14 @@ class ThemeTypography extends Typography {
   String get bodyMediumFamily => 'Lato';
   TextStyle get bodyMedium => GoogleFonts.getFont(
         'Lato',
-        color: Color(0xFF303030),
+        color: const Color(0xFF303030),
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
       );
   String get bodySmallFamily => 'Lato';
   TextStyle get bodySmall => GoogleFonts.getFont(
         'Lato',
-        color: Color(0xFF424242),
+        color: const Color(0xFF424242),
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
       );

@@ -9,7 +9,7 @@ import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 /// Generates a cryptographically secure random nonce, to be included in a
 /// credential request.
 String generateNonce([int length = 32]) {
-  final charset =
+  const charset =
       '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
   final random = Random.secure();
   return List.generate(length, (_) => charset[random.nextInt(charset.length)])

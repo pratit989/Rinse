@@ -6,13 +6,12 @@ import '/pages/order_delivered_to_customer/order_delivered_to_customer_widget.da
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'confirm_delivery_model.dart';
 export 'confirm_delivery_model.dart';
 
 class ConfirmDeliveryWidget extends StatefulWidget {
-  const ConfirmDeliveryWidget({Key? key}) : super(key: key);
+  const ConfirmDeliveryWidget({super.key});
 
   @override
   _ConfirmDeliveryWidgetState createState() => _ConfirmDeliveryWidgetState();
@@ -51,7 +50,7 @@ class _ConfirmDeliveryWidgetState extends State<ConfirmDeliveryWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: const Color(0xFFF5F5F5),
       body: SafeArea(
         top: true,
         child: Form(
@@ -61,15 +60,15 @@ class _ConfirmDeliveryWidgetState extends State<ConfirmDeliveryWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Align(
-                alignment: AlignmentDirectional(-1.0, 0.0),
+                alignment: const AlignmentDirectional(-1.0, 0.0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 40.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 40.0),
                   child: FlutterFlowIconButton(
                     borderColor: Colors.transparent,
                     borderRadius: 30.0,
                     borderWidth: 1.0,
                     buttonSize: 60.0,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_back_ios_sharp,
                       color: Color(0xFF1F4444),
                       size: 25.0,
@@ -81,15 +80,15 @@ class _ConfirmDeliveryWidgetState extends State<ConfirmDeliveryWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Padding(
-                  padding: EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Text(
                     'Confirm Delivery',
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).headlineSmall.override(
                           fontFamily: 'Lato',
-                          color: Color(0xFF254C4C),
+                          color: const Color(0xFF254C4C),
                           fontSize: 22.0,
                           fontWeight: FontWeight.w500,
                         ),
@@ -97,18 +96,18 @@ class _ConfirmDeliveryWidgetState extends State<ConfirmDeliveryWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 60.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 60.0),
                 child: Text(
                   'Please enter the digit 6 digit SMS\nverification code we sent to your \ncustome\'s mobile number.',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Lato',
-                        color: Color(0xFF707070),
+                        color: const Color(0xFF707070),
                       ),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                 child: PinCodeTextField(
                   autoDisposeControllers: false,
                   appContext: context,
@@ -126,18 +125,18 @@ class _ConfirmDeliveryWidgetState extends State<ConfirmDeliveryWidget> {
                     fieldHeight: 44.0,
                     fieldWidth: 44.0,
                     borderWidth: 2.0,
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(12.0),
                       bottomRight: Radius.circular(12.0),
                       topLeft: Radius.circular(12.0),
                       topRight: Radius.circular(12.0),
                     ),
                     shape: PinCodeFieldShape.box,
-                    activeColor: Color(0x66FFFFFF),
-                    inactiveColor: Color(0xFFDBDDDC),
+                    activeColor: const Color(0x66FFFFFF),
+                    inactiveColor: const Color(0xFFDBDDDC),
                     selectedColor: FlutterFlowTheme.of(context).primary,
-                    activeFillColor: Color(0x66FFFFFF),
-                    inactiveFillColor: Color(0xFFDBDDDC),
+                    activeFillColor: const Color(0x66FFFFFF),
+                    inactiveFillColor: const Color(0xFFDBDDDC),
                     selectedFillColor: FlutterFlowTheme.of(context).primary,
                   ),
                   controller: _model.pinCodeController,
@@ -148,16 +147,16 @@ class _ConfirmDeliveryWidgetState extends State<ConfirmDeliveryWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 60.0, 10.0, 60.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(10.0, 60.0, 10.0, 60.0),
                 child: FFButtonWidget(
                   onPressed: () async {
                     Navigator.push(
                       context,
                       PageTransition(
                         type: PageTransitionType.fade,
-                        duration: Duration(milliseconds: 0),
-                        reverseDuration: Duration(milliseconds: 0),
-                        child: OrderDeliveredToCustomerWidget(),
+                        duration: const Duration(milliseconds: 0),
+                        reverseDuration: const Duration(milliseconds: 0),
+                        child: const OrderDeliveredToCustomerWidget(),
                       ),
                     );
                   },
@@ -165,9 +164,9 @@ class _ConfirmDeliveryWidgetState extends State<ConfirmDeliveryWidget> {
                   options: FFButtonOptions(
                     width: 200.0,
                     height: 40.0,
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).secondary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Lato',
@@ -175,7 +174,7 @@ class _ConfirmDeliveryWidgetState extends State<ConfirmDeliveryWidget> {
                           fontWeight: FontWeight.bold,
                         ),
                     elevation: 2.0,
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),

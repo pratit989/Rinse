@@ -5,13 +5,12 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'admin_recieved_orders_model.dart';
 export 'admin_recieved_orders_model.dart';
 
 class AdminRecievedOrdersWidget extends StatefulWidget {
-  const AdminRecievedOrdersWidget({Key? key}) : super(key: key);
+  const AdminRecievedOrdersWidget({super.key});
 
   @override
   _AdminRecievedOrdersWidgetState createState() =>
@@ -51,23 +50,23 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: const Color(0xFFF5F5F5),
       body: SafeArea(
         top: true,
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
               Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
                   child: Text(
                     'Orders',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Lato',
-                          color: Color(0xFF073131),
+                          color: const Color(0xFF073131),
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold,
                         ),
@@ -75,7 +74,7 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
@@ -84,7 +83,7 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () {
                             print('Button pressed ...');
@@ -93,9 +92,9 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                           options: FFButtonOptions(
                             width: 110.0,
                             height: 35.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).secondary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -107,7 +106,7 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                                   fontWeight: FontWeight.w500,
                                 ),
                             elevation: 2.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                             ),
                             borderRadius: BorderRadius.circular(12.0),
@@ -116,7 +115,7 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () {
                             print('Button pressed ...');
@@ -125,21 +124,21 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                           options: FFButtonOptions(
                             width: 120.0,
                             height: 35.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).tertiary,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
                                   fontFamily: 'Open Sans',
-                                  color: Color(0xFF9C9C9C),
+                                  color: const Color(0xFF9C9C9C),
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.w500,
                                 ),
                             elevation: 2.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Color(0xFF949496),
                             ),
                             borderRadius: BorderRadius.circular(12.0),
@@ -148,7 +147,7 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () {
                             print('Button pressed ...');
@@ -157,21 +156,21 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                           options: FFButtonOptions(
                             width: 110.0,
                             height: 35.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).tertiary,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
                                   fontFamily: 'Open Sans',
-                                  color: Color(0xFF9C9C9C),
+                                  color: const Color(0xFF9C9C9C),
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.w500,
                                 ),
                             elevation: 2.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Color(0xFF949496),
                             ),
                             borderRadius: BorderRadius.circular(12.0),
@@ -186,20 +185,20 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                         options: FFButtonOptions(
                           width: 110.0,
                           height: 35.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).tertiary,
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Open Sans',
-                                    color: Color(0xFF9C9C9C),
+                                    color: const Color(0xFF9C9C9C),
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                           elevation: 2.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Color(0xFF949496),
                           ),
                           borderRadius: BorderRadius.circular(12.0),
@@ -211,20 +210,20 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                   child: ListView(
                     padding: EdgeInsets.zero,
                     scrollDirection: Axis.vertical,
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
                           height: MediaQuery.sizeOf(context).height * 0.16,
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 blurRadius: 2.0,
                                 color: Color(0x0B000000),
@@ -246,7 +245,7 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -254,7 +253,7 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             20.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           'Order Id :    0000000',
@@ -271,7 +270,7 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 20.0, 0.0),
                                         child: Text(
                                           '₹127.00',
@@ -279,7 +278,7 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Lato',
-                                                color: Color(0xFF818181),
+                                                color: const Color(0xFF818181),
                                                 fontWeight: FontWeight.w500,
                                               ),
                                         ),
@@ -288,12 +287,12 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                                   ),
                                 ),
                               ),
-                              Divider(
+                              const Divider(
                                 thickness: 0.5,
                                 color: Color(0xFF818181),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 20.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -301,7 +300,7 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           20.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         '02-02-2022   |  11am - 1pm',
@@ -315,7 +314,7 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 20.0, 0.0),
                                       child: Text(
                                         'View Order Details',
@@ -339,9 +338,9 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 10.0, 0.0),
                                       child: InkWell(
                                         splashColor: Colors.transparent,
@@ -359,13 +358,13 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                                                 padding:
                                                     MediaQuery.viewInsetsOf(
                                                         context),
-                                                child: ConfirmationBoxWidget(),
+                                                child: const ConfirmationBoxWidget(),
                                               );
                                             },
                                           ).then(
                                               (value) => safeSetState(() {}));
                                         },
-                                        child: Icon(
+                                        child: const Icon(
                                           Icons.check_circle_sharp,
                                           color: Colors.black,
                                           size: 30.0,
@@ -373,7 +372,7 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                                       ),
                                     ),
                                   ),
-                                  Padding(
+                                  const Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         10.0, 0.0, 0.0, 0.0),
                                     child: FaIcon(
@@ -390,7 +389,7 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                         child: Material(
                           color: Colors.transparent,
                           elevation: 0.0,
@@ -402,7 +401,7 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                             height: MediaQuery.sizeOf(context).height * 0.16,
                             decoration: BoxDecoration(
                               color: Colors.white,
-                              boxShadow: [
+                              boxShadow: const [
                                 BoxShadow(
                                   blurRadius: 2.0,
                                   color: Color(0x0A000000),
@@ -424,7 +423,7 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 10.0, 0.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -433,7 +432,7 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   20.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Order Id :    0000000',
@@ -451,7 +450,7 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 20.0, 0.0),
                                           child: Text(
                                             '₹127.00',
@@ -459,7 +458,7 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Lato',
-                                                  color: Color(0xFF818181),
+                                                  color: const Color(0xFF818181),
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -468,7 +467,7 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                                     ),
                                   ),
                                 ),
-                                Divider(
+                                const Divider(
                                   thickness: 0.5,
                                   color: Color(0xFF818181),
                                 ),
@@ -478,7 +477,7 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           20.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         '02-02-2022   |  11am - 1pm',
@@ -494,7 +493,7 @@ class _AdminRecievedOrdersWidgetState extends State<AdminRecievedOrdersWidget> {
                                   ],
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 30.0, 0.0, 0.0),
                                   child: Text(
                                     'View Order Details',

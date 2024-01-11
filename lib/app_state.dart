@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '/backend/backend.dart';
-import 'backend/api_requests/api_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
@@ -33,62 +32,62 @@ class FFAppState extends ChangeNotifier {
 
   int _selectedDateDayMonth = 0;
   int get selectedDateDayMonth => _selectedDateDayMonth;
-  set selectedDateDayMonth(int _value) {
-    _selectedDateDayMonth = _value;
+  set selectedDateDayMonth(int value) {
+    _selectedDateDayMonth = value;
   }
 
   String _pickupDateDayMonth = '';
   String get pickupDateDayMonth => _pickupDateDayMonth;
-  set pickupDateDayMonth(String _value) {
-    _pickupDateDayMonth = _value;
+  set pickupDateDayMonth(String value) {
+    _pickupDateDayMonth = value;
   }
 
   int _SelectedTimeCard = 0;
   int get SelectedTimeCard => _SelectedTimeCard;
-  set SelectedTimeCard(int _value) {
-    _SelectedTimeCard = _value;
+  set SelectedTimeCard(int value) {
+    _SelectedTimeCard = value;
   }
 
   String _serviceSelected = '';
   String get serviceSelected => _serviceSelected;
-  set serviceSelected(String _value) {
-    _serviceSelected = _value;
+  set serviceSelected(String value) {
+    _serviceSelected = value;
   }
 
   List<String> _cartItems = [];
   List<String> get cartItems => _cartItems;
-  set cartItems(List<String> _value) {
-    _cartItems = _value;
+  set cartItems(List<String> value) {
+    _cartItems = value;
   }
 
-  void addToCartItems(String _value) {
-    _cartItems.add(_value);
+  void addToCartItems(String value) {
+    _cartItems.add(value);
   }
 
-  void removeFromCartItems(String _value) {
-    _cartItems.remove(_value);
+  void removeFromCartItems(String value) {
+    _cartItems.remove(value);
   }
 
-  void removeAtIndexFromCartItems(int _index) {
-    _cartItems.removeAt(_index);
+  void removeAtIndexFromCartItems(int index) {
+    _cartItems.removeAt(index);
   }
 
   void updateCartItemsAtIndex(
-    int _index,
+    int index,
     String Function(String) updateFn,
   ) {
-    _cartItems[_index] = updateFn(_cartItems[_index]);
+    _cartItems[index] = updateFn(_cartItems[index]);
   }
 
-  void insertAtIndexInCartItems(int _index, String _value) {
-    _cartItems.insert(_index, _value);
+  void insertAtIndexInCartItems(int index, String value) {
+    _cartItems.insert(index, value);
   }
 
   String _homeAddress = '';
   String get homeAddress => _homeAddress;
-  set homeAddress(String _value) {
-    _homeAddress = _value;
-    prefs.setString('ff_homeAddress', _value);
+  set homeAddress(String value) {
+    _homeAddress = value;
+    prefs.setString('ff_homeAddress', value);
   }
 }
 

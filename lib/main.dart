@@ -1,10 +1,8 @@
 import 'package:provider/provider.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'package:firebase_core/firebase_core.dart';
 import 'auth/firebase_auth/firebase_user_provider.dart';
 import 'auth/firebase_auth/auth_util.dart';
 
@@ -15,7 +13,6 @@ import 'flutter_flow/internationalization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'index.dart';
 
 void main() async {
@@ -32,11 +29,13 @@ void main() async {
 
   runApp(ChangeNotifierProvider(
     create: (context) => appState,
-    child: MyApp(),
+    child: const MyApp(),
   ));
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   // This widget is the root of your application.
   @override
   State<MyApp> createState() => _MyAppState();
@@ -63,7 +62,7 @@ class _MyAppState extends State<MyApp> {
       ..listen((user) => initialUser ?? setState(() => initialUser = user));
     jwtTokenStream.listen((_) {});
     Future.delayed(
-      Duration(milliseconds: 1000),
+      const Duration(milliseconds: 1000),
       () => setState(() => displaySplashImage = false),
     );
   }
@@ -87,7 +86,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Rinse',
-      localizationsDelegates: [
+      localizationsDelegates: const [
         FFLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -99,13 +98,13 @@ class _MyAppState extends State<MyApp> {
       ],
       theme: ThemeData(
         brightness: Brightness.light,
-        scrollbarTheme: ScrollbarThemeData(),
+        scrollbarTheme: const ScrollbarThemeData(),
       ),
       themeMode: _themeMode,
       home: initialUser == null || displaySplashImage
           ? Builder(
               builder: (context) => Container(
-                color: Color(0xFFF5F5F5),
+                color: const Color(0xFFF5F5F5),
                 child: Center(
                   child: Image.asset(
                     'assets/images/splash_logo.png',
@@ -117,14 +116,14 @@ class _MyAppState extends State<MyApp> {
               ),
             )
           : currentUser!.loggedIn
-              ? NavBarPage()
-              : WelcomeWidget(),
+              ? const NavBarPage()
+              : const WelcomeWidget(),
     );
   }
 }
 
 class NavBarPage extends StatefulWidget {
-  NavBarPage({Key? key, this.initialPage, this.page}) : super(key: key);
+  const NavBarPage({super.key, this.initialPage, this.page});
 
   final String? initialPage;
   final Widget? page;
@@ -148,10 +147,10 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'Home': HomeWidget(),
-      'CustomerMyOrders': CustomerMyOrdersWidget(),
-      'Pricing': PricingWidget(),
-      'Profile': ProfileWidget(),
+      'Home': const HomeWidget(),
+      'CustomerMyOrders': const CustomerMyOrdersWidget(),
+      'Pricing': const PricingWidget(),
+      'Profile': const ProfileWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -165,11 +164,11 @@ class _NavBarPageState extends State<NavBarPage> {
         }),
         backgroundColor: Colors.white,
         selectedItemColor: FlutterFlowTheme.of(context).primary,
-        unselectedItemColor: Color(0x8A000000),
+        unselectedItemColor: const Color(0x8A000000),
         showSelectedLabels: true,
         showUnselectedLabels: false,
         type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
+        items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home_outlined,

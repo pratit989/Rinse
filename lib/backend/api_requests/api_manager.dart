@@ -28,7 +28,7 @@ enum BodyType {
 }
 
 class ApiCallRecord extends Equatable {
-  ApiCallRecord(this.callName, this.apiUrl, this.headers, this.params,
+  const ApiCallRecord(this.callName, this.apiUrl, this.headers, this.params,
       this.body, this.bodyType);
   final String callName;
   final String apiUrl;
@@ -94,7 +94,7 @@ class ApiManager {
   ApiManager._();
 
   // Cache that will ensure identical calls are not repeatedly made.
-  static Map<ApiCallRecord, ApiCallResponse> _apiCache = {};
+  static final Map<ApiCallRecord, ApiCallResponse> _apiCache = {};
 
   static ApiManager? _instance;
   static ApiManager get instance => _instance ??= ApiManager._();
@@ -191,28 +191,30 @@ class ApiManager {
           (alwaysAllowBody && type == ApiCallType.DELETE),
       'Invalid ApiCallType $type for request with body',
     );
-    bool Function(dynamic) _isFile = (e) =>
+    isFile(e) =>
         e is FFUploadedFile ||
         e is List<FFUploadedFile> ||
         (e is List && e.firstOrNull is FFUploadedFile);
 
     final nonFileParams = toStringMap(
-        Map.fromEntries(params.entries.where((e) => !_isFile(e.value))));
+        Map.fromEntries(params.entries.where((e) => !isFile(e.value))));
 
     List<http.MultipartFile> files = [];
-    params.entries.where((e) => _isFile(e.value)).forEach((e) {
+    params.entries.where((e) => isFile(e.value)).forEach((e) {
       final param = e.value;
       final uploadedFiles = param is List
           ? param as List<FFUploadedFile>
           : [param as FFUploadedFile];
-      uploadedFiles.forEach((uploadedFile) => files.add(
+      for (var uploadedFile in uploadedFiles) {
+        files.add(
             http.MultipartFile.fromBytes(
               e.key,
               uploadedFile.bytes ?? Uint8List.fromList([]),
               filename: uploadedFile.name,
               contentType: _getMediaType(uploadedFile.name),
             ),
-          ));
+          );
+      }
     });
 
     final request = http.MultipartRequest(
@@ -371,7 +373,7 @@ class ApiManager {
         _apiCache[callRecord] = result;
       }
     } catch (e) {
-      result = ApiCallResponse(
+      result = const ApiCallResponse(
         null,
         {},
         -1,

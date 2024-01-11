@@ -1,20 +1,17 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/current_location/current_location_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'add_address_model.dart';
 export 'add_address_model.dart';
 
 class AddAddressWidget extends StatefulWidget {
-  const AddAddressWidget({Key? key}) : super(key: key);
+  const AddAddressWidget({super.key});
 
   @override
   _AddAddressWidgetState createState() => _AddAddressWidgetState();
@@ -96,9 +93,9 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: const Color(0xFFF5F5F5),
       appBar: AppBar(
-        backgroundColor: Color(0xFFF5F5F5),
+        backgroundColor: const Color(0xFFF5F5F5),
         automaticallyImplyLeading: false,
         leading: InkWell(
           splashColor: Colors.transparent,
@@ -108,7 +105,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
           onTap: () async {
             Navigator.pop(context);
           },
-          child: Icon(
+          child: const Icon(
             Icons.arrow_back_ios_sharp,
             color: Color(0xFF1F4444),
             size: 24.0,
@@ -119,18 +116,18 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
           textAlign: TextAlign.center,
           style: FlutterFlowTheme.of(context).headlineSmall.override(
                 fontFamily: 'Lato',
-                color: Color(0xFF062222),
+                color: const Color(0xFF062222),
                 fontWeight: FontWeight.bold,
               ),
         ),
-        actions: [],
+        actions: const [],
         centerTitle: true,
         elevation: 0.0,
       ),
       body: Column(
         children: [
           Align(
-            alignment: Alignment(0.0, 0),
+            alignment: const Alignment(0.0, 0),
             child: TabBar(
               labelColor: FlutterFlowTheme.of(context).primary,
               labelStyle: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -138,10 +135,10 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold,
                   ),
-              unselectedLabelStyle: TextStyle(),
-              indicatorColor: Color(0xFFCD355F),
+              unselectedLabelStyle: const TextStyle(),
+              indicatorColor: const Color(0xFFCD355F),
               indicatorWeight: 1.0,
-              tabs: [
+              tabs: const [
                 Tab(
                   text: 'Home',
                 ),
@@ -167,7 +164,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
                       child: StreamBuilder<List<MapRecord>>(
                         stream: queryMapRecord(
                           singleRecord: true,
@@ -199,7 +196,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                             onPressed: () async {
                               currentUserLocationValue =
                                   await getCurrentUserLocation(
-                                      defaultLocation: LatLng(0.0, 0.0));
+                                      defaultLocation: const LatLng(0.0, 0.0));
 
                               await buttonMapRecord!.reference
                                   .update(createMapRecordData(
@@ -212,8 +209,8 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                 context,
                                 PageTransition(
                                   type: PageTransitionType.fade,
-                                  duration: Duration(milliseconds: 0),
-                                  reverseDuration: Duration(milliseconds: 0),
+                                  duration: const Duration(milliseconds: 0),
+                                  reverseDuration: const Duration(milliseconds: 0),
                                   child: CurrentLocationWidget(
                                     location: buttonMapRecord,
                                   ),
@@ -221,16 +218,16 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                               );
                             },
                             text: 'Get Current Location',
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.my_location,
                               size: 18.0,
                             ),
                             options: FFButtonOptions(
                               width: 347.0,
                               height: 32.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -241,7 +238,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     fontSize: 14.0,
                                   ),
                               elevation: 2.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -254,14 +251,14 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                     Container(
                       width: MediaQuery.sizeOf(context).width * 0.8,
                       decoration: BoxDecoration(
-                        color: Color(0xFFEEEEEE),
+                        color: const Color(0xFFEEEEEE),
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: TextFormField(
                               controller: _model.textController1,
                               focusNode: _model.textFieldFocusNode1,
@@ -270,28 +267,28 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                 isDense: true,
                                 hintText: 'Flat / House No. / Society',
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0xFFC0C0C0),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                                 errorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                                 focusedErrorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
@@ -302,7 +299,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Lato',
-                                    color: Color(0xFF818181),
+                                    color: const Color(0xFF818181),
                                     fontSize: 13.0,
                                   ),
                               textAlign: TextAlign.start,
@@ -311,7 +308,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: TextFormField(
                               controller: _model.textController2,
                               focusNode: _model.textFieldFocusNode2,
@@ -320,28 +317,28 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                 isDense: true,
                                 hintText: 'Street / Area',
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0xFFC0C0C0),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                                 errorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                                 focusedErrorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
@@ -352,7 +349,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Lato',
-                                    color: Color(0xFF818181),
+                                    color: const Color(0xFF818181),
                                     fontSize: 13.0,
                                   ),
                               validator: _model.textController2Validator
@@ -360,12 +357,12 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: TextFormField(
                               controller: _model.textController3,
                               focusNode: _model.textFieldFocusNode3,
                               obscureText: false,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 isDense: true,
                                 hintText: 'District / City / State',
                                 enabledBorder: UnderlineInputBorder(
@@ -373,7 +370,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0xFFC0C0C0),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -383,7 +380,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -393,7 +390,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -403,7 +400,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -413,7 +410,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Lato',
-                                    color: Color(0xFF818181),
+                                    color: const Color(0xFF818181),
                                     fontSize: 13.0,
                                   ),
                               validator: _model.textController3Validator
@@ -421,13 +418,13 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 10.0, 10.0, 10.0, 20.0),
                             child: TextFormField(
                               controller: _model.textController4,
                               focusNode: _model.textFieldFocusNode4,
                               obscureText: false,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 isDense: true,
                                 hintText: 'Pin Code',
                                 enabledBorder: UnderlineInputBorder(
@@ -435,7 +432,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0xFFC0C0C0),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -445,7 +442,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -455,7 +452,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -465,7 +462,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -475,7 +472,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Lato',
-                                    color: Color(0xFF818181),
+                                    color: const Color(0xFF818181),
                                     fontSize: 13.0,
                                   ),
                               keyboardType: TextInputType.number,
@@ -488,7 +485,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () {
                           print('Button pressed ...');
@@ -497,9 +494,9 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                         options: FFButtonOptions(
                           width: 200.0,
                           height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).secondary,
                           textStyle:
@@ -509,7 +506,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     fontWeight: FontWeight.w500,
                                   ),
                           elevation: 2.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -519,7 +516,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                       child: Image.asset(
                         'assets/images/Mask_Group_1.png',
                         width: MediaQuery.sizeOf(context).width * 1.0,
@@ -534,30 +531,30 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           Navigator.push(
                             context,
                             PageTransition(
                               type: PageTransitionType.fade,
-                              duration: Duration(milliseconds: 0),
-                              reverseDuration: Duration(milliseconds: 0),
-                              child: CurrentLocationWidget(),
+                              duration: const Duration(milliseconds: 0),
+                              reverseDuration: const Duration(milliseconds: 0),
+                              child: const CurrentLocationWidget(),
                             ),
                           );
                         },
                         text: 'Get Current Location',
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.my_location,
                           size: 18.0,
                         ),
                         options: FFButtonOptions(
                           width: 347.0,
                           height: 32.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
@@ -567,7 +564,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     fontSize: 14.0,
                                   ),
                           elevation: 2.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -578,14 +575,14 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                     Container(
                       width: MediaQuery.sizeOf(context).width * 0.8,
                       decoration: BoxDecoration(
-                        color: Color(0xFFEEEEEE),
+                        color: const Color(0xFFEEEEEE),
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: TextFormField(
                               controller: _model.textController5,
                               focusNode: _model.textFieldFocusNode5,
@@ -594,28 +591,28 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                 isDense: true,
                                 hintText: 'Flat / House No. / Society',
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0xFFC0C0C0),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                                 errorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                                 focusedErrorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
@@ -626,7 +623,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Lato',
-                                    color: Color(0xFF818181),
+                                    color: const Color(0xFF818181),
                                     fontSize: 13.0,
                                   ),
                               textAlign: TextAlign.start,
@@ -635,7 +632,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: TextFormField(
                               controller: _model.textController6,
                               focusNode: _model.textFieldFocusNode6,
@@ -644,28 +641,28 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                 isDense: true,
                                 hintText: 'Street / Area',
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0xFFC0C0C0),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                                 errorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                                 focusedErrorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
@@ -676,7 +673,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Lato',
-                                    color: Color(0xFF818181),
+                                    color: const Color(0xFF818181),
                                     fontSize: 13.0,
                                   ),
                               validator: _model.textController6Validator
@@ -684,12 +681,12 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: TextFormField(
                               controller: _model.textController7,
                               focusNode: _model.textFieldFocusNode7,
                               obscureText: false,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 isDense: true,
                                 hintText: 'District / City / State',
                                 enabledBorder: UnderlineInputBorder(
@@ -697,7 +694,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0xFFC0C0C0),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -707,7 +704,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -717,7 +714,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -727,7 +724,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -737,7 +734,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Lato',
-                                    color: Color(0xFF818181),
+                                    color: const Color(0xFF818181),
                                     fontSize: 13.0,
                                   ),
                               validator: _model.textController7Validator
@@ -745,13 +742,13 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 10.0, 10.0, 10.0, 20.0),
                             child: TextFormField(
                               controller: _model.textController8,
                               focusNode: _model.textFieldFocusNode8,
                               obscureText: false,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 isDense: true,
                                 hintText: 'Pin Code',
                                 enabledBorder: UnderlineInputBorder(
@@ -759,7 +756,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0xFFC0C0C0),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -769,7 +766,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -779,7 +776,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -789,7 +786,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -799,7 +796,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Lato',
-                                    color: Color(0xFF818181),
+                                    color: const Color(0xFF818181),
                                     fontSize: 13.0,
                                   ),
                               keyboardType: TextInputType.number,
@@ -812,7 +809,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () {
                           print('Button pressed ...');
@@ -821,9 +818,9 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                         options: FFButtonOptions(
                           width: 200.0,
                           height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).secondary,
                           textStyle:
@@ -833,7 +830,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     fontWeight: FontWeight.w500,
                                   ),
                           elevation: 2.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -843,7 +840,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                       child: Image.asset(
                         'assets/images/Mask_Group_1.png',
                         width: MediaQuery.sizeOf(context).width * 1.0,
@@ -858,30 +855,30 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           Navigator.push(
                             context,
                             PageTransition(
                               type: PageTransitionType.fade,
-                              duration: Duration(milliseconds: 0),
-                              reverseDuration: Duration(milliseconds: 0),
-                              child: CurrentLocationWidget(),
+                              duration: const Duration(milliseconds: 0),
+                              reverseDuration: const Duration(milliseconds: 0),
+                              child: const CurrentLocationWidget(),
                             ),
                           );
                         },
                         text: 'Get Current Location',
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.my_location,
                           size: 18.0,
                         ),
                         options: FFButtonOptions(
                           width: 347.0,
                           height: 32.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
@@ -891,7 +888,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     fontSize: 14.0,
                                   ),
                           elevation: 2.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -902,14 +899,14 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                     Container(
                       width: MediaQuery.sizeOf(context).width * 0.8,
                       decoration: BoxDecoration(
-                        color: Color(0xFFEEEEEE),
+                        color: const Color(0xFFEEEEEE),
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: TextFormField(
                               controller: _model.textController9,
                               focusNode: _model.textFieldFocusNode9,
@@ -918,28 +915,28 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                 isDense: true,
                                 hintText: 'Flat / House No. / Society',
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0xFFC0C0C0),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                                 errorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                                 focusedErrorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
@@ -950,7 +947,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Lato',
-                                    color: Color(0xFF818181),
+                                    color: const Color(0xFF818181),
                                     fontSize: 13.0,
                                   ),
                               textAlign: TextAlign.start,
@@ -959,7 +956,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: TextFormField(
                               controller: _model.textController10,
                               focusNode: _model.textFieldFocusNode10,
@@ -968,28 +965,28 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                 isDense: true,
                                 hintText: 'Street / Area',
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0xFFC0C0C0),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                                 errorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                                 focusedErrorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
@@ -1000,7 +997,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Lato',
-                                    color: Color(0xFF818181),
+                                    color: const Color(0xFF818181),
                                     fontSize: 13.0,
                                   ),
                               validator: _model.textController10Validator
@@ -1008,12 +1005,12 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: TextFormField(
                               controller: _model.textController11,
                               focusNode: _model.textFieldFocusNode11,
                               obscureText: false,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 isDense: true,
                                 hintText: 'District / City / State',
                                 enabledBorder: UnderlineInputBorder(
@@ -1021,7 +1018,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0xFFC0C0C0),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -1031,7 +1028,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -1041,7 +1038,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -1051,7 +1048,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -1061,7 +1058,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Lato',
-                                    color: Color(0xFF818181),
+                                    color: const Color(0xFF818181),
                                     fontSize: 13.0,
                                   ),
                               validator: _model.textController11Validator
@@ -1069,13 +1066,13 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 10.0, 10.0, 10.0, 20.0),
                             child: TextFormField(
                               controller: _model.textController12,
                               focusNode: _model.textFieldFocusNode12,
                               obscureText: false,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 isDense: true,
                                 hintText: 'Pin Code',
                                 enabledBorder: UnderlineInputBorder(
@@ -1083,7 +1080,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0xFFC0C0C0),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -1093,7 +1090,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -1103,7 +1100,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -1113,7 +1110,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
                                     topRight: Radius.circular(4.0),
                                   ),
@@ -1123,7 +1120,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Lato',
-                                    color: Color(0xFF818181),
+                                    color: const Color(0xFF818181),
                                     fontSize: 13.0,
                                   ),
                               keyboardType: TextInputType.number,
@@ -1136,7 +1133,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () {
                           print('Button pressed ...');
@@ -1145,9 +1142,9 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                         options: FFButtonOptions(
                           width: 200.0,
                           height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).secondary,
                           textStyle:
@@ -1157,7 +1154,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                                     fontWeight: FontWeight.w500,
                                   ),
                           elevation: 2.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -1167,7 +1164,7 @@ class _AddAddressWidgetState extends State<AddAddressWidget>
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                       child: Image.asset(
                         'assets/images/Mask_Group_1.png',
                         width: MediaQuery.sizeOf(context).width * 1.0,

@@ -4,13 +4,12 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/onboarding/customer_login/customer_login_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'welcome_model.dart';
 export 'welcome_model.dart';
 
 class WelcomeWidget extends StatefulWidget {
-  const WelcomeWidget({Key? key}) : super(key: key);
+  const WelcomeWidget({super.key});
 
   @override
   _WelcomeWidgetState createState() => _WelcomeWidgetState();
@@ -49,7 +48,7 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: const Color(0xFFF5F5F5),
       body: Stack(
         children: [
           Image.asset(
@@ -59,7 +58,7 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
             fit: BoxFit.cover,
           ),
           Align(
-            alignment: AlignmentDirectional(0.0, -0.15),
+            alignment: const AlignmentDirectional(0.0, -0.15),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -71,9 +70,9 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                       context,
                       PageTransition(
                         type: PageTransitionType.fade,
-                        duration: Duration(milliseconds: 0),
-                        reverseDuration: Duration(milliseconds: 0),
-                        child: CustomerLoginWidget(),
+                        duration: const Duration(milliseconds: 0),
+                        reverseDuration: const Duration(milliseconds: 0),
+                        child: const CustomerLoginWidget(),
                       ),
                     );
                   },
@@ -81,16 +80,16 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                   options: FFButtonOptions(
                     width: 200.0,
                     height: 40.0,
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Lato',
                           color: Colors.white,
                         ),
                     elevation: 2.0,
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),
@@ -105,16 +104,16 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                   options: FFButtonOptions(
                     width: 200.0,
                     height: 40.0,
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Lato',
                           color: Colors.white,
                         ),
                     elevation: 2.0,
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),
@@ -129,23 +128,23 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                   options: FFButtonOptions(
                     width: 200.0,
                     height: 40.0,
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Lato',
                           color: Colors.white,
                         ),
                     elevation: 2.0,
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                 ),
-              ].divide(SizedBox(height: 16.0)).around(SizedBox(height: 16.0)),
+              ].divide(const SizedBox(height: 16.0)).around(const SizedBox(height: 16.0)),
             ),
           ),
         ],

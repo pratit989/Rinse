@@ -6,13 +6,12 @@ import '/onboarding/welcome/welcome_widget.dart';
 import '/pages/add_address/add_address_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'profile_model.dart';
 export 'profile_model.dart';
 
 class ProfileWidget extends StatefulWidget {
-  const ProfileWidget({Key? key}) : super(key: key);
+  const ProfileWidget({super.key});
 
   @override
   _ProfileWidgetState createState() => _ProfileWidgetState();
@@ -51,13 +50,13 @@ class _ProfileWidgetState extends State<ProfileWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: const Color(0xFFF5F5F5),
       body: SafeArea(
         top: true,
         child: Align(
-          alignment: AlignmentDirectional(0.0, 0.0),
+          alignment: const AlignmentDirectional(0.0, 0.0),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -67,7 +66,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                       child: Icon(
                         Icons.account_circle,
                         color: FlutterFlowTheme.of(context).primary,
@@ -76,7 +75,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 150.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 150.0, 0.0),
                       child: Text(
                         'My Profile',
                         style:
@@ -95,7 +94,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
                       child: AuthUserStreamWidget(
                         builder: (context) => Text(
                           currentUserDisplayName,
@@ -113,16 +112,16 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                 ),
                 AuthUserStreamWidget(
                   builder: (context) => Text(
-                    '${currentUserEmail} | ${currentPhoneNumber}',
+                    '$currentUserEmail | $currentPhoneNumber',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Lato',
-                          color: Color(0xFF818181),
+                          color: const Color(0xFF818181),
                           fontWeight: FontWeight.w500,
                         ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(50.0),
+                  padding: const EdgeInsets.all(50.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -133,9 +132,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         context,
                         PageTransition(
                           type: PageTransitionType.fade,
-                          duration: Duration(milliseconds: 0),
-                          reverseDuration: Duration(milliseconds: 0),
-                          child: AddAddressWidget(),
+                          duration: const Duration(milliseconds: 0),
+                          reverseDuration: const Duration(milliseconds: 0),
+                          child: const AddAddressWidget(),
                         ),
                       );
                     },
@@ -144,7 +143,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                       height: MediaQuery.sizeOf(context).height * 0.05,
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             blurRadius: 2.0,
                             color: Color(0x12000000),
@@ -155,20 +154,20 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: Text(
                                 'Manage Addresses',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Lato',
-                                      color: Color(0xFF1F4444),
+                                      color: const Color(0xFF1F4444),
                                       fontSize: 15.0,
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -191,9 +190,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                       context,
                       PageTransition(
                         type: PageTransitionType.fade,
-                        duration: Duration(milliseconds: 0),
-                        reverseDuration: Duration(milliseconds: 0),
-                        child: WelcomeWidget(),
+                        duration: const Duration(milliseconds: 0),
+                        reverseDuration: const Duration(milliseconds: 0),
+                        child: const WelcomeWidget(),
                       ),
                       (r) => false,
                     );
@@ -202,9 +201,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   options: FFButtonOptions(
                     width: 175.0,
                     height: 39.0,
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Lato',
@@ -213,7 +212,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           fontWeight: FontWeight.bold,
                         ),
                     elevation: 2.0,
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),

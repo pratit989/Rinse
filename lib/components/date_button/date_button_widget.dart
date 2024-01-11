@@ -2,14 +2,12 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'date_button_model.dart';
 export 'date_button_model.dart';
 
 class DateButtonWidget extends StatefulWidget {
-  const DateButtonWidget({Key? key}) : super(key: key);
+  const DateButtonWidget({super.key});
 
   @override
   _DateButtonWidgetState createState() => _DateButtonWidgetState();
@@ -56,7 +54,7 @@ class _DateButtonWidgetState extends State<DateButtonWidget> {
               constraints: BoxConstraints(
                 maxWidth: MediaQuery.sizeOf(context).width * 0.3,
               ),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color(0xFFF5F5F5),
               ),
               child: Row(
@@ -65,7 +63,7 @@ class _DateButtonWidgetState extends State<DateButtonWidget> {
                   if (FFAppState().selectedDateDayMonth != dateMonthDayItem)
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -84,12 +82,12 @@ class _DateButtonWidgetState extends State<DateButtonWidget> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(12.0),
                             border: Border.all(
-                              color: Color(0xFF707070),
+                              color: const Color(0xFF707070),
                               width: 0.1,
                             ),
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 30.0, 5.0, 30.0, 5.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -141,18 +139,18 @@ class _DateButtonWidgetState extends State<DateButtonWidget> {
                   if (FFAppState().selectedDateDayMonth == dateMonthDayItem)
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                       child: Container(
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primary,
                           borderRadius: BorderRadius.circular(12.0),
                           border: Border.all(
-                            color: Color(0xFF707070),
+                            color: const Color(0xFF707070),
                             width: 0.1,
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               30.0, 5.0, 30.0, 5.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,

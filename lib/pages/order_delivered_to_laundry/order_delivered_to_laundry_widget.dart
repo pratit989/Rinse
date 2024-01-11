@@ -3,13 +3,12 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'order_delivered_to_laundry_model.dart';
 export 'order_delivered_to_laundry_model.dart';
 
 class OrderDeliveredToLaundryWidget extends StatefulWidget {
-  const OrderDeliveredToLaundryWidget({Key? key}) : super(key: key);
+  const OrderDeliveredToLaundryWidget({super.key});
 
   @override
   _OrderDeliveredToLaundryWidgetState createState() =>
@@ -50,21 +49,21 @@ class _OrderDeliveredToLaundryWidgetState
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: const Color(0xFFF5F5F5),
       body: SafeArea(
         top: true,
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
             Align(
-              alignment: AlignmentDirectional(0.0, 0.0),
+              alignment: const AlignmentDirectional(0.0, 0.0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 100.0, 0.0, 20.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 100.0, 0.0, 20.0),
                 child: Text(
                   'Order Delivered to Laundry !',
                   style: FlutterFlowTheme.of(context).headlineSmall.override(
                         fontFamily: 'Lato',
-                        color: Color(0xFF073131),
+                        color: const Color(0xFF073131),
                         fontWeight: FontWeight.w500,
                       ),
                 ),
@@ -95,13 +94,13 @@ class _OrderDeliveredToLaundryWidgetState
                       ),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 'Order Id :    0000000',
@@ -117,7 +116,7 @@ class _OrderDeliveredToLaundryWidgetState
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 20.0, 0.0),
                               child: Text(
                                 '₹127.00',
@@ -125,7 +124,7 @@ class _OrderDeliveredToLaundryWidgetState
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Lato',
-                                      color: Color(0xFF818181),
+                                      color: const Color(0xFF818181),
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
@@ -134,7 +133,7 @@ class _OrderDeliveredToLaundryWidgetState
                         ),
                       ),
                     ),
-                    Divider(
+                    const Divider(
                       thickness: 0.5,
                       color: Color(0xFF818181),
                     ),
@@ -143,7 +142,7 @@ class _OrderDeliveredToLaundryWidgetState
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 0.0, 0.0),
                           child: Text(
                             '02-02-2022   |  11am - 1pm',
@@ -157,7 +156,7 @@ class _OrderDeliveredToLaundryWidgetState
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 20.0, 0.0),
                           child: Text(
                             'Awaiting Pickup',
@@ -174,7 +173,7 @@ class _OrderDeliveredToLaundryWidgetState
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                       child: Text(
                         'View Order Details',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -190,7 +189,7 @@ class _OrderDeliveredToLaundryWidgetState
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
               child: FFButtonWidget(
                 onPressed: () {
                   print('Button pressed ...');
@@ -199,9 +198,9 @@ class _OrderDeliveredToLaundryWidgetState
                 options: FFButtonOptions(
                   width: 200.0,
                   height: 40.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).secondary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Lato',
@@ -210,7 +209,7 @@ class _OrderDeliveredToLaundryWidgetState
                         fontWeight: FontWeight.bold,
                       ),
                   elevation: 2.0,
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Colors.transparent,
                     width: 1.0,
                   ),

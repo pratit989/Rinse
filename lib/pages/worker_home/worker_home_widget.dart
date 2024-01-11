@@ -1,17 +1,15 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/new_orders/new_orders_widget.dart';
 import '/pages/packed_orders/packed_orders_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'worker_home_model.dart';
 export 'worker_home_model.dart';
 
 class WorkerHomeWidget extends StatefulWidget {
-  const WorkerHomeWidget({Key? key}) : super(key: key);
+  const WorkerHomeWidget({super.key});
 
   @override
   _WorkerHomeWidgetState createState() => _WorkerHomeWidgetState();
@@ -50,16 +48,16 @@ class _WorkerHomeWidgetState extends State<WorkerHomeWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: const Color(0xFFF5F5F5),
       body: SafeArea(
         top: true,
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
               Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Text(
                   'Get Started!',
                   style: FlutterFlowTheme.of(context).headlineSmall.override(
@@ -73,12 +71,12 @@ class _WorkerHomeWidgetState extends State<WorkerHomeWidget> {
                 'Select an option to proceed',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Lato',
-                      color: Color(0xFF818181),
+                      color: const Color(0xFF818181),
                       fontSize: 16.0,
                     ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -89,9 +87,9 @@ class _WorkerHomeWidgetState extends State<WorkerHomeWidget> {
                       context,
                       PageTransition(
                         type: PageTransitionType.fade,
-                        duration: Duration(milliseconds: 0),
-                        reverseDuration: Duration(milliseconds: 0),
-                        child: NewOrdersWidget(),
+                        duration: const Duration(milliseconds: 0),
+                        reverseDuration: const Duration(milliseconds: 0),
+                        child: const NewOrdersWidget(),
                       ),
                     );
                   },
@@ -103,7 +101,7 @@ class _WorkerHomeWidgetState extends State<WorkerHomeWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -114,9 +112,9 @@ class _WorkerHomeWidgetState extends State<WorkerHomeWidget> {
                       context,
                       PageTransition(
                         type: PageTransitionType.fade,
-                        duration: Duration(milliseconds: 0),
-                        reverseDuration: Duration(milliseconds: 0),
-                        child: PackedOrdersWidget(),
+                        duration: const Duration(milliseconds: 0),
+                        reverseDuration: const Duration(milliseconds: 0),
+                        child: const PackedOrdersWidget(),
                       ),
                     );
                   },

@@ -3,20 +3,18 @@ import '/components/confirm_loacation/confirm_loacation_widget.dart';
 import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'current_location_model.dart';
 export 'current_location_model.dart';
 
 class CurrentLocationWidget extends StatefulWidget {
   const CurrentLocationWidget({
-    Key? key,
+    super.key,
     this.location,
     this.addressOutput,
-  }) : super(key: key);
+  });
 
   final MapRecord? location;
   final String? addressOutput;
@@ -36,7 +34,7 @@ class _CurrentLocationWidgetState extends State<CurrentLocationWidget> {
     super.initState();
     _model = createModel(context, () => CurrentLocationModel());
 
-    getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
+    getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0), cached: true)
         .then((loc) => setState(() => currentUserLocationValue = loc));
   }
 
@@ -79,9 +77,9 @@ class _CurrentLocationWidgetState extends State<CurrentLocationWidget> {
     return Scaffold(
       key: scaffoldKey,
       resizeToAvoidBottomInset: false,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: const Color(0xFFF5F5F5),
       appBar: AppBar(
-        backgroundColor: Color(0xFFF5F5F5),
+        backgroundColor: const Color(0xFFF5F5F5),
         automaticallyImplyLeading: false,
         leading: InkWell(
           splashColor: Colors.transparent,
@@ -91,7 +89,7 @@ class _CurrentLocationWidgetState extends State<CurrentLocationWidget> {
           onTap: () async {
             Navigator.pop(context);
           },
-          child: Icon(
+          child: const Icon(
             Icons.arrow_back_ios_sharp,
             color: Color(0xFF1F4444),
             size: 24.0,
@@ -102,11 +100,11 @@ class _CurrentLocationWidgetState extends State<CurrentLocationWidget> {
           textAlign: TextAlign.center,
           style: FlutterFlowTheme.of(context).headlineSmall.override(
                 fontFamily: 'Lato',
-                color: Color(0xFF073131),
+                color: const Color(0xFF073131),
                 fontWeight: FontWeight.bold,
               ),
         ),
-        actions: [],
+        actions: const [],
         centerTitle: true,
         elevation: 0.0,
       ),
@@ -115,18 +113,18 @@ class _CurrentLocationWidgetState extends State<CurrentLocationWidget> {
         children: [
           Expanded(
             child: Stack(
-              alignment: AlignmentDirectional(0.0, 1.0),
+              alignment: const AlignmentDirectional(0.0, 1.0),
               children: [
                 Align(
-                  alignment: AlignmentDirectional(0.0, -1.0),
+                  alignment: const AlignmentDirectional(0.0, -1.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 1.0,
                     height: MediaQuery.sizeOf(context).height * 0.85,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Color(0xFFEEEEEE),
                     ),
                     child: Builder(builder: (context) {
-                      final _googleMapMarker = widget.location;
+                      final googleMapMarker = widget.location;
                       return FlutterFlowGoogleMap(
                         controller: _model.googleMapsController,
                         onCameraIdle: (latLng) =>
@@ -134,10 +132,10 @@ class _CurrentLocationWidgetState extends State<CurrentLocationWidget> {
                         initialLocation: _model.googleMapsCenter ??=
                             currentUserLocationValue!,
                         markers: [
-                          if (_googleMapMarker != null)
+                          if (googleMapMarker != null)
                             FlutterFlowMarker(
-                              _googleMapMarker.reference.path,
-                              _googleMapMarker.latLng!,
+                              googleMapMarker.reference.path,
+                              googleMapMarker.latLng!,
                             ),
                         ],
                         markerColor: GoogleMarkerColor.red,
@@ -157,11 +155,11 @@ class _CurrentLocationWidgetState extends State<CurrentLocationWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
+                  alignment: const AlignmentDirectional(0.0, 1.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 1.0,
                     height: MediaQuery.sizeOf(context).height * 0.1,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.transparent,
                     ),
                     child: wrapWithModel(

@@ -6,13 +6,12 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/schedule_pickup/schedule_pickup_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'cleaning_pressing_pricing_model.dart';
 export 'cleaning_pressing_pricing_model.dart';
 
 class CleaningPressingPricingWidget extends StatefulWidget {
-  const CleaningPressingPricingWidget({Key? key}) : super(key: key);
+  const CleaningPressingPricingWidget({super.key});
 
   @override
   _CleaningPressingPricingWidgetState createState() =>
@@ -53,9 +52,9 @@ class _CleaningPressingPricingWidgetState
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: const Color(0xFFF5F5F5),
       appBar: AppBar(
-        backgroundColor: Color(0xFFF5F5F5),
+        backgroundColor: const Color(0xFFF5F5F5),
         automaticallyImplyLeading: false,
         leading: InkWell(
           splashColor: Colors.transparent,
@@ -65,7 +64,7 @@ class _CleaningPressingPricingWidgetState
           onTap: () async {
             Navigator.pop(context);
           },
-          child: Icon(
+          child: const Icon(
             Icons.arrow_back_ios_sharp,
             color: Color(0xFF1F4444),
             size: 24.0,
@@ -76,12 +75,12 @@ class _CleaningPressingPricingWidgetState
           textAlign: TextAlign.center,
           style: FlutterFlowTheme.of(context).headlineSmall.override(
                 fontFamily: 'Lato',
-                color: Color(0xFF062222),
+                color: const Color(0xFF062222),
                 fontSize: 22.0,
                 fontWeight: FontWeight.bold,
               ),
         ),
-        actions: [],
+        actions: const [],
         centerTitle: true,
         elevation: 0.0,
       ),
@@ -104,7 +103,7 @@ class _CleaningPressingPricingWidgetState
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(20.0),
                 child: StreamBuilder<List<PricingRecord>>(
                   stream: queryPricingRecord(
                     singleRecord: true,
@@ -137,7 +136,7 @@ class _CleaningPressingPricingWidgetState
                     return Builder(
                       builder: (context) {
                         final clothName =
-                            listViewPricingRecord?.clothsList?.toList() ?? [];
+                            listViewPricingRecord?.clothsList.toList() ?? [];
                         return ListView.builder(
                           padding: EdgeInsets.zero,
                           shrinkWrap: true,
@@ -146,14 +145,14 @@ class _CleaningPressingPricingWidgetState
                           itemBuilder: (context, clothNameIndex) {
                             final clothNameItem = clothName[clothNameIndex];
                             return Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 20.0),
                               child: ClothesListTabWidget(
                                 key: Key(
                                     'Keyq4e_${clothNameIndex}_of_${clothName.length}'),
                                 clothName: clothNameItem,
                                 pricePerPiece: listViewPricingRecord
-                                    ?.clothsPriceList?.length,
+                                    ?.clothsPriceList.length,
                               ),
                             );
                           },
@@ -165,16 +164,16 @@ class _CleaningPressingPricingWidgetState
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
               child: FFButtonWidget(
                 onPressed: () async {
                   Navigator.push(
                     context,
                     PageTransition(
                       type: PageTransitionType.fade,
-                      duration: Duration(milliseconds: 0),
-                      reverseDuration: Duration(milliseconds: 0),
-                      child: SchedulePickupWidget(),
+                      duration: const Duration(milliseconds: 0),
+                      reverseDuration: const Duration(milliseconds: 0),
+                      child: const SchedulePickupWidget(),
                     ),
                   );
                 },
@@ -182,9 +181,9 @@ class _CleaningPressingPricingWidgetState
                 options: FFButtonOptions(
                   width: 150.0,
                   height: 35.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).secondary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Open Sans',
@@ -193,7 +192,7 @@ class _CleaningPressingPricingWidgetState
                         fontWeight: FontWeight.bold,
                       ),
                   elevation: 2.0,
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Colors.transparent,
                     width: 1.0,
                   ),
@@ -201,7 +200,7 @@ class _CleaningPressingPricingWidgetState
                 ),
               ),
             ),
-          ].addToStart(SizedBox(height: 20.0)),
+          ].addToStart(const SizedBox(height: 20.0)),
         ),
       ),
     );

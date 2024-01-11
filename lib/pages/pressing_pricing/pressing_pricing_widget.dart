@@ -6,13 +6,12 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/schedule_pickup/schedule_pickup_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'pressing_pricing_model.dart';
 export 'pressing_pricing_model.dart';
 
 class PressingPricingWidget extends StatefulWidget {
-  const PressingPricingWidget({Key? key}) : super(key: key);
+  const PressingPricingWidget({super.key});
 
   @override
   _PressingPricingWidgetState createState() => _PressingPricingWidgetState();
@@ -51,20 +50,20 @@ class _PressingPricingWidgetState extends State<PressingPricingWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: const Color(0xFFF5F5F5),
       body: SafeArea(
         top: true,
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 50.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 50.0, 0.0),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -73,7 +72,7 @@ class _PressingPricingWidgetState extends State<PressingPricingWidget> {
                       onTap: () async {
                         Navigator.pop(context);
                       },
-                      child: Icon(
+                      child: const Icon(
                         Icons.arrow_back_ios_sharp,
                         color: Color(0xFF1F4444),
                         size: 24.0,
@@ -81,17 +80,17 @@ class _PressingPricingWidgetState extends State<PressingPricingWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(70.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(70.0, 0.0, 0.0, 0.0),
                       child: Text(
                         'Pricing',
                         textAlign: TextAlign.center,
                         style:
                             FlutterFlowTheme.of(context).headlineSmall.override(
                                   fontFamily: 'Lato',
-                                  color: Color(0xFF062222),
+                                  color: const Color(0xFF062222),
                                   fontSize: 22.0,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -115,7 +114,7 @@ class _PressingPricingWidgetState extends State<PressingPricingWidget> {
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(20.0),
                 child: StreamBuilder<List<PressingPricingRecord>>(
                   stream: queryPressingPricingRecord(
                     singleRecord: true,
@@ -149,7 +148,7 @@ class _PressingPricingWidgetState extends State<PressingPricingWidget> {
                       builder: (context) {
                         final clothName = listViewPressingPricingRecord
                                 ?.clothsList
-                                ?.toList() ??
+                                .toList() ??
                             [];
                         return ListView.builder(
                           padding: EdgeInsets.zero,
@@ -159,14 +158,14 @@ class _PressingPricingWidgetState extends State<PressingPricingWidget> {
                           itemBuilder: (context, clothNameIndex) {
                             final clothNameItem = clothName[clothNameIndex];
                             return Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 20.0),
                               child: ClothesListTabWidget(
                                 key: Key(
                                     'Keyl89_${clothNameIndex}_of_${clothName.length}'),
                                 clothName: clothNameItem,
                                 pricePerPiece: listViewPressingPricingRecord
-                                    ?.clothsPriceList?.length,
+                                    ?.clothsPriceList.length,
                               ),
                             );
                           },
@@ -178,16 +177,16 @@ class _PressingPricingWidgetState extends State<PressingPricingWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
               child: FFButtonWidget(
                 onPressed: () async {
                   Navigator.push(
                     context,
                     PageTransition(
                       type: PageTransitionType.fade,
-                      duration: Duration(milliseconds: 0),
-                      reverseDuration: Duration(milliseconds: 0),
-                      child: SchedulePickupWidget(),
+                      duration: const Duration(milliseconds: 0),
+                      reverseDuration: const Duration(milliseconds: 0),
+                      child: const SchedulePickupWidget(),
                     ),
                   );
                 },
@@ -195,9 +194,9 @@ class _PressingPricingWidgetState extends State<PressingPricingWidget> {
                 options: FFButtonOptions(
                   width: 150.0,
                   height: 35.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).secondary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Open Sans',
@@ -206,7 +205,7 @@ class _PressingPricingWidgetState extends State<PressingPricingWidget> {
                         fontWeight: FontWeight.bold,
                       ),
                   elevation: 2.0,
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Colors.transparent,
                     width: 1.0,
                   ),

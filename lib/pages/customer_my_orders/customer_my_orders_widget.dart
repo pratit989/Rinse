@@ -4,14 +4,12 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/customer_order_details/customer_order_details_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'customer_my_orders_model.dart';
 export 'customer_my_orders_model.dart';
 
 class CustomerMyOrdersWidget extends StatefulWidget {
-  const CustomerMyOrdersWidget({Key? key}) : super(key: key);
+  const CustomerMyOrdersWidget({super.key});
 
   @override
   _CustomerMyOrdersWidgetState createState() => _CustomerMyOrdersWidgetState();
@@ -50,7 +48,7 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: const Color(0xFFF5F5F5),
       body: SafeArea(
         top: true,
         child: Stack(
@@ -60,15 +58,15 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                     child: Text(
                       'My Orders',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Lato',
-                            color: Color(0xFF073131),
+                            color: const Color(0xFF073131),
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
                           ),
@@ -77,12 +75,12 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                 ),
                 Expanded(
                   child: Align(
-                    alignment: AlignmentDirectional(0.0, -0.4),
+                    alignment: const AlignmentDirectional(0.0, -0.4),
                     child: Text(
                       'No Orders Found',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Lato',
-                            color: Color(0xFF979797),
+                            color: const Color(0xFF979797),
                             fontSize: 20.0,
                             fontWeight: FontWeight.w500,
                           ),
@@ -95,10 +93,10 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 30.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 30.0),
                     child: Text(
                       'My Orders',
                       textAlign: TextAlign.center,
@@ -108,14 +106,14 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 30.0),
+                      const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 30.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () {
                             print('Button pressed ...');
@@ -124,9 +122,9 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                           options: FFButtonOptions(
                             width: 110.0,
                             height: 35.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).secondary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -137,7 +135,7 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                                   fontSize: 14.0,
                                 ),
                             elevation: 2.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                             ),
                             borderRadius: BorderRadius.circular(12.0),
@@ -146,7 +144,7 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () {
                             print('Button pressed ...');
@@ -155,20 +153,20 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                           options: FFButtonOptions(
                             width: 110.0,
                             height: 35.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).tertiary,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
                                   fontFamily: 'Open Sans',
-                                  color: Color(0xFF9C9C9C),
+                                  color: const Color(0xFF9C9C9C),
                                   fontSize: 14.0,
                                 ),
                             elevation: 2.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Color(0xFF949496),
                             ),
                             borderRadius: BorderRadius.circular(12.0),
@@ -183,19 +181,19 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                         options: FFButtonOptions(
                           width: 110.0,
                           height: 35.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).tertiary,
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Open Sans',
-                                    color: Color(0xFF9C9C9C),
+                                    color: const Color(0xFF9C9C9C),
                                     fontSize: 14.0,
                                   ),
                           elevation: 2.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Color(0xFF949496),
                           ),
                           borderRadius: BorderRadius.circular(12.0),
@@ -228,14 +226,14 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     'Order Id :    0000000',
@@ -251,7 +249,7 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 20.0, 0.0),
                                   child: Text(
                                     '₹127.00',
@@ -259,7 +257,7 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Lato',
-                                          color: Color(0xFF818181),
+                                          color: const Color(0xFF818181),
                                           fontWeight: FontWeight.w500,
                                         ),
                                   ),
@@ -268,7 +266,7 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                             ),
                           ),
                         ),
-                        Divider(
+                        const Divider(
                           thickness: 0.5,
                           color: Color(0xFF818181),
                         ),
@@ -277,7 +275,7 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 '02-02-2022   |  11am - 1pm',
@@ -291,7 +289,7 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 20.0, 0.0),
                               child: Text(
                                 'Awaiting Pickup',
@@ -308,7 +306,7 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                           ],
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 30.0, 0.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -320,9 +318,9 @@ class _CustomerMyOrdersWidgetState extends State<CustomerMyOrdersWidget> {
                                 context,
                                 PageTransition(
                                   type: PageTransitionType.fade,
-                                  duration: Duration(milliseconds: 0),
-                                  reverseDuration: Duration(milliseconds: 0),
-                                  child: CustomerOrderDetailsWidget(),
+                                  duration: const Duration(milliseconds: 0),
+                                  reverseDuration: const Duration(milliseconds: 0),
+                                  child: const CustomerOrderDetailsWidget(),
                                 ),
                               );
                             },

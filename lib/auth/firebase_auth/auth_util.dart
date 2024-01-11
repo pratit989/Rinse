@@ -1,14 +1,9 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../auth_manager.dart';
-import '../base_auth_user_provider.dart';
-import '../../flutter_flow/flutter_flow_util.dart';
 
 import '/backend/backend.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:stream_transform/stream_transform.dart';
 import 'firebase_auth_manager.dart';
 
@@ -60,8 +55,7 @@ final authenticatedUserStream = FirebaseAuth.instance
     .asBroadcastStream();
 
 class AuthUserStreamWidget extends StatelessWidget {
-  const AuthUserStreamWidget({Key? key, required this.builder})
-      : super(key: key);
+  const AuthUserStreamWidget({super.key, required this.builder});
 
   final WidgetBuilder builder;
 

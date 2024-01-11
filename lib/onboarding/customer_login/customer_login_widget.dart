@@ -2,19 +2,16 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/onboarding/verify_mobile_number/verify_mobile_number_widget.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import 'customer_login_model.dart';
 export 'customer_login_model.dart';
 
 class CustomerLoginWidget extends StatefulWidget {
-  const CustomerLoginWidget({Key? key}) : super(key: key);
+  const CustomerLoginWidget({super.key});
 
   @override
   _CustomerLoginWidgetState createState() => _CustomerLoginWidgetState();
@@ -58,7 +55,7 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: const Color(0xFFF5F5F5),
       body: Form(
         key: _model.formKey,
         autovalidateMode: AutovalidateMode.disabled,
@@ -69,7 +66,7 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
               Stack(
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Image.asset(
                       'assets/images/Group_962.png',
                       width: MediaQuery.sizeOf(context).width * 1.0,
@@ -80,11 +77,11 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
                   Container(
                     width: MediaQuery.sizeOf(context).width * 1.0,
                     height: MediaQuery.sizeOf(context).height * 0.845,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Color(0x00EEEEEE),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(30.0),
+                      padding: const EdgeInsets.all(30.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -92,22 +89,22 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
                         children: [
                           Expanded(
                             child: Align(
-                              alignment: AlignmentDirectional(1.0, 0.88),
+                              alignment: const AlignmentDirectional(1.0, 0.88),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 0.0, 0.0),
-                                child: Container(
+                                child: SizedBox(
                                   width: MediaQuery.sizeOf(context).width * 1.0,
                                   child: TextFormField(
                                     controller: _model.phoneNumberController,
                                     focusNode: _model.phoneNumberFocusNode,
                                     onChanged: (_) => EasyDebounce.debounce(
                                       '_model.phoneNumberController',
-                                      Duration(milliseconds: 2000),
+                                      const Duration(milliseconds: 2000),
                                       () => setState(() {}),
                                     ),
                                     autofocus: true,
-                                    autofillHints: [
+                                    autofillHints: const [
                                       AutofillHints.telephoneNumberNational
                                     ],
                                     textInputAction: TextInputAction.done,
@@ -125,38 +122,38 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
                                           topRight: Radius.circular(4.0),
                                         ),
                                       ),
-                                      focusedBorder: UnderlineInputBorder(
+                                      focusedBorder: const UnderlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0x00000000),
                                           width: 0.7,
                                         ),
-                                        borderRadius: const BorderRadius.only(
+                                        borderRadius: BorderRadius.only(
                                           topLeft: Radius.circular(4.0),
                                           topRight: Radius.circular(4.0),
                                         ),
                                       ),
-                                      errorBorder: UnderlineInputBorder(
+                                      errorBorder: const UnderlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0x00000000),
                                           width: 0.7,
                                         ),
-                                        borderRadius: const BorderRadius.only(
+                                        borderRadius: BorderRadius.only(
                                           topLeft: Radius.circular(4.0),
                                           topRight: Radius.circular(4.0),
                                         ),
                                       ),
-                                      focusedErrorBorder: UnderlineInputBorder(
+                                      focusedErrorBorder: const UnderlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0x00000000),
                                           width: 0.7,
                                         ),
-                                        borderRadius: const BorderRadius.only(
+                                        borderRadius: BorderRadius.only(
                                           topLeft: Radius.circular(4.0),
                                           topRight: Radius.circular(4.0),
                                         ),
                                       ),
                                       filled: true,
-                                      fillColor: Color(0xFFDBDDDC),
+                                      fillColor: const Color(0xFFDBDDDC),
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .headlineSmall
@@ -178,7 +175,7 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
                           ),
                           Expanded(
                             child: Align(
-                              alignment: AlignmentDirectional(1.0, -0.8),
+                              alignment: const AlignmentDirectional(1.0, -0.8),
                               child: FlutterFlowIconButton(
                                 borderColor: Colors.transparent,
                                 borderRadius: 30.0,
@@ -186,7 +183,7 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
                                 buttonSize: 50.0,
                                 fillColor:
                                     FlutterFlowTheme.of(context).secondary,
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.arrow_forward_ios_sharp,
                                   color: Color(0xFFFBFBFB),
                                   size: 25.0,
@@ -194,11 +191,10 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
                                 onPressed: () async {
                                   final phoneNumberVal =
                                       _model.phoneNumberController.text;
-                                  if (phoneNumberVal == null ||
-                                      phoneNumberVal.isEmpty ||
+                                  if (phoneNumberVal.isEmpty ||
                                       !phoneNumberVal.startsWith('+')) {
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
+                                      const SnackBar(
                                         content: Text(
                                             'Phone Number is required and has to start with +.'),
                                       ),
@@ -213,10 +209,10 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
                                         context,
                                         PageTransition(
                                           type: PageTransitionType.fade,
-                                          duration: Duration(milliseconds: 0),
+                                          duration: const Duration(milliseconds: 0),
                                           reverseDuration:
-                                              Duration(milliseconds: 0),
-                                          child: VerifyMobileNumberWidget(),
+                                              const Duration(milliseconds: 0),
+                                          child: const VerifyMobileNumberWidget(),
                                         ),
                                         (r) => false,
                                       );
@@ -232,13 +228,13 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                     child: FlutterFlowIconButton(
                       borderColor: Colors.transparent,
                       borderRadius: 30.0,
                       borderWidth: 1.0,
                       buttonSize: 60.0,
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.arrow_back_ios_sharp,
                         color: Colors.black,
                         size: 30.0,

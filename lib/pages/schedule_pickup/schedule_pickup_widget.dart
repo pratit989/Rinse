@@ -7,13 +7,12 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/customer_order_details/customer_order_details_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'schedule_pickup_model.dart';
 export 'schedule_pickup_model.dart';
 
 class SchedulePickupWidget extends StatefulWidget {
-  const SchedulePickupWidget({Key? key}) : super(key: key);
+  const SchedulePickupWidget({super.key});
 
   @override
   _SchedulePickupWidgetState createState() => _SchedulePickupWidgetState();
@@ -52,7 +51,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: const Color(0xFFF5F5F5),
       body: SafeArea(
         top: true,
         child: Column(
@@ -60,13 +59,13 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 50.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 50.0, 0.0),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -75,7 +74,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
                       onTap: () async {
                         Navigator.pop(context);
                       },
-                      child: Icon(
+                      child: const Icon(
                         Icons.arrow_back_ios_sharp,
                         color: Colors.black,
                         size: 24.0,
@@ -83,10 +82,10 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
                       child: Text(
                         'Schedule Pickup',
                         textAlign: TextAlign.center,
@@ -102,7 +101,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
               height: MediaQuery.sizeOf(context).height * 0.15,
               decoration: BoxDecoration(
                 color: Colors.white,
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     blurRadius: 2.0,
                     color: Color(0x12000000),
@@ -112,26 +111,26 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
                 ],
                 borderRadius: BorderRadius.circular(10.0),
                 border: Border.all(
-                  color: Color(0xFF707070),
+                  color: const Color(0xFF707070),
                   width: 0.2,
                 ),
               ),
               child: Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 10.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 10.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 2.0, 0.0, 0.0),
                             child: Icon(
                               Icons.home_sharp,
@@ -144,14 +143,14 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 5.0, 0.0, 5.0),
                             child: Text(
                               'Pickup Address',
@@ -165,7 +164,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 7.0, 0.0, 0.0),
                             child: Text(
                               'Satsang Tower Near XYZ\nRoad no. 12 Xyz .\nChembur - 400071',
@@ -173,7 +172,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Lato',
-                                    color: Color(0xE5494949),
+                                    color: const Color(0xE5494949),
                                     fontSize: 12.0,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -184,14 +183,14 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(70.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(70.0, 0.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 2.0, 0.0, 0.0, 0.0),
                             child: Text(
                               'Change',
@@ -214,9 +213,9 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(-0.85, 0.0),
+              alignment: const AlignmentDirectional(-0.85, 0.0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 10.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 10.0),
                 child: Text(
                   'Select pick up date',
                   textAlign: TextAlign.start,
@@ -231,19 +230,19 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
             Container(
               width: MediaQuery.sizeOf(context).width * 1.0,
               height: MediaQuery.sizeOf(context).height * 0.12,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color(0xFFF5F5F5),
               ),
               child: wrapWithModel(
                 model: _model.dateButtonModel,
                 updateCallback: () => setState(() {}),
-                child: DateButtonWidget(),
+                child: const DateButtonWidget(),
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(-0.85, 0.0),
+              alignment: const AlignmentDirectional(-0.85, 0.0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 10.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 10.0),
                 child: Text(
                   'Select a suitable time slot',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -256,22 +255,22 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
             ),
             Container(
               width: MediaQuery.sizeOf(context).width * 1.0,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color(0xFFF5F5F5),
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
                 child: wrapWithModel(
                   model: _model.timeSlotButtonsModel,
                   updateCallback: () => setState(() {}),
-                  child: TimeSlotButtonsWidget(),
+                  child: const TimeSlotButtonsWidget(),
                 ),
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(-0.9, 0.0),
+              alignment: const AlignmentDirectional(-0.9, 0.0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 10.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 10.0),
                 child: Text(
                   'Select Services',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -283,27 +282,27 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(-1.0, 0.0),
+              alignment: const AlignmentDirectional(-1.0, 0.0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
                 child: wrapWithModel(
                   model: _model.serviceSelectorModel,
                   updateCallback: () => setState(() {}),
-                  child: ServiceSelectorWidget(),
+                  child: const ServiceSelectorWidget(),
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 20.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 20.0),
               child: FFButtonWidget(
                 onPressed: () async {
                   Navigator.push(
                     context,
                     PageTransition(
                       type: PageTransitionType.fade,
-                      duration: Duration(milliseconds: 0),
-                      reverseDuration: Duration(milliseconds: 0),
-                      child: CustomerOrderDetailsWidget(),
+                      duration: const Duration(milliseconds: 0),
+                      reverseDuration: const Duration(milliseconds: 0),
+                      child: const CustomerOrderDetailsWidget(),
                     ),
                   );
                 },
@@ -311,9 +310,9 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
                 options: FFButtonOptions(
                   width: 200.0,
                   height: 40.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).secondary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Lato',
@@ -322,7 +321,7 @@ class _SchedulePickupWidgetState extends State<SchedulePickupWidget> {
                         fontWeight: FontWeight.w500,
                       ),
                   elevation: 2.0,
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Colors.transparent,
                     width: 1.0,
                   ),

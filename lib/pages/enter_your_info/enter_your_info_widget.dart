@@ -5,16 +5,14 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/main.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'enter_your_info_model.dart';
 export 'enter_your_info_model.dart';
 
 class EnterYourInfoWidget extends StatefulWidget {
-  const EnterYourInfoWidget({Key? key}) : super(key: key);
+  const EnterYourInfoWidget({super.key});
 
   @override
   _EnterYourInfoWidgetState createState() => _EnterYourInfoWidgetState();
@@ -62,7 +60,7 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: const Color(0xFFF5F5F5),
       body: Form(
         key: _model.formKey,
         autovalidateMode: AutovalidateMode.disabled,
@@ -73,10 +71,10 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Align(
-                  alignment: AlignmentDirectional(-1.0, 0.0),
+                  alignment: const AlignmentDirectional(-1.0, 0.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                     child: FlutterFlowIconButton(
                       borderColor: Colors.transparent,
                       borderRadius: 30.0,
@@ -94,10 +92,10 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(10.0, 40.0, 10.0, 40.0),
+                        const EdgeInsetsDirectional.fromSTEB(10.0, 40.0, 10.0, 40.0),
                     child: Text(
                       'Enter Your Information',
                       style:
@@ -109,13 +107,13 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 0.8,
                     height: MediaQuery.sizeOf(context).height * 0.05,
                     decoration: BoxDecoration(
-                      color: Color(0xFFFAFAFA),
-                      boxShadow: [
+                      color: const Color(0xFFFAFAFA),
+                      boxShadow: const [
                         BoxShadow(
                           blurRadius: 2.0,
                           color: Color(0x12000000),
@@ -130,12 +128,12 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
                         controller: _model.firstNameInputController,
                         focusNode: _model.firstNameInputFocusNode,
                         obscureText: false,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           isDense: true,
                           hintText: 'First Name',
                           enabledBorder: InputBorder.none,
@@ -150,7 +148,7 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Lato',
-                              color: Color(0xFFB1B1B1),
+                              color: const Color(0xFFB1B1B1),
                               fontSize: 12.0,
                               fontWeight: FontWeight.w500,
                             ),
@@ -161,13 +159,13 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 0.8,
                     height: MediaQuery.sizeOf(context).height * 0.05,
                     decoration: BoxDecoration(
-                      color: Color(0xFFFAFAFA),
-                      boxShadow: [
+                      color: const Color(0xFFFAFAFA),
+                      boxShadow: const [
                         BoxShadow(
                           blurRadius: 2.0,
                           color: Color(0x12000000),
@@ -182,12 +180,12 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
                         controller: _model.lastNameInputController,
                         focusNode: _model.lastNameInputFocusNode,
                         obscureText: false,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           isDense: true,
                           hintText: 'Last Name',
                           enabledBorder: InputBorder.none,
@@ -202,7 +200,7 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Lato',
-                              color: Color(0xFFB1B1B1),
+                              color: const Color(0xFFB1B1B1),
                               fontSize: 12.0,
                               fontWeight: FontWeight.w500,
                             ),
@@ -213,13 +211,13 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 0.8,
                     height: MediaQuery.sizeOf(context).height * 0.05,
                     decoration: BoxDecoration(
-                      color: Color(0xFFFAFAFA),
-                      boxShadow: [
+                      color: const Color(0xFFFAFAFA),
+                      boxShadow: const [
                         BoxShadow(
                           blurRadius: 2.0,
                           color: Color(0x12000000),
@@ -234,12 +232,12 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
                         controller: _model.emailInputController,
                         focusNode: _model.emailInputFocusNode,
                         obscureText: false,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           isDense: true,
                           hintText: 'Email Address',
                           enabledBorder: InputBorder.none,
@@ -254,7 +252,7 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Lato',
-                              color: Color(0xFFB1B1B1),
+                              color: const Color(0xFFB1B1B1),
                               fontSize: 12.0,
                               fontWeight: FontWeight.w500,
                             ),
@@ -268,7 +266,7 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
               ],
             ),
             Padding(
-              padding: EdgeInsets.all(50.0),
+              padding: const EdgeInsets.all(50.0),
               child: FFButtonWidget(
                 onPressed: () async {
                   await currentUserReference!.update(createUsersRecordData(
@@ -281,9 +279,9 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                     context,
                     PageTransition(
                       type: PageTransitionType.fade,
-                      duration: Duration(milliseconds: 0),
-                      reverseDuration: Duration(milliseconds: 0),
-                      child: NavBarPage(initialPage: 'Home'),
+                      duration: const Duration(milliseconds: 0),
+                      reverseDuration: const Duration(milliseconds: 0),
+                      child: const NavBarPage(initialPage: 'Home'),
                     ),
                     (r) => false,
                   );
@@ -292,9 +290,9 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                 options: FFButtonOptions(
                   width: 203.0,
                   height: 35.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).secondary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Lato',
@@ -302,7 +300,7 @@ class _EnterYourInfoWidgetState extends State<EnterYourInfoWidget> {
                         fontWeight: FontWeight.w500,
                       ),
                   elevation: 2.0,
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Colors.transparent,
                     width: 1.0,
                   ),

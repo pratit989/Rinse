@@ -9,13 +9,12 @@ import '/pages/enter_your_info/enter_your_info_widget.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'verify_mobile_number_model.dart';
 export 'verify_mobile_number_model.dart';
 
 class VerifyMobileNumberWidget extends StatefulWidget {
-  const VerifyMobileNumberWidget({Key? key}) : super(key: key);
+  const VerifyMobileNumberWidget({super.key});
 
   @override
   _VerifyMobileNumberWidgetState createState() =>
@@ -55,16 +54,16 @@ class _VerifyMobileNumberWidgetState extends State<VerifyMobileNumberWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: const Color(0xFFF5F5F5),
       appBar: AppBar(
-        backgroundColor: Color(0xFFF5F5F5),
+        backgroundColor: const Color(0xFFF5F5F5),
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
           borderRadius: 30.0,
           borderWidth: 1.0,
           buttonSize: 60.0,
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios_sharp,
             color: Colors.black,
             size: 30.0,
@@ -74,14 +73,14 @@ class _VerifyMobileNumberWidgetState extends State<VerifyMobileNumberWidget> {
               context,
               PageTransition(
                 type: PageTransitionType.fade,
-                duration: Duration(milliseconds: 0),
-                reverseDuration: Duration(milliseconds: 0),
-                child: CustomerLoginWidget(),
+                duration: const Duration(milliseconds: 0),
+                reverseDuration: const Duration(milliseconds: 0),
+                child: const CustomerLoginWidget(),
               ),
             );
           },
         ),
-        actions: [],
+        actions: const [],
         centerTitle: true,
         elevation: 0.0,
       ),
@@ -92,9 +91,9 @@ class _VerifyMobileNumberWidgetState extends State<VerifyMobileNumberWidget> {
           mainAxisSize: MainAxisSize.max,
           children: [
             Align(
-              alignment: AlignmentDirectional(0.0, 0.0),
+              alignment: const AlignmentDirectional(0.0, 0.0),
               child: Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Text(
                   'Verify Mobile Number',
                   textAlign: TextAlign.center,
@@ -106,18 +105,18 @@ class _VerifyMobileNumberWidgetState extends State<VerifyMobileNumberWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 60.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 60.0),
               child: Text(
                 'Please enter the digit 6 digit SMS\nverification code we sent to your \nmobile number.',
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Lato',
-                      color: Color(0xFF707070),
+                      color: const Color(0xFF707070),
                     ),
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
               child: PinCodeTextField(
                 autoDisposeControllers: false,
                 appContext: context,
@@ -135,18 +134,18 @@ class _VerifyMobileNumberWidgetState extends State<VerifyMobileNumberWidget> {
                   fieldHeight: 44.0,
                   fieldWidth: 44.0,
                   borderWidth: 2.0,
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(12.0),
                     bottomRight: Radius.circular(12.0),
                     topLeft: Radius.circular(12.0),
                     topRight: Radius.circular(12.0),
                   ),
                   shape: PinCodeFieldShape.box,
-                  activeColor: Color(0x66FFFFFF),
-                  inactiveColor: Color(0xFFDBDDDC),
+                  activeColor: const Color(0x66FFFFFF),
+                  inactiveColor: const Color(0xFFDBDDDC),
                   selectedColor: FlutterFlowTheme.of(context).primary,
-                  activeFillColor: Color(0x66FFFFFF),
-                  inactiveFillColor: Color(0xFFDBDDDC),
+                  activeFillColor: const Color(0x66FFFFFF),
+                  inactiveFillColor: const Color(0xFFDBDDDC),
                   selectedFillColor: FlutterFlowTheme.of(context).primary,
                 ),
                 controller: _model.pinCodeController,
@@ -157,13 +156,13 @@ class _VerifyMobileNumberWidgetState extends State<VerifyMobileNumberWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(10.0, 60.0, 10.0, 60.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(10.0, 60.0, 10.0, 60.0),
               child: FFButtonWidget(
                 onPressed: () async {
                   final smsCodeVal = _model.pinCodeController!.text;
-                  if (smsCodeVal == null || smsCodeVal.isEmpty) {
+                  if (smsCodeVal.isEmpty) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
+                      const SnackBar(
                         content: Text('Enter SMS verification code.'),
                       ),
                     );
@@ -177,15 +176,14 @@ class _VerifyMobileNumberWidgetState extends State<VerifyMobileNumberWidget> {
                     return;
                   }
 
-                  if (currentUserDisplayName != null &&
-                      currentUserDisplayName != '') {
+                  if (currentUserDisplayName != '') {
                     Navigator.push(
                       context,
                       PageTransition(
                         type: PageTransitionType.fade,
-                        duration: Duration(milliseconds: 0),
-                        reverseDuration: Duration(milliseconds: 0),
-                        child: NavBarPage(initialPage: 'Home'),
+                        duration: const Duration(milliseconds: 0),
+                        reverseDuration: const Duration(milliseconds: 0),
+                        child: const NavBarPage(initialPage: 'Home'),
                       ),
                     );
                   } else {
@@ -193,9 +191,9 @@ class _VerifyMobileNumberWidgetState extends State<VerifyMobileNumberWidget> {
                       context,
                       PageTransition(
                         type: PageTransitionType.fade,
-                        duration: Duration(milliseconds: 0),
-                        reverseDuration: Duration(milliseconds: 0),
-                        child: EnterYourInfoWidget(),
+                        duration: const Duration(milliseconds: 0),
+                        reverseDuration: const Duration(milliseconds: 0),
+                        child: const EnterYourInfoWidget(),
                       ),
                       (r) => false,
                     );
@@ -205,16 +203,16 @@ class _VerifyMobileNumberWidgetState extends State<VerifyMobileNumberWidget> {
                 options: FFButtonOptions(
                   width: 200.0,
                   height: 40.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).secondary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Lato',
                         color: Colors.white,
                       ),
                   elevation: 2.0,
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Colors.transparent,
                     width: 1.0,
                   ),

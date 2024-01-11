@@ -55,8 +55,8 @@ class FlutterFlowGoogleMap extends StatefulWidget {
     this.showMapToolbar = false,
     this.showTraffic = false,
     this.centerMapOnMarkerTap = false,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final Completer<GoogleMapController> controller;
   final Function(latlng.LatLng)? onCameraIdle;

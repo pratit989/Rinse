@@ -1,20 +1,16 @@
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import '/pages/packed_orders/packed_orders_widget.dart';
 import 'order_delivered_to_customer_widget.dart'
     show OrderDeliveredToCustomerWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class OrderDeliveredToCustomerModel
     extends FlutterFlowModel<OrderDeliveredToCustomerWidget> {
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {}
 
   /// Action blocks are added here.

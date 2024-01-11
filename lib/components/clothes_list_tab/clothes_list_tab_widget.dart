@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'clothes_list_tab_model.dart';
@@ -11,10 +10,10 @@ export 'clothes_list_tab_model.dart';
 
 class ClothesListTabWidget extends StatefulWidget {
   const ClothesListTabWidget({
-    Key? key,
+    super.key,
     this.clothName,
     this.pricePerPiece,
-  }) : super(key: key);
+  });
 
   final String? clothName;
   final int? pricePerPiece;
@@ -54,7 +53,7 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
       height: 77.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).tertiary,
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             blurRadius: 4.0,
             color: Color(0x14000000),
@@ -65,7 +64,7 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -76,12 +75,12 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
                   child: Text(
                     widget.clothName!,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Lato',
-                          color: Color(0xFF073131),
+                          color: const Color(0xFF073131),
                           fontSize: 14.0,
                           fontWeight: FontWeight.w500,
                         ),
@@ -94,7 +93,7 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
                       '₹ ${widget.pricePerPiece?.toString()}',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Lato',
-                            color: Color(0xFF818181),
+                            color: const Color(0xFF818181),
                             fontSize: 14.0,
                             fontWeight: FontWeight.bold,
                           ),
@@ -103,7 +102,7 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
                       '/ per piece',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Lato',
-                            color: Color(0xFF818181),
+                            color: const Color(0xFF818181),
                             fontSize: 10.0,
                           ),
                     ),
@@ -112,13 +111,13 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
               ],
             ),
             Stack(
-              alignment: AlignmentDirectional(0.0, 0.0),
+              alignment: const AlignmentDirectional(0.0, 0.0),
               children: [
                 Container(
                   width: MediaQuery.sizeOf(context).width * 0.3,
                   height: 50.0,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(0.0),
                       bottomRight: Radius.circular(2.0),
                       topLeft: Radius.circular(2.0),
@@ -135,14 +134,14 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
                       Icons.indeterminate_check_box_rounded,
                       color: enabled
                           ? FlutterFlowTheme.of(context).secondary
-                          : Color(0xFFEEEEEE),
+                          : const Color(0xFFEEEEEE),
                       size: 25.0,
                     ),
                     incrementIconBuilder: (enabled) => Icon(
                       Icons.add_box_rounded,
                       color: enabled
                           ? FlutterFlowTheme.of(context).secondary
-                          : Color(0xFFEEEEEE),
+                          : const Color(0xFFEEEEEE),
                       size: 25.0,
                     ),
                     countBuilder: (count) => Text(
@@ -162,7 +161,7 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       FFAppState().update(() {
@@ -170,7 +169,7 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
                       });
                     },
                     text: 'Add to cart',
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.shopping_cart_outlined,
                       size: 10.0,
                     ),
@@ -178,9 +177,9 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
                       width: 110.0,
                       height: 25.0,
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).secondary,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
@@ -190,7 +189,7 @@ class _ClothesListTabWidgetState extends State<ClothesListTabWidget> {
                                 fontWeight: FontWeight.normal,
                               ),
                       elevation: 2.0,
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),

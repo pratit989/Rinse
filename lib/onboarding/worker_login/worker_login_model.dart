@@ -1,16 +1,6 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import '/pages/worker_home/worker_home_widget.dart';
 import 'worker_login_widget.dart' show WorkerLoginWidget;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class WorkerLoginModel extends FlutterFlowModel<WorkerLoginWidget> {
   ///  State fields for stateful widgets in this page.
@@ -43,12 +33,14 @@ class WorkerLoginModel extends FlutterFlowModel<WorkerLoginWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     emailInputControllerValidator = _emailInputControllerValidator;
     passwordInputVisibility = false;
     passwordInputControllerValidator = _passwordInputControllerValidator;
   }
 
+  @override
   void dispose() {
     emailInputFocusNode?.dispose();
     emailInputController?.dispose();

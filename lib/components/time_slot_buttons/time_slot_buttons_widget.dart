@@ -2,14 +2,12 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'time_slot_buttons_model.dart';
 export 'time_slot_buttons_model.dart';
 
 class TimeSlotButtonsWidget extends StatefulWidget {
-  const TimeSlotButtonsWidget({Key? key}) : super(key: key);
+  const TimeSlotButtonsWidget({super.key});
 
   @override
   _TimeSlotButtonsWidgetState createState() => _TimeSlotButtonsWidgetState();
@@ -47,7 +45,7 @@ class _TimeSlotButtonsWidgetState extends State<TimeSlotButtonsWidget> {
             functions.integerListGenerator(6).toList().take(6).toList();
         return GridView.builder(
           padding: EdgeInsets.zero,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
             crossAxisSpacing: 5.0,
             mainAxisSpacing: 0.0,
@@ -58,7 +56,7 @@ class _TimeSlotButtonsWidgetState extends State<TimeSlotButtonsWidget> {
           itemCount: timeCardNumber.length,
           itemBuilder: (context, timeCardNumberIndex) {
             final timeCardNumberItem = timeCardNumber[timeCardNumberIndex];
-            return Container(
+            return SizedBox(
               width: MediaQuery.sizeOf(context).width * 0.3,
               height: MediaQuery.sizeOf(context).height * 0.05,
               child: Stack(
@@ -82,7 +80,7 @@ class _TimeSlotButtonsWidgetState extends State<TimeSlotButtonsWidget> {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(12.0),
                           border: Border.all(
-                            color: Color(0xFFC0C0C0),
+                            color: const Color(0xFFC0C0C0),
                             width: 0.5,
                           ),
                         ),
@@ -97,7 +95,7 @@ class _TimeSlotButtonsWidgetState extends State<TimeSlotButtonsWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Lato',
-                                    color: Color(0xFFCA5564),
+                                    color: const Color(0xFFCA5564),
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -107,7 +105,7 @@ class _TimeSlotButtonsWidgetState extends State<TimeSlotButtonsWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Lato',
-                                    color: Color(0xFFCA5564),
+                                    color: const Color(0xFFCA5564),
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -117,7 +115,7 @@ class _TimeSlotButtonsWidgetState extends State<TimeSlotButtonsWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Lato',
-                                    color: Color(0xFFCA5564),
+                                    color: const Color(0xFFCA5564),
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -134,7 +132,7 @@ class _TimeSlotButtonsWidgetState extends State<TimeSlotButtonsWidget> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(12.0),
                         border: Border.all(
-                          color: Color(0xFF707070),
+                          color: const Color(0xFF707070),
                           width: 0.5,
                         ),
                       ),
@@ -149,7 +147,7 @@ class _TimeSlotButtonsWidgetState extends State<TimeSlotButtonsWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Lato',
-                                  color: Color(0xFFBBBBBB),
+                                  color: const Color(0xFFBBBBBB),
                                   fontWeight: FontWeight.w500,
                                 ),
                           ),
@@ -159,7 +157,7 @@ class _TimeSlotButtonsWidgetState extends State<TimeSlotButtonsWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Lato',
-                                  color: Color(0xFFBBBBBB),
+                                  color: const Color(0xFFBBBBBB),
                                   fontWeight: FontWeight.w500,
                                 ),
                           ),
@@ -169,7 +167,7 @@ class _TimeSlotButtonsWidgetState extends State<TimeSlotButtonsWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Lato',
-                                  color: Color(0xFFBBBBBB),
+                                  color: const Color(0xFFBBBBBB),
                                   fontWeight: FontWeight.w500,
                                 ),
                           ),
@@ -184,7 +182,7 @@ class _TimeSlotButtonsWidgetState extends State<TimeSlotButtonsWidget> {
                         color: FlutterFlowTheme.of(context).primary,
                         borderRadius: BorderRadius.circular(12.0),
                         border: Border.all(
-                          color: Color(0xFFC0C0C0),
+                          color: const Color(0xFFC0C0C0),
                           width: 0.5,
                         ),
                       ),

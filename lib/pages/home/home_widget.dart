@@ -1,6 +1,5 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/cleaning_pressing_pricing/cleaning_pressing_pricing_widget.dart';
 import '/pages/pressing_pricing/pressing_pricing_widget.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +10,7 @@ import 'home_model.dart';
 export 'home_model.dart';
 
 class HomeWidget extends StatefulWidget {
-  const HomeWidget({Key? key}) : super(key: key);
+  const HomeWidget({super.key});
 
   @override
   _HomeWidgetState createState() => _HomeWidgetState();
@@ -50,16 +49,16 @@ class _HomeWidgetState extends State<HomeWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: const Color(0xFFF5F5F5),
       body: SafeArea(
         top: true,
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
               Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Text(
                   'Get Started!',
                   style: GoogleFonts.getFont(
@@ -71,20 +70,20 @@ class _HomeWidgetState extends State<HomeWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(60.0, 0.0, 60.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(60.0, 0.0, 60.0, 0.0),
                 child: Text(
                   'Choose the cleaning service you are interested in today !',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Lato',
-                        color: Color(0xFF818181),
+                        color: const Color(0xFF818181),
                         fontSize: 16.0,
                         fontWeight: FontWeight.w500,
                       ),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 0.0),
                 child: Text(
                   'Categories',
                   style: GoogleFonts.getFont(
@@ -105,9 +104,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                     context,
                     PageTransition(
                       type: PageTransitionType.fade,
-                      duration: Duration(milliseconds: 0),
-                      reverseDuration: Duration(milliseconds: 0),
-                      child: CleaningPressingPricingWidget(),
+                      duration: const Duration(milliseconds: 0),
+                      reverseDuration: const Duration(milliseconds: 0),
+                      child: const CleaningPressingPricingWidget(),
                     ),
                   );
                 },
@@ -128,9 +127,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                     context,
                     PageTransition(
                       type: PageTransitionType.fade,
-                      duration: Duration(milliseconds: 0),
-                      reverseDuration: Duration(milliseconds: 0),
-                      child: PressingPricingWidget(),
+                      duration: const Duration(milliseconds: 0),
+                      reverseDuration: const Duration(milliseconds: 0),
+                      child: const PressingPricingWidget(),
                     ),
                   );
                 },

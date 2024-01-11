@@ -1,18 +1,16 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'confirm_loacation_model.dart';
 export 'confirm_loacation_model.dart';
 
 class ConfirmLoacationWidget extends StatefulWidget {
   const ConfirmLoacationWidget({
-    Key? key,
+    super.key,
     this.locationSelected,
     this.address,
-  }) : super(key: key);
+  });
 
   final LatLng? locationSelected;
   final String? address;
@@ -58,7 +56,7 @@ class _ConfirmLoacationWidgetState extends State<ConfirmLoacationWidget> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -66,15 +64,15 @@ class _ConfirmLoacationWidgetState extends State<ConfirmLoacationWidget> {
                 Container(
                   width: MediaQuery.sizeOf(context).width * 0.5,
                   height: 100.0,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Align(
-                    alignment: AlignmentDirectional(-1.0, 0.0),
+                    alignment: const AlignmentDirectional(-1.0, 0.0),
                     child: Text(
                       widget.address!,
                       textAlign: TextAlign.start,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Lato',
-                            color: Color(0xFF073131),
+                            color: const Color(0xFF073131),
                             fontWeight: FontWeight.w500,
                           ),
                     ),

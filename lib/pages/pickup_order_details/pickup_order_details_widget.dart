@@ -5,13 +5,12 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/ongoing_delivered_to_customer/ongoing_delivered_to_customer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'pickup_order_details_model.dart';
 export 'pickup_order_details_model.dart';
 
 class PickupOrderDetailsWidget extends StatefulWidget {
-  const PickupOrderDetailsWidget({Key? key}) : super(key: key);
+  const PickupOrderDetailsWidget({super.key});
 
   @override
   _PickupOrderDetailsWidgetState createState() =>
@@ -57,7 +56,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: Color(0xFFF5F5F5),
+            backgroundColor: const Color(0xFFF5F5F5),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -82,19 +81,19 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                 : null;
         return Scaffold(
           key: scaffoldKey,
-          backgroundColor: Color(0xFFF5F5F5),
+          backgroundColor: const Color(0xFFF5F5F5),
           body: SafeArea(
             top: true,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             10.0, 0.0, 50.0, 0.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
@@ -104,7 +103,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                           onTap: () async {
                             Navigator.pop(context);
                           },
-                          child: Icon(
+                          child: const Icon(
                             Icons.arrow_back_ios_sharp,
                             color: Color(0xFF1F4444),
                             size: 24.0,
@@ -112,9 +111,9 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               40.0, 0.0, 0.0, 0.0),
                           child: Text(
                             'Order Details',
@@ -123,7 +122,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                                 .headlineSmall
                                 .override(
                                   fontFamily: 'Lato',
-                                  color: Color(0xFF073131),
+                                  color: const Color(0xFF073131),
                                   fontWeight: FontWeight.bold,
                                 ),
                           ),
@@ -133,7 +132,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
                   child: Text(
                     'Order Id :     0000000',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -145,7 +144,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 0.9,
                     height: MediaQuery.sizeOf(context).height * 0.2,
@@ -153,7 +152,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(12.0),
                       border: Border.all(
-                        color: Color(0xFFBBBBBB),
+                        color: const Color(0xFFBBBBBB),
                         width: 0.5,
                       ),
                     ),
@@ -163,7 +162,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                       children: [
                         Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(0.0),
@@ -173,7 +172,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                             ),
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 5.0, 0.0, 0.0),
                             child: Text(
                               'Cleaning  & Pressing',
@@ -188,12 +187,12 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                             ),
                           ),
                         ),
-                        Divider(
+                        const Divider(
                           thickness: 0.5,
                           color: Color(0xFF818181),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 0.0, 5.0),
                           child: Text(
                             'To be picked up',
@@ -201,12 +200,12 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Lato',
-                                  color: Color(0xFF818181),
+                                  color: const Color(0xFF818181),
                                 ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 0.0, 10.0),
                           child: Text(
                             '02-01-2022   |   11am - 1pm',
@@ -220,7 +219,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 5.0, 0.0, 5.0),
                           child: Text(
                             'Total Amount',
@@ -228,12 +227,12 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Lato',
-                                  color: Color(0xFF818181),
+                                  color: const Color(0xFF818181),
                                 ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 5.0, 0.0, 0.0),
                           child: Text(
                             pickupOrderDetailsOrdersRecord!.totalCost
@@ -258,7 +257,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                     color: FlutterFlowTheme.of(context).tertiary,
                     borderRadius: BorderRadius.circular(12.0),
                     border: Border.all(
-                      color: Color(0xFFBBBBBB),
+                      color: const Color(0xFFBBBBBB),
                       width: 0.5,
                     ),
                   ),
@@ -268,7 +267,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                     children: [
                       Container(
                         width: MediaQuery.sizeOf(context).width * 0.9,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(0.0),
@@ -278,7 +277,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 5.0, 0.0, 0.0),
                           child: Text(
                             'Order Summary',
@@ -292,7 +291,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                           ),
                         ),
                       ),
-                      Divider(
+                      const Divider(
                         thickness: 0.5,
                         color: Color(0xFFBBBBBB),
                       ),
@@ -300,7 +299,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                         width: MediaQuery.sizeOf(context).width * 0.9,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).tertiary,
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(12.0),
                             bottomRight: Radius.circular(12.0),
                             topLeft: Radius.circular(0.0),
@@ -315,7 +314,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 0.0, 10.0),
                                   child: Text(
                                     'Items',
@@ -323,12 +322,12 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Lato',
-                                          color: Color(0xFF818181),
+                                          color: const Color(0xFF818181),
                                         ),
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 0.0, 10.0),
                                   child: Text(
                                     'Coat',
@@ -336,12 +335,12 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Lato',
-                                          color: Color(0xFF818181),
+                                          color: const Color(0xFF818181),
                                         ),
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 0.0, 10.0),
                                   child: Text(
                                     'Skirt',
@@ -349,12 +348,12 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Lato',
-                                          color: Color(0xFF818181),
+                                          color: const Color(0xFF818181),
                                         ),
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 10.0, 10.0),
                                   child: Text(
                                     'Dressing  Gown',
@@ -362,7 +361,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Lato',
-                                          color: Color(0xFF818181),
+                                          color: const Color(0xFF818181),
                                         ),
                                   ),
                                 ),
@@ -372,7 +371,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 30.0, 10.0),
                                   child: Text(
                                     'Rate',
@@ -380,12 +379,12 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Lato',
-                                          color: Color(0xFF818181),
+                                          color: const Color(0xFF818181),
                                         ),
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 15.0, 10.0),
                                   child: Text(
                                     '₹ 180',
@@ -400,7 +399,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 15.0, 10.0),
                                   child: Text(
                                     '₹ 100',
@@ -415,7 +414,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 15.0, 0.0),
                                   child: Text(
                                     '₹ 120',
@@ -435,7 +434,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       10.0, 0.0, 25.0, 10.0),
                                   child: Text(
                                     'Quantity',
@@ -443,12 +442,12 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Lato',
-                                          color: Color(0xFF818181),
+                                          color: const Color(0xFF818181),
                                         ),
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 15.0, 10.0),
                                   child: Text(
                                     '1',
@@ -463,7 +462,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 15.0, 10.0),
                                   child: Text(
                                     '1',
@@ -477,7 +476,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 15.0, 10.0),
                                   child: Text(
                                     '1',
@@ -496,7 +495,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 30.0, 10.0),
                                   child: Text(
                                     'Cost',
@@ -504,12 +503,12 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Lato',
-                                          color: Color(0xFF818181),
+                                          color: const Color(0xFF818181),
                                         ),
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 25.0, 10.0),
                                   child: Text(
                                     '₹180',
@@ -524,7 +523,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 25.0, 10.0),
                                   child: Text(
                                     '₹ 100',
@@ -539,7 +538,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 25.0, 10.0),
                                   child: Text(
                                     '₹ 120',
@@ -558,7 +557,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                           ],
                         ),
                       ),
-                      Divider(
+                      const Divider(
                         thickness: 0.5,
                         color: Color(0xFFBBBBBB),
                       ),
@@ -573,7 +572,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 30.0, 0.0),
                               child: Text(
                                 'Total',
@@ -581,12 +580,12 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Lato',
-                                      color: Color(0xFF818181),
+                                      color: const Color(0xFF818181),
                                     ),
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 25.0, 0.0),
                               child: Text(
                                 '₹ 400',
@@ -606,13 +605,13 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 30.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 30.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 0.9,
                     height: MediaQuery.sizeOf(context).height * 0.15,
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           blurRadius: 2.0,
                           color: Color(0x12000000),
@@ -627,7 +626,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 10.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -635,7 +634,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     20.0, 2.0, 0.0, 0.0),
                                 child: Icon(
                                   Icons.home_sharp,
@@ -647,7 +646,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -655,7 +654,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 5.0, 0.0, 5.0),
                                 child: Text(
                                   'Pickup Address',
@@ -669,7 +668,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 7.0, 0.0, 0.0),
                                 child: Text(
                                   'Satsang Tower Near XYZ\nRoad no. 12 Xyz .\nChembur - 400071',
@@ -677,7 +676,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Lato',
-                                        color: Color(0xFF494949),
+                                        color: const Color(0xFF494949),
                                       ),
                                 ),
                               ),
@@ -694,9 +693,9 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                       context,
                       PageTransition(
                         type: PageTransitionType.fade,
-                        duration: Duration(milliseconds: 0),
-                        reverseDuration: Duration(milliseconds: 0),
-                        child: OngoingDeliveredToCustomerWidget(),
+                        duration: const Duration(milliseconds: 0),
+                        reverseDuration: const Duration(milliseconds: 0),
+                        child: const OngoingDeliveredToCustomerWidget(),
                       ),
                     );
                   },
@@ -704,9 +703,9 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                   options: FFButtonOptions(
                     width: 200.0,
                     height: 40.0,
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).secondary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Lato',
@@ -714,7 +713,7 @@ class _PickupOrderDetailsWidgetState extends State<PickupOrderDetailsWidget> {
                           fontWeight: FontWeight.w500,
                         ),
                     elevation: 2.0,
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),
