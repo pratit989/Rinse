@@ -18,7 +18,7 @@ class CustomerLoginModel extends FlutterFlowModel<CustomerLoginWidget> {
       return 'Enter your phone number to Login or Signup';
     }
 
-    if (val.length < 10) {
+    if (val.length < 13) {
       return 'Please enter a valid phone number';
     }
 

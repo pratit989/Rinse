@@ -60,43 +60,81 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: const Color(0xFFF5F5F5),
-        body: Form(
-          key: _model.formKey,
-          autovalidateMode: AutovalidateMode.disabled,
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Stack(
-                  children: [
-                    Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
-                      child: Image.asset(
-                        'assets/images/Group_962.png',
-                        width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: MediaQuery.sizeOf(context).height * 1.0,
-                        fit: BoxFit.cover,
-                      ),
+        body: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Expanded(
+              child: Form(
+                key: _model.formKey,
+                autovalidateMode: AutovalidateMode.disabled,
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 100),
+                  curve: Curves.easeInOut,
+                  width: MediaQuery.sizeOf(context).width * 1.0,
+                  height: MediaQuery.sizeOf(context).height * 1.0,
+                  decoration: BoxDecoration(
+                    color: const Color(0x00EEEEEE),
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: Image.asset(
+                        'assets/images/LoginBackground.png',
+                      ).image,
                     ),
-                    Container(
-                      width: MediaQuery.sizeOf(context).width * 1.0,
-                      height: MediaQuery.sizeOf(context).height * 0.845,
-                      decoration: const BoxDecoration(
-                        color: Color(0x00EEEEEE),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Align(
+                        alignment: const AlignmentDirectional(-1.0, -1.0),
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 40.0, 0.0, 0.0),
+                          child: FlutterFlowIconButton(
+                            borderColor: Colors.transparent,
+                            borderRadius: 30.0,
+                            borderWidth: 1.0,
+                            buttonSize: 60.0,
+                            icon: const Icon(
+                              Icons.arrow_back_ios_sharp,
+                              color: Colors.black,
+                              size: 30.0,
+                            ),
+                            onPressed: () async {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(30.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: Align(
-                                alignment: const AlignmentDirectional(1.0, 0.88),
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      24.0, 0.0, 0.0, 0.0),
+                      Expanded(
+                        child: Align(
+                          alignment: const AlignmentDirectional(0.0, -0.3),
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 30.0, 0.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Align(
+                                  alignment: const AlignmentDirectional(-1.0, 1.0),
+                                  child: Text(
+                                    'Enter Your \nMobile Number',
+                                    textAlign: TextAlign.start,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Lato',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          fontSize: 24.0,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: SizedBox(
                                     width:
                                         MediaQuery.sizeOf(context).width * 1.0,
@@ -169,6 +207,14 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
                                                 .primary,
                                             fontWeight: FontWeight.bold,
                                           ),
+                                      maxLength: 13,
+                                      maxLengthEnforcement:
+                                          MaxLengthEnforcement.enforced,
+                                      buildCounter: (context,
+                                              {required currentLength,
+                                              required isFocused,
+                                              maxLength}) =>
+                                          null,
                                       keyboardType: TextInputType.phone,
                                       validator: _model
                                           .phoneNumberControllerValidator
@@ -177,85 +223,66 @@ class _CustomerLoginWidgetState extends State<CustomerLoginWidget> {
                                     ),
                                   ),
                                 ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Align(
-                                alignment: const AlignmentDirectional(1.0, -0.8),
-                                child: FlutterFlowIconButton(
-                                  borderColor: Colors.transparent,
-                                  borderRadius: 30.0,
-                                  borderWidth: 1.0,
-                                  buttonSize: 50.0,
-                                  fillColor:
-                                      FlutterFlowTheme.of(context).secondary,
-                                  icon: const Icon(
-                                    Icons.arrow_forward_ios_sharp,
-                                    color: Color(0xFFFBFBFB),
-                                    size: 25.0,
-                                  ),
-                                  onPressed: () async {
-                                    final phoneNumberVal =
-                                        _model.phoneNumberController.text;
-                                    if (phoneNumberVal.isEmpty ||
-                                        !phoneNumberVal.startsWith('+')) {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        const SnackBar(
-                                          content: Text(
-                                              'Phone Number is required and has to start with +.'),
-                                        ),
-                                      );
-                                      return;
-                                    }
-                                    await authManager.beginPhoneAuth(
-                                      context: context,
-                                      phoneNumber: phoneNumberVal,
-                                      onCodeSent: (context) async {
-                                        Navigator.pushAndRemoveUntil(
-                                          context,
-                                          PageTransition(
-                                            type: PageTransitionType.fade,
-                                            duration: const Duration(milliseconds: 0),
-                                            reverseDuration:
-                                                const Duration(milliseconds: 0),
-                                            child: const VerifyMobileNumberWidget(),
+                                Align(
+                                  alignment: const AlignmentDirectional(1.0, -1.0),
+                                  child: FlutterFlowIconButton(
+                                    borderColor: Colors.transparent,
+                                    borderRadius: 30.0,
+                                    borderWidth: 1.0,
+                                    buttonSize: 50.0,
+                                    fillColor:
+                                        FlutterFlowTheme.of(context).secondary,
+                                    icon: const Icon(
+                                      Icons.arrow_forward_ios_sharp,
+                                      color: Color(0xFFFBFBFB),
+                                      size: 25.0,
+                                    ),
+                                    onPressed: () async {
+                                      final phoneNumberVal =
+                                          _model.phoneNumberController.text;
+                                      if (phoneNumberVal.isEmpty ||
+                                          !phoneNumberVal.startsWith('+')) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          const SnackBar(
+                                            content: Text(
+                                                'Phone Number is required and has to start with +.'),
                                           ),
-                                          (r) => false,
                                         );
-                                      },
-                                    );
-                                  },
+                                        return;
+                                      }
+                                      await authManager.beginPhoneAuth(
+                                        context: context,
+                                        phoneNumber: phoneNumberVal,
+                                        onCodeSent: (context) async {
+                                          Navigator.pushAndRemoveUntil(
+                                            context,
+                                            PageTransition(
+                                              type: PageTransitionType.fade,
+                                              duration:
+                                                  const Duration(milliseconds: 0),
+                                              reverseDuration:
+                                                  const Duration(milliseconds: 0),
+                                              child: const VerifyMobileNumberWidget(),
+                                            ),
+                                            (r) => false,
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
                                 ),
-                              ),
+                              ].divide(const SizedBox(height: 40.0)),
                             ),
-                          ],
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
-                      child: FlutterFlowIconButton(
-                        borderColor: Colors.transparent,
-                        borderRadius: 30.0,
-                        borderWidth: 1.0,
-                        buttonSize: 60.0,
-                        icon: const Icon(
-                          Icons.arrow_back_ios_sharp,
-                          color: Colors.black,
-                          size: 30.0,
-                        ),
-                        onPressed: () async {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ],
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
